@@ -5,8 +5,15 @@
 
 ## Dasar Teori
 
-Berikan penjelasan teori terkait materi modul ini dengan bahasa anda sendiri serta susunan yang terstruktur per topiknya.
-
+Tipe Data adalah klasifikasi data berdasarkan jenisnya yang dibutuhkan oleh kompiler untuk mengelola pengunaan data tersebut. Ada beberapa jenis tipe data yang umum digunakan:
+1. Tipe Data Primitif: ini adalah tipe data bawaan yang sudah ditentukan oleh sistem. contohnya:
+   Int: untuk bilangan bulat.
+   Float: untuk bilangan desimal.
+   Char: untuk menyimpan karakter.
+   Boolean: untuk menyimpan nilai kebenaran(true/false).
+2. Tipe Data Abstrak: Tipe data abstrak (ADT) berisi berbagai tipe data yang berbeda. Fitur kunci di sini adalah penggunaan         struktur data seperti struct(dalam bahasa C) atau class (dalam C++), yang dapat membungkus beberapa tipe data sebagai anggota    didalamnya. perbedaan utama antara struct dan class adalah dalam tingkat akses defaultnya, di mana struct biasanya bersifat      publik dan class bersifat pribadi.
+3. Tipe Data Koleksi.
+   ini adalah tipe data yang digunakan
 ## Guided 
 
 ### 1. [Nama Topik]
