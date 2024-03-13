@@ -19,17 +19,48 @@ Tipe Data adalah klasifikasi data berdasarkan jenisnya yang dibutuhkan oleh komp
    Map: Mirip dengan array, tetapi indeksnya dapat berupa tipe data selain integer dan menggunakan struktur data pohon              keseimbangan khusus seperti Red-Black Tree untuk penyimpanannya.
 ## Guided 
 
-### 1. [Nama Topik]
+### 1. [TIPE DATA PRIMITIF]
 
 ```C++
 #include <iostream>
 using namespace std;
 
-int main() {
-    cout << "ini adalah file code guided praktikan" << endl;
+int main()
+{
+    char op;
+    float num1, num2;
+    cin >> op;
+    cin >> num1 >> num2;
+    switch (op)
+    {
+    case '+':
+    cout <<num1 + num2;
+    break;
+    case '-':
+    cout <<num1 - num2;
+    break;
+    case '*':
+    cout <<num1 * num2;
+    break;
+    case '/':
+    cout << num1 / num2;
+    break;
+
+    default:
+    cout << "Error! operator is not correct";
+    }
     return 0;
 }
+
 ```
+#### Output:
+![240302_00h00m06s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/6d1727a8-fb77-4ecf-81ff-5de9386686b7)
+
+Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+
+#### Full code Screenshot:
+![240309_10h21m35s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/41e9641c-ad4e-4e50-9ca4-a0215e336b04)
+
 Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
 
 ## Unguided 
@@ -45,17 +76,13 @@ int main() {
     return 0;
 }
 ```
-#### Output:
-![240302_00h00m06s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/6d1727a8-fb77-4ecf-81ff-5de9386686b7)
-
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
-
-#### Full code Screenshot:
-![240309_10h21m35s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/41e9641c-ad4e-4e50-9ca4-a0215e336b04)
 
 
 ## Kesimpulan
 Ringkasan dan interpretasi pandangan kalia dari hasil praktikum dan pembelajaran yang didapat[1].
 
 ## Referensi
-[1] I. Holm, Narrator, and J. Fullerton-Smith, Producer, How to Build a Human [DVD]. London: BBC; 2002.
+Karumanchi, N. (2016). Data Structures and algorithms made easy: Concepts,
+problems, Interview Questions. CareerMonk Publications.
+TylerMSFT. (n.d.). Collections (C++/CX). diakses dari
+https://learn.microsoft.com/en-us/cpp/cppcx/collections-c-cx?view=msvc-170
