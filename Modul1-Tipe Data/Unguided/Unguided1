@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+void tambah(int a, int b) {
+    int hasil = a + b;
+    cout << "Hasil Penjumlahan: " << hasil <<endl;
+}
+
+void kali(double x, double y) {
+    double hasil = x*y;
+    cout << "Hasil Perkalian: " << hasil <<endl;
+}
+
+int main(){
+    int bilangan1 = 5;
+    int bilangan2 = 3;
+    double bilangan3 = 2.5;
+    double bilangan4 = 1.5;
+
+    tambah(bilangan1, bilangan2);
+    kali(bilangan3, bilangan4);
+
+    return 0;
+}
