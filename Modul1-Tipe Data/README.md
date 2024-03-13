@@ -275,14 +275,12 @@ int main(){
 }
 ```
 #### Output:
-
-![Screenshot 2024-03-13 115304](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a103bb82-2e6e-4afe-9fef-fa2aff611e0a)
+![Screenshot 2024-03-13 115758](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/d1d4ff39-6ab5-4b0f-a426-0d6c4c147080)
 
 Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
 
 #### Full code Screenshot:
-![Screenshot 2024-03-13 115254](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/428506aa-231e-449e-9a0e-1d0f26bbeb0b)
-
+![Screenshot 2024-03-13 115751](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3d758f39-ca7f-47c6-adf6-8f603e076749)
 
 ## Kesimpulan
 Ringkasan dan interpretasi pandangan kalia dari hasil praktikum dan pembelajaran yang didapat[1].
