@@ -99,7 +99,7 @@ struct Mahasiswa
 #### Output:
 ![Screenshot 2024-03-13 103529](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/e3b0916b-5d66-4d41-b7ac-025f8cf73f83)
 
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+Kode di atas digunakan untuk mendefinisikan struktur "Mahasiswa" dan menginisialisasikan nilai-nilai anggota struktur untuk masing-masing mahasiswa. setelah itu, program mencetak informasi masing-masing mahasiswa ke layar menggunakan fungsi "printf".
 
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 103516](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/720931c1-59f3-42cc-a7f3-d9761d21a6bd)
@@ -130,7 +130,7 @@ int main()
 #### Output:
 ![Screenshot 2024-03-13 103610](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8eb934ba-5a93-4179-be55-2ad74176d65c)
 
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+Kode di atas digunakan untuk mendemonstrasikan penggunaan array. program ini membuat sebuah array bernama "nilai' dengan ukuran 5, kemudian menginisialisasikan setiap elemen array dengan nilai tertentu. selanjutnya, program mencetak isi masing-masing elemen array ke layar menggunakan  perintah "cout".
 
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 103547](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/43eb94f5-9c5d-48c1-bbea-3967459477b1)
