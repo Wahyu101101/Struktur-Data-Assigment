@@ -1,4 +1,4 @@
-# <h1 align="center">Laporan Praktikum Modul Tipe Data</h1>
+![Screenshot 2024-03-13 102019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f88bf87e-7ade-4be6-8f8b-eb49ce51997d)# <h1 align="center">Laporan Praktikum Modul Tipe Data</h1>
 <p align="center">Wahyu Hidayat</p>
 <p align="center">2311102178 / 11-E-IF</p>
 
@@ -19,7 +19,7 @@ Tipe Data adalah klasifikasi data berdasarkan jenisnya yang dibutuhkan oleh komp
    Map: Mirip dengan array, tetapi indeksnya dapat berupa tipe data selain integer dan menggunakan struktur data pohon              keseimbangan khusus seperti Red-Black Tree untuk penyimpanannya.
 ## Guided 
 
-### 1. [TIPE DATA PRIMITIF]
+### 1. TIPE DATA PRIMITIF
 
 ```C++
 #include <iostream>
@@ -54,12 +54,13 @@ int main()
 
 ```
 #### Output:
-![240302_00h00m06s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/6d1727a8-fb77-4ecf-81ff-5de9386686b7)
+
+![Screenshot 2024-03-13 102019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f57da27e-cf91-4795-aa28-6f4596483dc8)
 
 Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
 
 #### Full code Screenshot:
-![240309_10h21m35s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/41e9641c-ad4e-4e50-9ca4-a0215e336b04)
+![Screenshot 2024-03-13 102004](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/dc316aa6-b050-48c4-984f-58c9862987ab)
 
 Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
 
