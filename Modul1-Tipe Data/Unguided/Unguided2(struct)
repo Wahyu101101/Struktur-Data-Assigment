@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Mahasiswa {
+    string nama;
+    int umur;
+    
+    Mahasiswa(string n, int u){
+        nama = n;
+        umur = u;
+    }
+
+
+void tampilkanData(){
+    cout << "Nama : " << nama << ", Umur: " << umur << " tahun" <<endl;
+}
+};
+
+int main(){
+    Mahasiswa mhs1("Wahyu Hidayat", 20);
+    Mahasiswa mhs2("Nor Jatil Hasanah", 21);
+
+    mhs1.tampilkanData();
+    mhs2.tampilkanData();
+    return 0;
+}
