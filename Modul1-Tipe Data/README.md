@@ -62,7 +62,78 @@ Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktika
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 102004](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/dc316aa6-b050-48c4-984f-58c9862987ab)
 
+### 2. TIPE DATA ABSTRAK
+
+```C++
+#include <stdio.h>
+
+struct Mahasiswa 
+{
+    const char *name;
+    const char *address;
+    int age;
+};
+
+ int main ()
+ {
+    struct Mahasiswa mhs1, mhs2;
+    mhs1.name = "Dian";
+    mhs1.address = "Mataram";
+    mhs1.age = 22;
+    mhs2.name = "Bambang";
+    mhs2.address ="Surabaya";
+    mhs2.age = 23;
+
+    printf("## Mahasiswa 1 ##\n");
+    printf("Nama: %s\n", mhs1.name);
+    printf("Alamat: %s\n", mhs1.address);
+    printf("Umur: %d\n", mhs1.age);
+    printf("## Mahasiswa 2 ##\n");
+    printf("Nama: %s\n", mhs2.name);
+    printf("Alamat: %s\n", mhs2.address);
+    printf("Umur: %d\n", mhs2.age);
+    return 0;
+
+ }
+```
+#### Output:
+![Screenshot 2024-03-13 103529](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/e3b0916b-5d66-4d41-b7ac-025f8cf73f83)
+
 Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+
+#### Full code Screenshot:
+![Screenshot 2024-03-13 103516](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/720931c1-59f3-42cc-a7f3-d9761d21a6bd)
+
+### 3. TIPE DATA KOLEKSI
+
+```C++
+#include <iostream>
+using namespace std;
+int main()
+{
+    int nilai[5];
+    nilai[0] = 23;
+    nilai[1] = 50;
+    nilai[2] = 34;
+    nilai[3] = 78;
+    nilai[4] = 90;
+
+    cout << "Isi Array pertama :" << nilai[0] <<endl;
+    cout << "Isi Array kedua :" << nilai[1] <<endl;
+    cout << "Isi Array ketiga :" << nilai[2] <<endl;
+    cout << "Isi Array keempat :" << nilai[3] <<endl;
+    cout << "Isi Array kelima :" << nilai[4] <<endl;
+    return 0;
+}
+
+```
+#### Output:
+![Screenshot 2024-03-13 103610](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8eb934ba-5a93-4179-be55-2ad74176d65c)
+
+Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+
+#### Full code Screenshot:
+![Screenshot 2024-03-13 103547](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/43eb94f5-9c5d-48c1-bbea-3967459477b1)
 
 ## Unguided 
 
