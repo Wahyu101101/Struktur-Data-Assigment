@@ -166,9 +166,8 @@ int main(){
 ```
 #### Output:
 ![Screenshot 2024-03-13 115019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4ec6adce-56fc-4e7d-b46c-7bd7daeb6248)
-
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
-
+Kode tersebut merupakan contoh sederhana penggunaan tipe data primitif int dan double. kode ini memiliki dua fungsi 'tambah()' untuk menjumlahkan dua bilangan bulat dan 'kali()' untuk mengalikan dua bilangan rill.
+kesimpulannya, tipe data primitif sangat penting dalam pemprograman karena menyediakan dasar untuk melakukan operasi matematika dan manipulasi data dalam program. dalam contoh ini, int digunakan untuk bilangan bulat dan double untuk bilangan rill. program tersebut menunjukkan cara menggunakan tipe data primitif untuk melakukan operasi matematika dasar seperti penjumlahan dan perkalian.
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 115009](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ffd26eed-528b-4841-87af-8901c62e0a14)
 
@@ -210,7 +209,7 @@ int main(){
 
 ![Screenshot 2024-03-13 115304](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a103bb82-2e6e-4afe-9fef-fa2aff611e0a)
 
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+Kode di atas digunakan untuk mendefinisikan sebuah kelas 'Mahasiswa'. kelas ini memiliki dua atribut: 'nama' (bertipe string) dan 'umur' (bertipe integer), serta memiliki satu metode publik 'tampilanData()' yang digunakan untuk mencetak nama dan umur mahasiswa ke layar. didalam fungsi 'main', dua objek dari kelas 'Mahasiswa' dibuat dengan menggunakan konstruktor, yang menginisialisasi nama dan umur masing-masing mahasiswa. kemudian, metode 'tampilanData()' dipanggil untuk setiap objek, sehingga informasi nama dan umur dari kedua mahasiswa akan ditampilkan ke layar.
 
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 115254](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/428506aa-231e-449e-9a0e-1d0f26bbeb0b)
@@ -248,8 +247,7 @@ int main(){
 #### Output:
 ![Screenshot 2024-03-13 115734](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/eda2d3a0-2b15-4ecb-873c-adeb3b5b570f)
 
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
-
+kode diatas menggunakan struktur (struct) bernama 'Mahasiswa' untuk merepresentasikan data mahasiswa. struktur ini memiliki dua atribut: nama(bertipe string) dan umur(bertipe integer), serta sebuah konstruktor yang menginisialisasi nilai 'nama' dan 'umur' saat objek 'Mahasiswa' dibuat. selain itu, terdapat pula sebuah fungsi 'tampilanData()' yang mencetak informasi nama dan umur mahasiswa ke layar.
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 115724](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8b4da5b4-1088-42dc-9af2-f4bf6098f064)
 
@@ -274,14 +272,13 @@ int main(){
 #### Output:
 ![Screenshot 2024-03-13 115758](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/d1d4ff39-6ab5-4b0f-a426-0d6c4c147080)
 
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+Kode di atas menggunakan struktur data 'map' untuk menyimpan pasangan kunci-nilai. dalam hal ini, kunci adalah nama(bertipe string) dan nilai adalah umur (bertipe integer) dari seseorang. tiga pasangan kunci-nilai dimasukkan ke dalam 'map'. kemudian, program mencetak umur dari tiga orang yang berbeda ke layar dengan mengakses nilai-nilai yang sesuai dari 'map'.
 
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 115751](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3d758f39-ca7f-47c6-adf6-8f603e076749)
 
 ## Kesimpulan
-Ringkasan dan interpretasi pandangan kalia dari hasil praktikum dan pembelajaran yang didapat[1].
-
+dari materi ini dapat disimpulkam bahwa tipe data terdiri dari data primitif, abstrak dan juga koleksi untuk menyimpan nilai dan adapula class dan struct digunakan untuk mengelompokkan data dan fungsi terkait kedalam satu kesatuan. begitu juga fungsi map berguna untuk menyimpan pasangan kunci-nilai yang dapat diakses dengan efesien. serta yang terakhir array cocok untuk menyimpan kumpulan data dengan indeks yang berurutan, sementara map lebih fleksibel dalam hal penugasan indeks.
 ## Referensi
 Karumanchi, N. (2016). Data Structures and algorithms made easy: Concepts,
 problems, Interview Questions. CareerMonk Publications.
