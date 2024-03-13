@@ -14,6 +14,9 @@ Tipe Data adalah klasifikasi data berdasarkan jenisnya yang dibutuhkan oleh komp
 2. Tipe Data Abstrak: Tipe data abstrak (ADT) berisi berbagai tipe data yang berbeda. Fitur kunci di sini adalah penggunaan         struktur data seperti struct(dalam bahasa C) atau class (dalam C++), yang dapat membungkus beberapa tipe data sebagai anggota    didalamnya. perbedaan utama antara struct dan class adalah dalam tingkat akses defaultnya, di mana struct biasanya bersifat      publik dan class bersifat pribadi.
 3. Tipe Data Koleksi.
    ini adalah tipe data yang digunakan untuk mengelompokkan dan menyimpan beberapa nilai atau objek secara bersamaan. beberapa      tipe data koleksi yang umum digunakan meliputi:
+   Array: struktur data statis yang menyimpan elemen dengan tipe data yang sama dan memiliki ukuran tetap.
+   Vector: Mirip dengan array, tetapi dapat menyesuaikan ukurannya secara dinamis dan memiliki berbagai fitur tambahan seperti      akses elemen, iterator, kapasitas, dan modifikasi.
+   Map: Mirip dengan array, tetapi indeksnya dapat berupa tipe data selain integer dan menggunakan struktur data pohon              keseimbangan khusus seperti Red-Black Tree untuk penyimpanannya.
 ## Guided 
 
 ### 1. [Nama Topik]
