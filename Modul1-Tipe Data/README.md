@@ -57,7 +57,7 @@ int main()
 
 ![Screenshot 2024-03-13 102019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f57da27e-cf91-4795-aa28-6f4596483dc8)
 
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+Kode diatas merupakan sebuah program aritmatika sederhana yang meminta pengguna untuk memasukkan operator matematika seperti pertambahan, pengurangan, pembagian dan perkalian antara kedua bilangan. jika operator yang dimasukkan tidak sesuai, maka program mengirimkan pesan "Error! operator is not correct".
 
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 102004](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/dc316aa6-b050-48c4-984f-58c9862987ab)
@@ -253,7 +253,7 @@ Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktika
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 115724](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8b4da5b4-1088-42dc-9af2-f4bf6098f064)
 
-### 3. Buat dan jelaskan program menggunakan fungsi map dan jelaskan perbedaan dariarray dengan map.
+### 3. Buat dan jelaskan program menggunakan fungsi map dan jelaskan perbedaan dari array dengan map.
 ```C++
 #include <iostream>
 #include <map>
