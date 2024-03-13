@@ -1,0 +1,15 @@
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main(){
+    map<string, int > umur;
+
+    umur["Wahyu"] = 20;
+    umur["Hasanah"] = 21;
+    umur["supra"] = 22;
+    cout << "Umur Wahyu : " << umur["Wahyu"] << " tahun" <<endl;
+    cout << "Umur Hasanah : " << umur["Hasanah"] << " tahun" <<endl;
+    cout << "Umur supra : " << umur["supra"] << " tahun" <<endl;
+
+}
