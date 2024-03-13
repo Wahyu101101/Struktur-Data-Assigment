@@ -1,4 +1,4 @@
-![Screenshot 2024-03-13 115019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3aad003d-0d21-4a6e-a3ea-3f917549846e)# <h1 align="center">Laporan Praktikum Modul Tipe Data</h1>
+# <h1 align="center">Laporan Praktikum Modul Tipe Data</h1>
 <p align="center">Wahyu Hidayat</p>
 <p align="center">2311102178 / 11-E-IF</p>
 
