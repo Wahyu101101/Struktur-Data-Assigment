@@ -137,9 +137,7 @@ Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktika
 
 ## Unguided 
 
-### 1. Buatlah program menggunakan tipe data primitif minimal dua fungsi dan bebas.
-Menampilkan program, jelaskan program tersebut dan ambil kesimpulan dari
-materi tipe data primitif!
+### 1. Buatlah program menggunakan tipe data primitif minimal dua fungsi dan bebas. Menampilkan program, jelaskan program tersebut dan ambil kesimpulan dari materi tipe data primitif!
 
 ```C++
 #include <iostream>
@@ -174,7 +172,7 @@ Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktika
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 115009](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ffd26eed-528b-4841-87af-8901c62e0a14)
 
-### 2. Jelaskan fungsi dari class dan struct secara detail dan berikan contoh programnya
+### 2. Jelaskan fungsi dari class dan struct secara detail dan berikan contoh programnya.
 ## Class
 ```C++
 #include <iostream>
@@ -255,8 +253,7 @@ Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktika
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 115724](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8b4da5b4-1088-42dc-9af2-f4bf6098f064)
 
-### 3. Buat dan jelaskan program menggunakan fungsi map dan jelaskan perbedaan dari
-array dengan map.
+### 3. Buat dan jelaskan program menggunakan fungsi map dan jelaskan perbedaan dariarray dengan map.
 ```C++
 #include <iostream>
 #include <map>
