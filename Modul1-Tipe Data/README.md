@@ -217,6 +217,73 @@ Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktika
 #### Full code Screenshot:
 ![Screenshot 2024-03-13 115254](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/428506aa-231e-449e-9a0e-1d0f26bbeb0b)
 
+## Struct
+```C++
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Mahasiswa {
+    string nama;
+    int umur;
+    
+    Mahasiswa(string n, int u){
+        nama = n;
+        umur = u;
+    }
+
+
+void tampilkanData(){
+    cout << "Nama : " << nama << ", Umur: " << umur << " tahun" <<endl;
+}
+};
+
+int main(){
+    Mahasiswa mhs1("Wahyu Hidayat", 20);
+    Mahasiswa mhs2("Nor Jatil Hasanah", 21);
+
+    mhs1.tampilkanData();
+    mhs2.tampilkanData();
+    return 0;
+}
+```
+#### Output:
+![Screenshot 2024-03-13 115734](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/eda2d3a0-2b15-4ecb-873c-adeb3b5b570f)
+
+Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+
+#### Full code Screenshot:
+![Screenshot 2024-03-13 115724](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8b4da5b4-1088-42dc-9af2-f4bf6098f064)
+
+### 3. Buat dan jelaskan program menggunakan fungsi map dan jelaskan perbedaan dari
+array dengan map.
+```C++
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main(){
+    map<string, int > umur;
+
+    umur["Wahyu"] = 20;
+    umur["Hasanah"] = 21;
+    umur["supra"] = 22;
+    cout << "Umur Wahyu : " << umur["Wahyu"] << " tahun" <<endl;
+    cout << "Umur Hasanah : " << umur["Hasanah"] << " tahun" <<endl;
+    cout << "Umur supra : " << umur["supra"] << " tahun" <<endl;
+
+}
+```
+#### Output:
+
+![Screenshot 2024-03-13 115304](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a103bb82-2e6e-4afe-9fef-fa2aff611e0a)
+
+Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+
+#### Full code Screenshot:
+![Screenshot 2024-03-13 115254](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/428506aa-231e-449e-9a0e-1d0f26bbeb0b)
+
+
 ## Kesimpulan
 Ringkasan dan interpretasi pandangan kalia dari hasil praktikum dan pembelajaran yang didapat[1].
 
