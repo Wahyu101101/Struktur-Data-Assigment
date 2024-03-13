@@ -1,4 +1,4 @@
-# <h1 align="center">Laporan Praktikum Modul Tipe Data</h1>
+![Screenshot 2024-03-13 115019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3aad003d-0d21-4a6e-a3ea-3f917549846e)# <h1 align="center">Laporan Praktikum Modul Tipe Data</h1>
 <p align="center">Wahyu Hidayat</p>
 <p align="center">2311102178 / 11-E-IF</p>
 
@@ -137,18 +137,42 @@ Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktika
 
 ## Unguided 
 
-### 1. [Soal]
+### 1. Buatlah program menggunakan tipe data primitif minimal dua fungsi dan bebas.
+Menampilkan program, jelaskan program tersebut dan ambil kesimpulan dari
+materi tipe data primitif!
 
 ```C++
 #include <iostream>
 using namespace std;
+void tambah(int a, int b) {
+    int hasil = a + b;
+    cout << "Hasil Penjumlahan: " << hasil <<endl;
+}
 
-int main() {
-    cout << "ini adalah file code unguided praktikan" << endl;
+void kali(double x, double y) {
+    double hasil = x*y;
+    cout << "Hasil Perkalian: " << hasil <<endl;
+}
+
+int main(){
+    int bilangan1 = 5;
+    int bilangan2 = 3;
+    double bilangan3 = 2.5;
+    double bilangan4 = 1.5;
+
+    tambah(bilangan1, bilangan2);
+    kali(bilangan3, bilangan4);
+
     return 0;
 }
 ```
+#### Output:
+![Screenshot 2024-03-13 115019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4ec6adce-56fc-4e7d-b46c-7bd7daeb6248)
 
+Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+
+#### Full code Screenshot:
+![Screenshot 2024-03-13 115009](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ffd26eed-528b-4841-87af-8901c62e0a14)
 
 ## Kesimpulan
 Ringkasan dan interpretasi pandangan kalia dari hasil praktikum dan pembelajaran yang didapat[1].
