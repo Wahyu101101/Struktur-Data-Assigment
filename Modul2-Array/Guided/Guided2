@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int maks, a, i=1, lokasi;
+    cout << "Masukkan Panjang : ";
+    cin >> a;
+    int array [a];
+    cout << "Masukkan "<< a << " angka\n";
+    for(i = 0; i < a; i++)
+    {
+        cout <<"Array ke-" << (i)<< ":";
+        cin>> array[i];
+    }
+    //penjelasan tentang mencari nilai terbesar / searching
+    maks = array[0]; // nilai maksimal nya indeks ke 0
+    for (i = 0; i < a; i++) 
+    {
+        if (array[i] > maks) // jika array indeks ke 0 bernilai 1 >  nilai maksimal indeks ke 0
+        {
+            maks = array[i]; //jika tidak terpenuhi maka melakukan update terhadap perulangan sampai selesai sebanyak 5 indeks
+            lokasi = i;
+        }
+    }
+    cout<< "Nilai Maksimum Adalah " << maks << " berada di Array ke " << lokasi << endl;
+}
