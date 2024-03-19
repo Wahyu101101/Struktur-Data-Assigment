@@ -109,42 +109,67 @@ Kode di atas meminta untuk memasukkan panjang array dan sejumlah angka. setelah 
 
 ## Unguided 
 
-### 1. Buatlah program menggunakan tipe data primitif minimal dua fungsi dan bebas. Menampilkan program, jelaskan program tersebut dan ambil kesimpulan dari materi tipe data primitif!
+### 1. Buatlah program untuk menampilkan Output seperti berikut dengan data yang
+diinputkan oleh user!
+Data Array : 1  2 3 4 5 6 7 8 9 10
+Nomor Genap : 2, 4, 6, 8, 10,
+Nomor Ganjil : 1, 3, 5, 7, 9,
 
 ```C++
 #include <iostream>
+#include <vector>
 using namespace std;
-void tambah(int a, int b) {
-    int hasil = a + b;
-    cout << "Hasil Penjumlahan: " << hasil <<endl;
-}
-
-void kali(double x, double y) {
-    double hasil = x*y;
-    cout << "Hasil Perkalian: " << hasil <<endl;
-}
 
 int main(){
-    int bilangan1 = 5;
-    int bilangan2 = 3;
-    double bilangan3 = 2.5;
-    double bilangan4 = 1.5;
+    int maks, a, i = 1, lokasi;
+    cout <<"Masukkan Panjang : ";
+    cin >> a;
+    int array[a];
+    cout<< "Masukkan "<< a << " angka\n";
+    for(i = 0; i < a; i++){
+        cout<< "Array ke-" << (i + 1)<< ": ";
+        cin >> array[i];
+    }
+    
+    //Menampilkan data array
+    cout<< "Data Array: ";
+    for (i = 0; i < a; i++){
+        cout << array[i]<< " ";
+    }
+    cout <<endl;
+    
+    //Menampilkan nomor genap
+    cout<< "Nomor Genap: ";
+    for(i = 0; i < a; i++){
+        if (array[i] % 2 == 0){
+            cout << array[i] << ", ";
+        }
+    }
+    cout <<endl;
 
-    tambah(bilangan1, bilangan2);
-    kali(bilangan3, bilangan4);
+    //Menampilkan nomor ganjil
+    cout << "Nomor Ganjil: ";
+    for (i = 0; i < a; i++){
+        if (array[i] % 2 != 0){
+            cout << array[i] << ", ";
+        }
+    }
+    cout <<endl;
 
     return 0;
 }
 ```
 #### Output:
-![Screenshot 2024-03-13 115019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4ec6adce-56fc-4e7d-b46c-7bd7daeb6248)
-Kode tersebut merupakan contoh sederhana penggunaan tipe data primitif int dan double. kode ini memiliki dua fungsi 'tambah()' untuk menjumlahkan dua bilangan bulat dan 'kali()' untuk mengalikan dua bilangan rill.
-kesimpulannya, tipe data primitif sangat penting dalam pemprograman karena menyediakan dasar untuk melakukan operasi matematika dan manipulasi data dalam program. dalam contoh ini, int digunakan untuk bilangan bulat dan double untuk bilangan rill. program tersebut menunjukkan cara menggunakan tipe data primitif untuk melakukan operasi matematika dasar seperti penjumlahan dan perkalian.
-#### Full code Screenshot:
-![Screenshot 2024-03-13 115009](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ffd26eed-528b-4841-87af-8901c62e0a14)
 
-### 2. Jelaskan fungsi dari class dan struct secara detail dan berikan contoh programnya.
-## Class
+![Screenshot 2024-03-19 101910](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/79a8b3b3-207f-4ef1-b745-db348a1d29ea)
+
+Kode di atas meminta untuk memasukkan panjang array dan elemen-elemennya. Setelah menerima input, program menampilkan data array tersebut, serta memisahkan nomor genap dan ganjil dari array tersebut, kemudian menampilkan keduanya secara terpisah. Ini dilakukan dengan menggunakan perulangan untuk mengakses setiap elemen array dan memeriksa apakah mereka genap atau ganjil menggunakan operator modulus. Hasilnya adalah output yang mencakup data array, nomor genap, dan nomor ganjil berdasarkan input.
+
+#### Full code Screenshot:
+![Screenshot 2024-03-19 101901](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/382fe6d8-21b6-40cd-80c4-550b86426157)
+
+### 2. Buatlah program Input array tiga dimensi (seperti pada guided) tetapi jumlah
+atau ukuran elemennya diinputkan oleh user!
 ```C++
 #include <iostream>
 #include <string>
