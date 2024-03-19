@@ -62,7 +62,6 @@ for (int x = 0; x < 2; x++){
 ```
 #### Output:
 
-![Screenshot 2024-03-19 094234](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4d092f5b-2f98-49e7-8f80-759116b63174)
 
 Kode di atas menggunakan array tiga dimensi untuk menyimpan data. program ini mengisi array dengan input dari pengguna menggunakan loop bersarang tiga tingkat, kemudian mencetak nilai elemen array tersebut dalam berabgai format, termasuk satu per satu dan dengan memisahkan setiap lapisan dan baris array.
 
@@ -168,116 +167,132 @@ Kode di atas meminta untuk memasukkan panjang array dan elemen-elemennya. Setela
 #### Full code Screenshot:
 ![Screenshot 2024-03-19 101901](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/382fe6d8-21b6-40cd-80c4-550b86426157)
 
-### 2. Buatlah program Input array tiga dimensi (seperti pada guided) tetapi jumlah
-atau ukuran elemennya diinputkan oleh user!
+### 2. Buatlah program Input array tiga dimensi (seperti pada guided) tetapi jumlah atau ukuran elemennya diinputkan oleh user!
 ```C++
 #include <iostream>
-#include <string>
 using namespace std;
 
-class Mahasiswa {
-    private:
-    string nama;
-    int umur;
-    
-    public:
-    Mahasiswa(string n, int u){
-        nama = n;
-        umur = u;
+int main(){
+    int x_ukuran, y_ukuran, z_ukuran;
+
+    //Meminta pengguna untuk memasukkan ukuran array
+    cout << "Memasukkan jumlah elemn untuk dimensi X: ";
+    cin >> x_ukuran;
+    cout << "Memasukkan jumlah elemn untuk dimensi Y: ";
+    cin >> y_ukuran;
+    cout << "Memasukkan jumlah elemn untuk dimensi Z: ";
+    cin >> z_ukuran;
+
+    //Deklarasi array tiga dimensi
+    int arr[x_ukuran][y_ukuran][z_ukuran];
+
+    //input elemen array
+    for (int x = 0; x < x_ukuran; x++){
+        for (int y = 0; y < y_ukuran; y++){
+            for (int z = 0; z < z_ukuran; z++){
+            cout << "Inputkan Array[" << x << "][" << y << "][" << z << "]: ";
+            cin >> arr[x][y][z];
+            }
+        }
     }
 
-
-void tampilkanData(){
-    cout << "Nama : " << nama << ", Umur: " << umur << " tahun" <<endl;
-}
-};
-
-int main(){
-    Mahasiswa mhs1("Wahyu Hidayat", 20);
-    Mahasiswa mhs2("Nor Jatil Hasanah", 21
-    );
-
-    mhs1.tampilkanData();
-    mhs2.tampilkanData();
-    return 0;
-}
-```
-#### Output:
-
-![Screenshot 2024-03-13 115304](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a103bb82-2e6e-4afe-9fef-fa2aff611e0a)
-
-Kode di atas digunakan untuk mendefinisikan sebuah kelas 'Mahasiswa'. kelas ini memiliki dua atribut: 'nama' (bertipe string) dan 'umur' (bertipe integer), serta memiliki satu metode publik 'tampilanData()' yang digunakan untuk mencetak nama dan umur mahasiswa ke layar. didalam fungsi 'main', dua objek dari kelas 'Mahasiswa' dibuat dengan menggunakan konstruktor, yang menginisialisasi nama dan umur masing-masing mahasiswa. kemudian, metode 'tampilanData()' dipanggil untuk setiap objek, sehingga informasi nama dan umur dari kedua mahasiswa akan ditampilkan ke layar.
-
-#### Full code Screenshot:
-![Screenshot 2024-03-13 115254](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/428506aa-231e-449e-9a0e-1d0f26bbeb0b)
-
-## Struct
-```C++
-#include <iostream>
-#include <string>
-using namespace std;
-
-struct Mahasiswa {
-    string nama;
-    int umur;
-    
-    Mahasiswa(string n, int u){
-        nama = n;
-        umur = u;
+    //Menampilkan array 
+    cout << "Array yang Diinputkan:\n";
+    for (int x = 0; x < x_ukuran; x++){
+        for (int y = 0; y < y_ukuran; y++){
+            for (int z = 0; z < z_ukuran; z++){
+            cout << "Data Array[" << x << "][" << y << "][" << z << "]: " << arr[x][y][z] << endl;
+            }
+        }
     }
 
-
-void tampilkanData(){
-    cout << "Nama : " << nama << ", Umur: " << umur << " tahun" <<endl;
-}
-};
-
-int main(){
-    Mahasiswa mhs1("Wahyu Hidayat", 20);
-    Mahasiswa mhs2("Nor Jatil Hasanah", 21);
-
-    mhs1.tampilkanData();
-    mhs2.tampilkanData();
-    return 0;
+return 0;
 }
 ```
 #### Output:
-![Screenshot 2024-03-13 115734](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/eda2d3a0-2b15-4ecb-873c-adeb3b5b570f)
+![Screenshot 2024-03-19 105711](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/d94f0389-5004-4050-8a09-dea4bc4309cc)
 
-kode diatas menggunakan struktur (struct) bernama 'Mahasiswa' untuk merepresentasikan data mahasiswa. struktur ini memiliki dua atribut: nama(bertipe string) dan umur(bertipe integer), serta sebuah konstruktor yang menginisialisasi nilai 'nama' dan 'umur' saat objek 'Mahasiswa' dibuat. selain itu, terdapat pula sebuah fungsi 'tampilanData()' yang mencetak informasi nama dan umur mahasiswa ke layar.
+Kode di atas digunakan untuk menginisialisasi, mengisi, dan menampilkan array tiga dimensi berdasarkan input ukuran dari pengguna. Program akan meminta untuk memasukkan ukuran untuk setiap dimensi array, kemudian akan mengalokasikan array sesuai dengan ukuran yang dimasukkan. Selanjutnya, program meminta untuk memasukkan nilai untuk setiap elemen array menggunakan nested loop. Setelah semua nilai dimasukkan, program akan menampilkan nilai dari setiap elemen array bersama dengan koordinatnya dalam format "[x][y][z]: nilai".
 #### Full code Screenshot:
-![Screenshot 2024-03-13 115724](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8b4da5b4-1088-42dc-9af2-f4bf6098f064)
+![Screenshot 2024-03-19 105659](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5a2545a9-213a-47ab-9b94-1177bbf5e3d8)
 
-### 3. Buat dan jelaskan program menggunakan fungsi map dan jelaskan perbedaan dari array dengan map.
+
+### 3. Buatlah program menu untuk mencari nilai Maksimum, Minimum dan Nilai rata – rata dari suatu array dengan input yang dimasukan oleh user!
 ```C++
 #include <iostream>
-#include <map>
 using namespace std;
 
 int main(){
-    map<string, int > umur;
+    int a;
+    cout << "Masukkan Panjang Array: ";
+    cin >> a;
 
-    umur["Wahyu"] = 20;
-    umur["Hasanah"] = 21;
-    umur["supra"] = 22;
-    cout << "Umur Wahyu : " << umur["Wahyu"] << " tahun" <<endl;
-    cout << "Umur Hasanah : " << umur["Hasanah"] << " tahun" <<endl;
-    cout << "Umur supra : " << umur["supra"] << " tahun" <<endl;
+    int array[a];
+    cout << "Masukkan " << a << " angka:\n";
+    for (int i = 0; i < a; i++){
+        cout << "Array ke-" << (i+1) << ": ";
+        cin >> array[i];
+    }
+    int menu;
+    do{
+        cout << "\nMenu\n";
+        cout << "1. Cari Nilai Maksimum\n";
+        cout << "2. Cari Nilai Minimum\n";
+        cout << "3. Cari Nilai Rata-rata\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih Operasi: ";
+        cin >> menu;
+    
+    switch (menu){
+        case 1: {
+            int maks = array[0];
+            for (int i = 1; i < a; i++ ){
+                if (array[i] > maks){
+                    maks = array[i];
+                }
+            }
+            cout << "Nilai Maksimum Adalah " << maks <<endl;
+            break;
+        }
+         case 2: {
+            int min = array[0];
+            for (int i = 1; i < a; i++ ){
+                if (array[i] < min){
+                    min = array[i];
+                }
+            }
+            cout << "Nilai Minimum Adalah " << min <<endl;
+            break;
+        }
+        case 3: {
+            int sum = 0;
+            for (int i = 0; i < a; i++ ){
+                sum += array[i];
 
+                }
+                double rata = static_cast<double>(sum)/a;
+                cout << "Nilai Rata-rata Adalah " << rata <<endl;
+                break;
+            }
+            case 0: 
+            cout << "Terima Kasih, Program selesai.\n";
+            break;
+            default :
+            cout << "Pilihan tidak valid, silahkan pilih lagi.\n";
+            }
+    }while (menu != 0);
+    return 0;
 }
+
 ```
 #### Output:
-![Screenshot 2024-03-13 115758](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/d1d4ff39-6ab5-4b0f-a426-0d6c4c147080)
+![Screenshot 2024-03-19 114137](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3935d471-5bc0-47c8-8b3b-5c1b82b2a1be)
 
-Kode di atas menggunakan struktur data 'map' untuk menyimpan pasangan kunci-nilai. dalam hal ini, kunci adalah nama(bertipe string) dan nilai adalah umur (bertipe integer) dari seseorang. tiga pasangan kunci-nilai dimasukkan ke dalam 'map'. kemudian, program mencetak umur dari tiga orang yang berbeda ke layar dengan mengakses nilai-nilai yang sesuai dari 'map'.
-
+Kode diatas digunakan untuk memasukkan panjang sebuah array serta elemen-elemennya. Kemudian, program menampilkan sebuah menu yang memberikan opsi kepada pengguna untuk melakukan operasi tertentu, seperti mencari nilai maksimum, minimum, atau nilai rata-rata dari array yang dimasukkan. Setelah pengguna memilih sebuah operasi, program akan melakukan perhitungan sesuai dengan pilihan pengguna dan menampilkan hasilnya. Program akan terus menampilkan menu hingga pengguna memilih untuk keluar dengan memilih opsi "0".
 #### Full code Screenshot:
-![Screenshot 2024-03-13 115751](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3d758f39-ca7f-47c6-adf6-8f603e076749)
+![Screenshot 2024-03-19 114257](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/6dc479f7-2857-4ad8-b82a-b6b877c4c11c)
 
 ## Kesimpulan
-dari materi ini dapat disimpulkam bahwa tipe data terdiri dari data primitif, abstrak dan juga koleksi untuk menyimpan nilai dan adapula class dan struct digunakan untuk mengelompokkan data dan fungsi terkait kedalam satu kesatuan. begitu juga fungsi map berguna untuk menyimpan pasangan kunci-nilai yang dapat diakses dengan efesien. serta yang terakhir array cocok untuk menyimpan kumpulan data dengan indeks yang berurutan, sementara map lebih fleksibel dalam hal penugasan indeks.
+Kesimpulannya, kode-kode tersebut menunjukkan penggunaan array dalam berbagai konteks dan dimensi. Array digunakan sebagai wadah untuk menyimpan data dengan tipe yang sama, dan setiap elemen diakses menggunakan indeks. Array satu dimensi digunakan untuk menyimpan data dalam satu baris, sedangkan array dua dimensi digunakan untuk menyusun data dalam baris dan kolom. Selain itu, ada juga array multidimensi yang digunakan untuk menyimpan data dengan dimensi lebih dari dua. Program-program tersebut memanfaatkan array untuk berbagai tujuan, seperti menyimpan dan mengolah data, mencari nilai maksimum, minimum, dan rata-rata, serta memisahkan data genap dan ganjil. Dengan menggunakan array, program-program tersebut dapat melakukan operasi secara efisien dan terstruktur sesuai dengan kebutuhan pengguna.
 ## Referensi
-Karumanchi, N. (2016). Data Structures and algorithms made easy: Concepts,
-problems, Interview Questions. CareerMonk Publications.
-TylerMSFT. (n.d.). Collections (C++/CX). diakses dari
-https://learn.microsoft.com/en-us/cpp/cppcx/collections-c-cx?view=msvc-170
+Putra, Muhammad Taufik Dwi, Deden Pradeka, and Ana Rahma Yuniarti. "BELAJAR DASAR PEMROGRAMAN DENGAN C++." (2022).
