@@ -109,8 +109,7 @@ Kode di atas meminta untuk memasukkan panjang array dan sejumlah angka. setelah 
 
 ## Unguided 
 
-### 1. Buatlah program untuk menampilkan Output seperti berikut dengan data yang
-diinputkan oleh user!
+### 1. Buatlah program untuk menampilkan Output seperti berikut dengan data yang diinputkan oleh user!
 Data Array : 1  2 3 4 5 6 7 8 9 10
 Nomor Genap : 2, 4, 6, 8, 10,
 Nomor Ganjil : 1, 3, 5, 7, 9,
