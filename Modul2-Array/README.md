@@ -14,121 +14,97 @@ Adapun Array terbagi menjadi bebrapa jenis, yaitu :
 
 3. Array multidimensi memiliki kapasitas memori yang lebih besar dan digunakan untuk merepresentasikan array dengan dimensi lebih dari dua atau array yang memiliki lebih dari dua indeks, seperti array tiga dimensi, array empat dimensi, dan seterusnya.
 
-### 1. TIPE DATA PRIMITIF
+### 1. Program Input Array Tiga Dimensi
 
 ```C++
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    char op;
-    float num1, num2;
-    cin >> op;
-    cin >> num1 >> num2;
-    switch (op)
-    {
-    case '+':
-    cout <<num1 + num2;
-    break;
-    case '-':
-    cout <<num1 - num2;
-    break;
-    case '*':
-    cout <<num1 * num2;
-    break;
-    case '/':
-    cout << num1 / num2;
-    break;
+//program input array 3 dimensi
+int main(){
+    //deklarasi array
+int arr[2][3][3];
+//input elemen
+for  (int x = 0; x < 2; x++){
 
-    default:
-    cout << "Error! operator is not correct";
+for (int y = 0; y < 3; y++){
+    for (int z = 0; z< 3; z++){
+        cout << "Input Array [" << x <<"]["<< y <<"][" << z <<"]=";
+        cin >> arr[x][y][z];
     }
-    return 0;
+}
+cout <<endl;
+}
+// Output Array
+for (int x = 0; x < 2; x++){
+    for (int y = 0; y< 3; y++){
+    for (int z = 0; z < 3; z++){
+        cout << "Data Array["<< x <<"]["<< y <<"]["<< z <<"]=" << arr [x][y][z] <<endl;
+    }
+    }
+}
+ cout <<endl;
+ //Tampilan Array 
+ for (int x =0; x<2; x++){
+    for (int y = 0; y < 3; y++){
+        for (int z =0; z<3; z++ ){
+            cout << arr [x][y][z]<<endl;
+        }
+        cout <<endl;
+    }
+    cout<<endl;
+ }
+
+
 }
 
 ```
 #### Output:
 
-![Screenshot 2024-03-13 102019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f57da27e-cf91-4795-aa28-6f4596483dc8)
+![Screenshot 2024-03-19 094234](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4d092f5b-2f98-49e7-8f80-759116b63174)
 
-Kode diatas merupakan sebuah program aritmatika sederhana yang meminta pengguna untuk memasukkan operator matematika seperti pertambahan, pengurangan, pembagian dan perkalian antara kedua bilangan. jika operator yang dimasukkan tidak sesuai, maka program mengirimkan pesan "Error! operator is not correct".
-
-#### Full code Screenshot:
-![Screenshot 2024-03-13 102004](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/dc316aa6-b050-48c4-984f-58c9862987ab)
-
-### 2. TIPE DATA ABSTRAK
-
-```C++
-#include <stdio.h>
-
-struct Mahasiswa 
-{
-    const char *name;
-    const char *address;
-    int age;
-};
-
- int main ()
- {
-    struct Mahasiswa mhs1, mhs2;
-    mhs1.name = "Dian";
-    mhs1.address = "Mataram";
-    mhs1.age = 22;
-    mhs2.name = "Bambang";
-    mhs2.address ="Surabaya";
-    mhs2.age = 23;
-
-    printf("## Mahasiswa 1 ##\n");
-    printf("Nama: %s\n", mhs1.name);
-    printf("Alamat: %s\n", mhs1.address);
-    printf("Umur: %d\n", mhs1.age);
-    printf("## Mahasiswa 2 ##\n");
-    printf("Nama: %s\n", mhs2.name);
-    printf("Alamat: %s\n", mhs2.address);
-    printf("Umur: %d\n", mhs2.age);
-    return 0;
-
- }
-```
-#### Output:
-![Screenshot 2024-03-13 103529](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/e3b0916b-5d66-4d41-b7ac-025f8cf73f83)
-
-Kode di atas digunakan untuk mendefinisikan struktur "Mahasiswa" dan menginisialisasikan nilai-nilai anggota struktur untuk masing-masing mahasiswa. setelah itu, program mencetak informasi masing-masing mahasiswa ke layar menggunakan fungsi "printf".
+Kode di atas menggunakan array tiga dimensi untuk menyimpan data. program ini mengisi array dengan input dari pengguna menggunakan loop bersarang tiga tingkat, kemudian mencetak nilai elemen array tersebut dalam berabgai format, termasuk satu per satu dan dengan memisahkan setiap lapisan dan baris array.
 
 #### Full code Screenshot:
-![Screenshot 2024-03-13 103516](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/720931c1-59f3-42cc-a7f3-d9761d21a6bd)
 
-### 3. TIPE DATA KOLEKSI
+![Screenshot 2024-03-19 094225](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/7c86e237-3d63-4581-a1b3-1c16599782be)
 
+### 2. Program Mencari Nilai Maksimal pada Array
 ```C++
 #include <iostream>
 using namespace std;
-int main()
-{
-    int nilai[5];
-    nilai[0] = 23;
-    nilai[1] = 50;
-    nilai[2] = 34;
-    nilai[3] = 78;
-    nilai[4] = 90;
-
-    cout << "Isi Array pertama :" << nilai[0] <<endl;
-    cout << "Isi Array kedua :" << nilai[1] <<endl;
-    cout << "Isi Array ketiga :" << nilai[2] <<endl;
-    cout << "Isi Array keempat :" << nilai[3] <<endl;
-    cout << "Isi Array kelima :" << nilai[4] <<endl;
-    return 0;
+int main(){
+    int maks, a, i=1, lokasi;
+    cout << "Masukkan Panjang : ";
+    cin >> a;
+    int array [a];
+    cout << "Masukkan "<< a << " angka\n";
+    for(i = 0; i < a; i++)
+    {
+        cout <<"Array ke-" << (i)<< ":";
+        cin>> array[i];
+    }
+    //penjelasan tentang mencari nilai terbesar / searching
+    maks = array[0]; // nilai maksimal nya indeks ke 0
+    for (i = 0; i < a; i++) 
+    {
+        if (array[i] > maks) // jika array indeks ke 0 bernilai 1 >  nilai maksimal indeks ke 0
+        {
+            maks = array[i]; //jika tidak terpenuhi maka melakukan update terhadap perulangan sampai selesai sebanyak 5 indeks
+            lokasi = i;
+        }
+    }
+    cout<< "Nilai Maksimum Adalah " << maks << " berada di Array ke " << lokasi << endl;
 }
-
 ```
 #### Output:
-![Screenshot 2024-03-13 103610](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8eb934ba-5a93-4179-be55-2ad74176d65c)
 
-Kode di atas digunakan untuk mendemonstrasikan penggunaan array. program ini membuat sebuah array bernama "nilai' dengan ukuran 5, kemudian menginisialisasikan setiap elemen array dengan nilai tertentu. selanjutnya, program mencetak isi masing-masing elemen array ke layar menggunakan  perintah "cout".
+![Screenshot 2024-03-19 095026](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ff88dce0-3761-4593-9b05-4db86f1127d0)
+
+Kode di atas meminta untuk memasukkan panjang array dan sejumlah angka. setelah itu, program menyimpan angka-angka tersebut ke dalam array dan mencari nilai maksimumnya. proses pencarian nilai maksimum dilakukan dengan menggunakan perulangan untuk membandingkan setiap elemen array dengan nilai maksimum yang disimpan secara sementara, jika nilai elemen tersebut lebih besar dari nilai maksimum sementara, maka nilai maksimum akan diupdate dengan nilai elemen tersebut dan lokasi indeksnya akan disimpan. setelah selesai, program akan menampilkan nilai maksimum beserta indeksnya dalam array.
 
 #### Full code Screenshot:
-![Screenshot 2024-03-13 103547](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/43eb94f5-9c5d-48c1-bbea-3967459477b1)
+![Screenshot 2024-03-19 095014](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ae617c2f-228e-40e6-bafd-113b580c7d52)
 
 ## Unguided 
 
