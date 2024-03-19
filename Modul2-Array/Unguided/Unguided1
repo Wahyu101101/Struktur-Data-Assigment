@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+    int maks, a, i = 1, lokasi;
+    cout <<"Masukkan Panjang : ";
+    cin >> a;
+    int array[a];
+    cout<< "Masukkan "<< a << " angka\n";
+    for(i = 0; i < a; i++){
+        cout<< "Array ke-" << (i + 1)<< ": ";
+        cin >> array[i];
+    }
+    
+    //Menampilkan data array
+    cout<< "Data Array: ";
+    for (i = 0; i < a; i++){
+        cout << array[i]<< " ";
+    }
+    cout <<endl;
+    
+    //Menampilkan nomor genap
+    cout<< "Nomor Genap: ";
+    for(i = 0; i < a; i++){
+        if (array[i] % 2 == 0){
+            cout << array[i] << ", ";
+        }
+    }
+    cout <<endl;
+
+    //Menampilkan nomor ganjil
+    cout << "Nomor Ganjil: ";
+    for (i = 0; i < a; i++){
+        if (array[i] % 2 != 0){
+            cout << array[i] << ", ";
+        }
+    }
+    cout <<endl;
+
+    return 0;
+}
