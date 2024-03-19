@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    int a;
+    cout << "Masukkan Panjang Array: ";
+    cin >> a;
+
+    int array[a];
+    cout << "Masukkan " << a << " angka:\n";
+    for (int i = 0; i < a; i++){
+        cout << "Array ke-" << (i+1) << ": ";
+        cin >> array[i];
+    }
+    int menu;
+    do{
+        cout << "\nMenu\n";
+        cout << "1. Cari Nilai Maksimum\n";
+        cout << "2. Cari Nilai Minimum\n";
+        cout << "3. Cari Nilai Rata-rata\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih Operasi: ";
+        cin >> menu;
+    
+    switch (menu){
+        case 1: {
+            int maks = array[0];
+            for (int i = 1; i < a; i++ ){
+                if (array[i] > maks){
+                    maks = array[i];
+                }
+            }
+            cout << "Nilai Maksimum Adalah " << maks <<endl;
+            break;
+        }
+         case 2: {
+            int min = array[0];
+            for (int i = 1; i < a; i++ ){
+                if (array[i] < min){
+                    min = array[i];
+                }
+            }
+            cout << "Nilai Minimum Adalah " << min <<endl;
+            break;
+        }
+        case 3: {
+            int sum = 0;
+            for (int i = 0; i < a; i++ ){
+                sum += array[i];
+
+                }
+                double rata = static_cast<double>(sum)/a;
+                cout << "Nilai Rata-rata Adalah " << rata <<endl;
+                break;
+            }
+            case 0: 
+            cout << "Terima Kasih, Program selesai.\n";
+            break;
+            default :
+            cout << "Pilihan tidak valid, silahkan pilih lagi.\n";
+            }
+    }while (menu != 0);
+    return 0;
+}
