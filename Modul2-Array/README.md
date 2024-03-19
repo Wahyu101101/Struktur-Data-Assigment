@@ -14,6 +14,7 @@ Adapun Array terbagi menjadi bebrapa jenis, yaitu :
 
 3. Array multidimensi memiliki kapasitas memori yang lebih besar dan digunakan untuk merepresentasikan array dengan dimensi lebih dari dua atau array yang memiliki lebih dari dua indeks, seperti array tiga dimensi, array empat dimensi, dan seterusnya.
 
+## Guided 
 ### 1. Program Input Array Tiga Dimensi
 
 ```C++
