@@ -61,6 +61,7 @@ for (int x = 0; x < 2; x++){
 
 ```
 #### Output:
+![Screenshot 2024-03-19 115607](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4c0ba241-57e6-4426-a3d8-34eebc0929e1)
 
 
 Kode di atas menggunakan array tiga dimensi untuk menyimpan data. program ini mengisi array dengan input dari pengguna menggunakan loop bersarang tiga tingkat, kemudian mencetak nilai elemen array tersebut dalam berabgai format, termasuk satu per satu dan dengan memisahkan setiap lapisan dan baris array.
