@@ -5,19 +5,13 @@
 
 ## Dasar Teori
 
-Tipe Data adalah klasifikasi data berdasarkan jenisnya yang dibutuhkan oleh kompiler untuk mengelola pengunaan data tersebut. Ada beberapa jenis tipe data yang umum digunakan:
-1. Tipe Data Primitif: ini adalah tipe data bawaan yang sudah ditentukan oleh sistem. contohnya:
-   Int: untuk bilangan bulat.
-   Float: untuk bilangan desimal.
-   Char: untuk menyimpan karakter.
-   Boolean: untuk menyimpan nilai kebenaran(true/false).
-2. Tipe Data Abstrak: Tipe data abstrak (ADT) berisi berbagai tipe data yang berbeda. Fitur kunci di sini adalah penggunaan         struktur data seperti struct(dalam bahasa C) atau class (dalam C++), yang dapat membungkus beberapa tipe data sebagai anggota    didalamnya. perbedaan utama antara struct dan class adalah dalam tingkat akses defaultnya, di mana struct biasanya bersifat      publik dan class bersifat pribadi.
-3. Tipe Data Koleksi.
-   ini adalah tipe data yang digunakan untuk mengelompokkan dan menyimpan beberapa nilai atau objek secara bersamaan. beberapa      tipe data koleksi yang umum digunakan meliputi:
-   Array: struktur data statis yang menyimpan elemen dengan tipe data yang sama dan memiliki ukuran tetap.
-   Vector: Mirip dengan array, tetapi dapat menyesuaikan ukurannya secara dinamis dan memiliki berbagai fitur tambahan seperti      akses elemen, iterator, kapasitas, dan modifikasi.
-   Map: Mirip dengan array, tetapi indeksnya dapat berupa tipe data selain integer dan menggunakan struktur data pohon              keseimbangan khusus seperti Red-Black Tree untuk penyimpanannya.
-## Guided 
+Array atau dalam bahasa indonesia disebut larik, merupakan sebuah teknik pemrograman di mana array tersebut dianalogikan sebagai wadah untuk menyimpan data-data yang berjumlah banyak dan memiliki tipe data yang sama. 
+
+Array satu dimensi adalah kumpulan data dengan tipe yang sama yang disusun dalam satu baris. Setiap elemen memiliki indeks yang dimulai dari 0 hingga jumlah elemen dikurangi satu.
+
+Array dua dimensi adalah variabel yang terdiri dari kumpulan array satu dimensi dengan tipe yang sama yang disusun dalam baris dan kolom. Setiap elemen memiliki dua indeks: indeks baris dan indeks kolom.
+
+Array multidimensi memiliki kapasitas memori yang lebih besar dan digunakan untuk merepresentasikan array dengan dimensi lebih dari dua atau array yang memiliki lebih dari dua indeks, seperti array tiga dimensi, array empat dimensi, dan seterusnya.
 
 ### 1. TIPE DATA PRIMITIF
 
