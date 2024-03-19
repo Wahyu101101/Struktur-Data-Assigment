@@ -6,12 +6,13 @@
 ## Dasar Teori
 
 Array atau dalam bahasa indonesia disebut larik, merupakan sebuah teknik pemrograman di mana array tersebut dianalogikan sebagai wadah untuk menyimpan data-data yang berjumlah banyak dan memiliki tipe data yang sama. 
+Adapun Array terbagi menjadi bebrapa jenis, yaitu :
 
-Array satu dimensi adalah kumpulan data dengan tipe yang sama yang disusun dalam satu baris. Setiap elemen memiliki indeks yang dimulai dari 0 hingga jumlah elemen dikurangi satu.
+1. Array satu dimensi adalah kumpulan data dengan tipe yang sama yang disusun dalam satu baris. Setiap elemen memiliki indeks yang dimulai dari 0 hingga jumlah elemen dikurangi satu.
 
-Array dua dimensi adalah variabel yang terdiri dari kumpulan array satu dimensi dengan tipe yang sama yang disusun dalam baris dan kolom. Setiap elemen memiliki dua indeks: indeks baris dan indeks kolom.
+2. Array dua dimensi adalah variabel yang terdiri dari kumpulan array satu dimensi dengan tipe yang sama yang disusun dalam baris dan kolom. Setiap elemen memiliki dua indeks: indeks baris dan indeks kolom.
 
-Array multidimensi memiliki kapasitas memori yang lebih besar dan digunakan untuk merepresentasikan array dengan dimensi lebih dari dua atau array yang memiliki lebih dari dua indeks, seperti array tiga dimensi, array empat dimensi, dan seterusnya.
+3. Array multidimensi memiliki kapasitas memori yang lebih besar dan digunakan untuk merepresentasikan array dengan dimensi lebih dari dua atau array yang memiliki lebih dari dua indeks, seperti array tiga dimensi, array empat dimensi, dan seterusnya.
 
 ### 1. TIPE DATA PRIMITIF
 
