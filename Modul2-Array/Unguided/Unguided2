@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    int x_ukuran, y_ukuran, z_ukuran;
+
+    //Meminta pengguna untuk memasukkan ukuran array
+    cout << "Memasukkan jumlah elemn untuk dimensi X: ";
+    cin >> x_ukuran;
+    cout << "Memasukkan jumlah elemn untuk dimensi Y: ";
+    cin >> y_ukuran;
+    cout << "Memasukkan jumlah elemn untuk dimensi Z: ";
+    cin >> z_ukuran;
+
+    //Deklarasi array tiga dimensi
+    int arr[x_ukuran][y_ukuran][z_ukuran];
+
+    //input elemen array
+    for (int x = 0; x < x_ukuran; x++){
+        for (int y = 0; y < y_ukuran; y++){
+            for (int z = 0; z < z_ukuran; z++){
+            cout << "Inputkan Array[" << x << "][" << y << "][" << z << "]: ";
+            cin >> arr[x][y][z];
+            }
+        }
+    }
+
+    //Menampilkan array 
+    cout << "Array yang Diinputkan:\n";
+    for (int x = 0; x < x_ukuran; x++){
+        for (int y = 0; y < y_ukuran; y++){
+            for (int z = 0; z < z_ukuran; z++){
+            cout << "Data Array[" << x << "][" << y << "][" << z << "]: " << arr[x][y][z] << endl;
+            }
+        }
+    }
+
+return 0;
+}
