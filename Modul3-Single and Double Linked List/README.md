@@ -647,7 +647,7 @@ Kode di atas mengimplementasikan struktur data Single Linked List Non-Circular u
 
 ![Screenshot 2024-03-26 105830](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/29061433-6930-4aec-ac97-07155c750445)
 
-### 2. Buatlah program Input array tiga dimensi (seperti pada guided) tetapi jumlah atau ukuran elemennya diinputkan oleh user!
+### 2. Soal mengenai Double Linked List
 Modifikasi Guided Double Linked List dilakukan dengan penambahan operasi untuk menambah data, menghapus, dan update di tengah / diurutan tertentu yang diminta. Selain itu, buatlah agar tampilannyamenampilkan Nama produk dan harga.
 Nama Produk  Harga
 Originote    60.000
@@ -682,127 +682,228 @@ Skintific 100.000
 Cleora 55.000
 ```C++
 #include <iostream>
+#include <string>
 using namespace std;
 
-int main(){
-    int x_ukuran, y_ukuran, z_ukuran;
+class Node {
+public:
+    string namaProduk;
+    double harga;
+    Node* prev;
+    Node* next;
+};
 
-    //Meminta pengguna untuk memasukkan ukuran array
-    cout << "Memasukkan jumlah elemn untuk dimensi X: ";
-    cin >> x_ukuran;
-    cout << "Memasukkan jumlah elemn untuk dimensi Y: ";
-    cin >> y_ukuran;
-    cout << "Memasukkan jumlah elemn untuk dimensi Z: ";
-    cin >> z_ukuran;
-
-    //Deklarasi array tiga dimensi
-    int arr[x_ukuran][y_ukuran][z_ukuran];
-
-    //input elemen array
-    for (int x = 0; x < x_ukuran; x++){
-        for (int y = 0; y < y_ukuran; y++){
-            for (int z = 0; z < z_ukuran; z++){
-            cout << "Inputkan Array[" << x << "][" << y << "][" << z << "]: ";
-            cin >> arr[x][y][z];
+class DoublyLinkedList {
+public:
+    Node* head;
+    Node* tail;
+    DoublyLinkedList() {
+        head = nullptr;
+        tail = nullptr;
+    }
+    void push(string namaProduk, double harga) {
+        Node* newNode = new Node;
+        newNode->namaProduk = namaProduk;
+        newNode->harga = harga;
+        newNode->prev = nullptr;
+        newNode->next = head;
+        if (head != nullptr) {
+            head->prev = newNode;
+        } else {
+            tail = newNode;
+        }
+        head = newNode;
+    }
+    void pop() {
+        if (head == nullptr) {
+            return;
+        }
+        Node* temp = head;
+        head = head->next;
+        if (head != nullptr) {
+            head->prev = nullptr;
+        } else {
+            tail = nullptr;
+        }
+        delete temp;
+    }
+    bool update(string oldNamaProduk, string newNamaProduk, double newHarga) {
+        Node* current = head;
+        while (current != nullptr) {
+            if (current->namaProduk == oldNamaProduk) {
+                current->namaProduk = newNamaProduk;
+                current->harga = newHarga;
+                return true;
             }
+            current = current->next;
+        }
+        return false;
+    }
+    void deleteAll() {
+        Node* current = head;
+        while (current != nullptr) {
+            Node* temp = current;
+            current = current->next;
+            delete temp;
+        }
+        head = nullptr;
+        tail = nullptr;
+    }
+    void display() {
+        Node* current = head;
+        while (current != nullptr) {
+            cout << current->namaProduk << " " << current->harga << endl;
+            current = current->next;
         }
     }
-
-    //Menampilkan array 
-    cout << "Array yang Diinputkan:\n";
-    for (int x = 0; x < x_ukuran; x++){
-        for (int y = 0; y < y_ukuran; y++){
-            for (int z = 0; z < z_ukuran; z++){
-            cout << "Data Array[" << x << "][" << y << "][" << z << "]: " << arr[x][y][z] << endl;
-            }
+    void insertAfter(string prevNamaProduk, string namaProduk, double harga) {
+        Node* temp = head;
+        while (temp != nullptr && temp->namaProduk != prevNamaProduk) {
+            temp = temp->next;
         }
+        if (temp == nullptr) {
+            cout << "Produk sebelumnya tidak ditemukan." << endl;
+            return;
+        }
+        Node* newNode = new Node;
+        newNode->namaProduk = namaProduk;
+        newNode->harga = harga;
+        newNode->next = temp->next;
+        newNode->prev = temp;
+        if (temp->next != nullptr) {
+            temp->next->prev = newNode;
+        }
+        temp->next = newNode;
     }
-
-return 0;
-}
-```
-#### Output:
-![Screenshot 2024-03-19 105711](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/d94f0389-5004-4050-8a09-dea4bc4309cc)
-
-Kode di atas digunakan untuk menginisialisasi, mengisi, dan menampilkan array tiga dimensi berdasarkan input ukuran dari pengguna. Program akan meminta untuk memasukkan ukuran untuk setiap dimensi array, kemudian akan mengalokasikan array sesuai dengan ukuran yang dimasukkan. Selanjutnya, program meminta untuk memasukkan nilai untuk setiap elemen array menggunakan nested loop. Setelah semua nilai dimasukkan, program akan menampilkan nilai dari setiap elemen array bersama dengan koordinatnya dalam format "[x][y][z]: nilai".
-#### Full code Screenshot:
-![Screenshot 2024-03-19 105659](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5a2545a9-213a-47ab-9b94-1177bbf5e3d8)
-
-
-### 3. Buatlah program menu untuk mencari nilai Maksimum, Minimum dan Nilai rata – rata dari suatu array dengan input yang dimasukan oleh user!
-```C++
-#include <iostream>
-using namespace std;
-
-int main(){
-    int a;
-    cout << "Masukkan Panjang Array: ";
-    cin >> a;
-
-    int array[a];
-    cout << "Masukkan " << a << " angka:\n";
-    for (int i = 0; i < a; i++){
-        cout << "Array ke-" << (i+1) << ": ";
-        cin >> array[i];
+    void insertAtBeginning(string namaProduk, double harga) {
+        Node* newNode = new Node;
+        newNode->namaProduk = namaProduk;
+        newNode->harga = harga;
+        newNode->next = head;
+        newNode->prev = nullptr;
+        if (head != nullptr) {
+            head->prev = newNode;
+        } else {
+            tail = newNode;
+        }
+        head = newNode;
     }
-    int menu;
-    do{
-        cout << "\nMenu\n";
-        cout << "1. Cari Nilai Maksimum\n";
-        cout << "2. Cari Nilai Minimum\n";
-        cout << "3. Cari Nilai Rata-rata\n";
-        cout << "0. Keluar\n";
-        cout << "Pilih Operasi: ";
-        cin >> menu;
-    
-    switch (menu){
-        case 1: {
-            int maks = array[0];
-            for (int i = 1; i < a; i++ ){
-                if (array[i] > maks){
-                    maks = array[i];
-                }
-            }
-            cout << "Nilai Maksimum Adalah " << maks <<endl;
-            break;
+    void deleteNode(string namaProduk) {
+        if (head == nullptr)
+            return;
+        Node* temp = head;
+        while (temp != nullptr && temp->namaProduk != namaProduk) {
+            temp = temp->next;
         }
-         case 2: {
-            int min = array[0];
-            for (int i = 1; i < a; i++ ){
-                if (array[i] < min){
-                    min = array[i];
-                }
-            }
-            cout << "Nilai Minimum Adalah " << min <<endl;
-            break;
-        }
-        case 3: {
-            int sum = 0;
-            for (int i = 0; i < a; i++ ){
-                sum += array[i];
+        if (temp == nullptr)
+            return;
+        if (temp->prev != nullptr)
+            temp->prev->next = temp->next;
+        if (temp->next != nullptr)
+            temp->next->prev = temp->prev;
+        if (temp == head)
+            head = temp->next;
+        if (temp == tail)
+            tail = temp->prev;
+        delete temp;
+    }
+};
 
-                }
-                double rata = static_cast<double>(sum)/a;
-                cout << "Nilai Rata-rata Adalah " << rata <<endl;
+int main() {
+    DoublyLinkedList list;
+    while (true) {
+        cout << "Toko Skincare Purwokerto" << endl;
+        cout << "1. Tambah Data" << endl;
+        cout << "2. Hapus Data" << endl;
+        cout << "3. Update Data" << endl;
+        cout << "4. Tambah Data Urutan Tertentu" << endl;
+        cout << "5. Hapus Data Urutan Tertentu" << endl;
+        cout << "6. Hapus Seluruh Data" << endl;
+        cout << "7. Tampilkan Data" << endl;
+        cout << "8. Exit" << endl;
+        int choice;
+        cout << "Masukkan pilihan Anda: ";
+        cin >> choice;
+        switch (choice) {
+            case 1: {
+                string namaProduk;
+                double harga;
+                cout << "Masukkan nama produk: ";
+                cin >> namaProduk;
+                cout << "Masukkan harga: ";
+                cin >> harga;
+                list.push(namaProduk, harga);
                 break;
             }
-            case 0: 
-            cout << "Terima Kasih, Program selesai.\n";
-            break;
-            default :
-            cout << "Pilihan tidak valid, silahkan pilih lagi.\n";
+            case 2: {
+                string namaProduk;
+                cout << "Masukkan nama produk yang ingin dihapus: ";
+                cin >> namaProduk;
+                list.deleteNode(namaProduk);
+                break;
             }
-    }while (menu != 0);
+            case 3: {
+                string oldNamaProduk, newNamaProduk;
+                double newHarga;
+                cout << "Masukkan nama produk yang ingin diupdate: ";
+                cin >> oldNamaProduk;
+                cout << "Masukkan nama produk baru: ";
+                cin >> newNamaProduk;
+                cout << "Masukkan harga baru: ";
+                cin >> newHarga;
+                bool updated = list.update(oldNamaProduk, newNamaProduk, newHarga);
+                if (!updated) {
+                    cout << "Data tidak ditemukan" << endl;
+                }
+                break;
+            }
+            case 4: {
+                string prevNamaProduk, namaProduk;
+                double harga;
+                cout << "Masukkan nama produk sebelumnya: ";
+                cin >> prevNamaProduk;
+                cout << "Masukkan nama produk baru: ";
+                cin >> namaProduk;
+                cout << "Masukkan harga: ";
+                cin >> harga;
+                list.insertAfter(prevNamaProduk, namaProduk, harga);
+                break;
+            }
+            case 5: {
+                // Kode untuk menghapus data di urutan tertentu
+                break;
+            }
+            case 6: {
+                list.deleteAll();
+                break;
+            }
+            case 7: {
+                cout << "Data Produk:" << endl;
+                list.display();
+                break;
+            }
+            case 8: {
+                return 0;
+            }
+            default: {
+                cout << "Pilihan tidak valid" << endl;
+                break;
+            }
+        }
+    }
     return 0;
 }
 
 ```
 #### Output:
-![Screenshot 2024-03-19 114137](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3935d471-5bc0-47c8-8b3b-5c1b82b2a1be)
 
-Kode diatas digunakan untuk memasukkan panjang sebuah array serta elemen-elemennya. Kemudian, program menampilkan sebuah menu yang memberikan opsi kepada pengguna untuk melakukan operasi tertentu, seperti mencari nilai maksimum, minimum, atau nilai rata-rata dari array yang dimasukkan. Setelah pengguna memilih sebuah operasi, program akan melakukan perhitungan sesuai dengan pilihan pengguna dan menampilkan hasilnya. Program akan terus menampilkan menu hingga pengguna memilih untuk keluar dengan memilih opsi "0".
+![Screenshot 2024-03-26 113809](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3425db6f-2c92-431f-8fd4-534e7a300e8c)
+
+Kode di atas mengimplementasikan struktur data Doubly Linked List untuk menyimpan informasi tentang produk skincare, termasuk nama produk dan harga, dengan memungkinkan operasi seperti menambahkan data ke awal list, menghapus data berdasarkan nama produk, memperbarui nama dan harga produk, menambahkan data di tengah list berdasarkan nama produk yang ada sebelumnya, dan menampilkan semua data dalam list. Program ini menyediakan menu interaktif di `main()` yang memungkinkan pengguna untuk memilih operasi yang ingin dilakukan, seperti menambahkan data baru, menghapus data, memperbarui data, menambahkan data di tengah list, menghapus semua data, dan menampilkan data. Fungsi `push` digunakan untuk menambahkan produk baru ke awal list, `pop` untuk menghapus produk dari awal list, `update` untuk memperbarui nama dan harga produk, `deleteAll` untuk menghapus semua produk dalam list, dan `display` untuk menampilkan semua produk dalam list. Fungsi `insertAfter` memungkinkan penambahan produk di tengah list berdasarkan nama produk yang ada sebelumnya, dan `deleteNode` digunakan untuk menghapus produk berdasarkan nama produk. Program ini menunjukkan bagaimana mengelola dan memanipulasi data dalam Doubly Linked List dengan berbagai operasi yang diminta, termasuk penambahan, penghapusan, dan penampilan data, serta bagaimana menambahkan data ke posisi tertentu dalam list. Selain itu, program ini juga menunjukkan bagaimana menangani kasus khusus seperti memperbarui nama produk dan harga, serta menampilkan data produk dalam format yang mudah dibaca.
 #### Full code Screenshot:
-![Screenshot 2024-03-19 114257](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/6dc479f7-2857-4ad8-b82a-b6b877c4c11c)
+
+![Screenshot 2024-03-26 113901](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/65560130-60b5-418e-8371-6bc666c13876)
+
 
 ## Kesimpulan
 Kesimpulannya, kode-kode tersebut menunjukkan penggunaan array dalam berbagai konteks dan dimensi. Array digunakan sebagai wadah untuk menyimpan data dengan tipe yang sama, dan setiap elemen diakses menggunakan indeks. Array satu dimensi digunakan untuk menyimpan data dalam satu baris, sedangkan array dua dimensi digunakan untuk menyusun data dalam baris dan kolom. Selain itu, ada juga array multidimensi yang digunakan untuk menyimpan data dengan dimensi lebih dari dua. Program-program tersebut memanfaatkan array untuk berbagai tujuan, seperti menyimpan dan mengolah data, mencari nilai maksimum, minimum, dan rata-rata, serta memisahkan data genap dan ganjil. Dengan menggunakan array, program-program tersebut dapat melakukan operasi secara efisien dan terstruktur sesuai dengan kebutuhan pengguna.
