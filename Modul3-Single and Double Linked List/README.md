@@ -517,65 +517,169 @@ Kode di atas mengimplementasikan struktur data Doubly Linked List (Daftar Terhub
 
 ## Unguided 
 
-### 1. Buatlah program untuk menampilkan Output seperti berikut dengan data yang diinputkan oleh user!
-Data Array : 1  2 3 4 5 6 7 8 9 10
-Nomor Genap : 2, 4, 6, 8, 10,
-Nomor Ganjil : 1, 3, 5, 7, 9,
-
+### 1. Soal mengenai Single Linked List
+Buatlah program menu Single Linked List Non-Circular untuk
+menyimpan Nama dan usia mahasiswa, dengan menggunakan inputan
+dari user. Lakukan operasi berikut:
+a. Masukkan data sesuai urutan berikut. (Gunakan insert depan,
+belakang atau tengah). Data pertama yang dimasukkan adalah
+nama dan usia anda.
+[Nama_anda] [Usia_anda]
+John 19
+Jane 20
+Michael 18
+Yusuke 19
+Akechi 20
+Hoshino 18
+Karin 18
+b. Hapus data Akechi
+c. Tambahkan data berikut diantara John dan Jane : Futaba 18
+d. Tambahkan data berikut diawal : Igor 20
+e. Ubah data Michael menjadi : Reyn 18
+f. Tampilkan seluruh data
 ```C++
 #include <iostream>
-#include <vector>
+#include <string>
 using namespace std;
 
-int main(){
-    int maks, a, i = 1, lokasi;
-    cout <<"Masukkan Panjang : ";
-    cin >> a;
-    int array[a];
-    cout<< "Masukkan "<< a << " angka\n";
-    for(i = 0; i < a; i++){
-        cout<< "Array ke-" << (i + 1)<< ": ";
-        cin >> array[i];
-    }
-    
-    //Menampilkan data array
-    cout<< "Data Array: ";
-    for (i = 0; i < a; i++){
-        cout << array[i]<< " ";
-    }
-    cout <<endl;
-    
-    //Menampilkan nomor genap
-    cout<< "Nomor Genap: ";
-    for(i = 0; i < a; i++){
-        if (array[i] % 2 == 0){
-            cout << array[i] << ", ";
-        }
-    }
-    cout <<endl;
+struct Node {
+    string nama;
+    int usia;
+    Node* next;
+};
 
-    //Menampilkan nomor ganjil
-    cout << "Nomor Ganjil: ";
-    for (i = 0; i < a; i++){
-        if (array[i] % 2 != 0){
-            cout << array[i] << ", ";
-        }
+Node* head = nullptr;
+Node* tail = nullptr;
+
+void insertDepan(string nama, int usia) {
+    Node* baru = new Node;
+    baru->nama = nama;
+    baru->usia = usia;
+    baru->next = head;
+    head = baru;
+    if (tail == nullptr) tail = baru;
+}
+
+void insertBelakang(string nama, int usia) {
+    Node* baru = new Node;
+    baru->nama = nama;
+    baru->usia = usia;
+    baru->next = nullptr;
+    if (tail != nullptr) tail->next = baru;
+    else head = baru;
+    tail = baru;
+}
+
+void insertTengah(string nama, int usia, string namaSebelum) {
+    Node* baru = new Node;
+    baru->nama = nama;
+    baru->usia = usia;
+    Node* bantu = head;
+    while (bantu != nullptr && bantu->nama != namaSebelum) {
+        bantu = bantu->next;
     }
-    cout <<endl;
+    if (bantu == nullptr) {
+        cout << "Nama sebelum tidak ditemukan." << endl;
+        return;
+    }
+    baru->next = bantu->next;
+    bantu->next = baru;
+    if (baru->next == nullptr) tail = baru;
+}
+
+void hapus(string nama) {
+    if (head == nullptr) return;
+    if (head->nama == nama) {
+        Node* hapus = head;
+        head = head->next;
+        delete hapus;
+        return;
+    }
+    Node* bantu = head;
+    while (bantu->next != nullptr && bantu->next->nama != nama) {
+        bantu = bantu->next;
+    }
+    if (bantu->next != nullptr) {
+        Node* hapus = bantu->next;
+        bantu->next = hapus->next;
+        if (hapus == tail) tail = bantu;
+        delete hapus;
+    }
+}
+
+void tampil() {
+    Node* bantu = head;
+    while (bantu != nullptr) {
+        cout << bantu->nama << " " << bantu->usia << endl;
+        bantu = bantu->next;
+    }
+}
+
+int main() {
+    insertDepan("John", 19);
+    insertBelakang("Jane", 20);
+    insertBelakang("Michael", 18);
+    insertBelakang("Yusuke", 19);
+    insertBelakang("Akechi", 20);
+    insertBelakang("Hoshino", 18);
+    insertBelakang("Karin", 18);
+
+    hapus("Akechi");
+    insertTengah("Futaba", 18, "John");
+    insertDepan("Igor", 20);
+    hapus("Michael");
+    insertDepan("Reyn", 18);
+
+    tampil();
 
     return 0;
 }
+
 ```
 #### Output:
 
-![Screenshot 2024-03-19 101910](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/79a8b3b3-207f-4ef1-b745-db348a1d29ea)
+![Screenshot 2024-03-26 105907](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5f9deb6e-e31b-4083-920c-5289acca5767)
 
-Kode di atas meminta untuk memasukkan panjang array dan elemen-elemennya. Setelah menerima input, program menampilkan data array tersebut, serta memisahkan nomor genap dan ganjil dari array tersebut, kemudian menampilkan keduanya secara terpisah. Ini dilakukan dengan menggunakan perulangan untuk mengakses setiap elemen array dan memeriksa apakah mereka genap atau ganjil menggunakan operator modulus. Hasilnya adalah output yang mencakup data array, nomor genap, dan nomor ganjil berdasarkan input.
+
+Kode di atas mengimplementasikan struktur data Single Linked List Non-Circular untuk menyimpan informasi tentang mahasiswa, yaitu nama dan usia, dengan memungkinkan operasi seperti menambahkan data ke depan, belakang, atau tengah list, menghapus data berdasarkan nama, dan menampilkan semua data dalam list. Program dimulai dengan menambahkan data mahasiswa ke list menggunakan fungsi `insertDepan`, `insertBelakang`, dan `insertTengah`, sesuai dengan urutan yang diminta. Fungsi `insertDepan` menambahkan node baru di awal list, `insertBelakang` menambahkan node baru di akhir list, dan `insertTengah` menambahkan node baru di posisi tertentu dalam list berdasarkan nama mahasiswa yang ada sebelumnya. Setelah menambahkan data mahasiswa, program melakukan operasi hapus untuk menghapus data mahasiswa bernama "Akechi" dari list menggunakan fungsi `hapus`, yang mencari node dengan nama yang sesuai dan menghapusnya dari list. Selanjutnya, program menambahkan data mahasiswa "Futaba" di antara "John" dan "Jane" menggunakan fungsi `insertTengah`, menambahkan "Igor" di awal list menggunakan `insertDepan`, menghapus "Michael" dari list menggunakan `hapus`, dan menambahkan "Reyn" di awal list menggunakan `insertDepan` lagi. Akhirnya, program menampilkan semua data dalam list menggunakan fungsi `tampil`, yang mencetak nama dan usia setiap mahasiswa dalam list. Program ini menunjukkan bagaimana mengelola dan memanipulasi data dalam Single Linked List Non-Circular dengan berbagai operasi yang diminta, termasuk penambahan, penghapusan, dan penampilan data, serta bagaimana menambahkan data ke posisi tertentu dalam list.
 
 #### Full code Screenshot:
-![Screenshot 2024-03-19 101901](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/382fe6d8-21b6-40cd-80c4-550b86426157)
+
+![Screenshot 2024-03-26 105830](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/29061433-6930-4aec-ac97-07155c750445)
 
 ### 2. Buatlah program Input array tiga dimensi (seperti pada guided) tetapi jumlah atau ukuran elemennya diinputkan oleh user!
+Modifikasi Guided Double Linked List dilakukan dengan penambahan operasi untuk menambah data, menghapus, dan update di tengah / diurutan tertentu yang diminta. Selain itu, buatlah agar tampilannyamenampilkan Nama produk dan harga.
+Nama Produk  Harga
+Originote    60.000
+Somethinc    150.000
+Skintific    100.000
+Wardah       50.000
+Hanasui      30.000
+
+Case:
+1. Tambahkan produk Azarine dengan harga 65000 diantara
+Somethinc dan Skintific
+2. Hapus produk wardah
+3. Update produk Hanasui menjadi Cleora dengan harga 55.000
+4. Tampilkan menu seperti dibawah ini
+Toko Skincare Purwokerto
+1. Tambah Data
+2. Hapus Data
+3. Update Data
+4. Tambah Data Urutan Tertentu
+5. Hapus Data Urutan Tertentu
+6. Hapus Seluruh Data
+7. Tampilkan Data
+8. Exit
+Pada menu 7, tampilan akhirnya akan menjadi seperti dibawah
+ini :
+
+Nama Produk Harga
+Originote 60.000
+Somethinc 150.000
+Azarine 65.000
+Skintific 100.000
+Cleora 55.000
 ```C++
 #include <iostream>
 using namespace std;
