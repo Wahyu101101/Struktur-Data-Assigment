@@ -6,6 +6,7 @@
 ## Dasar Teori
 
 Linked List dalam ilmu komputer merupakan sebuah struktur data yang digunakan untuk menyimpan sejumlah objek data biasanyan secara terurut sehingga memungkinkan penambahan, pengurangan, dan pencarian data atas elemen data yang tersimpan dalam senarai dilakukan secara lebih efektif. Pada praktiknya sebuah struktur data memiliki elemen yang digunakan untuk saling menyimpan rujukan antara satu rujukan dengan lainnya sehingga membentuk sebuah senarai abstrak, tiap – tiap elemen yang terdapat pada senarai abstrak ini seringkali disebut sebagai node karena mekanisme rujukan yang saling terkait inilah disebut sebagai senarai berantai[1]. Linked List (Senarai berantai) Senarai berantai(bahasa Inggris:linked list) atau kadang-kadang disebut dengan senarai bertaut atau daftar bertaut dalam ilmu computer merupakan sebuah struktur data yang digunakan untuk menyimpan sejumlah objek data biasanya secara terurut sehingga memungkinkan penambahan, pengurangan, dan pencarian atas elemen data yang tersimpan dalam senarai dilakukan secara lebih efektif[2].
+
 ![Screenshot 2024-03-26 101435](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5e8e422f-2045-41cd-b0be-4c9af1fe88ec)
 
 
@@ -13,8 +14,8 @@ Linked List merupakan bentuk struktur data paling umum dan sederhana yang banyak
 1. Single Linked List
 Single Linked List adalah suatu kumpulan elemen data (yang disebut sebagai node) dimana urutannya ditentukan oleh suatu pointer. Single Linked List hanya memiliki 1 (satu) petunjuk/pointer (NEXT). Setiap elemen (node) dari suatu linked list terdiri atas dua bagian,
 yaitu :
-   1. INFO : berisi informasi tentang elemen data yang bersangkutan.
-   2. NEXT (link field/next pointer field) : berisi alamat dari elemen (node) selanjutnya yang dituju.
+   A. INFO : berisi informasi tentang elemen data yang bersangkutan.
+   B. NEXT (link field/next pointer field) : berisi alamat dari elemen (node) selanjutnya yang dituju.
 Berikut ini sebuah contoh Single Linked List yang terdiri atas 4 node :
 
 ![Screenshot 2024-03-26 101744](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/7ef26062-b355-4832-94d7-a886f6cad408)
@@ -24,12 +25,25 @@ Pada node ke-4 field NEXT-nya berisi NULL, artinya node ke-4 tersebut adalah nod
 Pada Double Linked List, struktur data atas tiap-tiap node memiliki rujukan pada node sebelum (PREV) dan berikutnya (NEXT). Sebagian algoritma membutuhkan taut ganda, contohnya sorting dan reverse traversing.
 
 ![Screenshot 2024-03-26 102012](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0dcbafd9-7905-4906-95f6-c172c37bb6ee)
+
 Tiap node memiliki pointer yang menunjuk ke node sesudahnya dan pointer yang menunjuk ke node sebelumnya.
 Keterangan:
 Node Sesudahnya : Next(Node)
 Node sebelumnya : Prior(Node)
 Next(Prior(P)) = P dan P = Prior(next(P))
 Double Linked List Kosong :
+
+![Screenshot 2024-03-26 102603](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f3d1098e-cd3b-4108-9246-588de4fc3552)
+
+Keterangan:
+next Prior(Head) = Head
+Next(Head) = Head
+Operasi pada Single Linked List dan Double Linked List:
+1. Sisip Depan : menyisipkan node baru pada bagian awal node atau head dari Single Linked List.
+2. Sisip Belakang : menyisipkan node baru pada bagian belakang node dari Single Linked List.
+3. Sisip Posisi : menyisipkan node baru pada posisi tertentu dari Single Linked List.
+4. Hapus Posisi : menghapus node baru pada posisi tertentu dari Single Linked List
+
 
 
 
