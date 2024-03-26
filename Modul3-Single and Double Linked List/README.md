@@ -5,7 +5,7 @@
 
 ## Dasar Teori
 
-Linked List
+**Linked List**
 
 Linked List dalam ilmu komputer merupakan sebuah struktur data yang digunakan untuk menyimpan sejumlah objek data biasanyan secara terurut sehingga memungkinkan penambahan, pengurangan, dan pencarian data atas elemen data yang tersimpan dalam senarai dilakukan secara lebih efektif. Pada praktiknya sebuah struktur data memiliki elemen yang digunakan untuk saling menyimpan rujukan antara satu rujukan dengan lainnya sehingga membentuk sebuah senarai abstrak, tiap – tiap elemen yang terdapat pada senarai abstrak ini seringkali disebut sebagai node karena mekanisme rujukan yang saling terkait inilah disebut sebagai senarai berantai[1]. Linked List (Senarai berantai) Senarai berantai(bahasa Inggris:linked list) atau kadang-kadang disebut dengan senarai bertaut atau daftar bertaut dalam ilmu computer merupakan sebuah struktur data yang digunakan untuk menyimpan sejumlah objek data biasanya secara terurut sehingga memungkinkan penambahan, pengurangan, dan pencarian atas elemen data yang tersimpan dalam senarai dilakukan secara lebih efektif[2].
 
@@ -989,7 +989,21 @@ Kode di atas mengimplementasikan struktur data Doubly Linked List untuk menyimpa
 
 
 ## Kesimpulan
-Kesimpulannya, kode-kode tersebut menunjukkan penggunaan array dalam berbagai konteks dan dimensi. Array digunakan sebagai wadah untuk menyimpan data dengan tipe yang sama, dan setiap elemen diakses menggunakan indeks. Array satu dimensi digunakan untuk menyimpan data dalam satu baris, sedangkan array dua dimensi digunakan untuk menyusun data dalam baris dan kolom. Selain itu, ada juga array multidimensi yang digunakan untuk menyimpan data dengan dimensi lebih dari dua. Program-program tersebut memanfaatkan array untuk berbagai tujuan, seperti menyimpan dan mengolah data, mencari nilai maksimum, minimum, dan rata-rata, serta memisahkan data genap dan ganjil. Dengan menggunakan array, program-program tersebut dapat melakukan operasi secara efisien dan terstruktur sesuai dengan kebutuhan pengguna.
+Kesimpulannya, Dari materi dan guided ataupun unguided di atas membahas tentang struktur data Linked List dalam ilmu komputer, yang merupakan sebuah struktur data yang digunakan untuk menyimpan sejumlah objek data biasanya secara terurut. Linked List terdiri dari dua jenis utama: Single Linked List dan Double Linked List.
+1. **Single Linked List**:
+   - Merupakan kumpulan elemen data (node) yang urutannya ditentukan oleh suatu pointer.
+   - Setiap node terdiri dari dua bagian: INFO (berisi informasi tentang elemen data) dan NEXT (berisi alamat dari elemen selanjutnya).
+   - Operasi yang dapat dilakukan meliputi sisip depan, sisip belakang, sisip posisi, hapus posisi, ubah data, dan lainnya.
+2. **Double Linked List**:
+   - Memiliki struktur yang sama dengan Single Linked List, tetapi setiap node memiliki rujukan pada node sebelumnya (PREV) dan berikutnya (NEXT).
+   - Tiap node memiliki pointer yang menunjuk ke node sesudahnya dan pointer yang menunjuk ke node sebelumnya.
+   - Operasi yang dapat dilakukan mirip dengan Single Linked List, ditambah dengan operasi khusus yang memanfaatkan rujukan ke node sebelumnya.
+
+Selain itu, kedua jenis Linked List tersebut juga dilengkapi dengan operasi pengelolaan data seperti sisip depan, sisip belakang, sisip posisi, hapus posisi, ubah data, dan lainnya.
+
+Program-program yang diberikan sebagai contoh implementasi dari kedua jenis Linked List tersebut menunjukkan bagaimana cara menggunakan dan mengelola struktur data Linked List, termasuk operasi-operasi dasar seperti penambahan, penghapusan, pembaruan data, dan penampilan data. Program-program tersebut menyediakan menu interaktif bagi pengguna untuk melakukan operasi-operasi tersebut sesuai dengan kebutuhan.
+
+Dengan demikian, materi tersebut membahas konsep dasar dan implementasi dari Linked List, serta memberikan contoh program yang dapat digunakan untuk memahami konsep tersebut secara praktis.
 ## Referensi
 [1]Dharma, Abdi. "Aplikasi Pembelajaran Linked List Berbasis Mobile Learning." Riau Journal Of Computer Science 4.1 (2018): 1-11.
 
