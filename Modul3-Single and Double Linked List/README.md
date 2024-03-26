@@ -59,54 +59,318 @@ Operasi pada Single Linked List dan Double Linked List:
 #include <iostream>
 using namespace std;
 
-//program input array 3 dimensi
-int main(){
-    //deklarasi array
-int arr[2][3][3];
-//input elemen
-for  (int x = 0; x < 2; x++){
-
-for (int y = 0; y < 3; y++){
-    for (int z = 0; z< 3; z++){
-        cout << "Input Array [" << x <<"]["<< y <<"][" << z <<"]=";
-        cin >> arr[x][y][z];
+/// PROGRAM SINGLE LINKED LIST NON-CIRCULAR
+// Deklarasi Struct Node
+struct Node
+{
+    // komponen/member
+    int data;
+    Node *next;
+};
+Node *head;
+Node *tail;
+// Inisialisasi Node
+void init()
+{
+    head = NULL;
+    tail = NULL;
+}
+// Pengecekan
+bool isEmpty()
+{
+    if (head == NULL)
+        return true;
+    else
+        return false;
+}
+// Tambah Depan
+void insertDepan(int nilai)
+{
+    // Buat Node baru
+    Node *baru = new Node;
+    baru->data = nilai;
+    baru->next = NULL;
+    if (isEmpty() == true)
+    {
+        head = tail = baru;
+        tail->next = NULL;
+    }
+    else
+    {
+        baru->next = head;
+        head = baru;
     }
 }
-cout <<endl;
-}
-// Output Array
-for (int x = 0; x < 2; x++){
-    for (int y = 0; y< 3; y++){
-    for (int z = 0; z < 3; z++){
-        cout << "Data Array["<< x <<"]["<< y <<"]["<< z <<"]=" << arr [x][y][z] <<endl;
+// Tambah Belakang
+void insertBelakang(int nilai)
+{
+    // Buat Node baru
+    Node *baru = new Node;
+    baru->data = nilai;
+    baru->next = NULL;
+    if (isEmpty() == true)
+    {
+        head = tail = baru;
+        tail->next = NULL;
     }
+    else
+    {
+        tail->next = baru;
+        tail = baru;
     }
 }
- cout <<endl;
- //Tampilan Array 
- for (int x =0; x<2; x++){
-    for (int y = 0; y < 3; y++){
-        for (int z =0; z<3; z++ ){
-            cout << arr [x][y][z]<<endl;
+// Hitung Jumlah List
+int hitungList()
+{
+    Node *hitung;
+    hitung = head;
+    int jumlah = 0;
+    while (hitung != NULL)
+    {
+        jumlah++;
+        hitung = hitung->next;
+    }
+    return jumlah;
+}
+// Tambah Tengah
+void insertTengah(int data, int posisi)
+{
+    if (posisi < 1 || posisi > hitungList())
+    {
+        cout << "Posisi diluar jangkauan" << endl;
+    }
+    else if (posisi == 1)
+    {
+        cout << "Posisi bukan posisi tengah" << endl;
+    }
+    else
+    {
+        Node *baru, *bantu;
+        baru = new Node();
+        baru->data = data;
+        // tranversing
+        bantu = head;
+        int nomor = 1;
+        while (nomor < posisi - 1)
+        {
+            bantu = bantu->next;
+            nomor++;
         }
-        cout <<endl;
+        baru->next = bantu->next;
+        bantu->next = baru;
     }
-    cout<<endl;
- }
-
-
+}
+// Hapus Depan
+void hapusDepan()
+{
+    Node *hapus;
+    if (isEmpty() == false)
+    {
+        if (head->next != NULL)
+        {
+            hapus = head;
+            head = head->next;
+            delete hapus;
+        }
+        else
+        {
+            head = tail = NULL;
+        }
+    }
+    else
+    {
+        cout << "List kosong!" << endl;
+    }
+}
+// Hapus Belakang
+void hapusBelakang()
+{
+    Node *hapus;
+    Node *bantu;
+    if (isEmpty() == false)
+    {
+        if (head != tail)
+        {
+            hapus = tail;
+            bantu = head;
+            while (bantu->next != tail)
+            {
+                bantu = bantu->next;
+            }
+            tail = bantu;
+            tail->next = NULL;
+            delete hapus;
+        }
+        else
+        {
+            head = tail = NULL;
+        }
+    }
+    else
+    {
+        cout << "List kosong!" << endl;
+    }
+}
+// Hapus Tengah
+void hapusTengah(int posisi)
+{
+    Node *hapus, *bantu, *bantu2;
+    if (posisi < 1 || posisi > hitungList())
+    {
+        cout << "Posisi di luar jangkauan" << endl;
+    }
+    else if (posisi == 1)
+    {
+        cout << "Posisi bukan posisi tengah" << endl;
+    }
+    else
+    {
+        int nomor = 1;
+        bantu = head;
+        while (nomor <= posisi)
+        {
+            if (nomor == posisi - 1)
+            {
+                bantu2 = bantu;
+            }
+            if (nomor == posisi)
+            {
+                hapus = bantu;
+            }
+            bantu = bantu->next;
+            nomor++;
+        }
+        bantu2->next = bantu;
+        delete hapus;
+    }
+}
+// Ubah Depan
+void ubahDepan(int data)
+{
+    if (isEmpty() == false)
+    {
+        head->data = data;
+    }
+    else
+    {
+        cout << "List masih kosong!" << endl;
+    }
+}
+// Ubah Tengah
+void ubahTengah(int data, int posisi)
+{
+    Node *bantu;
+    if (isEmpty() == false)
+    {
+        if (posisi < 1 || posisi > hitungList())
+        {
+            cout << "Posisi di luar jangkauan" << endl;
+        }
+        else if (posisi == 1)
+        {
+            cout << "Posisi bukan posisi tengah" << endl;
+        }
+        else
+        {
+            bantu = head;
+            int nomor = 1;
+            while (nomor < posisi)
+            {
+                bantu = bantu->next;
+                nomor++;
+            }
+            bantu->data = data;
+        }
+    }
+    else
+    {
+        cout << "List masih kosong!" << endl;
+    }
+}
+// Ubah Belakang
+void ubahBelakang(int data)
+{
+    if (isEmpty() == false)
+    {
+        tail->data = data;
+    }
+    else
+    {
+        cout << "List masih kosong!" << endl;
+    }
+}
+// Hapus List
+void clearList()
+{
+    Node *bantu, *hapus;
+    bantu = head;
+    while (bantu != NULL)
+    {
+        hapus = bantu;
+        bantu = bantu->next;
+        delete hapus;
+    }
+    head = tail = NULL;
+    cout << "List berhasil terhapus!" << endl;
+}
+// Tampilkan List
+void tampil()
+{
+    Node *bantu;
+    bantu = head;
+    if (isEmpty() == false)
+    {
+        while (bantu != NULL)
+        {
+            cout << bantu->data << ends;
+            bantu = bantu->next;
+        }
+        cout << endl;
+    }
+    else
+    {
+        cout << "List masih kosong!" << endl;
+    }
+}
+int main()
+{
+    init();
+    insertDepan(3);
+    tampil();
+    insertBelakang(5);
+    tampil();
+    insertDepan(2);
+    tampil();
+    insertDepan(1);
+    tampil();
+    hapusDepan();
+    tampil();
+    hapusBelakang();
+    tampil();
+    insertTengah(7, 2);
+    tampil();
+    hapusTengah(2);
+    tampil();
+    ubahDepan(1);
+    tampil();
+    ubahBelakang(8);
+    tampil();
+    ubahTengah(11, 2);
+    tampil();
+    return 0;
 }
 
 ```
 #### Output:
-![Screenshot 2024-03-19 115607](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4c0ba241-57e6-4426-a3d8-34eebc0929e1)
+![Screenshot 2024-03-26 103743](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/94754a11-85d5-4532-bae8-4868d39f41c1)
 
 
-Kode di atas menggunakan array tiga dimensi untuk menyimpan data. program ini mengisi array dengan input dari pengguna menggunakan loop bersarang tiga tingkat, kemudian mencetak nilai elemen array tersebut dalam berabgai format, termasuk satu per satu dan dengan memisahkan setiap lapisan dan baris array.
+Kode yang Anda berikan mengimplementasikan struktur data Linked List (Daftar Terhubung) dalam bentuk non-circular, yang merupakan struktur data yang terdiri dari elemen-elemen yang saling terhubung melalui pointer. Setiap elemen dalam linked list, yang disebut node, memiliki dua bagian: data (nilai yang disimpan) dan pointer ke node berikutnya dalam list. Kode ini mencakup berbagai fungsi untuk mengelola linked list, termasuk inisialisasi list (`init()`), pengecekan apakah list kosong (`isEmpty()`), serta operasi penambahan node (`insertDepan()`, `insertBelakang()`, `insertTengah()`), penghapusan node (`hapusDepan()`, `hapusBelakang()`, `hapusTengah()`), pengubahan data node (`ubahDepan()`, `ubahTengah()`, `ubahBelakang()`), dan penghapusan semua node dalam list (`clearList()`). Fungsi `tampil()` digunakan untuk menampilkan semua data dalam list. Kode ini menunjukkan bagaimana menggunakan dan mengelola linked list dalam berbagai operasi, seperti menambahkan, menghapus, dan mengubah elemen, serta menampilkan elemen-elemen dalam list.
 
 #### Full code Screenshot:
+![Screenshot 2024-03-26 103727](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/dfea359a-275c-4354-ae65-edd2c9663e2e)
 
-![Screenshot 2024-03-19 094225](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/7c86e237-3d63-4581-a1b3-1c16599782be)
+
 
 ### 2. Program Mencari Nilai Maksimal pada Array
 ```C++
