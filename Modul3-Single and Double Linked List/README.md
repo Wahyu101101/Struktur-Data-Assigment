@@ -548,104 +548,187 @@ struct Node {
     Node* next;
 };
 
-Node* head = nullptr;
-Node* tail = nullptr;
+Node* head = NULL;
 
 void insertDepan(string nama, int usia) {
-    Node* baru = new Node;
-    baru->nama = nama;
-    baru->usia = usia;
-    baru->next = head;
-    head = baru;
-    if (tail == nullptr) tail = baru;
+    Node* newNode = new Node;
+    newNode->nama = nama;
+    newNode->usia = usia;
+    newNode->next = head;
+    head = newNode;
 }
 
 void insertBelakang(string nama, int usia) {
-    Node* baru = new Node;
-    baru->nama = nama;
-    baru->usia = usia;
-    baru->next = nullptr;
-    if (tail != nullptr) tail->next = baru;
-    else head = baru;
-    tail = baru;
-}
-
-void insertTengah(string nama, int usia, string namaSebelum) {
-    Node* baru = new Node;
-    baru->nama = nama;
-    baru->usia = usia;
-    Node* bantu = head;
-    while (bantu != nullptr && bantu->nama != namaSebelum) {
-        bantu = bantu->next;
-    }
-    if (bantu == nullptr) {
-        cout << "Nama sebelum tidak ditemukan." << endl;
+    Node* newNode = new Node;
+    newNode->nama = nama;
+    newNode->usia = usia;
+    newNode->next = NULL;
+    if (head == NULL) {
+        head = newNode;
         return;
     }
-    baru->next = bantu->next;
-    bantu->next = baru;
-    if (baru->next == nullptr) tail = baru;
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
 }
 
-void hapus(string nama) {
-    if (head == nullptr) return;
-    if (head->nama == nama) {
-        Node* hapus = head;
-        head = head->next;
-        delete hapus;
+void insertTertentu(string nama, int usia, int posisi) {
+    Node* newNode = new Node;
+    newNode->nama = nama;
+    newNode->usia = usia;
+    if (posisi < 1) {
+        cout << "Posisi tidak valid." << endl;
         return;
     }
-    Node* bantu = head;
-    while (bantu->next != nullptr && bantu->next->nama != nama) {
-        bantu = bantu->next;
+    if (posisi == 1 || head == NULL) {
+        insertDepan(nama, usia);
+        return;
     }
-    if (bantu->next != nullptr) {
-        Node* hapus = bantu->next;
-        bantu->next = hapus->next;
-        if (hapus == tail) tail = bantu;
-        delete hapus;
+    Node* temp = head;
+    for (int i = 1; i < posisi - 1 && temp->next != NULL; i++) {
+        temp = temp->next;
     }
+    newNode->next = temp->next;
+    temp->next = newNode;
 }
 
-void tampil() {
-    Node* bantu = head;
-    while (bantu != nullptr) {
-        cout << bantu->nama << " " << bantu->usia << endl;
-        bantu = bantu->next;
+void hapusData(string nama) {
+    if (head == NULL) {
+        cout << "List kosong!" << endl;
+        return;
+    }
+    Node* temp = head;
+    Node* prev = NULL;
+    if (temp->nama == nama) {
+        head = temp->next;
+        delete temp;
+        return;
+    }
+    while (temp != NULL && temp->nama != nama) {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (temp == NULL) {
+        cout << "Data tidak ditemukan." << endl;
+        return;
+    }
+    prev->next = temp->next;
+    delete temp;
+}
+
+void ubahData(string namaLama, string namaBaru, int usiaBaru) {
+    if (head == NULL) {
+        cout << "List kosong!" << endl;
+        return;
+    }
+    Node* temp = head;
+    while (temp != NULL && temp->nama != namaLama) {
+        temp = temp->next;
+    }
+    if (temp == NULL) {
+        cout << "Data tidak ditemukan." << endl;
+        return;
+    }
+    temp->nama = namaBaru;
+    temp->usia = usiaBaru;
+}
+
+void tampilkanData() {
+    if (head == NULL) {
+        cout << "List kosong!" << endl;
+        return;
+    }
+    Node* temp = head;
+    cout << "Nama\tUsia" << endl;
+    while (temp != NULL) {
+        cout << temp->nama << "\t" << temp->usia << endl;
+        temp = temp->next;
     }
 }
 
 int main() {
-    insertDepan("John", 19);
-    insertBelakang("Jane", 20);
-    insertBelakang("Michael", 18);
-    insertBelakang("Yusuke", 19);
-    insertBelakang("Akechi", 20);
-    insertBelakang("Hoshino", 18);
-    insertBelakang("Karin", 18);
-
-    hapus("Akechi");
-    insertTengah("Futaba", 18, "John");
-    insertDepan("Igor", 20);
-    hapus("Michael");
-    insertDepan("Reyn", 18);
-
-    tampil();
-
+    string nama, namaBaru;
+    int usia, usiaBaru, posisi;
+    int pilihan;
+    
+    cout << "Masukkan nama dan usia anda:" << endl;
+    cout << "Nama: ";
+    cin >> nama;
+    cout << "Usia: ";
+    cin >> usia;
+    insertDepan(nama, usia);
+    
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Tambah Data posisi yang di inginkan\n";
+        cout << "2. Tambah Data\n";
+        cout << "3. Hapus Data\n";
+        cout << "4. Ubah Data\n";
+        cout << "5. Tampilkan Seluruh Data\n";
+        cout << "6. Keluar\n";
+        cout << "Pilih menu: ";
+        cin >> pilihan;
+        
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan nama: ";
+                cin >> nama;
+                cout << "Masukkan usia: ";
+                cin >> usia;
+                cout << "Masukkan posisi: ";
+                cin >> posisi;
+                insertTertentu(nama, usia, posisi);
+                break;
+            case 2:
+                cout << "Masukkan nama: ";
+                cin >> nama;
+                cout << "Masukkan usia: ";
+                cin >> usia;
+                insertBelakang(nama, usia);
+                break;
+            case 3:
+                cout << "Masukkan nama yang ingin dihapus: ";
+                cin >> nama;
+                hapusData(nama);
+                break;
+            case 4:
+                cout << "Masukkan nama yang ingin diubah: ";
+                cin >> nama;
+                cout << "Masukkan nama baru: ";
+                cin >> namaBaru;
+                cout << "Masukkan usia baru: ";
+                cin >> usiaBaru;
+                ubahData(nama, namaBaru, usiaBaru);
+                break;
+            case 5:
+                cout << "Data yang dimasukkan:" << endl;
+                tampilkanData();
+                break;
+            case 6:
+                cout << "Program selesai.\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid. Silakan pilih lagi.\n";
+        }
+    } while (pilihan != 6);
+    
     return 0;
 }
+
 
 ```
 #### Output:
 
-![Screenshot 2024-03-26 105907](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5f9deb6e-e31b-4083-920c-5289acca5767)
 
+![Screenshot 2024-03-26 133652](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f146759b-5802-4658-ad8e-565d9ee23a49)
 
-Kode di atas mengimplementasikan struktur data Single Linked List Non-Circular untuk menyimpan informasi tentang mahasiswa, yaitu nama dan usia, dengan memungkinkan operasi seperti menambahkan data ke depan, belakang, atau tengah list, menghapus data berdasarkan nama, dan menampilkan semua data dalam list. Program dimulai dengan menambahkan data mahasiswa ke list menggunakan fungsi `insertDepan`, `insertBelakang`, dan `insertTengah`, sesuai dengan urutan yang diminta. Fungsi `insertDepan` menambahkan node baru di awal list, `insertBelakang` menambahkan node baru di akhir list, dan `insertTengah` menambahkan node baru di posisi tertentu dalam list berdasarkan nama mahasiswa yang ada sebelumnya. Setelah menambahkan data mahasiswa, program melakukan operasi hapus untuk menghapus data mahasiswa bernama "Akechi" dari list menggunakan fungsi `hapus`, yang mencari node dengan nama yang sesuai dan menghapusnya dari list. Selanjutnya, program menambahkan data mahasiswa "Futaba" di antara "John" dan "Jane" menggunakan fungsi `insertTengah`, menambahkan "Igor" di awal list menggunakan `insertDepan`, menghapus "Michael" dari list menggunakan `hapus`, dan menambahkan "Reyn" di awal list menggunakan `insertDepan` lagi. Akhirnya, program menampilkan semua data dalam list menggunakan fungsi `tampil`, yang mencetak nama dan usia setiap mahasiswa dalam list. Program ini menunjukkan bagaimana mengelola dan memanipulasi data dalam Single Linked List Non-Circular dengan berbagai operasi yang diminta, termasuk penambahan, penghapusan, dan penampilan data, serta bagaimana menambahkan data ke posisi tertentu dalam list.
+Kode diatas menunjukkan implementasi dari singly linked list dengan berbagai operasi seperti penambahan node di depan, belakang, dan pada posisi tertentu, penghapusan node berdasarkan nama, modifikasi data node, dan menampilkan semua node. Struktur Node didefinisikan dengan nama, usia, dan pointer ke node berikutnya. Pointer head menunjuk ke node pertama dalam list. Program ini mencakup fungsi untuk memasukkan node di awal (insertDepan), di akhir (insertBelakang), di posisi tertentu (insertTertentu), menghapus node berdasarkan nama (hapusData), memperbarui data node (ubahData), dan menampilkan semua node (tampilkanData). Fungsi main menyediakan antarmuka berbasis menu untuk pengguna berinteraksi dengan linked list.
 
 #### Full code Screenshot:
 
-![Screenshot 2024-03-26 105830](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/29061433-6930-4aec-ac97-07155c750445)
+![image](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5893017b-fbc5-4cf4-b266-5414a07ff233)
 
 ### 2. Soal mengenai Double Linked List
 Modifikasi Guided Double Linked List dilakukan dengan penambahan operasi untuk menambah data, menghapus, dan update di tengah / diurutan tertentu yang diminta. Selain itu, buatlah agar tampilannyamenampilkan Nama produk dan harga.
