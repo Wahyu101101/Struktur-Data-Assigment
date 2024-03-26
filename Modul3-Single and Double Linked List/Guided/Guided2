@@ -1,0 +1,158 @@
+#include <iostream>
+using namespace std;
+
+// Deklarasi kelas Node
+class Node {
+public:
+    int data;    // Menyimpan nilai data dalam node
+    Node* prev;  // Pointer ke node sebelumnya
+    Node* next;  // Pointer ke node berikutnya
+};
+
+// Deklarasi kelas DoublyLinkedList
+class DoublyLinkedList {
+public:
+    Node* head;  // Pointer ke node pertama dalam list
+    Node* tail;  // Pointer ke node terakhir dalam list
+
+    // Konstruktor DoublyLinkedList
+    DoublyLinkedList() {
+        head = nullptr;
+        tail = nullptr;
+    }
+
+    // Metode untuk menambahkan node baru di depan list
+    void push(int data) {
+        Node* newNode = new Node;  // Membuat node baru
+        newNode->data = data;      // Mengatur nilai data node baru
+        newNode->prev = nullptr;   // Mengatur pointer prev node baru menjadi nullptr
+        newNode->next = head;      // Mengatur pointer next node baru menjadi head
+
+        if (head != nullptr) {     // Jika list tidak kosong
+            head->prev = newNode;  // Mengatur pointer prev dari node pertama menjadi newNode
+        } else {
+            tail = newNode;        // Jika list kosong, newNode menjadi tail
+        }
+
+        head = newNode;            // Mengatur head menjadi newNode
+    }
+
+    // Metode untuk menghapus node pertama dari list
+    void pop() {
+        if (head == nullptr) {     // Jika list kosong, tidak perlu dilakukan apa-apa
+            return;
+        }
+
+        Node* temp = head;         // Menyimpan pointer ke node pertama sementara
+        head = head->next;         // Menggeser head ke node berikutnya
+
+        if (head != nullptr) {     // Jika masih ada node lain setelahnya
+            head->prev = nullptr;  // Mengatur pointer prev dari node pertama menjadi nullptr
+        } else {
+            tail = nullptr;        // Jika tidak ada node lain, tail menjadi nullptr
+        }
+
+        delete temp;               // Menghapus node pertama dari memori
+    }
+
+    // Metode untuk mencari dan memperbarui nilai data node tertentu
+    bool update(int oldData, int newData) {
+        Node* current = head;      // Pointer untuk iterasi melalui list
+
+        while (current != nullptr) {  // Selama masih ada node dalam list
+            if (current->data == oldData) {  // Jika nilai data node saat ini sama dengan oldData
+                current->data = newData;     // Update nilai data node menjadi newData
+                return true;                 // Kembalikan true karena update berhasil
+            }
+            current = current->next;  // Pindah ke node berikutnya
+        }
+
+        return false;  // Jika tidak ditemukan oldData, kembalikan false
+    }
+
+    // Metode untuk menghapus semua node dari list
+    void deleteAll() {
+        Node* current = head;  // Pointer untuk iterasi melalui list
+
+        while (current != nullptr) {  // Selama masih ada node dalam list
+            Node* temp = current;     // Menyimpan pointer ke node saat ini sementara
+            current = current->next;  // Pindah ke node berikutnya
+            delete temp;              // Menghapus node sementara dari memori
+        }
+
+        head = nullptr;  // Setelah semua node dihapus, head dan tail diatur menjadi nullptr
+        tail = nullptr;
+    }
+
+    // Metode untuk menampilkan semua nilai data dalam list
+    void display() {
+        Node* current = head;  // Pointer untuk iterasi melalui list
+
+        while (current != nullptr) {  // Selama masih ada node dalam list
+            cout << current->data << " ";  // Tampilkan nilai data node saat ini
+            current = current->next;       // Pindah ke node berikutnya
+        }
+
+        cout << endl;  // Tampilkan newline setelah semua nilai data ditampilkan
+    }
+};
+
+
+int main() {
+    DoublyLinkedList list;  // Membuat objek DoublyLinkedList baru bernama list
+
+    while (true) {  // Loop tak terbatas untuk menu interaktif
+        cout << "1. Add data" << endl;
+        cout << "2. Delete data" << endl;
+        cout << "3. Update data" << endl;
+        cout << "4. Clear data" << endl;
+        cout << "5. Display data" << endl;
+        cout << "6. Exit" << endl;
+        int choice;
+        cout << "Enter your choice: ";
+        cin >> choice;  // Membaca pilihan pengguna
+
+        switch (choice) {  // Memproses pilihan pengguna
+            case 1: {
+                int data;
+                cout << "Enter data to add: ";
+                cin >> data;  // Membaca data yang ingin ditambahkan
+                list.push(data);  // Menambahkan data ke list
+                break;
+            }
+            case 2: {
+                list.pop();  // Menghapus data dari list
+                break;
+            }
+            case 3: {
+                int oldData, newData;
+                cout << "Enter old data: ";
+                cin >> oldData;  // Membaca data yang ingin diubah
+                cout << "Enter new data: ";
+                cin >> newData;  // Membaca data baru
+                bool updated = list.update(oldData, newData);  // Memperbarui data dalam list
+                if (!updated) {
+                    cout << "Data not found" << endl;  // Menampilkan pesan jika data tidak ditemukan
+                }
+                break;
+            }
+            case 4: {
+                list.deleteAll();  // Menghapus semua data dari list
+                break;
+            }
+            case 5: {
+                list.display();  // Menampilkan semua data dalam list
+                break;
+            }
+            case 6: {
+                return 0;  // Keluar dari program
+            }
+            default: {
+                cout << "Invalid choice" << endl;  // Menampilkan pesan jika pilihan tidak valid
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
