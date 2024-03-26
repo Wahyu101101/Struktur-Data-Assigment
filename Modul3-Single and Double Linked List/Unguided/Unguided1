@@ -1,0 +1,201 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Mendefinisikan struktur Node untuk menyimpan data mahasiswa
+struct Node {
+    string nama;    // Menyimpan nama mahasiswa
+    int usia;       // Menyimpan usia mahasiswa
+    Node* next;     // Pointer ke node berikutnya dalam linked list
+};
+
+// Deklarasi variabel global head untuk menunjukkan awal dari linked list
+Node* head = NULL;
+
+// Fungsi untuk menyisipkan data di depan linked list
+void insertDepan(string nama, int usia) {
+    Node* newNode = new Node;   // Membuat node baru
+    newNode->nama = nama;       // Menyimpan nama pada node baru
+    newNode->usia = usia;       // Menyimpan usia pada node baru
+    newNode->next = head;       // Mengatur node baru sebagai node pertama dalam linked list
+    head = newNode;             // Mengatur head baru menjadi node baru
+}
+
+// Fungsi untuk menyisipkan data di belakang linked list
+void insertBelakang(string nama, int usia) {
+    Node* newNode = new Node;   // Membuat node baru
+    newNode->nama = nama;       // Menyimpan nama pada node baru
+    newNode->usia = usia;       // Menyimpan usia pada node baru
+    newNode->next = NULL;       // Mengatur next dari node baru menjadi NULL
+
+    if (head == NULL) {         // Jika linked list kosong
+        head = newNode;         // Node baru menjadi node pertama
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL) {   // Mencari node terakhir
+        temp = temp->next;
+    }
+    temp->next = newNode;          // Menyambungkan node baru di belakang
+}
+
+// Fungsi untuk menyisipkan data di posisi tertentu dalam linked list
+void insertTertentu(string nama, int usia, int posisi) {
+    Node* newNode = new Node;   // Membuat node baru
+    newNode->nama = nama;       // Menyimpan nama pada node baru
+    newNode->usia = usia;       // Menyimpan usia pada node baru
+
+    if (posisi < 1) {           // Jika posisi tidak valid
+        cout << "Posisi tidak valid." << endl;
+        return;
+    }
+
+    if (posisi == 1 || head == NULL) {   // Jika posisi adalah posisi pertama atau linked list kosong
+        insertDepan(nama, usia);         // Memanggil fungsi untuk menyisipkan di depan
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 1; i < posisi - 1 && temp->next != NULL; i++) {  // Mencari node sebelum posisi yang ditentukan
+        temp = temp->next;
+    }
+    newNode->next = temp->next;      // Menyambungkan node baru dengan node setelahnya
+    temp->next = newNode;            // Menyambungkan node sebelumnya dengan node baru
+}
+
+// Fungsi untuk menghapus data berdasarkan nama
+void hapusData(string nama) {
+    if (head == NULL) {             // Jika linked list kosong
+        cout << "List kosong!" << endl;
+        return;
+    }
+
+    Node* temp = head;
+    Node* prev = NULL;
+
+    if (temp->nama == nama) {      // Jika data yang akan dihapus berada pada node pertama
+        head = temp->next;         // Mengubah head menjadi node berikutnya
+        delete temp;               // Menghapus node pertama
+        return;
+    }
+
+    while (temp != NULL && temp->nama != nama) {  // Mencari node yang berisi data yang akan dihapus
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {            // Jika data tidak ditemukan
+        cout << "Data tidak ditemukan." << endl;
+        return;
+    }
+
+    prev->next = temp->next;       // Menghubungkan node sebelumnya dengan node setelahnya
+    delete temp;                   // Menghapus node yang berisi data yang akan dihapus
+}
+
+// Fungsi untuk mengubah data berdasarkan nama
+void ubahData(string namaLama, string namaBaru, int usiaBaru) {
+    if (head == NULL) {            // Jika linked list kosong
+        cout << "List kosong!" << endl;
+        return;
+    }
+
+    Node* temp = head;
+
+    while (temp != NULL && temp->nama != namaLama) {  // Mencari node yang berisi data yang ingin diubah
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {            // Jika data tidak ditemukan
+        cout << "Data tidak ditemukan." << endl;
+        return;
+    }
+
+    temp->nama = namaBaru;         // Mengubah nama pada node yang bersangkutan
+    temp->usia = usiaBaru;         // Mengubah usia pada node yang bersangkutan
+}
+
+// Fungsi untuk menampilkan seluruh data dalam linked list
+void tampilkanData() {
+    if (head == NULL) {            // Jika linked list kosong
+        cout << "List kosong!" << endl;
+        return;
+    }
+
+    Node* temp = head;
+    cout << "Nama\tUsia" << endl;
+    while (temp != NULL) {         // Menampilkan data pada setiap node
+        cout << temp->nama << "\t" << temp->usia << endl;
+        temp = temp->next;
+    }
+}
+
+int main() {
+    string nama, namaBaru;
+    int usia, usiaBaru, posisi;
+    int pilihan;
+
+    cout << "Masukkan nama dan usia anda:" << endl;
+    cout << "Nama: ";
+    cin >> nama;
+    cout << "Usia: ";
+    cin >> usia;
+    insertDepan(nama, usia);   // Menyisipkan data mahasiswa pertama
+
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Tambah Data posisi yang diinginkan\n";
+        cout << "2. Tambah Data\n";
+        cout << "3. Hapus Data\n";
+        cout << "4. Ubah Data\n";
+        cout << "5. Tampilkan Seluruh Data\n";
+        cout << "6. Keluar\n";
+        cout << "Pilih menu: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan nama: ";
+                cin >> nama;
+                cout << "Masukkan usia: ";
+                cin >> usia;
+                cout << "Masukkan posisi: ";
+                cin >> posisi;
+                insertTertentu(nama, usia, posisi);  // Menyisipkan data pada posisi tertentu
+                break;
+            case 2:
+                cout << "Masukkan nama: ";
+                cin >> nama;
+                cout << "Masukkan usia: ";
+                cin >> usia;
+                insertBelakang(nama, usia);  // Menyisipkan data di belakang
+                break;
+            case 3:
+                cout << "Masukkan nama yang ingin dihapus: ";
+                cin >> nama;
+                hapusData(nama);  // Menghapus data berdasarkan nama
+                break;
+            case 4:
+                cout << "Masukkan nama yang ingin diubah: ";
+                cin >> nama;
+                cout << "Masukkan nama baru: ";
+                cin >> namaBaru;
+                cout << "Masukkan usia baru: ";
+                cin >> usiaBaru;
+                ubahData(nama, namaBaru, usiaBaru);  // Mengubah data berdasarkan nama
+                break;
+            case 5:
+                cout << "Data yang dimasukkan:" << endl;
+                tampilkanData();  // Menampilkan seluruh data
+                break;
+            case 6:
+                cout << "Program selesai.\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid. Silakan pilih lagi.\n";
+        }
+    } while (pilihan != 6);
+
+    return 0;
+}
