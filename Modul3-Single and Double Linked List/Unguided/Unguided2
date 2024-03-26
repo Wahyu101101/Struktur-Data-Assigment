@@ -1,0 +1,254 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Node {
+public:
+    string namaProduk;  // Nama produk
+    double harga;       // Harga produk
+    Node* prev;         // Pointer ke node sebelumnya
+    Node* next;         // Pointer ke node berikutnya
+};
+
+class DoublyLinkedList {
+public:
+    Node* head;         // Pointer ke node pertama
+    Node* tail;         // Pointer ke node terakhir
+
+    // Constructor untuk inisialisasi linked list kosong
+    DoublyLinkedList() {
+        head = nullptr;
+        tail = nullptr;
+    }
+
+    // Menambahkan node baru di depan linked list
+    void push(string namaProduk, double harga) {
+        Node* newNode = new Node;   // Membuat node baru
+        newNode->namaProduk = namaProduk;   // Menetapkan nama produk
+        newNode->harga = harga;     // Menetapkan harga produk
+        newNode->prev = nullptr;    // Mengatur node sebelumnya menjadi null
+
+        // Menyambungkan node baru ke linked list
+        newNode->next = head;       // Pointer next node baru menunjuk ke head (node pertama)
+
+        // Jika linked list tidak kosong, atur prev head menjadi node baru
+        if (head != nullptr) {
+            head->prev = newNode;
+        } else {
+            tail = newNode;     // Jika linked list kosong, atur node baru sebagai tail
+        }
+
+        head = newNode;     // Atur node baru sebagai head
+    }
+
+    // Menghapus node pertama dari linked list
+    void pop() {
+        // Jika linked list kosong, langsung kembali
+        if (head == nullptr) {
+            return;
+        }
+
+        Node* temp = head;  // Simpan pointer ke head sementara
+        head = head->next;  // Pindahkan head ke node berikutnya
+
+        // Jika setelah penghapusan, linked list tidak kosong
+        if (head != nullptr) {
+            head->prev = nullptr;   // Atur prev dari head menjadi null
+        } else {
+            tail = nullptr;     // Jika setelah penghapusan linked list menjadi kosong, atur tail menjadi null
+        }
+
+        delete temp;    // Hapus node yang telah di-pop
+    }
+
+    // Mengupdate informasi produk berdasarkan nama produk yang diberikan
+    bool update(string oldNamaProduk, string newNamaProduk, double newHarga) {
+        Node* current = head;   // Pointer untuk traversing linked list
+        while (current != nullptr) {
+            // Jika nama produk pada node saat ini sama dengan nama produk yang ingin diupdate
+            if (current->namaProduk == oldNamaProduk) {
+                // Update informasi produk
+                current->namaProduk = newNamaProduk;
+                current->harga = newHarga;
+                return true;    // Kembalikan true jika update berhasil
+            }
+            current = current->next;    // Pindah ke node berikutnya
+        }
+        return false;   // Kembalikan false jika nama produk tidak ditemukan
+    }
+
+    // Menghapus semua node dari linked list
+    void deleteAll() {
+        Node* current = head;   // Pointer untuk traversing linked list
+        while (current != nullptr) {
+            Node* temp = current;   // Simpan pointer ke node saat ini sementara
+            current = current->next;    // Pindah ke node berikutnya
+            delete temp;    // Hapus node yang disimpan
+        }
+        head = nullptr;     // Atur head dan tail menjadi null karena linked list kosong
+        tail = nullptr;
+    }
+
+    // Menampilkan isi linked list
+    void display() {
+        Node* current = head;   // Pointer untuk traversing linked list
+        while (current != nullptr) {
+            // Tampilkan nama produk dan harganya
+            cout << current->namaProduk << " " << current->harga << endl;
+            current = current->next;    // Pindah ke node berikutnya
+        }
+    }
+
+    // Menambahkan node baru setelah node dengan nama produk tertentu
+    void insertAfter(string prevNamaProduk, string namaProduk, double harga) {
+        Node* temp = head;   // Pointer untuk mencari node dengan nama produk tertentu
+        // Mencari node dengan nama produk tertentu atau mencapai akhir linked list
+        while (temp != nullptr && temp->namaProduk != prevNamaProduk) {
+            temp = temp->next;  // Pindah ke node berikutnya
+        }
+        // Jika node dengan nama produk tertentu tidak ditemukan
+        if (temp == nullptr) {
+            cout << "Produk sebelumnya tidak ditemukan." << endl;
+            return;
+        }
+        // Jika node ditemukan, buat node baru dan sisipkan setelah node tersebut
+        Node* newNode = new Node;
+        newNode->namaProduk = namaProduk;
+        newNode->harga = harga;
+        newNode->next = temp->next;
+        newNode->prev = temp;
+        // Sambungkan node baru ke linked list
+        if (temp->next != nullptr) {
+            temp->next->prev = newNode;
+        }
+        temp->next = newNode;
+    }
+
+    // Menambahkan node baru di awal linked list
+    void insertAtBeginning(string namaProduk, double harga) {
+        Node* newNode = new Node;   // Buat node baru
+        newNode->namaProduk = namaProduk;   // Tetapkan nama produk
+        newNode->harga = harga;     // Tetapkan harga produk
+        newNode->next = head;       // Sambungkan node baru ke head
+        newNode->prev = nullptr;    // Atur prev dari node baru menjadi null
+        // Jika linked list tidak kosong, atur prev head menjadi node baru
+        if (head != nullptr) {
+            head->prev = newNode;
+        } else {
+            tail = newNode;     // Jika linked list kosong, atur node baru sebagai tail
+        }
+        head = newNode;     // Atur node baru sebagai head
+    }
+
+    // Menghapus node dengan nama produk tertentu
+    void deleteNode(string namaProduk) {
+        // Jika linked list kosong, langsung kembali
+        if (head == nullptr)
+            return;
+        Node* temp = head;  // Pointer untuk mencari node dengan nama produk tertentu
+        // Mencari node dengan nama produk tertentu atau mencapai akhir linked list
+        while (temp != nullptr && temp->namaProduk != namaProduk) {
+            temp = temp->next;  // Pindah ke node berikutnya
+        }
+        // Jika node dengan nama produk tertentu tidak ditemukan
+        if (temp == nullptr)
+            return;
+        // Jika node ditemukan, hapus node tersebut dari linked list
+        if (temp->prev != nullptr)            
+            temp->prev->next = temp->next;
+        if (temp->next != nullptr)
+            temp->next->prev = temp->prev;
+        if (temp == head)
+            head = temp->next;
+        if (temp == tail)
+            tail = temp->prev;
+        delete temp;    // Hapus node yang ditemukan
+    }
+};
+
+int main() {
+    DoublyLinkedList list;  // Membuat objek DoublyLinkedList
+    while (true) {  // Loop utama program
+        // Menampilkan menu utama
+        cout << "Toko Skincare Purwokerto" << endl;
+        cout << "1. Tambah Data" << endl;
+        cout << "2. Hapus Data" << endl;
+        cout << "3. Update Data" << endl;
+        cout << "4. Tambah Data Urutan Tertentu" << endl;
+        cout << "5. Hapus Data Urutan Tertentu" << endl;
+        cout << "6. Hapus Seluruh Data" << endl;
+        cout << "7. Tampilkan Data" << endl;
+        cout << "8. Exit" << endl;
+        int choice;
+        cout << "Masukkan pilihan Anda: ";
+        cin >> choice;  // Meminta input pilihan dari pengguna
+        switch (choice) {  // Memproses pilihan pengguna
+            case 1: {  // Pilihan untuk menambah data
+                string namaProduk;
+                double harga;
+                cout << "Masukkan nama produk: ";
+                cin >> namaProduk;  // Meminta input nama produk
+                cout << "Masukkan harga: ";
+                cin >> harga;   // Meminta input harga produk
+                list.push(namaProduk, harga);  // Memanggil fungsi push untuk menambahkan data
+                break;
+            }
+            case 2: {  // Pilihan untuk menghapus data
+                string namaProduk;
+                cout << "Masukkan nama produk yang ingin dihapus: ";
+                cin >> namaProduk;  // Meminta input nama produk yang ingin dihapus
+                list.deleteNode(namaProduk);  // Memanggil fungsi deleteNode untuk menghapus data
+                break;
+            }
+            case 3: {  // Pilihan untuk memperbarui data
+                string oldNamaProduk, newNamaProduk;
+                double newHarga;
+                cout << "Masukkan nama produk yang ingin diupdate: ";
+                cin >> oldNamaProduk;  // Meminta input nama produk yang ingin diperbarui
+                cout << "Masukkan nama produk baru: ";
+                cin >> newNamaProduk;  // Meminta input nama produk baru
+                cout << "Masukkan harga baru: ";
+                cin >> newHarga;    // Meminta input harga baru
+                bool updated = list.update(oldNamaProduk, newNamaProduk, newHarga);  // Memanggil fungsi update
+                if (!updated) {
+                    cout << "Data tidak ditemukan" << endl;  // Menampilkan pesan jika data tidak ditemukan
+                }
+                break;
+            }
+            case 4: {  // Pilihan untuk menambah data pada urutan tertentu
+                string prevNamaProduk, namaProduk;
+                double harga;
+                cout << "Masukkan nama produk sebelumnya: ";
+                cin >> prevNamaProduk;  // Meminta input nama produk sebelumnya
+                cout << "Masukkan nama produk baru: ";
+                cin >> namaProduk;  // Meminta input nama produk baru
+                cout << "Masukkan harga: ";
+                cin >> harga;   // Meminta input harga produk
+                list.insertAfter(prevNamaProduk, namaProduk, harga);  // Memanggil fungsi insertAfter untuk menyisipkan data
+                break;
+            }
+            case 5: {  // Pilihan untuk menghapus data pada urutan tertentu
+                // Kode untuk menghapus data di urutan tertentu
+                break;
+            }
+            case 6: {  // Pilihan untuk menghapus semua data
+                list.deleteAll();  // Memanggil fungsi deleteAll untuk menghapus semua data
+                break;
+            }
+            case 7: {  // Pilihan untuk menampilkan data
+                cout << "Data Produk:" << endl;
+                list.display();  // Memanggil fungsi display untuk menampilkan semua data
+                break;
+            }
+            case 8: {  // Pilihan untuk keluar dari program
+                return 0;  // Menghentikan program
+            }
+            default: {  // Pilihan tidak valid
+                cout << "Pilihan tidak valid" << endl;
+                break;
+            }
+        }
+    }
+    return 0;  // Mengakhiri program
+}
+
