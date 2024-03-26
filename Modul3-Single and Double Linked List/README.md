@@ -53,7 +53,7 @@ Operasi pada Single Linked List dan Double Linked List:
 
 
 ## Guided 
-### 1. Program Input Array Tiga Dimensi
+### 1. Latihan Single Linked List
 
 ```C++
 #include <iostream>
@@ -372,42 +372,148 @@ Kode diatas mengimplementasikan struktur data Linked List (Daftar Terhubung) dal
 
 
 
-### 2. Program Mencari Nilai Maksimal pada Array
+### 2. Latihan Double Linked List
 ```C++
 #include <iostream>
 using namespace std;
-int main(){
-    int maks, a, i=1, lokasi;
-    cout << "Masukkan Panjang : ";
-    cin >> a;
-    int array [a];
-    cout << "Masukkan "<< a << " angka\n";
-    for(i = 0; i < a; i++)
-    {
-        cout <<"Array ke-" << (i)<< ":";
-        cin>> array[i];
+
+
+class Node {
+    public:int data;
+    Node* prev;
+    Node* next;
+};
+class DoublyLinkedList {
+        public:
+        Node* head;
+        Node* tail;
+        DoublyLinkedList() {
+            head = nullptr;
+            tail = nullptr;
     }
-    //penjelasan tentang mencari nilai terbesar / searching
-    maks = array[0]; // nilai maksimal nya indeks ke 0
-    for (i = 0; i < a; i++) 
-    {
-        if (array[i] > maks) // jika array indeks ke 0 bernilai 1 >  nilai maksimal indeks ke 0
-        {
-            maks = array[i]; //jika tidak terpenuhi maka melakukan update terhadap perulangan sampai selesai sebanyak 5 indeks
-            lokasi = i;
+    void push(int data) {
+        Node* newNode = new Node;
+        newNode->data = data;
+        newNode->prev = nullptr;
+        newNode->next = head;
+        if (head != nullptr) {
+            head->prev = newNode;
+        } 
+        else {
+            tail = newNode;
+        }
+        head = newNode;
+    }
+    void pop() {
+        if (head == nullptr) {
+            return;
+        }
+        Node* temp = head;
+        head = head->next;
+        if (head != nullptr) {
+            head->prev = nullptr;
+        } 
+        else {
+            tail = nullptr;
+        }
+        delete temp;
+    }
+    bool update(int oldData, int newData) {
+        Node* current = head;while (current != nullptr) {
+            if (current->data == oldData) {
+                current->data = newData;
+                return true;
+            }
+            current = current->next;
+        }
+        return false;
+    }
+    void deleteAll() {
+        Node* current = head;
+        while (current != nullptr) {
+            Node* temp = current;
+            current = current->next;
+            delete temp;
+        }
+        head = nullptr;
+        tail = nullptr;
+    }
+    void display() {
+        Node* current = head;
+        while (current != nullptr) {
+            cout << current->data << " ";
+            current = current->next;
+        }
+        cout << endl;
+    }
+};
+
+
+int main() {
+    DoublyLinkedList list;
+    while (true) {
+        cout << "1. Add data" << endl;
+        cout << "2. Delete data" << endl;
+        cout << "3. Update data" << endl;
+        cout << "4. Clear data" << endl;
+        cout << "5. Display data" << endl;
+        cout << "6. Exit" << endl;int choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1: {
+                int data;
+                cout << "Enter data to add: ";
+                cin >> data;
+                list.push(data);
+                break;
+            }
+            case 2: {
+                list.pop();
+                break;
+            }
+            case 3: {
+                int oldData, newData;
+                cout << "Enter old data: ";
+                cin >> oldData;
+                cout << "Enter new data: ";
+                cin >> newData;
+                bool updated = list.update(oldData, newData);
+                if (!updated) {
+                    cout << "Data not found" << endl;
+                }
+                break;
+            }
+            case 4: {
+                list.deleteAll();
+                break;
+            }
+            case 5: {
+                list.display();
+                break;
+            }
+            case 6: {
+                return 0;
+            }
+            default: {
+                cout << "Invalid choice" << endl;
+                break;
+            }
         }
     }
-    cout<< "Nilai Maksimum Adalah " << maks << " berada di Array ke " << lokasi << endl;
+    return 0;
 }
 ```
 #### Output:
 
-![Screenshot 2024-03-19 095026](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ff88dce0-3761-4593-9b05-4db86f1127d0)
+![Screenshot 2024-03-26 104519](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/190c2f6d-b732-434c-8cd1-b9b93a8ab342)
 
-Kode di atas meminta untuk memasukkan panjang array dan sejumlah angka. setelah itu, program menyimpan angka-angka tersebut ke dalam array dan mencari nilai maksimumnya. proses pencarian nilai maksimum dilakukan dengan menggunakan perulangan untuk membandingkan setiap elemen array dengan nilai maksimum yang disimpan secara sementara, jika nilai elemen tersebut lebih besar dari nilai maksimum sementara, maka nilai maksimum akan diupdate dengan nilai elemen tersebut dan lokasi indeksnya akan disimpan. setelah selesai, program akan menampilkan nilai maksimum beserta indeksnya dalam array.
 
+Kode di atas mengimplementasikan struktur data Doubly Linked List (Daftar Terhubung Ganda) yang memungkinkan akses ke node sebelum dan setelah node saat ini. Doubly Linked List terdiri dari node, di mana setiap node memiliki dua pointer, satu ke node sebelumnya (`prev`) dan satu ke node berikutnya (`next`). Kode mendefinisikan kelas `Node` untuk menyimpan data dan pointer ke node sebelum dan setelahnya, serta kelas `DoublyLinkedList` yang mengelola operasi pada list, termasuk menambahkan node di awal list (`push()`), menghapus node dari awal list (`pop()`), memperbarui data dalam list (`update()`), menghapus semua node dalam list (`deleteAll()`), dan menampilkan semua data dalam list (`display()`). Dalam fungsi `main()`, pengguna dapat memilih untuk menambahkan, menghapus, memperbarui, menampilkan, atau menghapus semua data dalam list melalui menu interaktif.
 #### Full code Screenshot:
-![Screenshot 2024-03-19 095014](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ae617c2f-228e-40e6-bafd-113b580c7d52)
+
+![Screenshot 2024-03-26 104258](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/14404526-ad13-4719-8af5-ec5e3b306290)
+
 
 ## Unguided 
 
