@@ -1,0 +1,229 @@
+#include <iostream>
+using namespace std;
+
+// Struktur Node untuk merepresentasikan elemen dalam linked list
+struct Node {
+    int data;       // Data yang disimpan dalam node
+    Node *next;     // Pointer yang menunjukkan ke node selanjutnya dalam linked list
+};
+
+// Deklarasi variabel global untuk menandai kepala (head) dan ekor (tail) dari linked list
+Node *head;
+Node *tail;
+
+// Fungsi untuk menginisialisasi linked list, dijalankan di awal program
+void init() {
+    head = NULL;    // Kepala dan ekor diatur ke NULL untuk menandakan linked list kosong
+    tail = NULL;
+}
+
+// Fungsi untuk memeriksa apakah linked list kosong
+bool isEmpty() {
+    return head == NULL;
+}
+
+// Fungsi untuk menambahkan elemen di depan linked list
+void insertDepan(int nilai) {
+    Node *baru = new Node;  // Membuat node baru
+    baru->data = nilai;     // Mengisi data node baru
+    baru->next = NULL;      // Mengatur pointer next node baru ke NULL
+    if (isEmpty()) {        // Jika linked list kosong, maka node baru menjadi kepala dan ekor
+        head = tail = baru;
+    } else {                // Jika tidak kosong, node baru ditambahkan di depan dan diatur sebagai kepala baru
+        baru->next = head;
+        head = baru;
+    }
+}
+
+// Fungsi untuk menambahkan elemen di belakang linked list
+void insertBelakang(int nilai) {
+    Node *baru = new Node;  // Membuat node baru
+    baru->data = nilai;     // Mengisi data node baru
+    baru->next = NULL;      // Mengatur pointer next node baru ke NULL
+    if (isEmpty()) {        // Jika linked list kosong, maka node baru menjadi kepala dan ekor
+        head = tail = baru;
+    } else {                // Jika tidak kosong, node baru ditambahkan di belakang dan diatur sebagai ekor baru
+        tail->next = baru;
+        tail = baru;
+    }
+}
+
+// Fungsi untuk menghitung jumlah elemen dalam linked list
+int hitungList() {
+    Node *hitung = head;    // Pointer untuk traversal linked list
+    int jumlah = 0;         // Variabel untuk menyimpan jumlah elemen
+    while (hitung != NULL) {
+        jumlah++;           // Increment jumlah saat traversal
+        hitung = hitung->next;  // Pindah ke node berikutnya
+    }
+    return jumlah;
+}
+
+// Fungsi untuk menambahkan elemen di posisi tengah linked list
+void insertTengah(int data, int posisi) {
+    if (posisi < 1 || posisi > hitungList()) {  // Memeriksa apakah posisi valid
+        cout << "Posisi diluar jangkauan" << endl; // Jika tidak, tampilkan pesan kesalahan
+    } else if (posisi == 1) {   // Jika posisi adalah 1, tambahkan di depan
+        insertDepan(data);
+    } else {
+        Node *baru = new Node;  // Membuat node baru
+        baru->data = data;      // Mengisi data node baru
+        Node *bantu = head;     // Pointer untuk traversal
+        int nomor = 1;          // Variabel untuk menyimpan nomor posisi saat traversal
+        while (nomor < posisi - 1) {    // Traversal hingga posisi sebelumnya
+            bantu = bantu->next;
+            nomor++;
+        }
+        baru->next = bantu->next;   // Mengatur pointer next node baru
+        bantu->next = baru;
+    }
+}
+
+// Fungsi untuk menghapus elemen di depan linked list
+void hapusDepan() {
+    if (!isEmpty()) {           // Memeriksa apakah linked list tidak kosong
+        Node *hapus = head;     // Menunjukkan node yang akan dihapus
+        if (head->next != NULL) {   // Jika masih ada node lain setelah kepala
+            head = head->next;      // Kepala diubah menjadi node berikutnya
+        } else {
+            head = tail = NULL;     // Jika tidak ada node lain, kepala dan ekor diatur ke NULL
+        }
+        delete hapus;           // Menghapus node yang dihapus
+    } else {
+        cout << "List kosong!" << endl;    // Jika linked list kosong, tampilkan pesan
+    }
+}
+
+// Fungsi untuk menghapus elemen di belakang linked list
+void hapusBelakang() {
+    if (!isEmpty()) {           // Memeriksa apakah linked list tidak kosong
+        if (head != tail) {     // Jika masih ada lebih dari satu elemen dalam linked list
+            Node *hapus = tail; // Menunjukkan node yang akan dihapus
+            Node *bantu = head; // Pointer untuk traversal
+            while (bantu->next != tail) {  // Traversal hingga sebelum ekor
+                bantu = bantu->next;
+            }
+            tail = bantu;       // Ekor diatur ke node sebelumnya
+            tail->next = NULL;  // Mengatur pointer next ekor ke NULL
+        } else {
+            delete head;        // Jika hanya ada satu elemen, hapus node tersebut
+            head = tail = NULL; // Kepala dan ekor diatur ke NULL
+        }
+    } else {
+        cout << "List kosong!" << endl;    // Jika linked list kosong, tampilkan pesan
+    }
+}
+
+// Fungsi untuk menghapus elemen di posisi tengah linked list
+void hapusTengah(int posisi) {
+    if (posisi < 1 || posisi > hitungList()) {  // Memeriksa apakah posisi valid
+        cout << "Posisi di luar jangkauan" << endl; // Jika tidak, tampilkan pesan kesalahan
+    } else if (posisi == 1) {   // Jika posisi adalah 1, hapus elemen di depan
+        hapusDepan();
+    } else {
+        Node *bantu = head;     // Pointer untuk traversal
+        Node *hapus;            // Menunjukkan node yang akan dihapus
+        int nomor = 1;          // Variabel untuk menyimpan nomor posisi saat traversal
+        while (nomor < posisi - 1) {    // Traversal hingga posisi sebelumnya
+            bantu = bantu->next;
+            nomor++;
+        }
+        hapus = bantu->next;    // Menunjukkan node yang akan dihapus
+        bantu->next = hapus->next; // Mengatur pointer next node sebelumnya
+        delete hapus;           // Menghapus node yang dihapus
+    }
+}
+
+// Fungsi untuk mengubah data elemen di depan linked list
+void ubahDepan(int data) {
+    if (!isEmpty()) {           // Memeriksa apakah linked list tidak kosong
+        head->data = data;      // Mengubah data pada kepala
+    } else {
+        cout << "List masih kosong!" << endl;   // Jika linked list kosong, tampilkan pesan
+    }
+}
+
+// Fungsi untuk mengubah data elemen di belakang linked list
+void ubahBelakang(int data) {
+    if (!isEmpty()) {           // Memeriksa apakah linked list tidak kosong
+        tail->data = data;      // Mengubah data pada ekor
+    } else {
+        cout << "List masih kosong!" << endl;   // Jika linked list kosong, tampilkan pesan
+    }
+}
+
+// Fungsi untuk mengubah data elemen di posisi tengah linked list
+void ubahTengah(int data, int posisi) {
+    if (!isEmpty()) {           // Memeriksa apakah linked list tidak kosong
+        if (posisi < 1 || posisi > hitungList()) {  // Memeriksa apakah posisi valid
+            cout << "Posisi di luar jangkauan" << endl; // Jika tidak, tampilkan pesan kesalahan
+        } else if (posisi == 1) {   // Jika posisi adalah 1, ubah elemen di depan
+            ubahDepan(data);
+        } else {
+            Node *bantu = head;     // Pointer untuk traversal
+            int nomor = 1;          // Variabel untuk menyimpan nomor posisi saat traversal
+            while (nomor < posisi) {    // Traversal hingga posisi yang diinginkan
+                bantu = bantu->next;
+                nomor++;
+            }
+            bantu->data = data;     // Mengubah data pada posisi yang diinginkan
+        }
+    } else {
+        cout << "List masih kosong!" << endl;   // Jika linked list kosong, tampilkan pesan
+    }
+}
+
+// Fungsi untuk membersihkan linked list dari semua elemen
+void clearList() {
+    Node *bantu = head;     // Pointer untuk traversal
+    while (bantu != NULL) { // Loop hingga semua elemen terhapus
+        Node *hapus = bantu;    // Menunjukkan node yang akan dihapus
+        bantu = bantu->next;    // Pindah ke node berikutnya
+        delete hapus;           // Menghapus node yang dihapus
+    }
+    head = tail = NULL;     // Kepala dan ekor diatur ke NULL setelah linked list kosong
+    cout << "List berhasil terhapus!" << endl;    // Menampilkan pesan berhasil
+}
+
+// Fungsi untuk menampilkan semua elemen dalam linked list
+void tampil() {
+    Node *bantu = head;     // Pointer untuk traversal
+    if (!isEmpty()) {       // Memeriksa apakah linked list tidak kosong
+        while (bantu != NULL) { // Loop hingga mencapai akhir linked list
+            cout << bantu->data << " ";    // Menampilkan data dari setiap node
+            bantu = bantu->next;    // Pindah ke node berikutnya
+        }
+        cout << endl;   // Mencetak baris baru setelah selesai menampilkan semua elemen
+    } else {
+        cout << "List masih kosong!" << endl;   // Jika linked list kosong, tampilkan pesan
+    }
+}
+
+// Fungsi utama program
+int main() {
+    init(); // Inisialisasi linked list
+    insertDepan(3); // Menambahkan elemen 3 di depan linked list
+    tampil();   // Menampilkan isi linked list
+    insertBelakang(5);  // Menambahkan elemen 5 di belakang linked list
+    tampil();   // Menampilkan isi linked list
+    insertDepan(2); // Menambahkan elemen 2 di depan linked list
+    tampil();   // Menampilkan isi linked list
+    insertDepan(1); // Menambahkan elemen 1 di depan linked list
+    tampil();   // Menampilkan isi linked list
+    hapusDepan();   // Menghapus elemen di depan linked list
+    tampil();   // Menampilkan isi linked list
+    hapusBelakang();    // Menghapus elemen di belakang linked list
+    tampil();   // Menampilkan isi linked list
+    insertTengah(7, 2); // Menambahkan elemen 7 di posisi tengah ke-2 linked list
+    tampil();   // Menampilkan isi linked list
+    hapusTengah(2); // Menghapus elemen di posisi tengah ke-2 linked list
+    tampil();   // Menampilkan isi linked list
+    ubahDepan(1);   // Mengubah elemen di depan linked list menjadi 1
+    tampil();   // Menampilkan isi linked list
+    ubahBelakang(8);    // Mengubah elemen di belakang linked list menjadi 8
+    tampil();   // Menampilkan isi linked list
+    ubahTengah(11, 2);  // Mengubah elemen di posisi tengah ke-2 linked list menjadi 11
+    tampil();   // Menampilkan isi linked list
+    clearList();    // Menghapus semua elemen dalam linked list
+    return 0;   // Mengakhiri program
+}
