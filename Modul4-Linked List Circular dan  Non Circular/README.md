@@ -14,6 +14,7 @@ Linked list non circular merupakan linked list dengan node pertama (head) dan no
 
 <center>Gambar 1. Single Linked List Non Circular</center>
 
+
 A. Singly Linked List
 Pada list jenis ini, tiap node nya memiliki field yang berisi pointer ke node berikutnya dan juga memiliki field yang berisi data. Akhir linked list ditandai dengan node terakhir yang menunjuk ke null yang akan digunakan sebagai kondisi berhenti saat pembacaan linked list[2].
 
@@ -21,12 +22,15 @@ Pada list jenis ini, tiap node nya memiliki field yang berisi pointer ke node be
 
 <center>Gambar 2. Ilustrasi singly linked list</center>
 
+
 B. Doubly Linked List
 Merupakan linked list dengan menggunakan pointer, dimana setiap node memiliki tiga buah field, yaitu : field pointer yang menunjuk ke pointer berikutnya, field pointer yang menunjuk ke pointer sebelumnya dan field yang berisi data dari node tersebut. Semenatara pointer next dan prev-nya menunjuk ke null[2].
 
 ![Screenshot 2024-04-02 232637](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/2cfe424b-0842-4190-9739-4a08e42b0a84)
 
+
 <center>Gambar 3. Ilustrasi doubly linked list</center>
+
 
 
 2. Linked List Circular
@@ -34,12 +38,15 @@ Linked list circular merupakan linked list yang tidak memiliki akhir karena node
 
 ![Screenshot 2024-04-02 232847](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/09b1cd81-40b1-4bd1-8f31-921f2d4fda23)
 
+
 <center>Gambar 4. Single Linked List Circular</center>
+
 
 A. Singly Circular Linked List
 Adalah singly linked list yang pointer next-nya menunjuk ke dirinya sendiri (proses rekursif), jika terdiri dari beberapa node maka pointer terakhirnya akan menunjuk ke pointer terdepannya[2]. 
 
 ![Screenshot 2024-04-02 230935](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/6bd1c853-b49a-48aa-aaa9-be074be78cde)
+
 
 <center>Gambar 5. Ilustrasi singly circular linked list</center>
 
@@ -47,6 +54,7 @@ B. Doubly Circular Linked List
 Merupakan sutau double linked list yang pointer next dan pointer prev-nya menunjuk ke dirinya sendiri secara circular[2].
 
 ![Screenshot 2024-04-02 231209](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/912221f0-1c2e-4dce-afff-4a48e3e9e0de)
+
 
 <center>Gambar 6. Ilustrasi Doubly circular linked list </center>
 
@@ -1101,9 +1109,7 @@ Program-program yang diberikan sebagai contoh implementasi dari kedua jenis Link
 Dengan demikian, materi tersebut membahas konsep dasar dan implementasi dari Linked List, serta memberikan contoh program yang dapat digunakan untuk memahami konsep tersebut secara praktis.
 ## Referensi
 [1] Asisten Praktikum, “Modul 4 Linked List Circular And Non Circular", Googgle Classroom, 2024.
-[2]Siregar, Anugrah Ananda Nauli. "Pengertian Linked Object." (2019).
-
-[3]Sihombing, Johnson. "Penerapan Stack Dan Queue Pada Array Dan Linked List Dalam Java." INFOKOM (Informatika & Komputer) 7.2 (2019): 15-24.
+[2]Sihombing, Johnson. "Penerapan Stack Dan Queue Pada Array Dan Linked List Dalam Java." INFOKOM (Informatika & Komputer) 7.2 (2019): 15-24.
 
 
 
