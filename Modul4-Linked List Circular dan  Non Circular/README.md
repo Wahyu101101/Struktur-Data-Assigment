@@ -1,4 +1,4 @@
-# <h1 align="center">Laporan Praktikum Modul Single and Double Linked List</h1>
+![image](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/dad2d21e-82b3-4bd4-8203-1f28c583da3c)# <h1 align="center">Laporan Praktikum Modul Single and Double Linked List</h1>
 <p align="center">Wahyu Hidayat</p>
 <p align="center">2311102178 / 11-E-IF</p>
 
@@ -7,48 +7,41 @@
 
 **Linked List**
 
-Linked List dalam ilmu komputer merupakan sebuah struktur data yang digunakan untuk menyimpan sejumlah objek data biasanyan secara terurut sehingga memungkinkan penambahan, pengurangan, dan pencarian data atas elemen data yang tersimpan dalam senarai dilakukan secara lebih efektif. Pada praktiknya sebuah struktur data memiliki elemen yang digunakan untuk saling menyimpan rujukan antara satu rujukan dengan lainnya sehingga membentuk sebuah senarai abstrak, tiap – tiap elemen yang terdapat pada senarai abstrak ini seringkali disebut sebagai node karena mekanisme rujukan yang saling terkait inilah disebut sebagai senarai berantai[1]. Linked List (Senarai berantai) Senarai berantai(bahasa Inggris:linked list) atau kadang-kadang disebut dengan senarai bertaut atau daftar bertaut dalam ilmu computer merupakan sebuah struktur data yang digunakan untuk menyimpan sejumlah objek data biasanya secara terurut sehingga memungkinkan penambahan, pengurangan, dan pencarian atas elemen data yang tersimpan dalam senarai dilakukan secara lebih efektif[2].
+1. Linked List Non Circular
+Linked list non circular merupakan linked list dengan node pertama (head) dan node terakhir (tail) yang tidak saling terhubung. Pointer terakhir (tail) pada Linked List ini selalu bernilai ‘NULL’ sebagai pertanda data terakhir dalam list nya. Linked list non circular dapat digambarkan sebagai berikut[1].
 
-![Screenshot 2024-03-26 101435](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5e8e422f-2045-41cd-b0be-4c9af1fe88ec)
+![Screenshot 2024-04-02 230407](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0910e3fe-51a7-48b5-af40-ad6310245978)
 
+A. Singly Linked List
+Pada list jenis ini, tiap node nya memiliki field yang berisi pointer ke node berikutnya dan juga memiliki field yang berisi data. Akhir linked list ditandai dengan node terakhir yang menunjuk ke null yang akan digunakan sebagai kondisi berhenti saat pembacaan linked list[2].
 
-Linked List merupakan bentuk struktur data paling umum dan sederhana yang banyak digunakan untuk mengimplementasikan model struktur data lainnya, termasuk antrian, stack ataupun larik assosiatif. Linked List terdiri dari :
+![Screenshot 2024-04-02 232506](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/b2b8e5e8-b7b7-498d-8924-68b72c68c410)
+Gambar 2. Ilustrasi singly linked list
 
-1. Single Linked List
-Single Linked List adalah suatu kumpulan elemen data (yang disebut sebagai node) dimana urutannya ditentukan oleh suatu pointer. Single Linked List hanya memiliki 1 (satu) petunjuk/pointer (NEXT). Setiap elemen (node) dari suatu linked list terdiri atas dua bagian,
-yaitu :
-   A. INFO : berisi informasi tentang elemen data yang bersangkutan.
-   B. NEXT (link field/next pointer field) : berisi alamat dari elemen (node) selanjutnya yang dituju.
-Berikut ini sebuah contoh Single Linked List yang terdiri atas 4 node :
+B. Doubly Linked List
+Merupakan linked list dengan menggunakan pointer, dimana setiap node memiliki tiga buah field, yaitu : field pointer yang menunjuk ke pointer berikutnya, field pointer yang menunjuk ke pointer sebelumnya dan field yang berisi data dari node tersebut. Semenatara pointer next dan prev-nya menunjuk ke null[2].
 
-![Screenshot 2024-03-26 101744](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/7ef26062-b355-4832-94d7-a886f6cad408)
-
-Pada node ke-4 field NEXT-nya berisi NULL, artinya node ke-4 tersebut adalah node terakhir.
-
-2. Double Linked List
-Pada Double Linked List, struktur data atas tiap-tiap node memiliki rujukan pada node sebelum (PREV) dan berikutnya (NEXT). Sebagian algoritma membutuhkan taut ganda, contohnya sorting dan reverse traversing.
-
-![Screenshot 2024-03-26 102012](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0dcbafd9-7905-4906-95f6-c172c37bb6ee)
-
-Tiap node memiliki pointer yang menunjuk ke node sesudahnya dan pointer yang menunjuk ke node sebelumnya.
-Keterangan:
-Node Sesudahnya : Next(Node)
-Node sebelumnya : Prior(Node)
-Next(Prior(P)) = P dan P = Prior(next(P))
-Double Linked List Kosong :
-
-![Screenshot 2024-03-26 102603](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f3d1098e-cd3b-4108-9246-588de4fc3552)
-
-Keterangan:
-next Prior(Head) = Head
-Next(Head) = Head
-Operasi pada Single Linked List dan Double Linked List:
-1. Sisip Depan : menyisipkan node baru pada bagian awal node atau head dari Single Linked List.
-2. Sisip Belakang : menyisipkan node baru pada bagian belakang node dari Single Linked List.
-3. Sisip Posisi : menyisipkan node baru pada posisi tertentu dari Single Linked List.
-4. Hapus Posisi : menghapus node baru pada posisi tertentu dari Single Linked List
+![Screenshot 2024-04-02 232637](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/2cfe424b-0842-4190-9739-4a08e42b0a84)
+Gambar 3. Ilustrasi doubly linked list
 
 
+2. Linked List Circular
+Linked list circular merupakan linked list yang tidak memiliki akhir karena node terakhir (tail) tidak bernilai ‘NULL’, tetapi terhubung dengan node pertama (head). Saat menggunakan linked list circular kita membutuhkan dummy node atau node pengecoh yang biasanya dinamakan dengan node current supaya program dapat berhenti menghitung data ketika node current mencapai node pertama (head). Linked list circular dapat digunakan untuk menyimpan data yang perlu diakses secara berulang, seperti daftar putar lagu, daftar pesan dalam antrian, atau penggunaan memori berulang dalam suatu aplikasi. Linked list circular dapat digambarkan sebagai berikut[1].
+
+![Screenshot 2024-04-02 232847](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/09b1cd81-40b1-4bd1-8f31-921f2d4fda23)
+Gambar 4. Single Linked List Circular
+
+A. Singly Circular Linked List
+Adalah singly linked list yang pointer next-nya menunjuk ke dirinya sendiri (proses rekursif), jika terdiri dari beberapa node maka pointer terakhirnya akan menunjuk ke pointer terdepannya[2]. 
+
+![Screenshot 2024-04-02 230935](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/6bd1c853-b49a-48aa-aaa9-be074be78cde)
+Gambar 5. Ilustrasi singly circular linked list
+
+B. Doubly Circular Linked List
+Merupakan sutau double linked list yang pointer next dan pointer prev-nya menunjuk ke dirinya sendiri secara circular[2].
+
+![Screenshot 2024-04-02 231209](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/912221f0-1c2e-4dce-afff-4a48e3e9e0de)
+Gambar 6. Ilustrasi Doubly circular linked list
 
 
 
@@ -1100,8 +1093,10 @@ Program-program yang diberikan sebagai contoh implementasi dari kedua jenis Link
 
 Dengan demikian, materi tersebut membahas konsep dasar dan implementasi dari Linked List, serta memberikan contoh program yang dapat digunakan untuk memahami konsep tersebut secara praktis.
 ## Referensi
-[1]Dharma, Abdi. "Aplikasi Pembelajaran Linked List Berbasis Mobile Learning." Riau Journal Of Computer Science 4.1 (2018): 1-11.
-
+[1] Asisten Praktikum, “Modul 4 Linked List Circular And Non Circular", Googgle Classroom, 2024.
 [2]Siregar, Anugrah Ananda Nauli. "Pengertian Linked Object." (2019).
+
+[3]Sihombing, Johnson. "Penerapan Stack Dan Queue Pada Array Dan Linked List Dalam Java." INFOKOM (Informatika & Komputer) 7.2 (2019): 15-24.
+
 
 
