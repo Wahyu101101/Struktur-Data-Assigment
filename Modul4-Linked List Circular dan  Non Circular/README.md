@@ -616,7 +616,7 @@ tampil(): Menampilkan semua elemen dalam linked list dengan melakukan traversal 
 ## Unguided 
 
 ### Buatlah program menu Linked List Non Circular untuk menyimpan Nama dan NIM mahasiswa, dengan menggunakan input dari user.
-#### 1. Buatlah menu untuk menambahkan, mengubah, menghapus, dan melihat Nama dan NIM mahasiswa, berikut contoh tampilan output dari nomor 1:
+### 1. Buatlah menu untuk menambahkan, mengubah, menghapus, dan melihat Nama dan NIM mahasiswa, berikut contoh tampilan output dari nomor 1:
 
 • Tampilan Menu:
 PROGRAM SINGLE LINKED LIST NON-CIRCULAR
@@ -994,7 +994,7 @@ Fungsi insertDepan, insertBelakang, dan insertTengah digunakan untuk menambahkan
 Program ini menunjukkan bagaimana linked list dapat digunakan untuk menyimpan dan mengelola data dalam berbagai bentuk, dan bagaimana operasi dasar seperti penambahan, penghapusan, dan pengubahan data dapat dilakukan pada linked list.
 
 
-#### 2. Setelah membuat menu tersebut, masukkan data sesuai urutan berikut, lalu tampilkan data yang telah dimasukkan. (Gunakan insert depan, belakang atau tengah)
+### 2. Setelah membuat menu tersebut, masukkan data sesuai urutan berikut, lalu tampilkan data yang telah dimasukkan. (Gunakan insert depan, belakang atau tengah)
 
 Nama NIM
 Jawad 23300001
@@ -1022,7 +1022,7 @@ Budi 23300099
 #### Full code Screenshot:
 ![Screenshot 2024-04-03 145701](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8e7c69d2-d122-4ed8-821a-e8a6e2dab072)
 
-#### 3. Lakukan perintah berikut:
+### 3. Lakukan perintah berikut:
 
 a) Tambahkan data berikut diantara Farrel dan Denis: Wati 2330004
 b) Hapus data Denis
