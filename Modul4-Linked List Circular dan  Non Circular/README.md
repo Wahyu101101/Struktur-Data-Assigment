@@ -1045,12 +1045,14 @@ j) Tampilkan seluruh data
 ## Kesimpulan
 Kesimpulan dari materi di atas adalah bahwa linked list adalah struktur data yang sangat fleksibel dan efisien untuk menyimpan dan mengelola data dalam berbagai bentuk. Ada dua jenis utama linked list yang sering digunakan: non-circular dan circular.
 
-Linked List Non-Circular: Dalam jenis ini, node pertama (head) dan node terakhir (tail) tidak saling terhubung. Pointer terakhir (tail) selalu bernilai NULL, menandakan akhir dari list. Linked list non-circular cocok untuk aplikasi yang memerlukan akses ke data dalam urutan tertentu tanpa perlu kembali ke awal list setelah mencapai akhir.
-Linked List Circular: Berbeda dengan non-circular, linked list circular tidak memiliki akhir karena node terakhir (tail) tidak bernilai NULL, tetapi terhubung kembali ke node pertama (head). Ini membuat linked list circular lebih efisien dalam hal penggunaan memori karena hanya memerlukan satu pointer untuk menyimpan head, dan memudahkan implementasi karena tidak memerlukan struktur data tambahan untuk melacak awal dan akhir list. Linked list circular sangat cocok untuk aplikasi yang memerlukan akses berulang ke data, seperti daftar putar lagu atau antrian.
+**Linked List Non-Circular:** Dalam jenis ini, node pertama (head) dan node terakhir (tail) tidak saling terhubung. Pointer terakhir (tail) selalu bernilai NULL, menandakan akhir dari list. Linked list non-circular cocok untuk aplikasi yang memerlukan akses ke data dalam urutan tertentu tanpa perlu kembali ke awal list setelah mencapai akhir.
+
+**Linked List Circular:** Berbeda dengan non-circular, linked list circular tidak memiliki akhir karena node terakhir (tail) tidak bernilai NULL, tetapi terhubung kembali ke node pertama (head). Ini membuat linked list circular lebih efisien dalam hal penggunaan memori karena hanya memerlukan satu pointer untuk menyimpan head, dan memudahkan implementasi karena tidak memerlukan struktur data tambahan untuk melacak awal dan akhir list. Linked list circular sangat cocok untuk aplikasi yang memerlukan akses berulang ke data, seperti daftar putar lagu atau antrian.
+
 Ada juga dua jenis linked list circular:
 
-Singly Circular Linked List: Setiap node memiliki pointer ke node berikutnya dan pointer terakhirnya menunjuk ke node pertama, membentuk struktur ring.
-Doubly Circular Linked List: Mirip dengan singly circular linked list, tetapi setiap node juga memiliki pointer ke node sebelumnya, membuatnya dapat diakses dalam kedua arah.
+**Singly Circular Linked List:** Setiap node memiliki pointer ke node berikutnya dan pointer terakhirnya menunjuk ke node pertama, membentuk struktur ring.
+**Doubly Circular Linked List:** Mirip dengan singly circular linked list, tetapi setiap node juga memiliki pointer ke node sebelumnya, membuatnya dapat diakses dalam kedua arah.
 Implementasi linked list, baik non-circular maupun circular, memungkinkan operasi seperti penambahan, penghapusan, dan pengubahan data dengan efisiensi yang tinggi. Linked list menunjukkan fleksibilitas dalam penyimpanan dan manipulasi data, menjadikannya pilihan yang baik untuk berbagai aplikasi komputer.
 ## Referensi
 [1] Asisten Praktikum, “Modul 4 Linked List Circular And Non Circular", Googgle Classroom, 2024.
