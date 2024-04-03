@@ -1,4 +1,4 @@
-# <h1 align="center">Laporan Praktikum Modul Single and Double Linked List</h1>
+# <h1 align="center">Laporan Praktikum Modul Linked List Circular dan Non Circular</h1>
 <p align="center">Wahyu Hidayat</p>
 <p align="center">2311102178 / 11-E-IF</p>
 
