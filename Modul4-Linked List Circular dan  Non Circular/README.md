@@ -1,4 +1,4 @@
-![Screenshot 2024-04-03 142236](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3b33d749-8975-4222-8760-7378c423e298)# <h1 align="center">Laporan Praktikum Modul Single and Double Linked List</h1>
+# <h1 align="center">Laporan Praktikum Modul Single and Double Linked List</h1>
 <p align="center">Wahyu Hidayat</p>
 <p align="center">2311102178 / 11-E-IF</p>
 
