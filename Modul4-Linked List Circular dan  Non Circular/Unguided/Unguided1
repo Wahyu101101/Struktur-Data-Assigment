@@ -1,0 +1,297 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Struktur Node untuk merepresentasikan elemen dalam linked list
+struct Node {
+    string nama;
+    string nim;
+    Node *next;
+};
+
+// Deklarasi variabel global untuk menandai kepala (head) dan ekor (tail) dari linked list
+Node *head;
+Node *tail;
+
+// Fungsi untuk menginisialisasi linked list, dijalankan di awal program
+void init() {
+    head = NULL;    // Kepala dan ekor diatur ke NULL untuk menandakan linked list kosong
+    tail = NULL;
+}
+
+// Fungsi untuk memeriksa apakah linked list kosong
+bool isEmpty() {
+    return head == NULL;
+}
+
+// Fungsi untuk menambahkan elemen di depan linked list
+void insertDepan(string nama, string nim) {
+    Node *baru = new Node;
+    baru->nama = nama;
+    baru->nim = nim;
+    baru->next = head;
+    head = baru;
+    if (tail == NULL) tail = baru;
+}
+
+// Fungsi untuk menambahkan elemen di belakang linked list
+void insertBelakang(string nama, string nim) {
+    Node *baru = new Node;
+    baru->nama = nama;
+    baru->nim = nim;
+    baru->next = NULL;
+    if (isEmpty()) {
+        head = tail = baru;
+    } else {
+        tail->next = baru;
+        tail = baru;
+    }
+}
+
+// Fungsi untuk menambahkan elemen di posisi tengah linked list
+void insertTengah(string nama, string nim, int posisi) {
+    Node *baru = new Node;
+    baru->nama = nama;
+    baru->nim = nim;
+    if (isEmpty()) {
+        head = tail = baru;
+        baru->next = NULL;
+    } else {
+        if (posisi == 1) {
+            insertDepan(nama, nim);
+        } else {
+            Node *bantu = head;
+            int nomor = 1;
+            while (nomor < posisi - 1 && bantu->next != NULL) {
+                bantu = bantu->next;
+                nomor++;
+            }
+            baru->next = bantu->next;
+            bantu->next = baru;
+            if (baru->next == NULL) tail = baru;
+        }
+    }
+}
+
+// Fungsi untuk menghapus elemen di depan linked list
+void hapusDepan() {
+    if (!isEmpty()) {
+        Node *hapus = head;
+        head = head->next;
+        if (head == NULL) tail = NULL;
+        delete hapus;
+    } else {
+        cout << "List kosong!" << endl;
+    }
+}
+
+// Fungsi untuk menghapus elemen di belakang linked list
+void hapusBelakang() {
+    if (!isEmpty()) {
+        if (head != tail) {
+            Node *bantu = head;
+            while (bantu->next != tail) {
+                bantu = bantu->next;
+            }
+            delete tail;
+            tail = bantu;
+            tail->next = NULL;
+        } else {
+            delete head;
+            head = tail = NULL;
+        }
+    } else {
+        cout << "List kosong!" << endl;
+    }
+}
+
+// Fungsi untuk menghapus elemen di posisi tengah linked list
+void hapusTengah(int posisi) {
+    if (!isEmpty()) {
+        Node *bantu = head;
+        Node *hapus;
+        int nomor = 1;
+        while (nomor < posisi - 1) {
+            bantu = bantu->next;
+            nomor++;
+        }
+        hapus = bantu->next;
+        bantu->next = hapus->next;
+        delete hapus;
+    } else {
+        cout << "List kosong!" << endl;
+    }
+}
+
+// Fungsi untuk mengubah data elemen di depan linked list
+void ubahDepan(string nama, string nim) {
+    if (!isEmpty()) {
+        head->nama = nama;
+        head->nim = nim;
+    } else {
+        cout << "List masih kosong!" << endl;
+    }
+}
+
+// Fungsi untuk mengubah data elemen di belakang linked list
+void ubahBelakang(string nama, string nim) {
+    if (!isEmpty()) {
+        tail->nama = nama;
+        tail->nim = nim;
+    } else {
+        cout << "List masih kosong!" << endl;
+    }
+}
+
+// Fungsi untuk mengubah data elemen di posisi tengah linked list
+void ubahTengah(string nama, string nim, int posisi) {
+    if (!isEmpty()) {
+        Node *bantu = head;
+        int nomor = 1;
+        while (nomor < posisi) {
+            bantu = bantu->next;
+            nomor++;
+        }
+        bantu->nama = nama;
+        bantu->nim = nim;
+    } else {
+        cout << "List masih kosong!" << endl;
+    }
+}
+
+// Fungsi untuk membersihkan linked list dari semua elemen
+void clearList() {
+    Node *bantu = head;
+    while (bantu != NULL) {
+        Node *hapus = bantu;
+        bantu = bantu->next;
+        delete hapus;
+    }
+    head = tail = NULL;
+    cout << "List berhasil terhapus!" << endl;
+}
+
+// Fungsi untuk menampilkan semua elemen dalam linked list
+void tampil() {
+    Node *bantu = head;
+    if (!isEmpty()) {
+        cout << "DATA MAHASISWA" << endl;
+        cout << "NAMA\tNIM" << endl;
+        while (bantu != NULL) {
+            cout << bantu->nama << "\t" << bantu->nim << endl;
+            bantu = bantu->next;
+        }
+    } else {
+        cout << "List masih kosong!" << endl;
+    }
+}
+
+// Fungsi utama program
+int main() {
+    init(); // Inisialisasi linked list
+    int pilihan;
+    string nama, nim;
+    int posisi;
+
+    do {
+        cout << "PROGRAM SINGLE LINKED LIST NON-CIRCULAR" << endl;
+        cout << "1. Tambah Depan" << endl;
+        cout << "2. Tambah Belakang" << endl;
+        cout << "3. Tambah Tengah" << endl;
+        cout << "4. Ubah Depan" << endl;
+        cout << "5. Ubah Belakang" << endl;
+        cout << "6. Ubah Tengah" << endl;
+        cout << "7. Hapus Depan" << endl;
+        cout << "8. Hapus Belakang" << endl;
+        cout << "9. Hapus Tengah" << endl;
+        cout << "10. Hapus List" << endl;
+        cout << "11. TAMPILKAN" << endl;
+        cout << "0. KELUAR" << endl;
+        cout << "Pilih Operasi : ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan Nama : ";
+                cin >> nama;
+                cout << "Masukkan NIM : ";
+                cin >> nim;
+                insertDepan(nama, nim);
+                cout << "Data telah ditambahkan" << endl;
+                break;
+            case 2:
+                cout << "Masukkan Nama : ";
+                cin >> nama;
+                cout << "Masukkan NIM : ";
+                cin >> nim;
+                insertBelakang(nama, nim);
+                cout << "Data telah ditambahkan" << endl;
+                break;
+            case 3:
+                cout << "Masukkan Nama : ";
+                cin >> nama;
+                cout << "Masukkan NIM : ";
+                cin >> nim;
+                cout << "Masukkan Posisi : ";
+                cin >> posisi;
+                insertTengah(nama, nim, posisi);
+                cout << "Data telah ditambahkan" << endl;
+                break;
+            case 4:
+                cout << "Masukkan Nama : ";
+                cin >> nama;
+                cout << "Masukkan NIM : ";
+                cin >> nim;
+                ubahDepan(nama, nim);
+                cout << "Data telah diubah" << endl;
+                break;
+            case 5:
+                cout << "Masukkan Nama : ";
+                cin >> nama;
+                cout << "Masukkan NIM : ";
+                cin >> nim;
+                ubahBelakang(nama, nim);
+                cout << "Data telah diubah" << endl;
+                break;
+            case 6:
+                cout << "Masukkan Nama : ";
+                cin >> nama;
+                cout << "Masukkan NIM : ";
+                cin >> nim;
+                cout << "Masukkan Posisi : ";
+                cin >> posisi;
+                ubahTengah(nama, nim, posisi);
+                cout << "Data telah diubah" << endl;
+                break;
+            case 7:
+                hapusDepan();
+                cout << "Data telah dihapus" << endl;
+                break;
+            case 8:
+                hapusBelakang();
+                cout << "Data telah dihapus" << endl;
+                break;
+            case 9:
+                cout << "Masukkan posisi : ";
+                cin >> posisi;
+                hapusTengah(posisi);
+                cout << "Data telah dihapus" << endl;
+                break;
+            case 10:
+                clearList();
+                cout << "List telah dibersihkan" << endl;
+                break;
+            case 11:
+                tampil();
+                break;
+            case 0:
+                cout << "Keluar dari program" << endl;
+                break;
+            default:
+                cout << "Pilihan tidak valid!" << endl;
+                break;
+        }
+    } while (pilihan != 0);
+
+    return 0;
+}
