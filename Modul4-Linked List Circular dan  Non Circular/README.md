@@ -1035,6 +1035,12 @@ h) Ubah data awal menjadi berikut: Bagas 2330002
 i) Hapus data akhir
 j) Tampilkan seluruh data
 
+### Langkah-Langkah
+![Screenshot 2024-04-03 152444](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/1e770abd-1fe4-450f-b104-d3171cc59503)
+![Screenshot 2024-04-03 152411](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/972cdf85-12df-4ae8-bf16-416e6febf1f7)
+![Screenshot 2024-04-03 152508](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/070108dd-ad80-4afa-aaaf-f9c82701e297)
+### Tampilan Hasil
+![Screenshot 2024-04-03 152617](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8efbeecd-7591-4cfb-bc42-df97436b19b2)
 
 ## Kesimpulan
 Kesimpulannya, Dari materi dan guided ataupun unguided di atas membahas tentang struktur data Linked List dalam ilmu komputer, yang merupakan sebuah struktur data yang digunakan untuk menyimpan sejumlah objek data biasanya secara terurut. Linked List terdiri dari dua jenis utama: Single Linked List dan Double Linked List.
