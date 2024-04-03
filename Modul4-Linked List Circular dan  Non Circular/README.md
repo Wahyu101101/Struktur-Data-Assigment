@@ -7,7 +7,7 @@
 
 **Linked List**
 
-1. Linked List Non Circular
+#### 1. Linked List Non Circular
 Linked list non circular merupakan linked list dengan node pertama (head) dan node terakhir (tail) yang tidak saling terhubung. Pointer terakhir (tail) pada Linked List ini selalu bernilai ‘NULL’ sebagai pertanda data terakhir dalam list nya. Linked list non circular dapat digambarkan sebagai berikut[1].
 
 ![Screenshot 2024-04-02 233253](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/881b40a6-0e82-4fb4-9303-6befd0ca39a7)
@@ -15,7 +15,7 @@ Linked list non circular merupakan linked list dengan node pertama (head) dan no
 <center>Gambar 1. Single Linked List Non Circular</center>
 
 
-A. Singly Linked List
+#### A. Singly Linked List
 Pada list jenis ini, tiap node nya memiliki field yang berisi pointer ke node berikutnya dan juga memiliki field yang berisi data. Akhir linked list ditandai dengan node terakhir yang menunjuk ke null yang akan digunakan sebagai kondisi berhenti saat pembacaan linked list[2].
 
 ![Screenshot 2024-04-02 232506](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/b2b8e5e8-b7b7-498d-8924-68b72c68c410)
@@ -23,7 +23,7 @@ Pada list jenis ini, tiap node nya memiliki field yang berisi pointer ke node be
 <center>Gambar 2. Ilustrasi singly linked list</center>
 
 
-B. Doubly Linked List
+#### B. Doubly Linked List
 Merupakan linked list dengan menggunakan pointer, dimana setiap node memiliki tiga buah field, yaitu : field pointer yang menunjuk ke pointer berikutnya, field pointer yang menunjuk ke pointer sebelumnya dan field yang berisi data dari node tersebut. Semenatara pointer next dan prev-nya menunjuk ke null[2].
 
 ![Screenshot 2024-04-02 232637](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/2cfe424b-0842-4190-9739-4a08e42b0a84)
@@ -33,7 +33,7 @@ Merupakan linked list dengan menggunakan pointer, dimana setiap node memiliki ti
 
 
 
-2. Linked List Circular
+#### 2. Linked List Circular
 Linked list circular merupakan linked list yang tidak memiliki akhir karena node terakhir (tail) tidak bernilai ‘NULL’, tetapi terhubung dengan node pertama (head). Saat menggunakan linked list circular kita membutuhkan dummy node atau node pengecoh yang biasanya dinamakan dengan node current supaya program dapat berhenti menghitung data ketika node current mencapai node pertama (head). Linked list circular dapat digunakan untuk menyimpan data yang perlu diakses secara berulang, seperti daftar putar lagu, daftar pesan dalam antrian, atau penggunaan memori berulang dalam suatu aplikasi. Linked list circular dapat digambarkan sebagai berikut[1].
 
 ![Screenshot 2024-04-02 232847](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/09b1cd81-40b1-4bd1-8f31-921f2d4fda23)
@@ -42,7 +42,7 @@ Linked list circular merupakan linked list yang tidak memiliki akhir karena node
 <center>Gambar 4. Single Linked List Circular</center>
 
 
-A. Singly Circular Linked List
+#### A. Singly Circular Linked List
 Adalah singly linked list yang pointer next-nya menunjuk ke dirinya sendiri (proses rekursif), jika terdiri dari beberapa node maka pointer terakhirnya akan menunjuk ke pointer terdepannya[2]. 
 
 ![Screenshot 2024-04-02 230935](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/6bd1c853-b49a-48aa-aaa9-be074be78cde)
@@ -50,7 +50,7 @@ Adalah singly linked list yang pointer next-nya menunjuk ke dirinya sendiri (pro
 
 <center>Gambar 5. Ilustrasi singly circular linked list</center>
 
-B. Doubly Circular Linked List
+#### B. Doubly Circular Linked List
 Merupakan sutau double linked list yang pointer next dan pointer prev-nya menunjuk ke dirinya sendiri secara circular[2].
 
 ![Screenshot 2024-04-02 231209](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/912221f0-1c2e-4dce-afff-4a48e3e9e0de)
