@@ -1043,21 +1043,15 @@ j) Tampilkan seluruh data
 ![Screenshot 2024-04-03 152617](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8efbeecd-7591-4cfb-bc42-df97436b19b2)
 
 ## Kesimpulan
-Kesimpulannya, Dari materi dan guided ataupun unguided di atas membahas tentang struktur data Linked List dalam ilmu komputer, yang merupakan sebuah struktur data yang digunakan untuk menyimpan sejumlah objek data biasanya secara terurut. Linked List terdiri dari dua jenis utama: Single Linked List dan Double Linked List.
-1. **Single Linked List**:
-   - Merupakan kumpulan elemen data (node) yang urutannya ditentukan oleh suatu pointer.
-   - Setiap node terdiri dari dua bagian: INFO (berisi informasi tentang elemen data) dan NEXT (berisi alamat dari elemen selanjutnya).
-   - Operasi yang dapat dilakukan meliputi sisip depan, sisip belakang, sisip posisi, hapus posisi, ubah data, dan lainnya.
-2. **Double Linked List**:
-   - Memiliki struktur yang sama dengan Single Linked List, tetapi setiap node memiliki rujukan pada node sebelumnya (PREV) dan berikutnya (NEXT).
-   - Tiap node memiliki pointer yang menunjuk ke node sesudahnya dan pointer yang menunjuk ke node sebelumnya.
-   - Operasi yang dapat dilakukan mirip dengan Single Linked List, ditambah dengan operasi khusus yang memanfaatkan rujukan ke node sebelumnya.
+Kesimpulan dari materi di atas adalah bahwa linked list adalah struktur data yang sangat fleksibel dan efisien untuk menyimpan dan mengelola data dalam berbagai bentuk. Ada dua jenis utama linked list yang sering digunakan: non-circular dan circular.
 
-Selain itu, kedua jenis Linked List tersebut juga dilengkapi dengan operasi pengelolaan data seperti sisip depan, sisip belakang, sisip posisi, hapus posisi, ubah data, dan lainnya.
+Linked List Non-Circular: Dalam jenis ini, node pertama (head) dan node terakhir (tail) tidak saling terhubung. Pointer terakhir (tail) selalu bernilai NULL, menandakan akhir dari list. Linked list non-circular cocok untuk aplikasi yang memerlukan akses ke data dalam urutan tertentu tanpa perlu kembali ke awal list setelah mencapai akhir.
+Linked List Circular: Berbeda dengan non-circular, linked list circular tidak memiliki akhir karena node terakhir (tail) tidak bernilai NULL, tetapi terhubung kembali ke node pertama (head). Ini membuat linked list circular lebih efisien dalam hal penggunaan memori karena hanya memerlukan satu pointer untuk menyimpan head, dan memudahkan implementasi karena tidak memerlukan struktur data tambahan untuk melacak awal dan akhir list. Linked list circular sangat cocok untuk aplikasi yang memerlukan akses berulang ke data, seperti daftar putar lagu atau antrian.
+Ada juga dua jenis linked list circular:
 
-Program-program yang diberikan sebagai contoh implementasi dari kedua jenis Linked List tersebut menunjukkan bagaimana cara menggunakan dan mengelola struktur data Linked List, termasuk operasi-operasi dasar seperti penambahan, penghapusan, pembaruan data, dan penampilan data. Program-program tersebut menyediakan menu interaktif bagi pengguna untuk melakukan operasi-operasi tersebut sesuai dengan kebutuhan.
-
-Dengan demikian, materi tersebut membahas konsep dasar dan implementasi dari Linked List, serta memberikan contoh program yang dapat digunakan untuk memahami konsep tersebut secara praktis.
+Singly Circular Linked List: Setiap node memiliki pointer ke node berikutnya dan pointer terakhirnya menunjuk ke node pertama, membentuk struktur ring.
+Doubly Circular Linked List: Mirip dengan singly circular linked list, tetapi setiap node juga memiliki pointer ke node sebelumnya, membuatnya dapat diakses dalam kedua arah.
+Implementasi linked list, baik non-circular maupun circular, memungkinkan operasi seperti penambahan, penghapusan, dan pengubahan data dengan efisiensi yang tinggi. Linked list menunjukkan fleksibilitas dalam penyimpanan dan manipulasi data, menjadikannya pilihan yang baik untuk berbagai aplikasi komputer.
 ## Referensi
 [1] Asisten Praktikum, “Modul 4 Linked List Circular And Non Circular", Googgle Classroom, 2024.
 [2]Sihombing, Johnson. "Penerapan Stack Dan Queue Pada Array Dan Linked List Dalam Java." INFOKOM (Informatika & Komputer) 7.2 (2019): 15-24.
