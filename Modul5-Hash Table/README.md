@@ -5,7 +5,7 @@
 
 ## Dasar Teori
 
-**Hast Table**
+## **Hast Table**
 
 #### Pengertian Hast Table
 ##### Hash table adalah struktur data yang digunakan untuk menyimpan dan mengakses data dengan cepat. Fungsi hash digunakan untuk menentukan lokasi penyimpanan data dalam hash table. Dengan menggunakan fungsi hash yang efisien, hash table dapat memberikan akses yang cepat dan efisien terhadap data[1].
@@ -332,8 +332,7 @@ Kode tersebut adalah implementasi sederhana dari struktur data hash table menggu
 #### 1. Implementasikan hash table untuk menyimpan data mahasiswa. Setiap mahasiswa memiliki NIM dan nilai. Implementasikan fungsi untuk menambahkan data baru, menghapus data, mencari data berdasarkan NIM, dan mencari data berdasarkannilai. Dengan ketentuan :
 #### a. Setiap mahasiswa memiliki NIM dan nilai.
 #### b. Program memiliki tampilan pilihan menu berisi poin C.
-#### c. Implementasikan fungsi untuk menambahkan data baru, menghapus data,mencari data berdasarkan NIM, dan mencari data berdasarkan rentang nilai
-(80 – 90).
+#### c. Implementasikan fungsi untuk menambahkan data baru, menghapus data,mencari data berdasarkan NIM, dan mencari data berdasarkan rentang nilai (80 – 90).
 ```C++
 #include <iostream>
 #include <vector>
