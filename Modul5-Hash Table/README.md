@@ -45,7 +45,7 @@ Pada saat terjadi collision, terdapat fungsi hash yang kedua untuk
 menentukan posisinya kembali.
 
 ## Guided 
-### 1. Linked List Non Circular
+### Guided 1
 
 ```C++
 #include <iostream>
@@ -207,7 +207,7 @@ Kode diatas terdiri dari array pointer ke node, di mana setiap node merupakan ba
 ![Screenshot 2024-04-09 160527](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/dfb4f449-c1c1-4010-ac96-643c0ecbb893)
 
 
-### 2. Linked List Circular
+### Guided 2
 ```C++
 #include <iostream>
 #include <string>
