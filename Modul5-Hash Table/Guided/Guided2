@@ -1,0 +1,105 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+const int TABLE_SIZE = 11; // Ukuran hash table
+
+// Kelas HashNode untuk merepresentasikan node dalam hash table
+class HashNode {
+public:
+    string name;
+    string phone_number;
+    HashNode(string name, string phone_number) {
+        this->name = name;
+        this->phone_number = phone_number;
+    }
+};
+
+// Kelas HashMap untuk merepresentasikan hash table
+class HashMap {
+private:
+    vector<HashNode*> table[TABLE_SIZE]; // Array dari vektor node (linked list) untuk chaining
+
+public:
+    // Fungsi hash sederhana untuk menghasilkan nilai hash berdasarkan nama
+    int hashFunc(string key) {
+        int hash_val = 0;
+        for (char c : key) {
+            hash_val += c; // Menambahkan nilai ASCII dari setiap karakter dalam nama
+        }
+        return hash_val % TABLE_SIZE; // Mengambil modulus dari jumlah slot dalam hash table
+    }
+
+    // Metode untuk menyisipkan pasangan nama dan nomor telepon ke dalam hash table
+    void insert(string name, string phone_number) {
+        int hash_val = hashFunc(name);
+        for (auto node : table[hash_val]) {
+            if (node->name == name) {
+                node->phone_number = phone_number; // Jika nama sudah ada, nomor telepon diperbarui
+                return;
+            }
+        }
+        table[hash_val].push_back(new HashNode(name, phone_number)); // Jika nama belum ada, pasangan baru ditambahkan ke linked list
+    }
+
+    // Metode untuk menghapus pasangan nama dan nomor telepon dari hash table berdasarkan nama
+    void remove(string name) {
+        int hash_val = hashFunc(name);
+        for (auto it = table[hash_val].begin(); it != table[hash_val].end(); it++) {
+            if ((*it)->name == name) {
+                table[hash_val].erase(it);
+                return;
+            }
+        }
+    }
+
+    // Metode untuk mencari nomor telepon berdasarkan nama
+    string searchByName(string name) {
+        int hash_val = hashFunc(name);
+        for (auto node : table[hash_val]) {
+            if (node->name == name) {
+                return node->phone_number; // Mengembalikan nomor telepon jika nama ditemukan
+            }
+        }
+        return ""; // Mengembalikan string kosong jika nama tidak ditemukan
+    }
+
+    // Metode untuk mencetak semua pasangan nama dan nomor telepon dalam hash table
+    void print() {
+        for (int i = 0; i < TABLE_SIZE; i++) {
+            cout << i << ": ";
+            for (auto pair : table[i]) {
+                if (pair != nullptr) {
+                    cout << "[" << pair->name << ", " << pair->phone_number << "]";
+                }
+            }
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    HashMap employee_map; // Membuat objek hash table
+
+    // Insertion: Menambahkan beberapa pasangan nama dan nomor telepon
+    employee_map.insert("Mistah", "1234");
+    employee_map.insert("Pastah", "5678");
+    employee_map.insert("Ghana", "91011");
+
+    // Searching: Mencari nomor telepon untuk beberapa nama
+    cout << "Nomer Hp Mistah : " << employee_map.searchByName("Mistah") << endl;
+    cout << "Phone Hp Pastah : " << employee_map.searchByName("Pastah") << endl;
+
+    // Deletion: Menghapus satu pasangan nama dan nomor telepon
+    employee_map.remove("Mistah");
+
+    // Searching setelah penghapusan
+    cout << "Nomer Hp Mistah setelah dihapus : " << employee_map.searchByName("Mistah") << endl << endl;
+
+    // Traversal: Mencetak semua pasangan nama dan nomor telepon dalam hash table
+    cout << "Hash Table : " << endl;
+    employee_map.print();
+
+    return 0;
+}
