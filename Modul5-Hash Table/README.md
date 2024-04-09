@@ -330,431 +330,159 @@ Kode tersebut adalah implementasi sederhana dari struktur data hash table menggu
 ## Unguided 
 
 ### Buatlah program menu Linked List Non Circular untuk menyimpan Nama dan NIM mahasiswa, dengan menggunakan input dari user.
-### 1. Buatlah menu untuk menambahkan, mengubah, menghapus, dan melihat Nama dan NIM mahasiswa, berikut contoh tampilan output dari nomor 1:
-
-• Tampilan Menu:
-PROGRAM SINGLE LINKED LIST NON-CIRCULAR
-1. Tambah Depan
-2. Tambah Belakang
-3. Tambah Tengah
-4. Ubah Depan
-5. Ubah Belakang
-6. Ubah Tengah
-7. Hapus Depan
-8. Hapus Belakang
-9. Hapus Tengah
-10. Hapus List
-11. TAMPILKAN
-0. KELUAR
-Pilih Operasi :
-• Tampilan Operasi Tambah:
-
--Tambah Depan-
-Masukkan Nama :
-
-Masukkan NIM :
-Data telah ditambahkan
-
--Tambah Tengah-
-Masukkan Nama :
-
-Masukkan NIM :
-Masukkan Posisi :
-Data telah ditambahkan
-• Tampilan Operasi Hapus:
-
--Hapus Belakang-
-Data (nama mahasiswa yang dihapus) berhasil dihapus
-
--Hapus Tengah-
-Masukkan posisi :
-
-Data (nama mahasiswa yang dihapus) berhasil dihapus
-
-• Tampilan Operasi Ubah:
-
--Ubah Belakang-
-Masukkan nama :
-
-Masukkan NIM :
-Data (nama lama) telah diganti dengan data (nama baru)
-
--Ubah Belakang-
-Masukkan nama :
-
-Masukkan NIM :
-Masukkan posisi :
-Data (nama lama) telah diganti dengan data (nama baru)
-
-• Tampilan Operasi Tampil Data:
-DATA MAHASISWA
-NAMA NIM
-Nama1 NIM1
-Nama2 NIM2
-
-*Buat tampilan output sebagus dan secantik mungkin sesuai kreatifitas anda
-masing-masing, jangan terpaku pada contoh output yang diberikan
+### 1. Implementasikan hash table untuk menyimpan data mahasiswa. Setiap mahasiswa memiliki NIM dan nilai. Implementasikan fungsi untuk menambahkan data baru, menghapus data, mencari data berdasarkan NIM, dan mencari data berdasarkannilai. Dengan ketentuan :
+### a. Setiap mahasiswa memiliki NIM dan nilai.
+### b. Program memiliki tampilan pilihan menu berisi poin C.
+### c. Implementasikan fungsi untuk menambahkan data baru, menghapus data,mencari data berdasarkan NIM, dan mencari data berdasarkan rentang nilai
+(80 – 90).
 ```C++
 #include <iostream>
-#include <string>
+#include <vector>
 using namespace std;
 
-// Struktur Node untuk merepresentasikan elemen dalam linked list
-struct Node {
-    string nama;
+const int TABLE_SIZE = 10;
+
+// Struktur data untuk setiap mahasiswa
+struct Mahasiswa {
     string nim;
-    Node *next;
+    int nilai;
 };
 
-// Deklarasi variabel global untuk menandai kepala (head) dan ekor (tail) dari linked list
-Node *head;
-Node *tail;
+// Struktur data untuk setiap node dalam hash table
+struct HashNode {
+    Mahasiswa data;
+    HashNode* next;
+    HashNode(Mahasiswa data) : data(data), next(nullptr) {}
+};
 
-// Fungsi untuk menginisialisasi linked list, dijalankan di awal program
-void init() {
-    head = NULL;    // Kepala dan ekor diatur ke NULL untuk menandakan linked list kosong
-    tail = NULL;
-}
+// Class hash table
+class HashMap {
+private:
+    vector<HashNode*> table[TABLE_SIZE];
 
-// Fungsi untuk memeriksa apakah linked list kosong
-bool isEmpty() {
-    return head == NULL;
-}
-
-// Fungsi untuk menambahkan elemen di depan linked list
-void insertDepan(string nama, string nim) {
-    Node *baru = new Node;
-    baru->nama = nama;
-    baru->nim = nim;
-    baru->next = head;
-    head = baru;
-    if (tail == NULL) tail = baru;
-}
-
-// Fungsi untuk menambahkan elemen di belakang linked list
-void insertBelakang(string nama, string nim) {
-    Node *baru = new Node;
-    baru->nama = nama;
-    baru->nim = nim;
-    baru->next = NULL;
-    if (isEmpty()) {
-        head = tail = baru;
-    } else {
-        tail->next = baru;
-        tail = baru;
+public:
+    // Fungsi hash untuk menghasilkan indeks dalam hash table berdasarkan NIM
+    int hashFunc(string nim) {
+        int hash_val = 0;
+        for (char c : nim) {
+            hash_val += c;
+        }
+        return hash_val % TABLE_SIZE;
     }
-}
 
-// Fungsi untuk menambahkan elemen di posisi tengah linked list
-void insertTengah(string nama, string nim, int posisi) {
-    Node *baru = new Node;
-    baru->nama = nama;
-    baru->nim = nim;
-    if (isEmpty()) {
-        head = tail = baru;
-        baru->next = NULL;
-    } else {
-        if (posisi == 1) {
-            insertDepan(nama, nim);
-        } else {
-            Node *bantu = head;
-            int nomor = 1;
-            while (nomor < posisi - 1 && bantu->next != NULL) {
-                bantu = bantu->next;
-                nomor++;
+    // Fungsi untuk menambahkan data mahasiswa ke hash table
+    void insert(Mahasiswa mahasiswa) {
+        int index = hashFunc(mahasiswa.nim);
+        HashNode* newNode = new HashNode(mahasiswa);
+        table[index].push_back(newNode);
+    }
+
+    // Fungsi untuk menghapus data mahasiswa dari hash table berdasarkan NIM
+    void remove(string nim) {
+        int index = hashFunc(nim);
+        for (int i = 0; i < table[index].size(); i++) {
+            if (table[index][i]->data.nim == nim) {
+                delete table[index][i];
+                table[index].erase(table[index].begin() + i);
+                cout << "Data dengan NIM " << nim << " berhasil dihapus." << endl;
+                return;
             }
-            baru->next = bantu->next;
-            bantu->next = baru;
-            if (baru->next == NULL) tail = baru;
         }
+        cout << "Data dengan NIM " << nim << " tidak ditemukan." << endl;
     }
-}
 
-// Fungsi untuk menghapus elemen di depan linked list
-void hapusDepan() {
-    if (!isEmpty()) {
-        Node *hapus = head;
-        head = head->next;
-        if (head == NULL) tail = NULL;
-        delete hapus;
-    } else {
-        cout << "List kosong!" << endl;
-    }
-}
-
-// Fungsi untuk menghapus elemen di belakang linked list
-void hapusBelakang() {
-    if (!isEmpty()) {
-        if (head != tail) {
-            Node *bantu = head;
-            while (bantu->next != tail) {
-                bantu = bantu->next;
+    // Fungsi untuk mencari data mahasiswa berdasarkan NIM
+    Mahasiswa searchByNIM(string nim) {
+        int index = hashFunc(nim);
+        for (HashNode* node : table[index]) {
+            if (node->data.nim == nim) {
+                return node->data;
             }
-            delete tail;
-            tail = bantu;
-            tail->next = NULL;
-        } else {
-            delete head;
-            head = tail = NULL;
         }
-    } else {
-        cout << "List kosong!" << endl;
+        cout << "Data dengan NIM " << nim << " tidak ditemukan." << endl;
+        return {"", -1}; // Mahasiswa dengan NIM kosong dan nilai -1 menandakan data tidak ditemukan
     }
-}
 
-// Fungsi untuk menghapus elemen di posisi tengah linked list
-void hapusTengah(int posisi) {
-    if (!isEmpty()) {
-        Node *bantu = head;
-        Node *hapus;
-        int nomor = 1;
-        while (nomor < posisi - 1) {
-            bantu = bantu->next;
-            nomor++;
+    // Fungsi untuk mencari data mahasiswa berdasarkan rentang nilai (80-90)
+    void searchByRange() {
+        cout << "Data mahasiswa dengan nilai antara 80 dan 90:" << endl;
+        for (int i = 0; i < TABLE_SIZE; i++) {
+            for (HashNode* node : table[i]) {
+                if (node->data.nilai >= 80 && node->data.nilai <= 90) {
+                    cout << "NIM: " << node->data.nim << ", Nilai: " << node->data.nilai << endl;
+                }
+            }
         }
-        hapus = bantu->next;
-        bantu->next = hapus->next;
-        delete hapus;
-    } else {
-        cout << "List kosong!" << endl;
     }
-}
+};
 
-// Fungsi untuk mengubah data elemen di depan linked list
-void ubahDepan(string nama, string nim) {
-    if (!isEmpty()) {
-        head->nama = nama;
-        head->nim = nim;
-    } else {
-        cout << "List masih kosong!" << endl;
-    }
-}
-
-// Fungsi untuk mengubah data elemen di belakang linked list
-void ubahBelakang(string nama, string nim) {
-    if (!isEmpty()) {
-        tail->nama = nama;
-        tail->nim = nim;
-    } else {
-        cout << "List masih kosong!" << endl;
-    }
-}
-
-// Fungsi untuk mengubah data elemen di posisi tengah linked list
-void ubahTengah(string nama, string nim, int posisi) {
-    if (!isEmpty()) {
-        Node *bantu = head;
-        int nomor = 1;
-        while (nomor < posisi) {
-            bantu = bantu->next;
-            nomor++;
-        }
-        bantu->nama = nama;
-        bantu->nim = nim;
-    } else {
-        cout << "List masih kosong!" << endl;
-    }
-}
-
-// Fungsi untuk membersihkan linked list dari semua elemen
-void clearList() {
-    Node *bantu = head;
-    while (bantu != NULL) {
-        Node *hapus = bantu;
-        bantu = bantu->next;
-        delete hapus;
-    }
-    head = tail = NULL;
-    cout << "List berhasil terhapus!" << endl;
-}
-
-// Fungsi untuk menampilkan semua elemen dalam linked list
-void tampil() {
-    Node *bantu = head;
-    if (!isEmpty()) {
-        cout << "DATA MAHASISWA" << endl;
-        cout << "NAMA\tNIM" << endl;
-        while (bantu != NULL) {
-            cout << bantu->nama << "\t" << bantu->nim << endl;
-            bantu = bantu->next;
-        }
-    } else {
-        cout << "List masih kosong!" << endl;
-    }
-}
-
-// Fungsi utama program
 int main() {
-    init(); // Inisialisasi linked list
-    int pilihan;
-    string nama, nim;
-    int posisi;
+    HashMap hashTable;
 
-    do {
-        cout << "PROGRAM SINGLE LINKED LIST NON-CIRCULAR" << endl;
-        cout << "1. Tambah Depan" << endl;
-        cout << "2. Tambah Belakang" << endl;
-        cout << "3. Tambah Tengah" << endl;
-        cout << "4. Ubah Depan" << endl;
-        cout << "5. Ubah Belakang" << endl;
-        cout << "6. Ubah Tengah" << endl;
-        cout << "7. Hapus Depan" << endl;
-        cout << "8. Hapus Belakang" << endl;
-        cout << "9. Hapus Tengah" << endl;
-        cout << "10. Hapus List" << endl;
-        cout << "11. TAMPILKAN" << endl;
-        cout << "0. KELUAR" << endl;
-        cout << "Pilih Operasi : ";
-        cin >> pilihan;
+    while (true) {
+        cout << "\nMenu:\n";
+        cout << "1. Tambah data mahasiswa\n";
+        cout << "2. Hapus data mahasiswa\n";
+        cout << "3. Cari data mahasiswa berdasarkan NIM\n";
+        cout << "4. Cari data mahasiswa berdasarkan rentang nilai (80-90)\n";
+        cout << "5. Keluar\n";
 
-        switch (pilihan) {
-            case 1:
-                cout << "Masukkan Nama : ";
-                cin >> nama;
-                cout << "Masukkan NIM : ";
-                cin >> nim;
-                insertDepan(nama, nim);
-                cout << "Data telah ditambahkan" << endl;
-                break;
-            case 2:
-                cout << "Masukkan Nama : ";
-                cin >> nama;
-                cout << "Masukkan NIM : ";
-                cin >> nim;
-                insertBelakang(nama, nim);
-                cout << "Data telah ditambahkan" << endl;
-                break;
-            case 3:
-                cout << "Masukkan Nama : ";
-                cin >> nama;
-                cout << "Masukkan NIM : ";
-                cin >> nim;
-                cout << "Masukkan Posisi : ";
-                cin >> posisi;
-                insertTengah(nama, nim, posisi);
-                cout << "Data telah ditambahkan" << endl;
-                break;
-            case 4:
-                cout << "Masukkan Nama : ";
-                cin >> nama;
-                cout << "Masukkan NIM : ";
-                cin >> nim;
-                ubahDepan(nama, nim);
-                cout << "Data telah diubah" << endl;
-                break;
-            case 5:
-                cout << "Masukkan Nama : ";
-                cin >> nama;
-                cout << "Masukkan NIM : ";
-                cin >> nim;
-                ubahBelakang(nama, nim);
-                cout << "Data telah diubah" << endl;
-                break;
-            case 6:
-                cout << "Masukkan Nama : ";
-                cin >> nama;
-                cout << "Masukkan NIM : ";
-                cin >> nim;
-                cout << "Masukkan Posisi : ";
-                cin >> posisi;
-                ubahTengah(nama, nim, posisi);
-                cout << "Data telah diubah" << endl;
-                break;
-            case 7:
-                hapusDepan();
-                cout << "Data telah dihapus" << endl;
-                break;
-            case 8:
-                hapusBelakang();
-                cout << "Data telah dihapus" << endl;
-                break;
-            case 9:
-                cout << "Masukkan posisi : ";
-                cin >> posisi;
-                hapusTengah(posisi);
-                cout << "Data telah dihapus" << endl;
-                break;
-            case 10:
-                clearList();
-                cout << "List telah dibersihkan" << endl;
-                break;
-            case 11:
-                tampil();
-                break;
-            case 0:
-                cout << "Keluar dari program" << endl;
-                break;
-            default:
-                cout << "Pilihan tidak valid!" << endl;
-                break;
+        int choice;
+        cout << "Masukkan pilihan: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            string nim;
+            int nilai;
+            cout << "Masukkan NIM: ";
+            cin >> nim;
+            cout << "Masukkan nilai: ";
+            cin >> nilai;
+            Mahasiswa mahasiswa = {nim, nilai};
+            hashTable.insert(mahasiswa);
+        } else if (choice == 2) {
+            string nim;
+            cout << "Masukkan NIM mahasiswa yang ingin dihapus: ";
+            cin >> nim;
+            hashTable.remove(nim);
+        } else if (choice == 3) {
+            string nim;
+            cout << "Masukkan NIM mahasiswa yang ingin dicari: ";
+            cin >> nim;
+            Mahasiswa result = hashTable.searchByNIM(nim);
+            if (result.nim != "") {
+                cout << "Data ditemukan - NIM: " << result.nim << ", Nilai: " << result.nilai << endl;
+            }
+        } else if (choice == 4) {
+            hashTable.searchByRange();
+        } else if (choice == 5) {
+            break;
+        } else {
+            cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
         }
-    } while (pilihan != 0);
+    }
 
     return 0;
 }
 
-
-
 ```
 #### Output:
-![Screenshot 2024-04-03 144028](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/fcb181ae-6950-4452-b59d-cdf847bff28b)
+### Tambah Data Mhasiswa
+![Screenshot 2024-04-09 161155](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/bb13da1d-9d2d-469b-802a-5d8255039bb7)
+### Hapus Data Mahasiswa
+![Screenshot 2024-04-09 162858](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4f98a636-10a9-4fc8-93de-b5789b9a7450)
+### Cari Data Mahasiswa Berdasarkan NIM
+![Screenshot 2024-04-09 162922](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/26c34e7f-2f04-42b0-b984-a14ef7bfb0c0)
+### Cari Data Mahasiswa Berdasarkan Rentang Nilai
+![Screenshot 2024-04-09 162935](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a04353f3-d75b-4816-ae15-91f20b3b0263)
 
-Kode di atas mengimplementasikan operasi dasar pada struktur data linked list dengan elemen yang berisi informasi mahasiswa seperti nama dan NIM (Nomor Induk Mahasiswa) menggunakan bahasa pemrograman C++. Linked list adalah struktur data yang terdiri dari elemen-elemen yang terhubung secara langsung, di mana setiap elemen memiliki referensi ke elemen berikutnya dalam urutan. Kode ini mendefinisikan struktur Node yang berisi data string untuk nama dan NIM, serta pointer ke node berikutnya. Fungsi-fungsi yang disediakan memungkinkan inisialisasi linked list, pengecekan kosong, penambahan elemen di depan, belakang, dan posisi tengah, penghapusan elemen di depan, belakang, dan posisi tengah, serta pengubahan data elemen di depan, belakang, dan posisi tengah. Selain itu, kode ini juga mencakup fungsi untuk membersihkan linked list dari semua elemen dan menampilkan semua elemen.
-
-Dalam fungsi main, program ini menyediakan menu interaktif untuk pengguna untuk memilih operasi yang ingin dilakukan pada linked list, seperti menambahkan, mengubah, menghapus, dan menampilkan elemen. Setiap operasi meminta pengguna untuk memasukkan informasi yang diperlukan, seperti nama, NIM, dan posisi untuk operasi tertentu. Program ini menggunakan loop do-while untuk menampilkan menu sampai pengguna memilih untuk keluar.
-
-Fungsi insertDepan, insertBelakang, dan insertTengah digunakan untuk menambahkan elemen ke linked list. Fungsi hapusDepan, hapusBelakang, dan hapusTengah digunakan untuk menghapus elemen dari linked list. Fungsi ubahDepan, ubahBelakang, dan ubahTengah digunakan untuk mengubah data elemen dalam linked list. Fungsi clearList digunakan untuk menghapus semua elemen dalam linked list, dan fungsi tampil digunakan untuk menampilkan semua elemen dalam linked list.
-
-Program ini menunjukkan bagaimana linked list dapat digunakan untuk menyimpan dan mengelola data dalam berbagai bentuk, dan bagaimana operasi dasar seperti penambahan, penghapusan, dan pengubahan data dapat dilakukan pada linked list.
-
-
-### 2. Setelah membuat menu tersebut, masukkan data sesuai urutan berikut, lalu tampilkan data yang telah dimasukkan. (Gunakan insert depan, belakang atau tengah)
-
-Nama NIM
-Jawad 23300001
-[Nama Anda] [NIM Anda]
-Farrel 23300003
-Denis 23300005
-Anis 23300008
-Bowo 23300015
-Gahar 23300040
-Udin 23300048
-Ucok 23300050
-Budi 23300099
-
-#### Output:
-#### Menambahkan di depan dan belakang
-![Screenshot 2024-04-03 145058](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/bfc8fbde-e205-4f6e-815f-c971f3319d9e)
-#### Menambahkan di tengah
-![Screenshot 2024-04-03 145156](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/45a40697-caf7-408b-9d66-eb39201c7579)
-
-#### Tampilan Hasil
-![Screenshot 2024-04-03 145218](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/38a27d60-3765-410f-b9f2-ad3f9c616637)
-
-![Screenshot 2024-04-03 145224](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3ee3a9b0-466e-4707-bb18-d6b404388432)
+Kode di atas merupakan implementasi dari sebuah hash table yang digunakan untuk menyimpan data mahasiswa. Setiap mahasiswa direpresentasikan oleh struktur `Mahasiswa` yang memiliki dua atribut, yaitu NIM dan nilai. Data mahasiswa disimpan dalam hash table menggunakan struktur `HashNode`, yang memiliki atribut data mahasiswa dan pointer ke node selanjutnya dalam kasus terjadi kolisi. Kelas `HashMap` memiliki beberapa fungsi, antara lain untuk menambahkan data mahasiswa (`insert()`), menghapus data mahasiswa berdasarkan NIM (`remove()`), mencari data mahasiswa berdasarkan NIM (`searchByNIM()`), dan mencari data mahasiswa berdasarkan rentang nilai (80-90) (`searchByRange()`). Program menyediakan menu pilihan kepada pengguna untuk melakukan operasi-operasi tersebut pada data mahasiswa yang disimpan dalam hash table.
 
 #### Full code Screenshot:
-![Screenshot 2024-04-03 145701](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8e7c69d2-d122-4ed8-821a-e8a6e2dab072)
+![Screenshot 2024-04-09 163955](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f83c70f4-b555-420f-a553-3bd9cf484ad1)
 
-### 3. Lakukan perintah berikut:
 
-a) Tambahkan data berikut diantara Farrel dan Denis: Wati 2330004
-b) Hapus data Denis
-c) Tambahkan data berikut di awal: Owi 2330000
-d) Tambahkan data berikut di akhir: David 23300100
-e) Ubah data Udin menjadi data berikut: Idin 23300045
-f) Ubah data terkahir menjadi berikut: Lucy 23300101
-g) Hapus data awal
-h) Ubah data awal menjadi berikut: Bagas 2330002
-i) Hapus data akhir
-j) Tampilkan seluruh data
 
-### Langkah-Langkah
-![Screenshot 2024-04-03 152444](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/1e770abd-1fe4-450f-b104-d3171cc59503)
-![Screenshot 2024-04-03 152411](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/972cdf85-12df-4ae8-bf16-416e6febf1f7)
-![Screenshot 2024-04-03 152508](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/070108dd-ad80-4afa-aaaf-f9c82701e297)
-### Tampilan Hasil
-![Screenshot 2024-04-03 152617](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8efbeecd-7591-4cfb-bc42-df97436b19b2)
 
 ## Kesimpulan
 Kesimpulan dari materi di atas adalah bahwa linked list adalah struktur data yang sangat fleksibel dan efisien untuk menyimpan dan mengelola data dalam berbagai bentuk. Ada dua jenis utama linked list yang sering digunakan: non-circular dan circular.
