@@ -466,7 +466,7 @@ int main() {
 ```
 #### Output:
 #### Tambah Data Mhasiswa
-![Screenshot 2024-04-09 161155](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/bb13da1d-9d2d-469b-802a-5d8255039bb7)
+![Screenshot 2024-04-09 162833](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/b4a2e634-a6be-46cb-92a7-aab8e7924ec0)
 #### Hapus Data Mahasiswa
 ![Screenshot 2024-04-09 162858](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4f98a636-10a9-4fc8-93de-b5789b9a7450)
 #### Cari Data Mahasiswa Berdasarkan NIM
