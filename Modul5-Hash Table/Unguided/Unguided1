@@ -1,0 +1,128 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+const int TABLE_SIZE = 10;
+
+// Struktur data untuk setiap mahasiswa
+struct Mahasiswa {
+    string nim;
+    int nilai;
+};
+
+// Struktur data untuk setiap node dalam hash table
+struct HashNode {
+    Mahasiswa data;
+    HashNode* next;
+    HashNode(Mahasiswa data) : data(data), next(nullptr) {}
+};
+
+// Class hash table
+class HashMap {
+private:
+    vector<HashNode*> table[TABLE_SIZE];
+
+public:
+    // Fungsi hash untuk menghasilkan indeks dalam hash table berdasarkan NIM
+    int hashFunc(string nim) {
+        int hash_val = 0;
+        for (char c : nim) {
+            hash_val += c;
+        }
+        return hash_val % TABLE_SIZE;
+    }
+
+    // Fungsi untuk menambahkan data mahasiswa ke hash table
+    void insert(Mahasiswa mahasiswa) {
+        int index = hashFunc(mahasiswa.nim);
+        HashNode* newNode = new HashNode(mahasiswa);
+        table[index].push_back(newNode);
+    }
+
+    // Fungsi untuk menghapus data mahasiswa dari hash table berdasarkan NIM
+    void remove(string nim) {
+        int index = hashFunc(nim);
+        for (int i = 0; i < table[index].size(); i++) {
+            if (table[index][i]->data.nim == nim) {
+                delete table[index][i];
+                table[index].erase(table[index].begin() + i);
+                cout << "Data dengan NIM " << nim << " berhasil dihapus." << endl;
+                return;
+            }
+        }
+        cout << "Data dengan NIM " << nim << " tidak ditemukan." << endl;
+    }
+
+    // Fungsi untuk mencari data mahasiswa berdasarkan NIM
+    Mahasiswa searchByNIM(string nim) {
+        int index = hashFunc(nim);
+        for (HashNode* node : table[index]) {
+            if (node->data.nim == nim) {
+                return node->data;
+            }
+        }
+        cout << "Data dengan NIM " << nim << " tidak ditemukan." << endl;
+        return {"", -1}; // Mahasiswa dengan NIM kosong dan nilai -1 menandakan data tidak ditemukan
+    }
+
+    // Fungsi untuk mencari data mahasiswa berdasarkan rentang nilai (80-90)
+    void searchByRange() {
+        cout << "Data mahasiswa dengan nilai antara 80 dan 90:" << endl;
+        for (int i = 0; i < TABLE_SIZE; i++) {
+            for (HashNode* node : table[i]) {
+                if (node->data.nilai >= 80 && node->data.nilai <= 90) {
+                    cout << "NIM: " << node->data.nim << ", Nilai: " << node->data.nilai << endl;
+                }
+            }
+        }
+    }
+};
+
+int main() {
+    HashMap hashTable;
+
+    while (true) {
+        cout << "\nMenu:\n";
+        cout << "1. Tambah data mahasiswa\n";
+        cout << "2. Hapus data mahasiswa\n";
+        cout << "3. Cari data mahasiswa berdasarkan NIM\n";
+        cout << "4. Cari data mahasiswa berdasarkan rentang nilai (80-90)\n";
+        cout << "5. Keluar\n";
+
+        int choice;
+        cout << "Masukkan pilihan: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            string nim;
+            int nilai;
+            cout << "Masukkan NIM: ";
+            cin >> nim;
+            cout << "Masukkan nilai: ";
+            cin >> nilai;
+            Mahasiswa mahasiswa = {nim, nilai};
+            hashTable.insert(mahasiswa);
+        } else if (choice == 2) {
+            string nim;
+            cout << "Masukkan NIM mahasiswa yang ingin dihapus: ";
+            cin >> nim;
+            hashTable.remove(nim);
+        } else if (choice == 3) {
+            string nim;
+            cout << "Masukkan NIM mahasiswa yang ingin dicari: ";
+            cin >> nim;
+            Mahasiswa result = hashTable.searchByNIM(nim);
+            if (result.nim != "") {
+                cout << "Data ditemukan - NIM: " << result.nim << ", Nilai: " << result.nilai << endl;
+            }
+        } else if (choice == 4) {
+            hashTable.searchByRange();
+        } else if (choice == 5) {
+            break;
+        } else {
+            cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
+        }
+    }
+
+    return 0;
+}
