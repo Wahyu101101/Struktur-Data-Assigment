@@ -329,11 +329,10 @@ Kode tersebut adalah implementasi sederhana dari struktur data hash table menggu
 
 ## Unguided 
 
-### Buatlah program menu Linked List Non Circular untuk menyimpan Nama dan NIM mahasiswa, dengan menggunakan input dari user.
-### 1. Implementasikan hash table untuk menyimpan data mahasiswa. Setiap mahasiswa memiliki NIM dan nilai. Implementasikan fungsi untuk menambahkan data baru, menghapus data, mencari data berdasarkan NIM, dan mencari data berdasarkannilai. Dengan ketentuan :
-### a. Setiap mahasiswa memiliki NIM dan nilai.
-### b. Program memiliki tampilan pilihan menu berisi poin C.
-### c. Implementasikan fungsi untuk menambahkan data baru, menghapus data,mencari data berdasarkan NIM, dan mencari data berdasarkan rentang nilai
+#### 1. Implementasikan hash table untuk menyimpan data mahasiswa. Setiap mahasiswa memiliki NIM dan nilai. Implementasikan fungsi untuk menambahkan data baru, menghapus data, mencari data berdasarkan NIM, dan mencari data berdasarkannilai. Dengan ketentuan :
+#### a. Setiap mahasiswa memiliki NIM dan nilai.
+#### b. Program memiliki tampilan pilihan menu berisi poin C.
+#### c. Implementasikan fungsi untuk menambahkan data baru, menghapus data,mencari data berdasarkan NIM, dan mencari data berdasarkan rentang nilai
 (80 – 90).
 ```C++
 #include <iostream>
@@ -467,13 +466,13 @@ int main() {
 
 ```
 #### Output:
-### Tambah Data Mhasiswa
+#### Tambah Data Mhasiswa
 ![Screenshot 2024-04-09 161155](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/bb13da1d-9d2d-469b-802a-5d8255039bb7)
-### Hapus Data Mahasiswa
+#### Hapus Data Mahasiswa
 ![Screenshot 2024-04-09 162858](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4f98a636-10a9-4fc8-93de-b5789b9a7450)
-### Cari Data Mahasiswa Berdasarkan NIM
+#### Cari Data Mahasiswa Berdasarkan NIM
 ![Screenshot 2024-04-09 162922](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/26c34e7f-2f04-42b0-b984-a14ef7bfb0c0)
-### Cari Data Mahasiswa Berdasarkan Rentang Nilai
+#### Cari Data Mahasiswa Berdasarkan Rentang Nilai
 ![Screenshot 2024-04-09 162935](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a04353f3-d75b-4816-ae15-91f20b3b0263)
 
 Kode di atas merupakan implementasi dari sebuah hash table yang digunakan untuk menyimpan data mahasiswa. Setiap mahasiswa direpresentasikan oleh struktur `Mahasiswa` yang memiliki dua atribut, yaitu NIM dan nilai. Data mahasiswa disimpan dalam hash table menggunakan struktur `HashNode`, yang memiliki atribut data mahasiswa dan pointer ke node selanjutnya dalam kasus terjadi kolisi. Kelas `HashMap` memiliki beberapa fungsi, antara lain untuk menambahkan data mahasiswa (`insert()`), menghapus data mahasiswa berdasarkan NIM (`remove()`), mencari data mahasiswa berdasarkan NIM (`searchByNIM()`), dan mencari data mahasiswa berdasarkan rentang nilai (80-90) (`searchByRange()`). Program menyediakan menu pilihan kepada pengguna untuk melakukan operasi-operasi tersebut pada data mahasiswa yang disimpan dalam hash table.
@@ -485,18 +484,11 @@ Kode di atas merupakan implementasi dari sebuah hash table yang digunakan untuk 
 
 
 ## Kesimpulan
-Kesimpulan dari materi di atas adalah bahwa linked list adalah struktur data yang sangat fleksibel dan efisien untuk menyimpan dan mengelola data dalam berbagai bentuk. Ada dua jenis utama linked list yang sering digunakan: non-circular dan circular.
+a. Hash table adalah struktur data yang digunakan untuk menyimpan dan mengakses data dengan cepat melalui fungsi hash. Dengan menggunakan fungsi hash yang efisien, hash table dapat memberikan akses yang cepat dan efisien terhadap data.
 
-• **Linked List Non-Circular:** Dalam jenis ini, node pertama (head) dan node terakhir (tail) tidak saling terhubung. Pointer terakhir (tail) selalu bernilai NULL, menandakan akhir dari list. Linked list non-circular cocok untuk aplikasi yang memerlukan akses ke data dalam urutan tertentu tanpa perlu kembali ke awal list setelah mencapai akhir.
+b. Operasi dasar hash table seperti insertion, deletion, dan searching menjadi penting dalam pengelolaan data. Dalam implementasi hash table, teknik chaining adalah metode umum yang digunakan untuk menangani kolisi, di mana dua kunci memiliki nilai hash yang sama. Dengan teknik chaining, item data dengan nilai indeks yang sama disimpan dalam linked list, memungkinkan pengelolaan data yang efisien.
 
-• **Linked List Circular:** Berbeda dengan non-circular, linked list circular tidak memiliki akhir karena node terakhir (tail) tidak bernilai NULL, tetapi terhubung kembali ke node pertama (head). Ini membuat linked list circular lebih efisien dalam hal penggunaan memori karena hanya memerlukan satu pointer untuk menyimpan head, dan memudahkan implementasi karena tidak memerlukan struktur data tambahan untuk melacak awal dan akhir list. Linked list circular sangat cocok untuk aplikasi yang memerlukan akses berulang ke data, seperti daftar putar lagu atau antrian.
-
-Ada juga dua jenis linked list circular:
-
-• **Singly Circular Linked List:** Setiap node memiliki pointer ke node berikutnya dan pointer terakhirnya menunjuk ke node pertama, membentuk struktur ring.
-
-• **Doubly Circular Linked List:** Mirip dengan singly circular linked list, tetapi setiap node juga memiliki pointer ke node sebelumnya, membuatnya dapat diakses dalam kedua arah.
-Implementasi linked list, baik non-circular maupun circular, memungkinkan operasi seperti penambahan, penghapusan, dan pengubahan data dengan efisiensi yang tinggi. Linked list menunjukkan fleksibilitas dalam penyimpanan dan manipulasi data, menjadikannya pilihan yang baik untuk berbagai aplikasi komputer.
+c. Implementasi hash table dalam kode program C++ memberikan contoh konkret dari cara menggunakan teknik chaining untuk mengelola data. Dalam program tersebut, pengguna dapat menambahkan, menghapus, dan mencari data mahasiswa berdasarkan NIM atau rentang nilai tertentu. Dengan adanya menu pilihan, program memberikan fleksibilitas bagi pengguna dalam melakukan operasi-operasi tersebut, menunjukkan aplikasi praktis dari konsep hash table dalam pemrograman komputer.
 ## Referensi
 [1] A. Smith, "Efficient Data Storage Using Hash Tables," IEEE Journal of Computer Science, vol. 10, no. 2, pp. 45-58, 2019.
 
