@@ -369,18 +369,22 @@ int main() {
 #### Kode di atas merupakan sebuah program C++ yang menggunakan stack untuk membalikkan sebuah kalimat yang dimasukkan oleh pengguna. 
 
 **1. Header Files**: Program menggunakan #include <iostream>, #include <stack>, dan #include <string> untuk menyertakan file header yang diperlukan.
+
 **2. Namespace**: Digunakan using namespace std; untuk menghindari penulisan std:: sebelum setiap fungsi dari namespace std.
+
 **3. Fungsi reverseSentence**:
 - Menerima parameter sentence yang merupakan sebuah string, yaitu kalimat yang akan dibalik.
 - Membuat sebuah stack (charStack) untuk menyimpan setiap karakter dari kalimat.
 - Iterasi melalui setiap karakter dalam kalimat, kemudian push karakter tersebut ke dalam stack.
 - Setelah semua karakter dimasukkan ke dalam stack, karakter-karakter tersebut dipop dari stack satu per satu dan ditambahkan ke dalam string reversedSentence, sehingga menghasilkan kalimat terbalik.
 - Mengembalikan kalimat terbalik tersebut.
+- 
 **4. Fungsi main**:
 - Mendeklarasikan variabel kalimat untuk menyimpan kalimat yang dimasukkan oleh pengguna.
 - Meminta pengguna untuk memasukkan sebuah kalimat menggunakan getline(cin, kalimat).
 - Memanggil fungsi reverseSentence untuk membalikkan kalimat yang dimasukkan oleh pengguna.
 - Mencetak kalimat asli dan hasil pembalikan kalimat menggunakan cout.
+- 
 **5.Output**: Program akan meminta pengguna untuk memasukkan sebuah kalimat. Setelah pengguna memasukkan kalimat, program akan mencetak kalimat tersebut, kemudian mencetak hasil pembalikan kalimat.
 
 #### Full code Screenshot:
