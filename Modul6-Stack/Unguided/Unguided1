@@ -1,0 +1,53 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+string arrayBuku[5]; // Array untuk menyimpan kalimat dalam stack
+int maksimal = 5, top = 0; // Variabel untuk mengontrol ukuran stack dan posisi top
+
+void pushArrayBuku(string data) {
+    if (top < maksimal) { // Periksa apakah masih ada ruang dalam stack
+        arrayBuku[top] = data; // Masukkan data ke dalam stack pada posisi top
+        top++; // Pindahkan posisi top ke atas
+    } else {
+        cout << "Stack penuh, tidak bisa menambahkan kata baru." << endl;
+    }
+}
+
+bool isPalindrome(string str) {
+    int length = str.length(); // Simpan panjang string
+    for (int i = 0; i < length / 2; i++) { // Iterasi hingga setengah panjang string
+        if (tolower(str[i]) != tolower(str[length - i - 1])) { // Bandingkan karakter pertama dengan yang terakhir, kedua dengan yang kedua terakhir, dan seterusnya
+            return false; // Jika ada perbedaan, string bukan palindrom
+        }
+    }
+    return true; // Jika tidak ada perbedaan, string palindrom
+}
+
+int main() {
+    string kata;
+    cout << endl;
+
+    // Meminta pengguna memasukkan kata-kata
+    for (int i = 0; i < 2; ++i) {
+        cout << "Masukkan kata " << ": ";
+        cin >> kata;
+        pushArrayBuku(kata); // Masukkan kata ke dalam stack
+    }
+    cout << endl;
+
+    for (int i = 0; i < top; i++) { // Iterasi melalui stack
+        if (isPalindrome(arrayBuku[i])) { // Jika kata dalam stack adalah palindrom
+            cout << "Kalimat : " << arrayBuku[i] << endl; 
+            cout << "Kalimat tersebut adalah palindrom." << endl;       
+            cout << endl;
+        } else {
+            cout << "Kalimat : " << arrayBuku[i] << endl; 
+            cout << "Kalimat tersebut adalah bukan palindrom." << endl; 
+            cout << endl;
+        }
+    }
+
+    return 0; // Keluar dari program
+}
