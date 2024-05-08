@@ -1,0 +1,121 @@
+#include <iostream>
+using namespace std;
+
+string arrayBuku[5]; // Array untuk menyimpan data dalam stack
+int maksimal = 5, top = 0; // Variabel untuk mengontrol ukuran stack dan posisi top
+
+// Fungsi untuk memeriksa apakah stack penuh
+bool isFull() {
+    return (top == maksimal);
+}
+
+// Fungsi untuk memeriksa apakah stack kosong
+bool isEmpety() {
+    return (top == 0);
+}
+
+// Fungsi untuk menambahkan data ke dalam stack
+void pushArrayBuku(string data) {
+    if (isFull()) { // Jika stack penuh
+        cout <<"Data telah penuh" <<endl; // Tampilkan pesan
+    } else {
+        arrayBuku[top] = data; // Masukkan data ke dalam stack pada posisi top
+        top++; // Pindahkan posisi top ke atas
+    }
+}
+
+// Fungsi untuk menghapus data teratas dari stack
+void popArrayBuku() {
+    if (isEmpety()) { // Jika stack kosong
+        cout <<"Tidak ada data yang dihapus" <<endl; // Tampilkan pesan
+    } else {
+        arrayBuku[top - 1] = ""; // Hapus data teratas dengan mengosongkan nilainya
+        top--; // Turunkan posisi top
+    }
+}
+
+// Fungsi untuk melihat data pada posisi tertentu dalam stack
+void peekArrayBuku(int posisi) {
+    if (isEmpety()) { // Jika stack kosong
+        cout <<"Tidak ada data yang bisa dilihat"<<endl; // Tampilkan pesan
+    } else {
+        int index = top;
+        for(int i = 1; i <= posisi; i++) {
+            index--;
+        }
+        cout << "Posisi ke " << posisi << " adalah " << arrayBuku[index] <<endl; // Tampilkan data pada posisi tertentu
+    }
+}
+
+// Fungsi untuk menghitung jumlah data dalam stack
+int countStack() {
+    return top;
+}
+
+// Fungsi untuk mengubah data pada posisi tertentu dalam stack
+void changeArrayBuku(int posisi, string data) {
+    if (posisi > top) { // Jika posisi melebihi jumlah data dalam stack
+        cout << "Posisi melebihi data yang ada" <<endl; // Tampilkan pesan
+    } else {
+        int index = top;
+        for (int i = 1; i <= posisi; i++) {
+            index--;
+        }
+        arrayBuku[index] = data; // Ubah data pada posisi tertentu
+    }
+}
+
+// Fungsi untuk menghapus semua data dalam stack
+void destroyArraybuku() {
+    for (int i = top; i >= 0; i--) {
+        arrayBuku[i] = ""; // Mengosongkan semua data dalam array
+    }
+    top = 0; // Mengatur kembali posisi top ke 0
+}
+
+// Fungsi untuk mencetak semua data dalam stack
+void cetakArrayBuku() {
+    if (isEmpety()) { // Jika stack kosong
+        cout << "Tidak ada data yang dicetak" <<endl; // Tampilkan pesan
+    } else {
+        for (int i = top -1; i >= 0; i--) { // Iterasi dari top ke bawah hingga indeks ke-0
+            cout << arrayBuku[i] <<endl; // Tampilkan data pada setiap indeks
+        }
+    }
+}
+
+int main() {
+    // Menambahkan beberapa data ke dalam stack
+    pushArrayBuku("Kalkulus");
+    pushArrayBuku("Struktur Data");
+    pushArrayBuku("Matematika Diskrit");
+    pushArrayBuku("Dasar Multimedia");
+    pushArrayBuku("Inggris");
+
+    // Mencetak semua data dalam stack
+    cetakArrayBuku();
+    cout << "\n";
+
+    // Memeriksa apakah stack penuh atau kosong
+    cout << "Apakah data stack penuh? " << isFull() <<endl;
+    cout << "Apakah data stack kosong? " << isEmpety() <<endl;
+
+    // Melihat data pada posisi tertentu dalam stack dan menghapus data teratas
+    peekArrayBuku(2);
+    popArrayBuku();
+    cout << "Banyaknya data = " << countStack() <<endl;
+
+    // Mengubah data pada posisi tertentu dalam stack
+    changeArrayBuku(2, "Bahasa Jerman");
+    cetakArrayBuku();
+
+    cout <<"\n";
+    // Menghapus semua data dalam stack dan mencetak jumlah data
+    destroyArraybuku();
+    cout << "Jumlah data setelah dihapus: " << top <<endl;
+
+    // Mencetak semua data dalam stack setelah dihapus
+    cetakArrayBuku();
+
+    return 0; // Keluar dari program
+}
