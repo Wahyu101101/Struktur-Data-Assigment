@@ -22,21 +22,22 @@ Stack, atau tumpukan, adalah struktur data abstrak yang mengikuti aturan Last In
 
 #### Stack memiliki beberapa operasi dasar:
 
-Push: Menambahkan elemen baru ke puncak stack [2].
-Pop: Menghapus elemen dari puncak stack dan mengembalikan nilainya [2].
-Top: Melihat nilai elemen di puncak stack tanpa menghapusnya [2].
-Empty: Memeriksa apakah stack kosong atau tidak [2].
-IsFull (Penuh): Memeriksa apakah tumpukan penuh atau tidak (terutama pad implementasi tumpukan dengan kapasitas terbatas)[1].
-Size (Ukuran): Mengembalikan jumlah elemen yang ada dalam tumpukan[1].
-Peek (Lihat): Melihat nilai atau elemen pada posisi tertentu dalam tumpukan tanpa menghapusnya[1].
-Clear (Hapus Semua): Mengosongkan atau menghapus semua elemen dari tumpukan[1].
-Search (Cari): Mencari keberadaan elemen tertentu dalam tumpukan[1].
-Stack memiliki banyak aplikasi dalam pemrograman, seperti:
+● Push: Menambahkan elemen baru ke puncak stack [2].
+● Pop: Menghapus elemen dari puncak stack dan mengembalikan nilainya [2].
+● Top: Melihat nilai elemen di puncak stack tanpa menghapusnya [2].
+● Empty: Memeriksa apakah stack kosong atau tidak [2].
+● IsFull (Penuh): Memeriksa apakah tumpukan penuh atau tidak (terutama pad implementasi tumpukan dengan kapasitas terbatas)[1].
+● Size (Ukuran): Mengembalikan jumlah elemen yang ada dalam tumpukan[1].
+● Peek (Lihat): Melihat nilai atau elemen pada posisi tertentu dalam tumpukan tanpa menghapusnya[1].
+● Clear (Hapus Semua): Mengosongkan atau menghapus semua elemen dari tumpukan[1].
+● Search (Cari): Mencari keberadaan elemen tertentu dalam tumpukan[1].
 
-Membatalkan operasi: Tombol undo/redo di banyak aplikasi menggunakan stack untuk menyimpan status program sebelumnya [3].
-Ekspresi matematika: Stack digunakan untuk mengevaluasi ekspresi matematika dengan urutan operasi yang benar [3].
-Kompilasi: Stack digunakan untuk menyimpan informasi tentang variabel dan label selama proses kompilasi [3].
-Algoritma: Stack digunakan dalam berbagai algoritma, seperti backtracking dan pencarian pohon [3].
+##### Stack memiliki banyak aplikasi dalam pemrograman, seperti:
+
+● Membatalkan operasi: Tombol undo/redo di banyak aplikasi menggunakan stack untuk menyimpan status program sebelumnya [3].
+● Ekspresi matematika: Stack digunakan untuk mengevaluasi ekspresi matematika dengan urutan operasi yang benar [3].
+● Kompilasi: Stack digunakan untuk menyimpan informasi tentang variabel dan label selama proses kompilasi [3].
+● Algoritma: Stack digunakan dalam berbagai algoritma, seperti backtracking dan pencarian pohon [3].
 
 
 
