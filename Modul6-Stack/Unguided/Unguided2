@@ -1,0 +1,45 @@
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
+
+// Fungsi untuk membalikkan kalimat menggunakan stack
+string reverseSentence(string sentence) {
+    stack<char> charStack; // Stack untuk menyimpan karakter
+    string reversedSentence; // String untuk menyimpan kalimat terbalik
+
+    // Push setiap karakter ke dalam stack
+    for (char c : sentence) {
+        charStack.push(c);
+    }
+
+    // Pop karakter dari stack dan tambahkan ke string hasil
+    while (!charStack.empty()) {
+        reversedSentence += charStack.top();
+        charStack.pop();
+    }
+
+    return reversedSentence; // Mengembalikan kalimat terbalik
+}
+
+int main() {
+    string kalimat;
+    cout<<endl;
+
+    // Meminta pengguna memasukkan kalimat
+    cout << "Masukkan kalimat: ";
+    getline(cin, kalimat);
+    cout<<endl;
+
+    // Mencetak kalimat yang dimasukkan pengguna
+    cout << "Kalimat: " << kalimat << endl;
+
+    // Memanggil fungsi untuk membalikkan kalimat
+    string hasil = reverseSentence(kalimat);
+
+    // Mencetak hasil pembalikan kalimat
+    cout << "Hasil: " << hasil << endl;
+    cout<<endl;
+
+    return 0;
+}
