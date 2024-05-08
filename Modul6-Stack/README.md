@@ -1,4 +1,4 @@
-# <h1 align="center">Laporan Praktikum Modul Stack</h1>
+![image](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a4f395de-d350-4061-9cd4-3ca5d61c44a3)# <h1 align="center">Laporan Praktikum Modul Stack</h1>
 <p align="center">Wahyu Hidayat</p>
 <p align="center">2311102178 / 11-E-IF</p>
 
@@ -257,39 +257,63 @@ bool isPalindrome(string str) {
 }
 
 int main(){
-    pushArrayBuku("ini"); // Masukkan kalimat ke dalam stack
-    pushArrayBuku("Telkom"); // Masukkan kalimat ke dalam stack
+    string kata;
+    cout << endl;
 
-    cout << "Apakah data stack penuh? " << isFull() << endl; // Periksa apakah stack penuh
-    cout << "Apakah data stack kosong? " << isEmpety() << endl; // Periksa apakah stack kosong
+    // Meminta pengguna memasukkan kata-kata
+    for (int i = 0; i < 2; ++i) {
+        cout << "Masukkan kata" << ": ";
+        cin >> kata;
+        pushArrayBuku(kata); // Masukkan kata ke dalam stack
+    }
+    cout << endl;
+
 
     for (int i = 0; i < top; i++) { // Iterasi melalui stack
-        if (isPalindrome(arrayBuku[i])) { // Jika kalimat dalam stack adalah palindrom
-            cout << "Kalimat \"" << arrayBuku[i] << "\" adalah palindrom." << endl; // Tampilkan pesan
+        if (isPalindrome(arrayBuku[i])) { // Jika kata dalam stack adalah palindrom
+            cout << "Kalimat : " << arrayBuku[i] <<endl; 
+            cout << "Kalimat tersebut adalah palindrom." << endl;       
+            cout << endl;
+ // Tampilkan pesan
         } else {
-            cout << "Kalimat \"" << arrayBuku[i] << "\" bukan palindrom." << endl; // Tampilkan pesan
+            cout << "Kalimat : " << arrayBuku[i] <<endl; 
+            cout << "Kalimat tersebut adalah bukan palindrom." << endl; // Tampilkan pesan
+            cout << endl;
         }
     }
+
 
     return 0; // Keluar dari program
 }
 
+
 ```
 #### Output:
-#### Tambah Data Mhasiswa
-![Screenshot 2024-04-09 162833](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/b4a2e634-a6be-46cb-92a7-aab8e7924ec0)
-#### Hapus Data Mahasiswa
-![Screenshot 2024-04-09 162858](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4f98a636-10a9-4fc8-93de-b5789b9a7450)
-#### Cari Data Mahasiswa Berdasarkan NIM
-![Screenshot 2024-04-09 162922](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/26c34e7f-2f04-42b0-b984-a14ef7bfb0c0)
-#### Cari Data Mahasiswa Berdasarkan Rentang Nilai
-![Screenshot 2024-04-09 162935](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a04353f3-d75b-4816-ae15-91f20b3b0263)
+![Screenshot 2024-05-08 141632](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/645cceff-c948-43c9-a2bf-22a043a9cf97)
+#### Kode di atas berfungsi untuk menentukan apakah kata-kata yang dimasukkan pengguna merupakan palindrom atau tidak. Di bawah ini penjelasan dari setiap bagian kode:
 
-Kode di atas merupakan implementasi dari sebuah hash table yang digunakan untuk menyimpan data mahasiswa. Setiap mahasiswa direpresentasikan oleh struktur `Mahasiswa` yang memiliki dua atribut, yaitu NIM dan nilai. Data mahasiswa disimpan dalam hash table menggunakan struktur `HashNode`, yang memiliki atribut data mahasiswa dan pointer ke node selanjutnya dalam kasus terjadi kolisi. Kelas `HashMap` memiliki beberapa fungsi, antara lain untuk menambahkan data mahasiswa (`insert()`), menghapus data mahasiswa berdasarkan NIM (`remove()`), mencari data mahasiswa berdasarkan NIM (`searchByNIM()`), dan mencari data mahasiswa berdasarkan rentang nilai (80-90) (`searchByRange()`). Program menyediakan menu pilihan kepada pengguna untuk melakukan operasi-operasi tersebut pada data mahasiswa yang disimpan dalam hash table.
+**1.Deklarasi Variabel dan Fungsi**:
+- arrayBuku: Array yang digunakan sebagai stack untuk menyimpan kata-kata.
+- maksimal: Variabel yang menunjukkan maksimal kapasitas stack.
+- top: Variabel yang menunjukkan posisi paling atas (top) pada stack.
+- isFull(): Fungsi untuk memeriksa apakah stack penuh.
+- isEmpety(): Fungsi untuk memeriksa apakah stack kosong.
+- pushArrayBuku(): Fungsi untuk menambahkan kata ke dalam stack.
+- popArrayBuku(): Fungsi untuk menghapus kata dari stack.
+- cetakArrayBuku(): Fungsi untuk mencetak isi stack.
+- isPalindrome(): Fungsi untuk memeriksa apakah sebuah string merupakan palindrom.
+**2.Meminta Input Pengguna**:
+- Pengguna diminta untuk memasukkan dua buah kata. Dalam contoh ini, jumlah kata yang dimasukkan disetel menjadi 2.
+**3.Pengecekan Palindrom**:
+- Setelah kata-kata dimasukkan ke dalam stack, program melakukan iterasi melalui stack.
+- Untuk setiap kata, program memanggil fungsi isPalindrome() untuk memeriksa apakah kata tersebut merupakan palindrom atau bukan.
+- Jika kata adalah palindrom, program mencetak pesan bahwa kata tersebut adalah palindrom. Jika tidak, program mencetak pesan bahwa kata tersebut bukan palindrom.
+**4.Penjelasan Hasil**:
+- Setelah iterasi selesai, program menampilkan hasil pengecekan palindrom untuk setiap kata yang dimasukkan pengguna.
+- Untuk setiap kata, program mencetak kata tersebut beserta hasil pengecekan palindrom.
 
 #### Full code Screenshot:
-![Screenshot 2024-04-09 163955](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f83c70f4-b555-420f-a553-3bd9cf484ad1)
-
+![Screenshot 2024-05-08 141648](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a05872a5-3704-466a-a6b5-2d457b679c6e)
 
 
 
