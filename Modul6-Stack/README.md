@@ -8,34 +8,37 @@
 ## **Stack**
 
 #### Pengertian Stack
+Stack adalah struktur data sederhana yang digunakan untuk menyimpan data (mirip dengan Linked Lists). Dalam tumpukan, urutan kedatangan data penting. Sebuah tumpukan piring di kafetaria adalah contoh bagus dari tumpukan. Piring ditambahkan
+ke tumpukan saat mereka dibersihkan dan ditempatkan di bagian atas. Ketika sebuah piring dibutuhkan, diambil dari bagian atas tumpukan. Piring pertama yang ditempatkan di tumpukan adalah yang terakhir digunakan[1]. 
 
-Stack, atau tumpukan, adalah struktur data abstrak yang mengikuti aturan Last In, First Out (LIFO) [1]. Artinya, elemen yang terakhir dimasukkan ke dalam stack akan menjadi elemen pertama yang dikeluarkan. Analogi sederhananya seperti tumpukan piring: piring yang paling atas adalah yang terakhir diletakkan dan akan menjadi yang pertama diambil.
+Stack, atau tumpukan, adalah struktur data abstrak yang mengikuti aturan Last In, First Out (LIFO) [2]. Artinya, elemen yang terakhir dimasukkan ke dalam stack akan menjadi elemen pertama yang dikeluarkan. Analogi sederhananya seperti tumpukan piring: piring yang paling atas adalah yang terakhir diletakkan dan akan menjadi yang pertama diambil.
+
+##### Definisi: Sebuah tumpukan adalah daftar terurut di mana penyisipan dan penghapusan dilakukan di satu ujung, disebut atas. Elemen terakhir yang dimasukkan adalah yang pertama dihapus. Oleh karena itu, disebut daftar Last in First out (LIFO)[1].
+
+
+![Screenshot 2024-05-08 131258](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0bbf6944-e070-4cbd-98a1-dc5e3398949b)
 
 #### Pembahasan Stack
 
 #### Stack memiliki beberapa operasi dasar:
 
-Push: Menambahkan elemen baru ke puncak stack [1].
-Pop: Menghapus elemen dari puncak stack dan mengembalikan nilainya [1].
-Top: Melihat nilai elemen di puncak stack tanpa menghapusnya [1].
-Empty: Memeriksa apakah stack kosong atau tidak [1].
+Push: Menambahkan elemen baru ke puncak stack [2].
+Pop: Menghapus elemen dari puncak stack dan mengembalikan nilainya [2].
+Top: Melihat nilai elemen di puncak stack tanpa menghapusnya [2].
+Empty: Memeriksa apakah stack kosong atau tidak [2].
+IsFull (Penuh): Memeriksa apakah tumpukan penuh atau tidak (terutama pad implementasi tumpukan dengan kapasitas terbatas)[1].
+Size (Ukuran): Mengembalikan jumlah elemen yang ada dalam tumpukan[1].
+Peek (Lihat): Melihat nilai atau elemen pada posisi tertentu dalam tumpukan tanpa menghapusnya[1].
+Clear (Hapus Semua): Mengosongkan atau menghapus semua elemen dari tumpukan[1].
+Search (Cari): Mencari keberadaan elemen tertentu dalam tumpukan[1].
 Stack memiliki banyak aplikasi dalam pemrograman, seperti:
 
-Membatalkan operasi: Tombol undo/redo di banyak aplikasi menggunakan stack untuk menyimpan status program sebelumnya [2].
-Ekspresi matematika: Stack digunakan untuk mengevaluasi ekspresi matematika dengan urutan operasi yang benar [2].
-Kompilasi: Stack digunakan untuk menyimpan informasi tentang variabel dan label selama proses kompilasi [2].
-Algoritma: Stack digunakan dalam berbagai algoritma, seperti backtracking dan pencarian pohon [2].
-Ilustrasi Stack
+Membatalkan operasi: Tombol undo/redo di banyak aplikasi menggunakan stack untuk menyimpan status program sebelumnya [3].
+Ekspresi matematika: Stack digunakan untuk mengevaluasi ekspresi matematika dengan urutan operasi yang benar [3].
+Kompilasi: Stack digunakan untuk menyimpan informasi tentang variabel dan label selama proses kompilasi [3].
+Algoritma: Stack digunakan dalam berbagai algoritma, seperti backtracking dan pencarian pohon [3].
 
-Berikut adalah ilustrasi stack dengan operasi dasar:
 
-Awal: Stack kosong.
-Push(A): Elemen A ditambahkan ke puncak stack.
-Push(B): Elemen B ditambahkan ke puncak stack, sekarang di atas elemen A.
-Top(): Nilai elemen B (di puncak stack) dikembalikan, tetapi elemen B tidak dihapus.
-Pop(): Elemen B dihapus dari puncak stack.
-Push(C): Elemen C ditambahkan ke puncak stack.
-Empty(): Mengembalikan False, karena stack tidak kosong.
 
 ## Guided 
 ### Guided 1
@@ -482,12 +485,9 @@ B. Operasi dasar hash table seperti insertion, deletion, dan searching menjadi p
 
 C. Implementasi hash table dalam kode program C++ memberikan contoh konkret dari cara menggunakan teknik chaining untuk mengelola data. Dalam program tersebut, pengguna dapat menambahkan, menghapus, dan mencari data mahasiswa berdasarkan NIM atau rentang nilai tertentu. Dengan adanya menu pilihan, program memberikan fleksibilitas bagi pengguna dalam melakukan operasi-operasi tersebut, menunjukkan aplikasi praktis dari konsep hash table dalam pemrograman komputer.
 ## Referensi
-[1] A. Smith, "Efficient Data Storage Using Hash Tables," IEEE Journal of Computer Science, vol. 10, no. 2, pp. 45-58, 2019.
+[2] "A Survey of Stack-Based Machine Learning" oleh D. Wang et al. (2019) 
 
-[2]. B. Johnson, C. Lee, "Collision Resolution Methods in Hash Tables," ACM Transactions on Algorithms, vol. 15, no. 3, pp. 112-125, 2020.
-
-[3] Asisten Praktikum, “Modul 5 Hash Table", Googgle Classroom, 2024.
-
+[3] "Stack-Based Memory Allocation for Deep Learning" oleh Y. Wu et al. (2019) 
 
 
 
