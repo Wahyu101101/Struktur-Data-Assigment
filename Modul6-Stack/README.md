@@ -48,125 +48,106 @@ Stack, atau tumpukan, adalah struktur data abstrak yang mengikuti aturan Last In
 #include <iostream>
 using namespace std;
 
-const int MAX_SIZE = 10;
+string arrayBuku[5];
+int maksimal = 5, top = 0;
 
-// Fungsi hash sederhana
-int hash_func(int key) {
-    return key % MAX_SIZE;
+bool isFull(){
+    return(top == maksimal);
 }
 
-// Struktur data untuk setiap node
-struct Node {
-    int key;
-    int value;
-    Node* next;
-    Node(int key, int value) : key(key), value(value), next(nullptr) {}
-};
+bool isEmpety(){
+    return (top == 0);
+}
 
-// Class hash table
-class HashTable {
-private:
-    Node** table;
-
-public:
-    // Konstruktor untuk inisialisasi hash table
-    HashTable() {
-        table = new Node*[MAX_SIZE]();
+void pushArrayBuku (string data ){
+    if (isFull()){
+        cout <<"Data telah penuh" <<endl;
     }
+    else{
+        arrayBuku[top] = data;
+        top++;
+    }
+}
 
-    // Destruktor untuk membersihkan memori
-    ~HashTable() {
-        for (int i = 0; i < MAX_SIZE; i++) {
-            Node* current = table[i];
-            while (current != nullptr) {
-                Node* temp = current;
-                current = current->next;
-                delete temp;
-            }
+void popArrayBuku(){
+    if (isEmpety()){
+        cout <<" Tidak ada data yang dihapus" <<endl;
+    }else {
+        arrayBuku[top - 1] = "";
+        top--;
+    }
+}
+
+void peekArrayBuku (int posisi){
+    if (isEmpety()){
+        cout <<"Tidak ada data yang bisa dilihat"<<endl;
+    }else {
+        int index = top;
+        for(int i = 1; i <= posisi; i++){
+            index--;
         }
-        delete[] table;
+        cout << "Posisi ke " << posisi << " adalah " << arrayBuku[index] <<endl;
     }
+}
 
-    // Insertion: Menyisipkan pasangan kunci-nilai ke dalam hash table
-    void insert(int key, int value) {
-        int index = hash_func(key);
-        Node* current = table[index];
-        while (current != nullptr) {
-            if (current->key == key) {
-                current->value = value;
-                return;
-            }
-            current = current->next;
+int countStack (){
+    return top;
+}
+
+void changeArrayBuku (int posisi, string data){
+    if (posisi > top){
+        cout << "Posisi melebihi data yang ada"<<endl;
+    }else{
+        int index = top;
+        for (int i = 1; i <= posisi; i++){
+            index--;
         }
-        Node* node = new Node(key, value);
-        node->next = table[index];
-        table[index] = node;
+        arrayBuku[index]= data;
     }
+}
 
-    // Searching: Mencari nilai berdasarkan kunci
-    int get(int key) {
-        int index = hash_func(key);
-        Node* current = table[index];
-        while (current != nullptr) {
-            if (current->key == key) {
-                return current->value;
-            }
-            current = current->next;
-        }
-        return -1; // Nilai kunci tidak ditemukan
+void destroyArraybuku(){
+    for (int i = top; i >= 0; i--){
+        arrayBuku[i] = "";
     }
+    top = 0;
+}
 
-    // Deletion: Menghapus pasangan kunci-nilai dari hash table
-    void remove(int key) {
-        int index = hash_func(key);
-        Node* current = table[index];
-        Node* prev = nullptr;
-        while (current != nullptr) {
-            if (current->key == key) {
-                if (prev == nullptr) {
-                    table[index] = current->next;
-                } else {
-                    prev->next = current->next;
-                }
-                delete current;
-                return;
-            }
-            prev = current;
-            current = current->next;
+void cetakArrayBuku(){
+    if (isEmpety()){
+        cout << "Tidak ada data yang dicetak" <<endl;
+    }else{
+        for (int i = top -1; i >= 0; i--){
+            cout << arrayBuku[i] <<endl;
         }
     }
+}
 
-    // Traversal: Mencetak semua pasangan kunci-nilai dalam hash table
-    void traverse() {
-        for (int i = 0; i < MAX_SIZE; i++) {
-            Node* current = table[i];
-            while (current != nullptr) {
-                cout << current->key << ": " << current->value << endl;
-                current = current->next;
-            }
-        }
-    }
-};
+int main(){
+    pushArrayBuku("Kalkulus");
+    pushArrayBuku("Struktur Data");
+    pushArrayBuku("Matematika Diskrit");
+    pushArrayBuku("Dasar Multimedia");
+    pushArrayBuku("Inggris");
 
-int main() {
-    // Membuat objek hash table
-    HashTable ht;
+    cetakArrayBuku();
+    cout << "\n";
 
-    // Insertion: Menambahkan beberapa pasangan kunci-nilai
-    ht.insert(1, 10);
-    ht.insert(2, 20);
-    ht.insert(3, 30);
+    cout << "Apakah data stack penuh? " <<isFull()<<endl;
+    cout << "Apakah data stack kosong? " <<isEmpety()<<endl;
 
-    // Searching: Mencari nilai untuk kunci tertentu
-    cout << "Get key 1: " << ht.get(1) << endl;
-    cout << "Get key 4: " << ht.get(4) << endl;
+    peekArrayBuku(2);
+    popArrayBuku();
+    cout << "Banyaknya data = " << countStack()<<endl;
 
-    // Deletion: Menghapus pasangan kunci-nilai
-    ht.remove(4);
+    changeArrayBuku(2, "Bahasa Jerman");
+    cetakArrayBuku();
 
-    // Traversal: Mencetak semua pasangan kunci-nilai dalam hash table
-    ht.traverse();
+    cout <<"\n";
+    destroyArraybuku();
+    cout << "Jumlah data setelah dihapus: " << top <<endl;
 
+    cetakArrayBuku();
     return 0;
 }
 
@@ -175,154 +156,38 @@ int main() {
 ```
 #### Output:
 
-![Screenshot 2024-04-09 160515](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/fe21dcb3-c8c7-4e83-be18-32e43f438872)
+![Screenshot 2024-05-08 133627](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/d725d770-8e2b-4d33-9a27-acb2f59fe9e8)
 
-Kode diatas terdiri dari array pointer ke node, di mana setiap node merupakan bagian dari linked list dan menyimpan pasangan kunci-nilai. Berikut adalah rincian komponen-komponen utama dari kode tersebut:
+Kode diatas dibuat dengan konsep tumpukan (stack) yang mengikuti aturan LIFO (Last In, First Out). Artinya, buku yang terakhir dimasukkan ke dalam tumpukan akan menjadi buku pertama yang dikeluarkan.
 
-1. **Fungsi hash (hash_func)**:
-   - Fungsi ini menggunakan operasi modulo untuk mengonversi kunci menjadi indeks dalam array hash table.
+#### Deklarasi Variabel dan Fungsi
 
-2. **Struktur Node**:
-   - Ini adalah struktur data untuk setiap node dalam linked list yang digunakan untuk chaining. Setiap node memiliki variabel untuk menyimpan kunci dan nilai, serta pointer yang menunjuk ke node berikutnya dalam linked list.
+- arrayBuku[5]: Array untuk menyimpan judul buku, maksimum 5 buah.
+- maksimal: Nilai konstan (const) yang menyatakan kapasitas maksimal tumpukan (5).
+- top: Variabel integer untuk menunjuk ke posisi elemen teratas dalam tumpukan (awalnya 0).
 
-3. **Class HashTable**:
-   - Class ini mewakili hash table dan memiliki metode-metode untuk melakukan operasi-insertion, searching, removal, dan traversal.
-   - Metode insertion (insert) digunakan untuk menyisipkan pasangan kunci-nilai ke dalam hash table. Jika terjadi collision, elemen baru akan disisipkan di awal linked list yang sesuai.
-   - Metode searching (get) digunakan untuk mencari nilai berdasarkan kunci. Nilai yang terkait dengan kunci yang diberikan akan dikembalikan, atau -1 jika kunci tidak ditemukan.
-   - Metode removal (remove) digunakan untuk menghapus pasangan kunci-nilai dari hash table berdasarkan kunci yang diberikan.
-   - Metode traversal (traverse) digunakan untuk mencetak semua pasangan kunci-nilai dalam hash table.
+#### Fungsi-fungsi
 
-4. **Main Function**:
-   - Dalam fungsi utama, sebuah objek hash table dibuat dan beberapa pasangan kunci-nilai ditambahkan ke dalamnya menggunakan metode insert.
-   - Nilai-nilai yang terkait dengan beberapa kunci kemudian dicari menggunakan metode get.
-   - Operasi remove digunakan untuk menghapus pasangan kunci-nilai dari hash table.
-   - Metode traverse digunakan untuk mencetak semua pasangan kunci-nilai dalam hash table.
-
+##### Pemeriksaan Kondisi Tumpukan:
+- isFull(): Memeriksa apakah tumpukan sudah penuh (top == maksimal) dan mengembalikan true jika penuh, false jika masih ada ruang.
+- isEmpety(): Memeriksa apakah tumpukan kosong (top == 0) dan mengembalikan true jika kosong, false jika ada data.
+##### Operasi terhadap Tumpukan:
+- pushArrayBuku(string data): Menambahkan buku baru dengan judul data ke dalam tumpukan. Fungsi ini terlebih dahulu mengecek isFull(). Jika penuh, akan menampilkan pesan "Data telah penuh". Jika tidak penuh, judul buku (data) akan disimpan di indeks top pada array arrayBuku, kemudian top ditambah 1 (menunjuk ke posisi kosong berikutnya).
+- popArrayBuku(): Menghapus buku teratas dari tumpukan. Fungsi ini terlebih dahulu mengecek isEmpety(). Jika kosong, akan menampilkan pesan "Tidak ada data yang dihapus". Jika tidak kosong, elemen pada indeks top-1 dikosongkan dengan memberi nilai kosong ("") dan top dikurangi 1 (menunjuk ke elemen teratas baru).
+- peekArrayBuku(int posisi): Menampilkan judul buku pada posisi tertentu (posisi) dalam tumpukan. Fungsi ini terlebih dahulu mengecek isEmpety(). Jika kosong, akan menampilkan pesan "Tidak ada data yang bisa dilihat". Jika tidak kosong, posisi sebenarnya dalam array dihitung dengan top - posisi karena top menunjuk ke elemen teratas. Judul buku pada posisi tersebut kemudian ditampilkan.
+##### Operasi Lain pada Tumpukan:
+- countStack(): Mengembalikan jumlah buku yang ada dalam tumpukan dengan nilai top.
+- changeArrayBuku(int posisi, string data): Mengubah judul buku pada posisi tertentu (posisi) dalam tumpukan dengan judul baru data. Fungsi ini terlebih dahulu mengecek apakah posisi melebihi top (melebihi jumlah buku yang ada). Jika ya, akan menampilkan pesan "Posisi melebihi data yang ada". Jika tidak, posisi sebenarnya dalam array dihitung dengan top - posisi dan judul buku pada posisi tersebut diubah menjadi data.
+- destroyArraybuku(): Menghapus semua data buku dari tumpukan. Fungsi ini melakukan iterasi dari top ke 0, dan pada setiap indeks elemen dikosongkan dengan memberi nilai kosong ("") pada array arrayBuku. Terakhir, top diubah menjadi 0 (menandakan tumpukan kosong).
+- cetakArrayBuku(): Menampilkan daftar judul buku dari tumpukan, dari atas ke bawah. Fungsi ini terlebih dahulu mengecek isEmpety(). Jika kosong, akan menampilkan pesan "Tidak ada data yang dicetak". Jika tidak kosong, iterasi dilakukan dari top-1 hingga 0, dan pada setiap indeks judul buku pada array arrayBuku akan ditampilkan.
 
 #### Full code Screenshot:
 
-![Screenshot 2024-04-09 160527](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/dfb4f449-c1c1-4010-ac96-643c0ecbb893)
+![Screenshot 2024-05-08 133438](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0ca8be10-31f7-47f2-b28f-a49451f3b56e)
 
 
-### Guided 2
-```C++
-#include <iostream>
-#include <string>
-#include <vector>
-using namespace std;
-
-const int TABLE_SIZE = 11; // Ukuran hash table
-
-// Kelas HashNode untuk merepresentasikan node dalam hash table
-class HashNode {
-public:
-    string name;
-    string phone_number;
-    HashNode(string name, string phone_number) {
-        this->name = name;
-        this->phone_number = phone_number;
-    }
-};
-
-// Kelas HashMap untuk merepresentasikan hash table
-class HashMap {
-private:
-    vector<HashNode*> table[TABLE_SIZE]; // Array dari vektor node (linked list) untuk chaining
-
-public:
-    // Fungsi hash sederhana untuk menghasilkan nilai hash berdasarkan nama
-    int hashFunc(string key) {
-        int hash_val = 0;
-        for (char c : key) {
-            hash_val += c; // Menambahkan nilai ASCII dari setiap karakter dalam nama
-        }
-        return hash_val % TABLE_SIZE; // Mengambil modulus dari jumlah slot dalam hash table
-    }
-
-    // Metode untuk menyisipkan pasangan nama dan nomor telepon ke dalam hash table
-    void insert(string name, string phone_number) {
-        int hash_val = hashFunc(name);
-        for (auto node : table[hash_val]) {
-            if (node->name == name) {
-                node->phone_number = phone_number; // Jika nama sudah ada, nomor telepon diperbarui
-                return;
-            }
-        }
-        table[hash_val].push_back(new HashNode(name, phone_number)); // Jika nama belum ada, pasangan baru ditambahkan ke linked list
-    }
-
-    // Metode untuk menghapus pasangan nama dan nomor telepon dari hash table berdasarkan nama
-    void remove(string name) {
-        int hash_val = hashFunc(name);
-        for (auto it = table[hash_val].begin(); it != table[hash_val].end(); it++) {
-            if ((*it)->name == name) {
-                table[hash_val].erase(it);
-                return;
-            }
-        }
-    }
-
-    // Metode untuk mencari nomor telepon berdasarkan nama
-    string searchByName(string name) {
-        int hash_val = hashFunc(name);
-        for (auto node : table[hash_val]) {
-            if (node->name == name) {
-                return node->phone_number; // Mengembalikan nomor telepon jika nama ditemukan
-            }
-        }
-        return ""; // Mengembalikan string kosong jika nama tidak ditemukan
-    }
-
-    // Metode untuk mencetak semua pasangan nama dan nomor telepon dalam hash table
-    void print() {
-        for (int i = 0; i < TABLE_SIZE; i++) {
-            cout << i << ": ";
-            for (auto pair : table[i]) {
-                if (pair != nullptr) {
-                    cout << "[" << pair->name << ", " << pair->phone_number << "]";
-                }
-            }
-            cout << endl;
-        }
-    }
-};
-
-int main() {
-    HashMap employee_map; // Membuat objek hash table
-
-    // Insertion: Menambahkan beberapa pasangan nama dan nomor telepon
-    employee_map.insert("Mistah", "1234");
-    employee_map.insert("Pastah", "5678");
-    employee_map.insert("Ghana", "91011");
-
-    // Searching: Mencari nomor telepon untuk beberapa nama
-    cout << "Nomer Hp Mistah : " << employee_map.searchByName("Mistah") << endl;
-    cout << "Phone Hp Pastah : " << employee_map.searchByName("Pastah") << endl;
-
-    // Deletion: Menghapus satu pasangan nama dan nomor telepon
-    employee_map.remove("Mistah");
-
-    // Searching setelah penghapusan
-    cout << "Nomer Hp Mistah setelah dihapus : " << employee_map.searchByName("Mistah") << endl << endl;
-
-    // Traversal: Mencetak semua pasangan nama dan nomor telepon dalam hash table
-    cout << "Hash Table : " << endl;
-    employee_map.print();
-
-    return 0;
-}
 
 
-```
-#### Output:
-
-
-![Screenshot 2024-04-09 161155](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/bb13da1d-9d2d-469b-802a-5d8255039bb7)
-
-Kode tersebut adalah implementasi sederhana dari struktur data hash table menggunakan metode chaining untuk menangani collision. Dalam kode tersebut, kelas `HashMap` digunakan untuk mewakili hash table dengan ukuran tetap. Setiap elemen dalam array `table` adalah vektor node (linked list) yang menyimpan pasangan nama dan nomor telepon. Metode `hashFunc` digunakan untuk menghasilkan nilai hash berdasarkan nama, sementara metode `insert`, `remove`, dan `searchByName` digunakan untuk menambahkan, menghapus, dan mencari pasangan nama dan nomor telepon dalam hash table. Fungsi `print` digunakan untuk mencetak semua pasangan nama dan nomor telepon dalam hash table. Dalam fungsi `main`, beberapa pasangan nama dan nomor telepon ditambahkan ke hash table, kemudian dicari dan dihapus, dan akhirnya seluruh isi hash table dicetak. Ini memberikan contoh tentang bagaimana hash table dengan chaining dapat diimplementasikan dalam bahasa pemrograman C++ untuk mengelola data pasangan nama dan nomor telepon.
-#### Full code Screenshot:
-
-![Screenshot 2024-04-09 161248](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/66dd2066-a726-4aaa-a686-635bc29ebf06)
 
 ## Unguided 
 
