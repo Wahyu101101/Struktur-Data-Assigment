@@ -486,6 +486,8 @@ B. Operasi dasar hash table seperti insertion, deletion, dan searching menjadi p
 
 C. Implementasi hash table dalam kode program C++ memberikan contoh konkret dari cara menggunakan teknik chaining untuk mengelola data. Dalam program tersebut, pengguna dapat menambahkan, menghapus, dan mencari data mahasiswa berdasarkan NIM atau rentang nilai tertentu. Dengan adanya menu pilihan, program memberikan fleksibilitas bagi pengguna dalam melakukan operasi-operasi tersebut, menunjukkan aplikasi praktis dari konsep hash table dalam pemrograman komputer.
 ## Referensi
+[1] Asisten Praktikum, “Modul 6 Stack", Googgle Classroom, 2024.
+
 [2] "A Survey of Stack-Based Machine Learning" oleh D. Wang et al. (2019) 
 
 [3] "Stack-Based Memory Allocation for Deep Learning" oleh Y. Wu et al. (2019) 
