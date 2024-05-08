@@ -47,114 +47,131 @@ Stack, atau tumpukan, adalah struktur data abstrak yang mengikuti aturan Last In
 #include <iostream>
 using namespace std;
 
-string arrayBuku[5];
-int maksimal = 5, top = 0;
+string arrayBuku[5]; // Array untuk menyimpan data dalam stack
+int maksimal = 5, top = 0; // Variabel untuk mengontrol ukuran stack dan posisi top
 
-bool isFull(){
-    return(top == maksimal);
+// Fungsi untuk memeriksa apakah stack penuh
+bool isFull() {
+    return (top == maksimal);
 }
 
-bool isEmpety(){
+// Fungsi untuk memeriksa apakah stack kosong
+bool isEmpety() {
     return (top == 0);
 }
 
-void pushArrayBuku (string data ){
-    if (isFull()){
-        cout <<"Data telah penuh" <<endl;
-    }
-    else{
-        arrayBuku[top] = data;
-        top++;
-    }
-}
-
-void popArrayBuku(){
-    if (isEmpety()){
-        cout <<" Tidak ada data yang dihapus" <<endl;
-    }else {
-        arrayBuku[top - 1] = "";
-        top--;
+// Fungsi untuk menambahkan data ke dalam stack
+void pushArrayBuku(string data) {
+    if (isFull()) { // Jika stack penuh
+        cout <<"Data telah penuh" <<endl; // Tampilkan pesan
+    } else {
+        arrayBuku[top] = data; // Masukkan data ke dalam stack pada posisi top
+        top++; // Pindahkan posisi top ke atas
     }
 }
 
-void peekArrayBuku (int posisi){
-    if (isEmpety()){
-        cout <<"Tidak ada data yang bisa dilihat"<<endl;
-    }else {
+// Fungsi untuk menghapus data teratas dari stack
+void popArrayBuku() {
+    if (isEmpety()) { // Jika stack kosong
+        cout <<"Tidak ada data yang dihapus" <<endl; // Tampilkan pesan
+    } else {
+        arrayBuku[top - 1] = ""; // Hapus data teratas dengan mengosongkan nilainya
+        top--; // Turunkan posisi top
+    }
+}
+
+// Fungsi untuk melihat data pada posisi tertentu dalam stack
+void peekArrayBuku(int posisi) {
+    if (isEmpety()) { // Jika stack kosong
+        cout <<"Tidak ada data yang bisa dilihat"<<endl; // Tampilkan pesan
+    } else {
         int index = top;
-        for(int i = 1; i <= posisi; i++){
+        for(int i = 1; i <= posisi; i++) {
             index--;
         }
-        cout << "Posisi ke " << posisi << " adalah " << arrayBuku[index] <<endl;
+        cout << "Posisi ke " << posisi << " adalah " << arrayBuku[index] <<endl; // Tampilkan data pada posisi tertentu
     }
 }
 
-int countStack (){
+// Fungsi untuk menghitung jumlah data dalam stack
+int countStack() {
     return top;
 }
 
-void changeArrayBuku (int posisi, string data){
-    if (posisi > top){
-        cout << "Posisi melebihi data yang ada"<<endl;
-    }else{
+// Fungsi untuk mengubah data pada posisi tertentu dalam stack
+void changeArrayBuku(int posisi, string data) {
+    if (posisi > top) { // Jika posisi melebihi jumlah data dalam stack
+        cout << "Posisi melebihi data yang ada" <<endl; // Tampilkan pesan
+    } else {
         int index = top;
-        for (int i = 1; i <= posisi; i++){
+        for (int i = 1; i <= posisi; i++) {
             index--;
         }
-        arrayBuku[index]= data;
+        arrayBuku[index] = data; // Ubah data pada posisi tertentu
     }
 }
 
-void destroyArraybuku(){
-    for (int i = top; i >= 0; i--){
-        arrayBuku[i] = "";
+// Fungsi untuk menghapus semua data dalam stack
+void destroyArraybuku() {
+    for (int i = top; i >= 0; i--) {
+        arrayBuku[i] = ""; // Mengosongkan semua data dalam array
     }
-    top = 0;
+    top = 0; // Mengatur kembali posisi top ke 0
 }
 
-void cetakArrayBuku(){
-    if (isEmpety()){
-        cout << "Tidak ada data yang dicetak" <<endl;
-    }else{
-        for (int i = top -1; i >= 0; i--){
-            cout << arrayBuku[i] <<endl;
+// Fungsi untuk mencetak semua data dalam stack
+void cetakArrayBuku() {
+    if (isEmpety()) { // Jika stack kosong
+        cout << "Tidak ada data yang dicetak" <<endl; // Tampilkan pesan
+    } else {
+        for (int i = top -1; i >= 0; i--) { // Iterasi dari top ke bawah hingga indeks ke-0
+            cout << arrayBuku[i] <<endl; // Tampilkan data pada setiap indeks
         }
     }
 }
 
-int main(){
+int main() {
+    // Menambahkan beberapa data ke dalam stack
     pushArrayBuku("Kalkulus");
     pushArrayBuku("Struktur Data");
     pushArrayBuku("Matematika Diskrit");
     pushArrayBuku("Dasar Multimedia");
     pushArrayBuku("Inggris");
 
+    // Mencetak semua data dalam stack
     cetakArrayBuku();
     cout << "\n";
 
-    cout << "Apakah data stack penuh? " <<isFull()<<endl;
-    cout << "Apakah data stack kosong? " <<isEmpety()<<endl;
+    // Memeriksa apakah stack penuh atau kosong
+    cout << "Apakah data stack penuh? " << isFull() <<endl;
+    cout << "Apakah data stack kosong? " << isEmpety() <<endl;
 
+    // Melihat data pada posisi tertentu dalam stack dan menghapus data teratas
     peekArrayBuku(2);
     popArrayBuku();
-    cout << "Banyaknya data = " << countStack()<<endl;
+    cout << "Banyaknya data = " << countStack() <<endl;
 
+    // Mengubah data pada posisi tertentu dalam stack
     changeArrayBuku(2, "Bahasa Jerman");
     cetakArrayBuku();
 
     cout <<"\n";
+    // Menghapus semua data dalam stack dan mencetak jumlah data
     destroyArraybuku();
     cout << "Jumlah data setelah dihapus: " << top <<endl;
 
+    // Mencetak semua data dalam stack setelah dihapus
     cetakArrayBuku();
-    return 0;
+
+    return 0; // Keluar dari program
 }
+
 
 
 
 ```
 #### Output:
-![Screenshot 2024-05-08 134534](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/fb99bef8-8b86-4ad2-9a3a-c93b518c068f)
+![Screenshot 2024-05-08 144242](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/220b33c1-f24e-47ea-a3ff-a4e9632411e2)
 
 
 Kode diatas dibuat dengan konsep tumpukan (stack) yang mengikuti aturan LIFO (Last In, First Out). Artinya, buku yang terakhir dimasukkan ke dalam tumpukan akan menjadi buku pertama yang dikeluarkan.
@@ -181,8 +198,8 @@ Kode diatas dibuat dengan konsep tumpukan (stack) yang mengikuti aturan LIFO (La
 - cetakArrayBuku(): Menampilkan daftar judul buku dari tumpukan, dari atas ke bawah. Fungsi ini terlebih dahulu mengecek isEmpety(). Jika kosong, akan menampilkan pesan "Tidak ada data yang dicetak". Jika tidak kosong, iterasi dilakukan dari top-1 hingga 0, dan pada setiap indeks judul buku pada array arrayBuku akan ditampilkan.
 
 #### Full code Screenshot:
+![Screenshot 2024-05-08 144258](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f90caef3-f069-446d-b180-b7d1dda95d17)
 
-![Screenshot 2024-05-08 133438](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0ca8be10-31f7-47f2-b28f-a49451f3b56e)
 
 
 
@@ -208,40 +225,12 @@ using namespace std;
 string arrayBuku[5]; // Array untuk menyimpan kalimat dalam stack
 int maksimal = 5, top = 0; // Variabel untuk mengontrol ukuran stack dan posisi top
 
-bool isFull(){
-    return (top == maksimal); // Mengecek apakah stack penuh
-}
-
-bool isEmpety(){
-    return (top == 0); // Mengecek apakah stack kosong
-}
-
-void pushArrayBuku(string data){
-    if (isFull()){ // Jika stack penuh
-        cout <<"Data telah penuh" <<endl; // Tampilkan pesan
-    }
-    else{
+void pushArrayBuku(string data) {
+    if (top < maksimal) { // Periksa apakah masih ada ruang dalam stack
         arrayBuku[top] = data; // Masukkan data ke dalam stack pada posisi top
         top++; // Pindahkan posisi top ke atas
-    }
-}
-
-void popArrayBuku(){
-    if (isEmpety()){ // Jika stack kosong
-        cout <<" Tidak ada data yang dihapus" <<endl; // Tampilkan pesan
-    }else {
-        arrayBuku[top - 1] = ""; // Hapus data teratas dengan mengosongkan nilainya
-        top--; // Turunkan posisi top
-    }
-}
-
-void cetakArrayBuku(){
-    if (isEmpety()){ // Jika stack kosong
-        cout << "Tidak ada data yang dicetak" <<endl; // Tampilkan pesan
-    }else{
-        for (int i = top -1; i >= 0; i--){ // Iterasi dari top ke bawah hingga indeks ke-0
-            cout << arrayBuku[i] <<endl; // Tampilkan data pada setiap indeks
-        }
+    } else {
+        cout << "Stack penuh, tidak bisa menambahkan kata baru." << endl;
     }
 }
 
@@ -255,68 +244,67 @@ bool isPalindrome(string str) {
     return true; // Jika tidak ada perbedaan, string palindrom
 }
 
-int main(){
+int main() {
     string kata;
     cout << endl;
 
     // Meminta pengguna memasukkan kata-kata
     for (int i = 0; i < 2; ++i) {
-        cout << "Masukkan kata" << ": ";
+        cout << "Masukkan kata " << ": ";
         cin >> kata;
         pushArrayBuku(kata); // Masukkan kata ke dalam stack
     }
     cout << endl;
 
-
     for (int i = 0; i < top; i++) { // Iterasi melalui stack
         if (isPalindrome(arrayBuku[i])) { // Jika kata dalam stack adalah palindrom
-            cout << "Kalimat : " << arrayBuku[i] <<endl; 
+            cout << "Kalimat : " << arrayBuku[i] << endl; 
             cout << "Kalimat tersebut adalah palindrom." << endl;       
             cout << endl;
- // Tampilkan pesan
         } else {
-            cout << "Kalimat : " << arrayBuku[i] <<endl; 
-            cout << "Kalimat tersebut adalah bukan palindrom." << endl; // Tampilkan pesan
+            cout << "Kalimat : " << arrayBuku[i] << endl; 
+            cout << "Kalimat tersebut adalah bukan palindrom." << endl; 
             cout << endl;
         }
     }
-
 
     return 0; // Keluar dari program
 }
 
 
+
 ```
 #### Output:
-![Screenshot 2024-05-08 141632](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/645cceff-c948-43c9-a2bf-22a043a9cf97)
+![Screenshot 2024-05-08 143653](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3b75e9ad-3989-41bc-b613-367412261b0c)
+
 #### Kode di atas berfungsi untuk menentukan apakah kata-kata yang dimasukkan pengguna merupakan palindrom atau tidak. Di bawah ini penjelasan dari setiap bagian kode:
 
-**1.Deklarasi Variabel dan Fungsi**:
+Kode di atas adalah sebuah program C++ yang mengimplementasikan konsep stack untuk menentukan apakah kata-kata yang dimasukkan pengguna merupakan palindrom atau tidak. Berikut adalah penjelasan singkat dari setiap bagian kode:
+
+**1. Deklarasi Variabel dan Fungsi**:
 - arrayBuku: Array yang digunakan sebagai stack untuk menyimpan kata-kata.
 - maksimal: Variabel yang menunjukkan maksimal kapasitas stack.
 - top: Variabel yang menunjukkan posisi paling atas (top) pada stack.
-- isFull(): Fungsi untuk memeriksa apakah stack penuh.
-- isEmpety(): Fungsi untuk memeriksa apakah stack kosong.
 - pushArrayBuku(): Fungsi untuk menambahkan kata ke dalam stack.
-- popArrayBuku(): Fungsi untuk menghapus kata dari stack.
-- cetakArrayBuku(): Fungsi untuk mencetak isi stack.
 - isPalindrome(): Fungsi untuk memeriksa apakah sebuah string merupakan palindrom.
-  
-**2.Meminta Input Pengguna**:
-- Pengguna diminta untuk memasukkan dua buah kata. Dalam contoh ini, jumlah kata yang dimasukkan disetel menjadi 2.
-  
-**3.Pengecekan Palindrom**:
-- Setelah kata-kata dimasukkan ke dalam stack, program melakukan iterasi melalui stack.
-- Untuk setiap kata, program memanggil fungsi isPalindrome() untuk memeriksa apakah kata tersebut merupakan palindrom atau bukan.
-- Jika kata adalah palindrom, program mencetak pesan bahwa kata tersebut adalah palindrom. Jika tidak, program mencetak pesan bahwa kata tersebut bukan palindrom.
-  
-**4.Penjelasan Hasil**:
-- Setelah iterasi selesai, program menampilkan hasil pengecekan palindrom untuk setiap kata yang dimasukkan pengguna.
-- Untuk setiap kata, program mencetak kata tersebut beserta hasil pengecekan palindrom.
 
+**2. Fungsi pushArrayBuku()**:
+- Fungsi ini digunakan untuk memasukkan kata ke dalam stack.
+- Memeriksa apakah masih ada ruang dalam stack sebelum menambahkan kata.
+- Jika masih ada ruang, kata dimasukkan ke dalam stack pada posisi top, dan posisi top dinaikkan satu tingkat.
+
+**3. Fungsi isPalindrome()**:
+- Fungsi ini digunakan untuk memeriksa apakah sebuah string merupakan palindrom.
+- Membandingkan setiap karakter di posisi awal dengan karakter di posisi yang sama dari akhir string.
+- Jika ada perbedaan antara karakter pertama dan terakhir, atau kedua dan kedua dari akhir, dst., maka string tersebut bukan palindrom.
+- Jika tidak ada perbedaan, string tersebut adalah palindrom.
+**4. main() Function**:
+- Program meminta pengguna untuk memasukkan dua buah kata.
+- Setelah kata dimasukkan, program memeriksa apakah setiap kata dalam stack adalah palindrom atau tidak menggunakan fungsi isPalindrome().
+- Hasil dari pengecekan palindrom ditampilkan ke layar, bersama dengan kata-kata yang telah dimasukkan pengguna.
+- 
 #### Full code Screenshot:
-![Screenshot 2024-05-08 141648](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a05872a5-3704-466a-a6b5-2d457b679c6e)
-
+![Screenshot 2024-05-08 143600](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/1eef34c8-c67d-4be2-be97-85527eaeae19)
 
 
 ## Kesimpulan
