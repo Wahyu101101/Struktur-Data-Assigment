@@ -301,12 +301,15 @@ int main(){
 - popArrayBuku(): Fungsi untuk menghapus kata dari stack.
 - cetakArrayBuku(): Fungsi untuk mencetak isi stack.
 - isPalindrome(): Fungsi untuk memeriksa apakah sebuah string merupakan palindrom.
+  
 **2.Meminta Input Pengguna**:
 - Pengguna diminta untuk memasukkan dua buah kata. Dalam contoh ini, jumlah kata yang dimasukkan disetel menjadi 2.
+  
 **3.Pengecekan Palindrom**:
 - Setelah kata-kata dimasukkan ke dalam stack, program melakukan iterasi melalui stack.
 - Untuk setiap kata, program memanggil fungsi isPalindrome() untuk memeriksa apakah kata tersebut merupakan palindrom atau bukan.
 - Jika kata adalah palindrom, program mencetak pesan bahwa kata tersebut adalah palindrom. Jika tidak, program mencetak pesan bahwa kata tersebut bukan palindrom.
+  
 **4.Penjelasan Hasil**:
 - Setelah iterasi selesai, program menampilkan hasil pengecekan palindrom untuk setiap kata yang dimasukkan pengguna.
 - Untuk setiap kata, program mencetak kata tersebut beserta hasil pengecekan palindrom.
