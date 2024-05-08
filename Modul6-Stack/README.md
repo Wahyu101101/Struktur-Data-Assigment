@@ -155,8 +155,8 @@ int main(){
 
 ```
 #### Output:
+![Screenshot 2024-05-08 134534](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/fb99bef8-8b86-4ad2-9a3a-c93b518c068f)
 
-![Screenshot 2024-05-08 133627](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/d725d770-8e2b-4d33-9a27-acb2f59fe9e8)
 
 Kode diatas dibuat dengan konsep tumpukan (stack) yang mengikuti aturan LIFO (Last In, First Out). Artinya, buku yang terakhir dimasukkan ke dalam tumpukan akan menjadi buku pertama yang dikeluarkan.
 
