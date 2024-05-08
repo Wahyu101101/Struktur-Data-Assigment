@@ -212,10 +212,10 @@ Kode diatas dibuat dengan konsep tumpukan (stack) yang mengikuti aturan LIFO (La
 #### Contoh :
 
 - Kalimat : ini
-- Kalimat tersebut adalah polindrom
+  Kalimat tersebut adalah palindrom
 
 - Kalimat : Telkom
-- Kalimat tersebut adalah bukan polindrom
+  Kalimat tersebut adalah bukan palindrom
 ```C++
 #include <iostream>
 #include <cstring>
@@ -392,11 +392,12 @@ int main() {
 
 
 ## Kesimpulan
-A. Hash table adalah struktur data yang digunakan untuk menyimpan dan mengakses data dengan cepat melalui fungsi hash. Dengan menggunakan fungsi hash yang efisien, hash table dapat memberikan akses yang cepat dan efisien terhadap data.
+- A. Definisi Stack: Stack adalah struktur data abstrak yang mengikuti aturan Last In, First Out (LIFO), yang berarti elemen terakhir yang dimasukkan akan menjadi yang pertama dikeluarkan. Analogi sederhananya adalah tumpukan piring di kafetaria, di mana piring yang paling atas adalah yang terakhir dimasukkan dan pertama kali diambil.
+- B. Operasi pada Stack: Ada beberapa operasi dasar yang dapat dilakukan pada stack, antara lain push (menambahkan elemen baru ke puncak stack), pop (menghapus elemen dari puncak stack), top (melihat nilai elemen di puncak stack tanpa menghapusnya), dan empty (memeriksa apakah stack kosong).
+- C. Implementasi Stack: Stack dapat diimplementasikan menggunakan array atau linked list. Dalam implementasi menggunakan array, diperlukan penanganan khusus saat stack penuh atau kosong.
+- D. Aplikasi Stack: Stack memiliki banyak aplikasi dalam pemrograman, seperti pembatalan operasi (undo/redo), evaluasi ekspresi matematika, kompilasi, dan berbagai algoritma seperti backtracking dan pencarian pohon.
 
-B. Operasi dasar hash table seperti insertion, deletion, dan searching menjadi penting dalam pengelolaan data. Dalam implementasi hash table, teknik chaining adalah metode umum yang digunakan untuk menangani kolisi, di mana dua kunci memiliki nilai hash yang sama. Dengan teknik chaining, item data dengan nilai indeks yang sama disimpan dalam linked list, memungkinkan pengelolaan data yang efisien.
-
-C. Implementasi hash table dalam kode program C++ memberikan contoh konkret dari cara menggunakan teknik chaining untuk mengelola data. Dalam program tersebut, pengguna dapat menambahkan, menghapus, dan mencari data mahasiswa berdasarkan NIM atau rentang nilai tertentu. Dengan adanya menu pilihan, program memberikan fleksibilitas bagi pengguna dalam melakukan operasi-operasi tersebut, menunjukkan aplikasi praktis dari konsep hash table dalam pemrograman komputer.
+Dari program yang dibuat, kita dapat melihat bagaimana stack digunakan untuk membalikkan urutan kata dalam sebuah kalimat, serta bagaimana konsep LIFO diterapkan dalam proses tersebut. Hal ini menunjukkan fleksibilitas dan kegunaan stack dalam memecahkan berbagai masalah pemrograman.
 ## Referensi
 [1] Asisten Praktikum, “Modul 6 Stack", Googgle Classroom, 2024.
 
