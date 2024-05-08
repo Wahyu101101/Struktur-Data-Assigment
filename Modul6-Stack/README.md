@@ -7,42 +7,35 @@
 
 ## **Stack**
 
-#### Pengertian Hast Table
-##### Hash table adalah struktur data yang digunakan untuk menyimpan dan mengakses data dengan cepat. Fungsi hash digunakan untuk menentukan lokasi penyimpanan data dalam hash table. Dengan menggunakan fungsi hash yang efisien, hash table dapat memberikan akses yang cepat dan efisien terhadap data[1].
-  ##### Hash table adalah struktur data yang memungkinkan penyimpanan data dengan menggunakan teknik penyelesaian tabrakan seperti chaining atau open addressing untuk menangani kunci yang menghasilkan indeks yang sama. Dengan adanya mekanisme penyelesaian tabrakan, hash table dapat mengelola data dengan efisien dan mencegah kegagalan pencarian[2].
-  ##### Hash Table adalah struktur data yang mengorganisir data ke dalam pasangan kunci-nilai. Terdiri dari array dan fungsi hash, hashing digunakan untuk mengubah nilai kunci menjadi indeks array. Data disimpan dalam bucket pada array, dengan setiap bucket dapat menampung satu atau beberapa item data. Fungsi hash menghasilkan nilai unik untuk setiap item data sebagai indeks array, memungkinkan pencarian data dalam O(1) dalam kasus terbaik. Sistem hash table memetakan input kunci ke indeks array menggunakan fungsi hash untuk penyimpanan data. Saat pencarian data, kunci diinput ke fungsi hash untuk mencari data berdasarkan indeks array. Dalam kasus collision, data dengan nilai hash yang sama disimpan dalam slot yang sama dengan teknik chaining[3].
+#### Pengertian Stack
 
-![Screenshot 2024-04-09 153629](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/cc690c4e-17a8-4f80-9778-88bdd742b60a)
+Stack, atau tumpukan, adalah struktur data abstrak yang mengikuti aturan Last In, First Out (LIFO) [1]. Artinya, elemen yang terakhir dimasukkan ke dalam stack akan menjadi elemen pertama yang dikeluarkan. Analogi sederhananya seperti tumpukan piring: piring yang paling atas adalah yang terakhir diletakkan dan akan menjadi yang pertama diambil.
 
+#### Pembahasan Stack
 
-#### Fungsi Hash Table
-Fungsi hash membuat pemetaan antara kunci dan nilai, hal ini dilakukan melalui penggunaan rumus matematika yang dikenal sebagai fungsi hash. Hasil dari fungsi hash disebut sebagai nilai hash atau hash. Nilai hash adalah representasi dari string karakter asli tetapi biasanya lebih kecil dari aslinya[3].
+#### Stack memiliki beberapa operasi dasar:
 
-#### Operasi Hash Table
-##### 1. Insertion: Memasukkan data baru ke dalam hash table dengan memanggil fungsi hash untuk menentukan posisi bucket yang tepat, dan kemudian menambahkan data ke bucket tersebut.
-##### 2. Deletion: Menghapus data dari hash table dengan mencari data menggunakan fungsi hash, dan kemudian menghapusnya dari bucket yang sesuai.
-##### 3. Searching: Mencari data dalam hash table dengan memasukkan input kunci ke fungsi hash untuk menentukan posisi bucket, dan kemudian mencari data di dalam bucket yang sesuai.
-##### 4. Update: Memperbarui data dalam hash table dengan mencari data menggunakan fungsi hash, dan kemudian memperbarui data yang ditemukan.
-##### 5. Traversal: Melalui seluruh hash table untuk memproses semua data yang ada dalam tabel.
+Push: Menambahkan elemen baru ke puncak stack [1].
+Pop: Menghapus elemen dari puncak stack dan mengembalikan nilainya [1].
+Top: Melihat nilai elemen di puncak stack tanpa menghapusnya [1].
+Empty: Memeriksa apakah stack kosong atau tidak [1].
+Stack memiliki banyak aplikasi dalam pemrograman, seperti:
 
-#### Collision Resolution
+Membatalkan operasi: Tombol undo/redo di banyak aplikasi menggunakan stack untuk menyimpan status program sebelumnya [2].
+Ekspresi matematika: Stack digunakan untuk mengevaluasi ekspresi matematika dengan urutan operasi yang benar [2].
+Kompilasi: Stack digunakan untuk menyimpan informasi tentang variabel dan label selama proses kompilasi [2].
+Algoritma: Stack digunakan dalam berbagai algoritma, seperti backtracking dan pencarian pohon [2].
+Ilustrasi Stack
 
-![Screenshot 2024-04-09 155843](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/42906c4b-311c-44f3-952b-431a84d965d8)
+Berikut adalah ilustrasi stack dengan operasi dasar:
 
-Ada dua teknik untuk menyelesaikan masalah ini diantaranya :
-1. Metode chaining adalah teknik penyelesaian tabrakan hash yang mengatasi collision dengan menyimpan semua item data dengan nilai indeks yang sama ke dalam sebuah linked list. Setiap node pada linked list merepresentasikan satu item data. Saat terjadi pencarian atau penambahan item data, operasi tersebut dilakukan pada linked list yang sesuai dengan indeks yang dihitung dari kunci yang di-hash.
-2. Closed Hashing
-● Linear Probing
-Pada saat terjadi collision, maka akan mencari posisi yang kosong di
-bawah tempat terjadinya collision, jika masih penuh terus ke bawah,
-hingga ketemu tempat yang kosong. Jika tidak ada tempat yang kosong
-berarti HashTable sudah penuh.
-● Quadratic Probing
-Penanganannya hampir sama dengan metode linear, hanya
-lompatannya tidak satu-satu, tetapi quadratic ( 12, 22, 32, 42, ... )
-● Double Hashing
-Pada saat terjadi collision, terdapat fungsi hash yang kedua untuk
-menentukan posisinya kembali.
+Awal: Stack kosong.
+Push(A): Elemen A ditambahkan ke puncak stack.
+Push(B): Elemen B ditambahkan ke puncak stack, sekarang di atas elemen A.
+Top(): Nilai elemen B (di puncak stack) dikembalikan, tetapi elemen B tidak dihapus.
+Pop(): Elemen B dihapus dari puncak stack.
+Push(C): Elemen C ditambahkan ke puncak stack.
+Empty(): Mengembalikan False, karena stack tidak kosong.
 
 ## Guided 
 ### Guided 1
