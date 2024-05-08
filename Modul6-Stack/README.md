@@ -191,138 +191,87 @@ Kode diatas dibuat dengan konsep tumpukan (stack) yang mengikuti aturan LIFO (La
 
 ## Unguided 
 
-#### 1. Implementasikan hash table untuk menyimpan data mahasiswa. Setiap mahasiswa memiliki NIM dan nilai. Implementasikan fungsi untuk menambahkan data baru, menghapus data, mencari data berdasarkan NIM, dan mencari data berdasarkannilai. Dengan ketentuan :
-#### a. Setiap mahasiswa memiliki NIM dan nilai.
-#### b. Program memiliki tampilan pilihan menu berisi poin C.
-#### c. Implementasikan fungsi untuk menambahkan data baru, menghapus data,mencari data berdasarkan NIM, dan mencari data berdasarkan rentang nilai (80 – 90).
+#### 1. Buatlah program untuk menentukan apakah kalimat tersebut yang diinputkan dalam program stack adalah palindrom/tidak. Palindrom kalimat yang dibaca dari depan dan belakang sama. Jelaskan bagaimana cara kerja programnya.
+
+#### Contoh :
+
+- Kalimat : ini
+- Kalimat tersebut adalah polindrom
+
+- Kalimat : Telkom
+- Kalimat tersebut adalah bukan polindrom
 ```C++
 #include <iostream>
-#include <vector>
+#include <cstring>
+#include <cctype>
 using namespace std;
 
-const int TABLE_SIZE = 10;
+string arrayBuku[5]; // Array untuk menyimpan kalimat dalam stack
+int maksimal = 5, top = 0; // Variabel untuk mengontrol ukuran stack dan posisi top
 
-// Struktur data untuk setiap mahasiswa
-struct Mahasiswa {
-    string nim;
-    int nilai;
-};
+bool isFull(){
+    return (top == maksimal); // Mengecek apakah stack penuh
+}
 
-// Struktur data untuk setiap node dalam hash table
-struct HashNode {
-    Mahasiswa data;
-    HashNode* next;
-    HashNode(Mahasiswa data) : data(data), next(nullptr) {}
-};
+bool isEmpety(){
+    return (top == 0); // Mengecek apakah stack kosong
+}
 
-// Class hash table
-class HashMap {
-private:
-    vector<HashNode*> table[TABLE_SIZE];
-
-public:
-    // Fungsi hash untuk menghasilkan indeks dalam hash table berdasarkan NIM
-    int hashFunc(string nim) {
-        int hash_val = 0;
-        for (char c : nim) {
-            hash_val += c;
-        }
-        return hash_val % TABLE_SIZE;
+void pushArrayBuku(string data){
+    if (isFull()){ // Jika stack penuh
+        cout <<"Data telah penuh" <<endl; // Tampilkan pesan
     }
-
-    // Fungsi untuk menambahkan data mahasiswa ke hash table
-    void insert(Mahasiswa mahasiswa) {
-        int index = hashFunc(mahasiswa.nim);
-        HashNode* newNode = new HashNode(mahasiswa);
-        table[index].push_back(newNode);
+    else{
+        arrayBuku[top] = data; // Masukkan data ke dalam stack pada posisi top
+        top++; // Pindahkan posisi top ke atas
     }
+}
 
-    // Fungsi untuk menghapus data mahasiswa dari hash table berdasarkan NIM
-    void remove(string nim) {
-        int index = hashFunc(nim);
-        for (int i = 0; i < table[index].size(); i++) {
-            if (table[index][i]->data.nim == nim) {
-                delete table[index][i];
-                table[index].erase(table[index].begin() + i);
-                cout << "Data dengan NIM " << nim << " berhasil dihapus." << endl;
-                return;
-            }
-        }
-        cout << "Data dengan NIM " << nim << " tidak ditemukan." << endl;
+void popArrayBuku(){
+    if (isEmpety()){ // Jika stack kosong
+        cout <<" Tidak ada data yang dihapus" <<endl; // Tampilkan pesan
+    }else {
+        arrayBuku[top - 1] = ""; // Hapus data teratas dengan mengosongkan nilainya
+        top--; // Turunkan posisi top
     }
+}
 
-    // Fungsi untuk mencari data mahasiswa berdasarkan NIM
-    Mahasiswa searchByNIM(string nim) {
-        int index = hashFunc(nim);
-        for (HashNode* node : table[index]) {
-            if (node->data.nim == nim) {
-                return node->data;
-            }
-        }
-        cout << "Data dengan NIM " << nim << " tidak ditemukan." << endl;
-        return {"", -1}; // Mahasiswa dengan NIM kosong dan nilai -1 menandakan data tidak ditemukan
-    }
-
-    // Fungsi untuk mencari data mahasiswa berdasarkan rentang nilai (80-90)
-    void searchByRange() {
-        cout << "Data mahasiswa dengan nilai antara 80 dan 90:" << endl;
-        for (int i = 0; i < TABLE_SIZE; i++) {
-            for (HashNode* node : table[i]) {
-                if (node->data.nilai >= 80 && node->data.nilai <= 90) {
-                    cout << "NIM: " << node->data.nim << ", Nilai: " << node->data.nilai << endl;
-                }
-            }
+void cetakArrayBuku(){
+    if (isEmpety()){ // Jika stack kosong
+        cout << "Tidak ada data yang dicetak" <<endl; // Tampilkan pesan
+    }else{
+        for (int i = top -1; i >= 0; i--){ // Iterasi dari top ke bawah hingga indeks ke-0
+            cout << arrayBuku[i] <<endl; // Tampilkan data pada setiap indeks
         }
     }
-};
+}
 
-int main() {
-    HashMap hashTable;
+bool isPalindrome(string str) {
+    int length = str.length(); // Simpan panjang string
+    for (int i = 0; i < length / 2; i++) { // Iterasi hingga setengah panjang string
+        if (tolower(str[i]) != tolower(str[length - i - 1])) { // Bandingkan karakter pertama dengan yang terakhir, kedua dengan yang kedua terakhir, dan seterusnya
+            return false; // Jika ada perbedaan, string bukan palindrom
+        }
+    }
+    return true; // Jika tidak ada perbedaan, string palindrom
+}
 
-    while (true) {
-        cout << "\nMenu:\n";
-        cout << "1. Tambah data mahasiswa\n";
-        cout << "2. Hapus data mahasiswa\n";
-        cout << "3. Cari data mahasiswa berdasarkan NIM\n";
-        cout << "4. Cari data mahasiswa berdasarkan rentang nilai (80-90)\n";
-        cout << "5. Keluar\n";
+int main(){
+    pushArrayBuku("ini"); // Masukkan kalimat ke dalam stack
+    pushArrayBuku("Telkom"); // Masukkan kalimat ke dalam stack
 
-        int choice;
-        cout << "Masukkan pilihan: ";
-        cin >> choice;
+    cout << "Apakah data stack penuh? " << isFull() << endl; // Periksa apakah stack penuh
+    cout << "Apakah data stack kosong? " << isEmpety() << endl; // Periksa apakah stack kosong
 
-        if (choice == 1) {
-            string nim;
-            int nilai;
-            cout << "Masukkan NIM: ";
-            cin >> nim;
-            cout << "Masukkan nilai: ";
-            cin >> nilai;
-            Mahasiswa mahasiswa = {nim, nilai};
-            hashTable.insert(mahasiswa);
-        } else if (choice == 2) {
-            string nim;
-            cout << "Masukkan NIM mahasiswa yang ingin dihapus: ";
-            cin >> nim;
-            hashTable.remove(nim);
-        } else if (choice == 3) {
-            string nim;
-            cout << "Masukkan NIM mahasiswa yang ingin dicari: ";
-            cin >> nim;
-            Mahasiswa result = hashTable.searchByNIM(nim);
-            if (result.nim != "") {
-                cout << "Data ditemukan - NIM: " << result.nim << ", Nilai: " << result.nilai << endl;
-            }
-        } else if (choice == 4) {
-            hashTable.searchByRange();
-        } else if (choice == 5) {
-            break;
+    for (int i = 0; i < top; i++) { // Iterasi melalui stack
+        if (isPalindrome(arrayBuku[i])) { // Jika kalimat dalam stack adalah palindrom
+            cout << "Kalimat \"" << arrayBuku[i] << "\" adalah palindrom." << endl; // Tampilkan pesan
         } else {
-            cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
+            cout << "Kalimat \"" << arrayBuku[i] << "\" bukan palindrom." << endl; // Tampilkan pesan
         }
     }
 
-    return 0;
+    return 0; // Keluar dari program
 }
 
 ```
