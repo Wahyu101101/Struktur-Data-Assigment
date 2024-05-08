@@ -302,9 +302,89 @@ Kode di atas adalah sebuah program C++ yang mengimplementasikan konsep stack unt
 - Program meminta pengguna untuk memasukkan dua buah kata.
 - Setelah kata dimasukkan, program memeriksa apakah setiap kata dalam stack adalah palindrom atau tidak menggunakan fungsi isPalindrome().
 - Hasil dari pengecekan palindrom ditampilkan ke layar, bersama dengan kata-kata yang telah dimasukkan pengguna.
-- 
+  
 #### Full code Screenshot:
 ![Screenshot 2024-05-08 143600](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/1eef34c8-c67d-4be2-be97-85527eaeae19)
+
+
+#### 2. Buatlah program untuk melakukan pembalikan terhadap kalimat menggunakan stack dengan minimal 3 kata. Jelaskan output program dan source codenya beserta operasi/fungsi yang dibuat?
+
+#### contoh :
+- Kalimat : Telkom Purwokerto
+- Hasil : otrekowruP mokleT 
+
+```C++
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
+
+// Fungsi untuk membalikkan kalimat menggunakan stack
+string reverseSentence(string sentence) {
+    stack<char> charStack; // Stack untuk menyimpan karakter
+    string reversedSentence; // String untuk menyimpan kalimat terbalik
+
+    // Push setiap karakter ke dalam stack
+    for (char c : sentence) {
+        charStack.push(c);
+    }
+
+    // Pop karakter dari stack dan tambahkan ke string hasil
+    while (!charStack.empty()) {
+        reversedSentence += charStack.top();
+        charStack.pop();
+    }
+
+    return reversedSentence; // Mengembalikan kalimat terbalik
+}
+
+int main() {
+    string kalimat;
+    cout<<endl;
+
+    // Meminta pengguna memasukkan kalimat
+    cout << "Masukkan kalimat: ";
+    getline(cin, kalimat);
+    cout<<endl;
+
+    // Mencetak kalimat yang dimasukkan pengguna
+    cout << "Kalimat: " << kalimat << endl;
+
+    // Memanggil fungsi untuk membalikkan kalimat
+    string hasil = reverseSentence(kalimat);
+
+    // Mencetak hasil pembalikan kalimat
+    cout << "Hasil: " << hasil << endl;
+    cout<<endl;
+
+    return 0;
+}
+
+
+
+```
+#### Output:
+![Screenshot 2024-05-08 145631](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/033ab297-fb80-4f25-b7fa-4913c8b1f449)
+
+#### Kode di atas merupakan sebuah program C++ yang menggunakan stack untuk membalikkan sebuah kalimat yang dimasukkan oleh pengguna. 
+
+**1. Header Files**: Program menggunakan #include <iostream>, #include <stack>, dan #include <string> untuk menyertakan file header yang diperlukan.
+**2. Namespace**: Digunakan using namespace std; untuk menghindari penulisan std:: sebelum setiap fungsi dari namespace std.
+**3. Fungsi reverseSentence**:
+- Menerima parameter sentence yang merupakan sebuah string, yaitu kalimat yang akan dibalik.
+- Membuat sebuah stack (charStack) untuk menyimpan setiap karakter dari kalimat.
+- Iterasi melalui setiap karakter dalam kalimat, kemudian push karakter tersebut ke dalam stack.
+- Setelah semua karakter dimasukkan ke dalam stack, karakter-karakter tersebut dipop dari stack satu per satu dan ditambahkan ke dalam string reversedSentence, sehingga menghasilkan kalimat terbalik.
+- Mengembalikan kalimat terbalik tersebut.
+**4. Fungsi main**:
+- Mendeklarasikan variabel kalimat untuk menyimpan kalimat yang dimasukkan oleh pengguna.
+- Meminta pengguna untuk memasukkan sebuah kalimat menggunakan getline(cin, kalimat).
+- Memanggil fungsi reverseSentence untuk membalikkan kalimat yang dimasukkan oleh pengguna.
+- Mencetak kalimat asli dan hasil pembalikan kalimat menggunakan cout.
+**5.Output**: Program akan meminta pengguna untuk memasukkan sebuah kalimat. Setelah pengguna memasukkan kalimat, program akan mencetak kalimat tersebut, kemudian mencetak hasil pembalikan kalimat.
+
+#### Full code Screenshot:
+![Screenshot 2024-05-08 145646](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/b48d5ef5-9773-4d3e-9a00-bec634468e92)
 
 
 ## Kesimpulan
