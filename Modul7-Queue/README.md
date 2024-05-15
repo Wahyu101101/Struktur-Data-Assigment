@@ -21,6 +21,11 @@ ditunjukkan pada Gambar 2.
 
 ![Linked-List-Dequeue-1024x320](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/1db10261-38f3-4288-9f28-26ca899e0bfa)
 
+- Front: Operasi untuk mengakses elemen yang berada di depan antrian tanpa mengeluarkannya.
+- Rear: Operasi untuk mengakses elemen yang berada di akhir antrian.
+- IsEmpty: Operasi untuk memeriksa apakah antrian kosong atau tidak.
+- IsFull: Operasi untuk memeriksa apakah antrian sudah penuh atau masih dapat menampung elemen baru (khusus untuk implementasi menggunakan array statis).
+
 
 
 #### Kompleksitas Waktu Operasi Antrian
