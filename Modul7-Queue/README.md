@@ -8,40 +8,25 @@
 
 #### Pengertian Stack
 **Queue** adalah struktur data yang digunakan untuk menyimpan data dengan metode FIFO (First-In First-Out). Data yang pertama dimasukkan ke dalam queue akan menjadi data yang pertama pula untuk dikeluarkan dari queue. Queue mirip dengan konsep antrian pada kehidupan sehari-hari, dimana konsumen yang datang lebih dulu akan dilayani terlebih dahulu[1]. 
-**Queue** adalah struktur data linear yang mengikuti prinsip First-In-First-Out (FIFO), di mana elemen yang pertama kali masuk akan menjadi elemen yang pertama kali keluar. Antrian terdiri dari dua ujung, yaitu front (depan) dan rear (belakang).
+**Queue** adalah struktur data linear yang mengikuti prinsip First-In-First-Out (FIFO), di mana elemen yang pertama kali masuk akan menjadi elemen yang pertama kali keluar. Antrian terdiri dari dua ujung, yaitu front (depan) dan rear (belakang)[2].
 
 #### Operasi Dasar Antrian
 - Enqueue: Operasi untuk memasukkan elemen baru ke dalam antrian. Elemen baru akan ditempatkan di akhir (rear) antrian. Ilustrasi operasi enqueue pada antrian dengan linked list ditunjukkan pada Gambar 1.
+  
 ![Linked-List-Enqueue-1024x320](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0cc108a4-8c64-4e23-9aae-495b590225e3)
 
 
-- Dequeue: Operasi untuk mengeluarkan elemen dari antrian. Elemen yang dikeluarkan adalah elemen yang paling awal masuk ke dalam antrian (front). Ilustrasi operasi dequeue pada antrian dengan linked list ditunjukkan pada Gambar 2.
+- Dequeue: Operasi untuk mengeluarkan elemen dari antrian. Elemen yang dikeluarkan adalah elemen yang paling awal masuk ke dalam antrian (front). Ilustrasi operasi dequeue pada antrian dengan linked list
+ditunjukkan pada Gambar 2.
+
 ![Linked-List-Dequeue-1024x320](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/1db10261-38f3-4288-9f28-26ca899e0bfa)
 
 
 
-![Screenshot 2024-05-08 131258](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0bbf6944-e070-4cbd-98a1-dc5e3398949b)
+#### Kompleksitas Waktu Operasi Antrian
+- Kompleksitas waktu operasi enqueue dan dequeue pada implementasi antrian menggunakan array statis adalah O(1) untuk kasus rata-rata, namun dapat menjadi O(n) pada kasus terburuk ketika antrian harus direlokasi ke memori baru yang lebih besar. Kompleksitas waktu operasi enqueue dan dequeue pada implementasi antrian menggunakan linked list adalah O(1) untuk semua kasus.
 
-#### Pembahasan Stack
 
-#### Stack memiliki beberapa operasi dasar:
-
-- Push: Menambahkan elemen baru ke puncak stack [2].
-- Pop: Menghapus elemen dari puncak stack dan mengembalikan nilainya [2].
-- Top: Melihat nilai elemen di puncak stack tanpa menghapusnya [2].
-- Empty: Memeriksa apakah stack kosong atau tidak [2].
-- IsFull (Penuh): Memeriksa apakah tumpukan penuh atau tidak (terutama pad implementasi tumpukan dengan kapasitas terbatas)[1].
-- Size (Ukuran): Mengembalikan jumlah elemen yang ada dalam tumpukan[1].
-- Peek (Lihat): Melihat nilai atau elemen pada posisi tertentu dalam tumpukan tanpa menghapusnya[1].
-- Clear (Hapus Semua): Mengosongkan atau menghapus semua elemen dari tumpukan[1].
-- Search (Cari): Mencari keberadaan elemen tertentu dalam tumpukan[1].
-
-##### Stack memiliki banyak aplikasi dalam pemrograman, seperti:
-
-- Membatalkan operasi: Tombol undo/redo di banyak aplikasi menggunakan stack untuk menyimpan status program sebelumnya [3].
-- Ekspresi matematika: Stack digunakan untuk mengevaluasi ekspresi matematika dengan urutan operasi yang benar [3].
-- Kompilasi: Stack digunakan untuk menyimpan informasi tentang variabel dan label selama proses kompilasi [3].
-- Algoritma: Stack digunakan dalam berbagai algoritma, seperti backtracking dan pencarian pohon [3].
 
 
 
@@ -405,9 +390,7 @@ Dari program yang dibuat, kita dapat melihat bagaimana stack digunakan untuk mem
 ## Referensi
 [1] Asisten Praktikum, “Modul 6 Stack", Googgle Classroom, 2024.
 
-[2] "A Survey of Stack-Based Machine Learning" oleh D. Wang et al. (2019) 
-
-[3] "Stack-Based Memory Allocation for Deep Learning" oleh Y. Wu et al. (2019) 
+[2] "A. Samara dan M. S. Watfa, "The Queue Data Structure: An In-Depth Study," IEEE Access, vol. 7, hlm. 172586–172607, 2019
 
 
 
