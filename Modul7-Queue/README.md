@@ -10,6 +10,10 @@
 **Queue** adalah struktur data yang digunakan untuk menyimpan data dengan metode FIFO (First-In First-Out). Data yang pertama dimasukkan ke dalam queue akan menjadi data yang pertama pula untuk dikeluarkan dari queue. Queue mirip dengan konsep antrian pada kehidupan sehari-hari, dimana konsumen yang datang lebih dulu akan dilayani terlebih dahulu[1]. 
 **Queue** adalah struktur data linear yang mengikuti prinsip First-In-First-Out (FIFO), di mana elemen yang pertama kali masuk akan menjadi elemen yang pertama kali keluar. Antrian terdiri dari dua ujung, yaitu front (depan) dan rear (belakang)[2].
 
+Implementasi queue dapat dilakukan dengan menggunakan array atau linked list. Struktur data queue terdiri dari dua pointer yaitu front dan rear. Front/head adalah pointer ke elemen pertama dalam queue dan rear/tail/back adalah pointer ke elemen terakhir dalam queue.
+![Screenshot 2024-05-16 071938](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ddeaf4c2-05da-4e4b-bcea-7efc0c50f75c)
+
+
 #### Operasi Dasar Queue
 - Enqueue: Operasi untuk memasukkan elemen baru ke dalam antrian. Elemen baru akan ditempatkan di akhir (rear) antrian. Ilustrasi operasi enqueue pada antrian dengan linked list ditunjukkan pada Gambar 1.
   
@@ -21,12 +25,12 @@ ditunjukkan pada Gambar 2.
 
 ![Linked-List-Dequeue-1024x320](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/1db10261-38f3-4288-9f28-26ca899e0bfa)
 
-- Front: Operasi untuk mengakses elemen yang berada di depan antrian tanpa mengeluarkannya.
-- Rear: Operasi untuk mengakses elemen yang berada di akhir antrian.
+- Front  : Operasi untuk mengakses elemen yang berada di depan antrian tanpa mengeluarkannya.
+- Rear   : Operasi untuk mengakses elemen yang berada di akhir antrian.
 - IsEmpty: Operasi untuk memeriksa apakah antrian kosong atau tidak.
-- IsFull: Operasi untuk memeriksa apakah antrian sudah penuh atau masih dapat menampung elemen baru (khusus untuk implementasi menggunakan array statis).
-
-
+- IsFull : Operasi untuk memeriksa apakah antrian sudah penuh atau masih dapat menampung elemen baru (khusus untuk implementasi menggunakan array statis).
+- peek() : mengambil data dari queue tanpa menghapusnya.
+- size() : menghitung jumlah elemen dalam queue.
 
 #### Kompleksitas Waktu Operasi Antrian
 - Kompleksitas waktu operasi enqueue dan dequeue pada implementasi antrian menggunakan array statis adalah O(1) untuk kasus rata-rata, namun dapat menjadi O(n) pada kasus terburuk ketika antrian harus direlokasi ke memori baru yang lebih besar. Kompleksitas waktu operasi enqueue dan dequeue pada implementasi antrian menggunakan linked list adalah O(1) untuk semua kasus.
