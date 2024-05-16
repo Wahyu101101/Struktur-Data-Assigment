@@ -398,7 +398,7 @@ int main() {
   
 Dari program yang dibuat, kita dapat melihat bagaimana stack digunakan untuk membalikkan urutan kata dalam sebuah kalimat, serta bagaimana konsep LIFO diterapkan dalam proses tersebut. Hal ini menunjukkan fleksibilitas dan kegunaan stack dalam memecahkan berbagai masalah pemrograman.
 ## Referensi
-[1] Asisten Praktikum, “Modul 6 Stack", Googgle Classroom, 2024.
+[1] Asisten Praktikum, “Modul 7 Queue", Googgle Classroom, 2024.
 
 [2] "A. Samara dan M. S. Watfa, "The Queue Data Structure: An In-Depth Study," IEEE Access, vol. 7, hlm. 172586–172607, 2019
 
