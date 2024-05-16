@@ -11,6 +11,7 @@
 **Queue** adalah struktur data linear yang mengikuti prinsip First-In-First-Out (FIFO), di mana elemen yang pertama kali masuk akan menjadi elemen yang pertama kali keluar. Antrian terdiri dari dua ujung, yaitu front (depan) dan rear (belakang)[2].
 
 Implementasi queue dapat dilakukan dengan menggunakan array atau linked list. Struktur data queue terdiri dari dua pointer yaitu front dan rear. Front/head adalah pointer ke elemen pertama dalam queue dan rear/tail/back adalah pointer ke elemen terakhir dalam queue.
+
 ![Screenshot 2024-05-16 071938](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ddeaf4c2-05da-4e4b-bcea-7efc0c50f75c)
 
 
