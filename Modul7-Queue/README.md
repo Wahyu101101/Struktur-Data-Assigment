@@ -10,7 +10,7 @@
 **Queue** adalah struktur data yang digunakan untuk menyimpan data dengan metode FIFO (First-In First-Out). Data yang pertama dimasukkan ke dalam queue akan menjadi data yang pertama pula untuk dikeluarkan dari queue. Queue mirip dengan konsep antrian pada kehidupan sehari-hari, dimana konsumen yang datang lebih dulu akan dilayani terlebih dahulu[1]. 
 **Queue** adalah struktur data linear yang mengikuti prinsip First-In-First-Out (FIFO), di mana elemen yang pertama kali masuk akan menjadi elemen yang pertama kali keluar. Antrian terdiri dari dua ujung, yaitu front (depan) dan rear (belakang)[2].
 
-Implementasi queue dapat dilakukan dengan menggunakan array atau linked list. Struktur data queue terdiri dari dua pointer yaitu front dan rear. Front/head adalah pointer ke elemen pertama dalam queue dan rear/tail/back adalah pointer ke elemen terakhir dalam queue.
+Implementasi queue dapat dilakukan dengan menggunakan array atau linked list. Struktur data queue terdiri dari dua pointer yaitu front dan rear. Front/head adalah pointer ke elemen pertama dalam queue dan rear/tail/back adalah pointer ke elemen terakhir dalam queue[1].
 
 ![Screenshot 2024-05-16 071938](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ddeaf4c2-05da-4e4b-bcea-7efc0c50f75c)
 
@@ -34,7 +34,7 @@ ditunjukkan pada Gambar 2.
 - size() : menghitung jumlah elemen dalam queue.
 
 #### Kompleksitas Waktu Operasi Antrian
-- Kompleksitas waktu operasi enqueue dan dequeue pada implementasi antrian menggunakan array statis adalah O(1) untuk kasus rata-rata, namun dapat menjadi O(n) pada kasus terburuk ketika antrian harus direlokasi ke memori baru yang lebih besar. Kompleksitas waktu operasi enqueue dan dequeue pada implementasi antrian menggunakan linked list adalah O(1) untuk semua kasus.
+- Kompleksitas waktu operasi enqueue dan dequeue pada implementasi antrian menggunakan array statis adalah O(1) untuk kasus rata-rata, namun dapat menjadi O(n) pada kasus terburuk ketika antrian harus direlokasi ke memori baru yang lebih besar. Kompleksitas waktu operasi enqueue dan dequeue pada implementasi antrian menggunakan linked list adalah O(1) untuk semua kasus[2].
 
 
 
