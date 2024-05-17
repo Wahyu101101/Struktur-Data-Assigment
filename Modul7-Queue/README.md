@@ -175,104 +175,123 @@ return 0;
 
 ## Unguided 
 
-#### 1. Buatlah program untuk menentukan apakah kalimat tersebut yang diinputkan dalam program stack adalah palindrom/tidak. Palindrom kalimat yang dibaca dari depan dan belakang sama. Jelaskan bagaimana cara kerja programnya.
+#### 1. Ubahlah penerapan konsep queue pada bagian guided dari array menjadi linked list
 
-#### Contoh :
-
-- Kalimat : ini
-  Kalimat tersebut adalah palindrom
-
-- Kalimat : Telkom
-  Kalimat tersebut adalah bukan palindrom
 ```C++
 #include <iostream>
-#include <cstring>
-#include <cctype>
 using namespace std;
 
-string arrayBuku[5]; // Array untuk menyimpan kalimat dalam stack
-int maksimal = 5, top = 0; // Variabel untuk mengontrol ukuran stack dan posisi top
+// Struktur Node untuk linked list
+struct Node {
+    string data; // Data yang disimpan dalam node
+    Node* next;  // Pointer ke node berikutnya
+};
 
-void pushArrayBuku(string data) {
-    if (top < maksimal) { // Periksa apakah masih ada ruang dalam stack
-        arrayBuku[top] = data; // Masukkan data ke dalam stack pada posisi top
-        top++; // Pindahkan posisi top ke atas
+Node* front = nullptr; // Pointer ke elemen depan antrian
+Node* back = nullptr;  // Pointer ke elemen belakang antrian
+
+// Fungsi untuk memeriksa apakah antrian penuh
+bool isFull() {
+    return false; // Pada linked list, antrian tidak pernah penuh kecuali memori habis
+}
+
+// Fungsi untuk memeriksa apakah antrian kosong
+bool isEmpty() {
+    return front == nullptr; // Antrian kosong jika front adalah nullptr
+}
+
+// Fungsi untuk menambahkan elemen ke antrian
+void enqueueAntrian(string data) {
+    Node* newNode = new Node(); // Membuat node baru
+    newNode->data = data;       // Menetapkan data ke node baru
+    newNode->next = nullptr;    // Node baru akan menjadi node terakhir, jadi next adalah nullptr
+    if (isEmpty()) {            // Jika antrian kosong
+        front = back = newNode; // Node baru menjadi front dan back
     } else {
-        cout << "Stack penuh, tidak bisa menambahkan kata baru." << endl;
+        back->next = newNode;   // Menghubungkan node terakhir saat ini ke node baru
+        back = newNode;         // Memperbarui back ke node baru
     }
 }
 
-bool isPalindrome(string str) {
-    int length = str.length(); // Simpan panjang string
-    for (int i = 0; i < length / 2; i++) { // Iterasi hingga setengah panjang string
-        if (tolower(str[i]) != tolower(str[length - i - 1])) { // Bandingkan karakter pertama dengan yang terakhir, kedua dengan yang kedua terakhir, dan seterusnya
-            return false; // Jika ada perbedaan, string bukan palindrom
+// Fungsi untuk menghapus elemen dari antrian
+void dequeueAntrian() {
+    if (isEmpty()) {
+        cout << "Antrian kosong" << endl;
+    } else {
+        Node* temp = front;    // Menyimpan node depan sementara
+        front = front->next;   // Memperbarui front ke node berikutnya
+        if (front == nullptr) { // Jika antrian menjadi kosong setelah dequeue
+            back = nullptr;   // Back juga harus nullptr
+        }
+        delete temp;          // Menghapus node depan lama
+    }
+}
+
+// Fungsi untuk menghitung jumlah elemen dalam antrian
+int countQueue() {
+    int count = 0;
+    Node* current = front;     // Mulai dari front
+    while (current != nullptr) { // Iterasi melalui semua node
+        count++;                // Tambah hitungan
+        current = current->next; // Pindah ke node berikutnya
+    }
+    return count;              // Mengembalikan jumlah node
+}
+
+// Fungsi untuk mengosongkan antrian
+void clearQueue() {
+    while (!isEmpty()) {       // Selama antrian tidak kosong
+        dequeueAntrian();      // Hapus elemen depan
+    }
+}
+
+// Fungsi untuk melihat semua elemen dalam antrian
+void viewQueue() {
+    cout << "Data antrian teller:" << endl;
+    Node* current = front;     // Mulai dari front
+    int position = 1;
+    while (current != nullptr) { // Iterasi melalui semua node
+        cout << position << ". " << current->data << endl;
+        current = current->next; // Pindah ke node berikutnya
+        position++;
+    }
+    if (isEmpty()) {           // Jika antrian kosong
+        for (int i = position; i <= 5; i++) { // Tampilkan kosong sampai posisi kelima
+            cout << i << ". (kosong)" << endl;
         }
     }
-    return true; // Jika tidak ada perbedaan, string palindrom
 }
 
 int main() {
-    string kata;
-    cout << endl;
-
-    // Meminta pengguna memasukkan kata-kata
-    for (int i = 0; i < 2; ++i) {
-        cout << "Masukkan kata " << ": ";
-        cin >> kata;
-        pushArrayBuku(kata); // Masukkan kata ke dalam stack
-    }
-    cout << endl;
-
-    for (int i = 0; i < top; i++) { // Iterasi melalui stack
-        if (isPalindrome(arrayBuku[i])) { // Jika kata dalam stack adalah palindrom
-            cout << "Kalimat : " << arrayBuku[i] << endl; 
-            cout << "Kalimat tersebut adalah palindrom." << endl;       
-            cout << endl;
-        } else {
-            cout << "Kalimat : " << arrayBuku[i] << endl; 
-            cout << "Kalimat tersebut adalah bukan palindrom." << endl; 
-            cout << endl;
-        }
-    }
-
-    return 0; // Keluar dari program
+    enqueueAntrian("Wahyu");    // Menambahkan "Wahyu" ke antrian
+    enqueueAntrian("Hasanah");    // Menambahkan "Hasanah" ke antrian
+    viewQueue();               // Melihat antrian
+    cout << "Jumlah antrian = " << countQueue() << endl; // Menampilkan jumlah antrian
+    dequeueAntrian();          // Menghapus satu elemen dari antrian
+    viewQueue();               // Melihat antrian lagi
+    cout << "Jumlah antrian = " << countQueue() << endl; // Menampilkan jumlah antrian
+    clearQueue();              // Mengosongkan antrian
+    viewQueue();               // Melihat antrian setelah dikosongkan
+    cout << "Jumlah antrian = " << countQueue() << endl; // Menampilkan jumlah antrian
+    return 0;
 }
 
 
 
 ```
 #### Output:
-![Screenshot 2024-05-08 143653](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3b75e9ad-3989-41bc-b613-367412261b0c)
+![Screenshot 2024-05-18 061122](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/e1f0b949-6951-4dd5-8b9e-940f76fac8d1)
 
-#### Kode di atas berfungsi untuk menentukan apakah kata-kata yang dimasukkan pengguna merupakan palindrom atau tidak. Di bawah ini penjelasan dari setiap bagian kode:
 
-Kode di atas adalah sebuah program C++ yang mengimplementasikan konsep stack untuk menentukan apakah kata-kata yang dimasukkan pengguna merupakan palindrom atau tidak. Berikut adalah penjelasan singkat dari setiap bagian kode:
+- #### Kode diatas adalah implementasi dari struktur data antrian (queue) menggunakan linked list. Struktur data antrian adalah struktur data linear di mana elemen-elemennya ditambahkan di ujung belakang dan dihapus dari ujung depan. Dalam kode tersebut, setiap elemen antrian direpresentasikan sebagai node dalam linked list, dengan setiap node memiliki dua bagian: data yang menyimpan informasi dan pointer yang menunjukkan ke node berikutnya. Pointer front digunakan untuk menunjukkan ke elemen depan antrian, sedangkan pointer back menunjukkan ke elemen belakang antrian.
 
-**1. Deklarasi Variabel dan Fungsi**:
-- arrayBuku: Array yang digunakan sebagai stack untuk menyimpan kata-kata.
-- maksimal: Variabel yang menunjukkan maksimal kapasitas stack.
-- top: Variabel yang menunjukkan posisi paling atas (top) pada stack.
-- pushArrayBuku(): Fungsi untuk menambahkan kata ke dalam stack.
-- isPalindrome(): Fungsi untuk memeriksa apakah sebuah string merupakan palindrom.
+- #### Fungsi-fungsi utama dalam kode tersebut mencakup operasi dasar pada antrian. Fungsi enqueueAntrian digunakan untuk menambahkan elemen baru ke belakang antrian, sementara dequeueAntrian digunakan untuk menghapus elemen dari depan antrian. Terdapat pula fungsi-fungsi pendukung seperti isEmpty untuk memeriksa apakah antrian kosong, countQueue untuk menghitung jumlah elemen dalam antrian, dan clearQueue untuk mengosongkan antrian. Dengan menggunakan linked list, struktur antrian ini dapat memperluas atau menyusut secara dinamis sesuai dengan kebutuhan, karena memori dialokasikan secara dinamis saat penambahan atau penghapusan elemen.
 
-**2. Fungsi pushArrayBuku()**:
-- Fungsi ini digunakan untuk memasukkan kata ke dalam stack.
-- Memeriksa apakah masih ada ruang dalam stack sebelum menambahkan kata.
-- Jika masih ada ruang, kata dimasukkan ke dalam stack pada posisi top, dan posisi top dinaikkan satu tingkat.
-
-**3. Fungsi isPalindrome()**:
-- Fungsi ini digunakan untuk memeriksa apakah sebuah string merupakan palindrom.
-- Membandingkan setiap karakter di posisi awal dengan karakter di posisi yang sama dari akhir string.
-- Jika ada perbedaan antara karakter pertama dan terakhir, atau kedua dan kedua dari akhir, dst., maka string tersebut bukan palindrom.
-- Jika tidak ada perbedaan, string tersebut adalah palindrom.
-**4. main() Function**:
-- Program meminta pengguna untuk memasukkan dua buah kata.
-- Setelah kata dimasukkan, program memeriksa apakah setiap kata dalam stack adalah palindrom atau tidak menggunakan fungsi isPalindrome().
-- Hasil dari pengecekan palindrom ditampilkan ke layar, bersama dengan kata-kata yang telah dimasukkan pengguna.
+- #### Di dalam fungsi main, beberapa operasi dasar antrian diuji, seperti menambahkan elemen baru, menghapus elemen dari antrian, dan mengosongkan antrian. Hasil operasi tersebut dicetak ke layar untuk memverifikasi kebenaran implementasi. 
   
 #### Full code Screenshot:
-![Screenshot 2024-05-08 143600](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/1eef34c8-c67d-4be2-be97-85527eaeae19)
+![Screenshot 2024-05-18 061133](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/c2ed1be8-d2b0-4b96-9d48-f8df0d11fdd0)
+
 
 
 #### 2. Buatlah program untuk melakukan pembalikan terhadap kalimat menggunakan stack dengan minimal 3 kata. Jelaskan output program dan source codenya beserta operasi/fungsi yang dibuat?
