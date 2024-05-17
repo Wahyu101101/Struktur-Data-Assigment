@@ -294,56 +294,106 @@ int main() {
 
 
 
-#### 2. Buatlah program untuk melakukan pembalikan terhadap kalimat menggunakan stack dengan minimal 3 kata. Jelaskan output program dan source codenya beserta operasi/fungsi yang dibuat?
-
-#### contoh :
-- Kalimat : Telkom Purwokerto
-- Hasil : otrekowruP mokleT 
+#### 2. Dari nomor 1 buatlah konsep antri dengan atribut Nama mahasiswa dan NIM Mahasiswa
 
 ```C++
 #include <iostream>
-#include <stack>
-#include <string>
 using namespace std;
 
-// Fungsi untuk membalikkan kalimat menggunakan stack
-string reverseSentence(string sentence) {
-    stack<char> charStack; // Stack untuk menyimpan karakter
-    string reversedSentence; // String untuk menyimpan kalimat terbalik
+// Struktur Node untuk linked list
+struct Node {
+    string nama; // Nama mahasiswa
+    string nim;  // NIM mahasiswa
+    Node* next;  // Pointer ke node berikutnya
+};
 
-    // Push setiap karakter ke dalam stack
-    for (char c : sentence) {
-        charStack.push(c);
+Node* front = nullptr; // Pointer ke elemen depan antrian
+Node* back = nullptr;  // Pointer ke elemen belakang antrian
+
+// Fungsi untuk memeriksa apakah antrian penuh
+bool isFull() {
+    return false; // Pada linked list, antrian tidak pernah penuh kecuali memori habis
+}
+
+// Fungsi untuk memeriksa apakah antrian kosong
+bool isEmpty() {
+    return front == nullptr; // Antrian kosong jika front adalah nullptr
+}
+
+// Fungsi untuk menambahkan elemen ke antrian
+void enqueueAntrian(string nama, string nim) {
+    Node* newNode = new Node(); // Membuat node baru
+    newNode->nama = nama;       // Menetapkan nama ke node baru
+    newNode->nim = nim;         // Menetapkan NIM ke node baru
+    newNode->next = nullptr;    // Node baru akan menjadi node terakhir, jadi next adalah nullptr
+    if (isEmpty()) {            // Jika antrian kosong
+        front = back = newNode; // Node baru menjadi front dan back
+    } else {
+        back->next = newNode;   // Menghubungkan node terakhir saat ini ke node baru
+        back = newNode;         // Memperbarui back ke node baru
     }
+}
 
-    // Pop karakter dari stack dan tambahkan ke string hasil
-    while (!charStack.empty()) {
-        reversedSentence += charStack.top();
-        charStack.pop();
+// Fungsi untuk menghapus elemen dari antrian
+void dequeueAntrian() {
+    if (isEmpty()) {
+        cout << "Antrian kosong" << endl;
+    } else {
+        Node* temp = front;    // Menyimpan node depan sementara
+        front = front->next;   // Memperbarui front ke node berikutnya
+        if (front == nullptr) { // Jika antrian menjadi kosong setelah dequeue
+            back = nullptr;   // Back juga harus nullptr
+        }
+        delete temp;          // Menghapus node depan lama
     }
+}
 
-    return reversedSentence; // Mengembalikan kalimat terbalik
+// Fungsi untuk menghitung jumlah elemen dalam antrian
+int countQueue() {
+    int count = 0;
+    Node* current = front;     // Mulai dari front
+    while (current != nullptr) { // Iterasi melalui semua node
+        count++;                // Tambah hitungan
+        current = current->next; // Pindah ke node berikutnya
+    }
+    return count;              // Mengembalikan jumlah node
+}
+
+// Fungsi untuk mengosongkan antrian
+void clearQueue() {
+    while (!isEmpty()) {       // Selama antrian tidak kosong
+        dequeueAntrian();      // Hapus elemen depan
+    }
+}
+
+// Fungsi untuk melihat semua elemen dalam antrian
+void viewQueue() {
+    cout << "Data antrian mahasiswa:" << endl;
+    Node* current = front;     // Mulai dari front
+    int position = 1;
+    while (current != nullptr) { // Iterasi melalui semua node
+        cout << position << ". Nama: " << current->nama << ", NIM: " << current->nim << endl;
+        current = current->next; // Pindah ke node berikutnya
+        position++;
+    }
+    if (isEmpty()) {           // Jika antrian kosong
+        for (int i = position; i <= 5; i++) { // Tampilkan kosong sampai posisi kelima
+            cout << i << ". (kosong)" << endl;
+        }
+    }
 }
 
 int main() {
-    string kalimat;
-    cout<<endl;
-
-    // Meminta pengguna memasukkan kalimat
-    cout << "Masukkan kalimat: ";
-    getline(cin, kalimat);
-    cout<<endl;
-
-    // Mencetak kalimat yang dimasukkan pengguna
-    cout << "Kalimat: " << kalimat << endl;
-
-    // Memanggil fungsi untuk membalikkan kalimat
-    string hasil = reverseSentence(kalimat);
-
-    // Mencetak hasil pembalikan kalimat
-    cout << "Hasil: " << hasil << endl;
-    cout<<endl;
-
+    enqueueAntrian("Wahyu", "2311102178");    // Menambahkan "Wahyu" ke antrian
+    enqueueAntrian("Hasanah", "231111212");    // Menambahkan "Hasanah" ke antrian
+    viewQueue();               // Melihat antrian
+    cout << "Jumlah antrian = " << countQueue() << endl; // Menampilkan jumlah antrian
+    dequeueAntrian();          // Menghapus satu elemen dari antrian
+    viewQueue();               // Melihat antrian lagi
+    cout << "Jumlah antrian = " << countQueue() << endl; // Menampilkan jumlah antrian
+    clearQueue();              // Mengosongkan antrian
+    viewQueue();               // Melihat antrian setelah dikosongkan
+    cout << "Jumlah antrian = " << countQueue() << endl; // Menampilkan jumlah antrian
     return 0;
 }
 
@@ -351,39 +401,23 @@ int main() {
 
 ```
 #### Output:
-![Screenshot 2024-05-08 145631](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/033ab297-fb80-4f25-b7fa-4913c8b1f449)
+![Screenshot 2024-05-18 062553](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/74ecad8c-c62c-4498-80f2-f26e6ff76c7f)
 
-#### Kode di atas merupakan sebuah program C++ yang menggunakan stack untuk membalikkan sebuah kalimat yang dimasukkan oleh pengguna. 
+- #### Kode diatas adalah implementasi sederhana dari struktur data antrian menggunakan linked list. Dalam struktur data antrian, elemen-elemennya diatur dalam urutan linear di mana penambahan elemen baru dilakukan di satu ujung (disebut "enqueue") dan penghapusan elemen dilakukan di ujung yang lain (disebut "dequeue"). Dalam kode tersebut, struktur Node digunakan untuk merepresentasikan setiap elemen dalam antrian, dengan setiap Node menyimpan informasi Nama dan NIM mahasiswa serta pointer yang menunjukkan ke Node berikutnya dalam antrian. Fungsi-fungsi seperti enqueueAntrian(), dequeueAntrian(), dan viewQueue() digunakan untuk menambah, menghapus, dan melihat elemen-elemen dalam antrian, sementara fungsi-fungsi lainnya seperti isEmpty() dan countQueue() membantu dalam memeriksa keadaan antrian dan menghitung jumlah elemen dalamnya.
 
-**1. Header Files**: Program menggunakan #include <iostream>, #include <stack>, dan #include <string> untuk menyertakan file header yang diperlukan.
-
-**2. Namespace**: Digunakan using namespace std; untuk menghindari penulisan std:: sebelum setiap fungsi dari namespace std.
-
-**3. Fungsi reverseSentence**:
-- Menerima parameter sentence yang merupakan sebuah string, yaitu kalimat yang akan dibalik.
-- Membuat sebuah stack (charStack) untuk menyimpan setiap karakter dari kalimat.
-- Iterasi melalui setiap karakter dalam kalimat, kemudian push karakter tersebut ke dalam stack.
-- Setelah semua karakter dimasukkan ke dalam stack, karakter-karakter tersebut dipop dari stack satu per satu dan ditambahkan ke dalam string reversedSentence, sehingga menghasilkan kalimat terbalik.
-- Mengembalikan kalimat terbalik tersebut.
-- 
-**4. Fungsi main**:
-- Mendeklarasikan variabel kalimat untuk menyimpan kalimat yang dimasukkan oleh pengguna.
-- Meminta pengguna untuk memasukkan sebuah kalimat menggunakan getline(cin, kalimat).
-- Memanggil fungsi reverseSentence untuk membalikkan kalimat yang dimasukkan oleh pengguna.
-- Mencetak kalimat asli dan hasil pembalikan kalimat menggunakan cout.
-- 
-**5.Output**: Program akan meminta pengguna untuk memasukkan sebuah kalimat. Setelah pengguna memasukkan kalimat, program akan mencetak kalimat tersebut, kemudian mencetak hasil pembalikan kalimat.
+- #### Implementasi tersebut memungkinkan penggunaan antrian dengan data mahasiswa, di mana setiap elemen antrian memiliki Nama dan NIM mahasiswa yang terkait. Dengan menggunakan linked list, antrian bisa dikelola secara dinamis, dan tidak ada batasan ukuran yang diberlakukan, kecuali keterbatasan memori. Fungsi-fungsi yang disediakan dalam kode tersebut memungkinkan pengguna untuk menambah, menghapus, melihat, dan mengosongkan antrian sesuai kebutuhan. Dengan cara ini, struktur data antrian dapat digunakan dalam berbagai konteks, termasuk dalam pengelolaan antrian penerimaan mahasiswa, antrean layanan, atau skenario lain di mana pengelolaan antrian diperlukan untuk mengatur urutan operasi.
 
 #### Full code Screenshot:
-![Screenshot 2024-05-08 145646](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/b48d5ef5-9773-4d3e-9a00-bec634468e92)
+![Screenshot 2024-05-18 062608](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/2497745f-5beb-4014-92e4-142dec5bff37)
 
 
 ## Kesimpulan
-- A. Definisi Stack: Stack adalah struktur data abstrak yang mengikuti aturan Last In, First Out (LIFO), yang berarti elemen terakhir yang dimasukkan akan menjadi yang pertama dikeluarkan. Analogi sederhananya adalah tumpukan piring di kafetaria, di mana piring yang paling atas adalah yang terakhir dimasukkan dan pertama kali diambil.
-- B. Operasi pada Stack: Ada beberapa operasi dasar yang dapat dilakukan pada stack, antara lain push (menambahkan elemen baru ke puncak stack), pop (menghapus elemen dari puncak stack), top (melihat nilai elemen di puncak stack tanpa menghapusnya), dan empty (memeriksa apakah stack kosong).
-- C. Implementasi Stack: Stack dapat diimplementasikan menggunakan array atau linked list. Dalam implementasi menggunakan array, diperlukan penanganan khusus saat stack penuh atau kosong.
+- A. Antrian (queue) adalah struktur data linear yang mengikuti prinsip FIFO (First-In First-Out), di mana elemen yang pertama masuk akan menjadi yang pertama keluar.
+- B. Implementasi antrian dapat dilakukan menggunakan array atau linked list, dengan dua pointer penting: front dan rear.
+- C. Operasi dasar pada antrian meliputi enqueue (menambah elemen), dequeue (menghapus elemen), serta operasi lain seperti peek, size, isEmpty, dan isFull.
+- D. Kompleksitas waktu operasi antrian tergantung pada implementasinya, dengan kompleksitas waktu rata-rata O(1) untuk operasi enqueue dan dequeue pada linked list, dan O(1) untuk operasi enqueue dan dequeue pada array statis, namun dapat mencapai O(n) pada kasus terburuk saat relokasi memori diperlukan.
+- E. Dalam implementasi linked list, antrian dapat memperluas atau menyusut secara dinamis sesuai dengan kebutuhan, membuatnya sangat fleksibel untuk digunakan dalam berbagai konteks aplikasi.
   
-Dari program yang dibuat, kita dapat melihat bagaimana stack digunakan untuk membalikkan urutan kata dalam sebuah kalimat, serta bagaimana konsep LIFO diterapkan dalam proses tersebut. Hal ini menunjukkan fleksibilitas dan kegunaan stack dalam memecahkan berbagai masalah pemrograman.
 ## Referensi
 [1] Asisten Praktikum, “Modul 7 Queue", Googgle Classroom, 2024.
 
