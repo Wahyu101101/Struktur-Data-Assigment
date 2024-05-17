@@ -46,124 +46,87 @@ ditunjukkan pada Gambar 2.
 ```C++
 #include <iostream>
 using namespace std;
-
-string arrayBuku[5]; // Array untuk menyimpan data dalam stack
-int maksimal = 5, top = 0; // Variabel untuk mengontrol ukuran stack dan posisi top
-
-// Fungsi untuk memeriksa apakah stack penuh
-bool isFull() {
-    return (top == maksimal);
+const int maksimalQueue = 5; // Maksimal antrian
+int front = 0; // Penanda antrian
+int back = 0; // Penanda
+string queueTeller[5]; // Fungsi pengecekan
+bool isFull() { // Pengecekan antrian penuh atau tidak
+if (back == maksimalQueue) {
+return true; // =1
+} else {
+return false;
 }
-
-// Fungsi untuk memeriksa apakah stack kosong
-bool isEmpety() {
-    return (top == 0);
 }
-
-// Fungsi untuk menambahkan data ke dalam stack
-void pushArrayBuku(string data) {
-    if (isFull()) { // Jika stack penuh
-        cout <<"Data telah penuh" <<endl; // Tampilkan pesan
-    } else {
-        arrayBuku[top] = data; // Masukkan data ke dalam stack pada posisi top
-        top++; // Pindahkan posisi top ke atas
-    }
+bool isEmpty() { // Antriannya kosong atau tidak
+if (back == 0) {
+return true;
+} else {
+return false;
 }
-
-// Fungsi untuk menghapus data teratas dari stack
-void popArrayBuku() {
-    if (isEmpety()) { // Jika stack kosong
-        cout <<"Tidak ada data yang dihapus" <<endl; // Tampilkan pesan
-    } else {
-        arrayBuku[top - 1] = ""; // Hapus data teratas dengan mengosongkan nilainya
-        top--; // Turunkan posisi top
-    }
 }
-
-// Fungsi untuk melihat data pada posisi tertentu dalam stack
-void peekArrayBuku(int posisi) {
-    if (isEmpety()) { // Jika stack kosong
-        cout <<"Tidak ada data yang bisa dilihat"<<endl; // Tampilkan pesan
-    } else {
-        int index = top;
-        for(int i = 1; i <= posisi; i++) {
-            index--;
-        }
-        cout << "Posisi ke " << posisi << " adalah " << arrayBuku[index] <<endl; // Tampilkan data pada posisi tertentu
-    }
+void enqueueAntrian(string data) { // Fungsi menambahkan antrian
+if (isFull()) {
+cout << "Antrian penuh" << endl;
+} else {
+if (isEmpty()) { // Kondisi ketika queue kosong
+queueTeller[0] = data;
+front++;
+back++;
+} else { // Antrianya ada isi
+queueTeller[back] = data;
+back++;
 }
-
-// Fungsi untuk menghitung jumlah data dalam stack
-int countStack() {
-    return top;
 }
-
-// Fungsi untuk mengubah data pada posisi tertentu dalam stack
-void changeArrayBuku(int posisi, string data) {
-    if (posisi > top) { // Jika posisi melebihi jumlah data dalam stack
-        cout << "Posisi melebihi data yang ada" <<endl; // Tampilkan pesan
-    } else {
-        int index = top;
-        for (int i = 1; i <= posisi; i++) {
-            index--;
-        }
-        arrayBuku[index] = data; // Ubah data pada posisi tertentu
-    }
 }
-
-// Fungsi untuk menghapus semua data dalam stack
-void destroyArraybuku() {
-    for (int i = top; i >= 0; i--) {
-        arrayBuku[i] = ""; // Mengosongkan semua data dalam array
-    }
-    top = 0; // Mengatur kembali posisi top ke 0
+void dequeueAntrian() { // Fungsi mengurangi antrian
+if (isEmpty()) {
+cout << "Antrian kosong" << endl;
+} else {
+for (int i = 0; i < back; i++) {
+queueTeller[i] = queueTeller[i + 1];
 }
-
-// Fungsi untuk mencetak semua data dalam stack
-void cetakArrayBuku() {
-    if (isEmpety()) { // Jika stack kosong
-        cout << "Tidak ada data yang dicetak" <<endl; // Tampilkan pesan
-    } else {
-        for (int i = top -1; i >= 0; i--) { // Iterasi dari top ke bawah hingga indeks ke-0
-            cout << arrayBuku[i] <<endl; // Tampilkan data pada setiap indeks
-        }
-    }
+back--;
 }
+}
+int countQueue() { // Fungsi menghitung banyak antrian
+return back;
+}
+void clearQueue() { // Fungsi menghapus semua antrian
+if (isEmpty()) {
+cout << "Antrian kosong" << endl;
+} else {
+for (int i = 0; i < back; i++) {
+queueTeller[i] = "";
+}
+back = 0;
+front = 0;
+}
+}
+void viewQueue() { // Fungsi melihat antrian
+cout << "Data antrian teller:" << endl;
+for (int i = 0; i < maksimalQueue; i++) {
+if (queueTeller[i] != "") {
+cout << i + 1 << ". " << queueTeller[i] <<
 
+endl;
+
+} else {
+cout << i + 1 << ". (kosong)" << endl;
+}
+}
+}
 int main() {
-    // Menambahkan beberapa data ke dalam stack
-    pushArrayBuku("Kalkulus");
-    pushArrayBuku("Struktur Data");
-    pushArrayBuku("Matematika Diskrit");
-    pushArrayBuku("Dasar Multimedia");
-    pushArrayBuku("Inggris");
-
-    // Mencetak semua data dalam stack
-    cetakArrayBuku();
-    cout << "\n";
-
-    // Memeriksa apakah stack penuh atau kosong
-    cout << "Apakah data stack penuh? " << isFull() <<endl;
-    cout << "Apakah data stack kosong? " << isEmpety() <<endl;
-
-    // Melihat data pada posisi tertentu dalam stack dan menghapus data teratas
-    peekArrayBuku(2);
-    popArrayBuku();
-    cout << "Banyaknya data = " << countStack() <<endl;
-
-    // Mengubah data pada posisi tertentu dalam stack
-    changeArrayBuku(2, "Bahasa Jerman");
-    cetakArrayBuku();
-
-    cout <<"\n";
-    // Menghapus semua data dalam stack dan mencetak jumlah data
-    destroyArraybuku();
-    cout << "Jumlah data setelah dihapus: " << top <<endl;
-
-    // Mencetak semua data dalam stack setelah dihapus
-    cetakArrayBuku();
-
-    return 0; // Keluar dari program
+enqueueAntrian("Andi");
+enqueueAntrian("Maya");
+viewQueue();
+cout << "Jumlah antrian = " << countQueue() << endl;
+dequeueAntrian();
+viewQueue();
+cout << "Jumlah antrian = " << countQueue() << endl;
+clearQueue();
+viewQueue();
+cout << "Jumlah antrian = " << countQueue() << endl;
+return 0;
 }
 
 
@@ -171,35 +134,40 @@ int main() {
 
 ```
 #### Output:
-![Screenshot 2024-05-08 144242](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/220b33c1-f24e-47ea-a3ff-a4e9632411e2)
+![Screenshot 2024-05-18 055502](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/9587b38c-f860-410a-9550-88d122b33383)
 
 
-Kode diatas dibuat dengan konsep tumpukan (stack) yang mengikuti aturan LIFO (Last In, First Out). Artinya, buku yang terakhir dimasukkan ke dalam tumpukan akan menjadi buku pertama yang dikeluarkan.
+#### Kode di atas adalah implementasi dari antrian (queue) menggunakan array dengan kapasitas maksimum yang telah ditentukan (maksimalQueue sebesar 5). Kode ini menyediakan fungsi-fungsi dasar untuk antrian seperti menambah elemen (enqueue), menghapus elemen (dequeue), mengecek apakah antrian penuh atau kosong, menghitung jumlah elemen dalam antrian, mengosongkan antrian, dan menampilkan elemen-elemen dalam antrian.
 
-#### Deklarasi Variabel dan Fungsi
+#### Deklarasi Konstanta dan Variabel:
+- maksimalQueue adalah kapasitas maksimal dari antrian.
+- front dan back adalah indeks untuk melacak elemen di depan dan belakang antrian.
+- queueTeller adalah array yang digunakan untuk menyimpan elemen-elemen antrian.
 
-- arrayBuku[5]: Array untuk menyimpan judul buku, maksimum 5 buah.
-- maksimal: Nilai konstan (const) yang menyatakan kapasitas maksimal tumpukan (5).
-- top: Variabel integer untuk menunjuk ke posisi elemen teratas dalam tumpukan (awalnya 0).
+#### Fungsi isFull:
+- Fungsi ini mengembalikan true jika antrian penuh (back mencapai maksimalQueue), dan false jika tidak penuh.
 
-#### Fungsi-fungsi
+#### Fungsi isEmpty:
+- Fungsi ini mengembalikan true jika antrian kosong (back sama dengan 0), dan false jika tidak kosong.
 
-##### Pemeriksaan Kondisi Tumpukan:
-- isFull(): Memeriksa apakah tumpukan sudah penuh (top == maksimal) dan mengembalikan true jika penuh, false jika masih ada ruang.
-- isEmpety(): Memeriksa apakah tumpukan kosong (top == 0) dan mengembalikan true jika kosong, false jika ada data.
-##### Operasi terhadap Tumpukan:
-- pushArrayBuku(string data): Menambahkan buku baru dengan judul data ke dalam tumpukan. Fungsi ini terlebih dahulu mengecek isFull(). Jika penuh, akan menampilkan pesan "Data telah penuh". Jika tidak penuh, judul buku (data) akan disimpan di indeks top pada array arrayBuku, kemudian top ditambah 1 (menunjuk ke posisi kosong berikutnya).
-- popArrayBuku(): Menghapus buku teratas dari tumpukan. Fungsi ini terlebih dahulu mengecek isEmpety(). Jika kosong, akan menampilkan pesan "Tidak ada data yang dihapus". Jika tidak kosong, elemen pada indeks top-1 dikosongkan dengan memberi nilai kosong ("") dan top dikurangi 1 (menunjuk ke elemen teratas baru).
-- peekArrayBuku(int posisi): Menampilkan judul buku pada posisi tertentu (posisi) dalam tumpukan. Fungsi ini terlebih dahulu mengecek isEmpety(). Jika kosong, akan menampilkan pesan "Tidak ada data yang bisa dilihat". Jika tidak kosong, posisi sebenarnya dalam array dihitung dengan top - posisi karena top menunjuk ke elemen teratas. Judul buku pada posisi tersebut kemudian ditampilkan.
-##### Operasi Lain pada Tumpukan:
-- countStack(): Mengembalikan jumlah buku yang ada dalam tumpukan dengan nilai top.
-- changeArrayBuku(int posisi, string data): Mengubah judul buku pada posisi tertentu (posisi) dalam tumpukan dengan judul baru data. Fungsi ini terlebih dahulu mengecek apakah posisi melebihi top (melebihi jumlah buku yang ada). Jika ya, akan menampilkan pesan "Posisi melebihi data yang ada". Jika tidak, posisi sebenarnya dalam array dihitung dengan top - posisi dan judul buku pada posisi tersebut diubah menjadi data.
-- destroyArraybuku(): Menghapus semua data buku dari tumpukan. Fungsi ini melakukan iterasi dari top ke 0, dan pada setiap indeks elemen dikosongkan dengan memberi nilai kosong ("") pada array arrayBuku. Terakhir, top diubah menjadi 0 (menandakan tumpukan kosong).
-- cetakArrayBuku(): Menampilkan daftar judul buku dari tumpukan, dari atas ke bawah. Fungsi ini terlebih dahulu mengecek isEmpety(). Jika kosong, akan menampilkan pesan "Tidak ada data yang dicetak". Jika tidak kosong, iterasi dilakukan dari top-1 hingga 0, dan pada setiap indeks judul buku pada array arrayBuku akan ditampilkan.
+#### Fungsi enqueueAntrian:
+- Fungsi ini menambahkan elemen ke antrian. Jika antrian penuh, mencetak pesan "Antrian penuh". Jika antrian kosong, elemen ditambahkan di posisi pertama. Jika tidak kosong, elemen ditambahkan di posisi back dan back diinkrementasi.
+
+#### Fungsi dequeueAntrian:
+- Fungsi ini menghapus elemen dari antrian. Jika antrian kosong, mencetak pesan "Antrian kosong". Jika tidak kosong, semua elemen digeser satu posisi ke kiri, dan back di-decrement.
+
+#### Fungsi countQueue:
+- Fungsi ini mengembalikan jumlah elemen dalam antrian.
+
+#### Fungsi clearQueue:
+- Fungsi ini menghapus semua elemen dalam antrian dengan mengosongkan array dan mengatur ulang back dan front menjadi 0.
+
+#### Fungsi viewQueue:
+- Fungsi ini menampilkan semua elemen dalam antrian, menunjukkan posisi mana yang kosong dan mana yang diisi.
+
 
 #### Full code Screenshot:
-![Screenshot 2024-05-08 144258](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f90caef3-f069-446d-b180-b7d1dda95d17)
-
+![Screenshot 2024-05-18 055426](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/50abc100-30e1-40c7-9822-c18e517de1e4)
 
 
 
