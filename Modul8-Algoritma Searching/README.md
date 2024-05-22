@@ -496,8 +496,13 @@ int main() {
   
 ## Referensi
 [1] Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). Introduction to Algorithms (4th Edition). MIT Press.
+
 [2] Sedgewick, R., & Wayne, K. (2021). Algorithms (4th Edition). Addison-Wesley Professional.
+
 [3] Grokking Algorithms: An Illustrated Guide for Programmers and Other Curious People by Aditya Bhargava (2019)
+
 [4] Skiena, S. S. (2020). The Algorithm Design Manual (3rd Edition). Springer.
+
 [5] Karumanchi, N. (2022). Data Structures and Algorithms Made Easy: Data Structure and Algorithmic Puzzles (6th Edition). CareerMonk Publications.
+
 [6] Asisten Praktikum, “Modul 8 Algoritma Searching", Googgle Classroom, 2024.
