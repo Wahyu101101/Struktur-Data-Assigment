@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+// Inisialisasi array dengan 10 elemen
+int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+// Elemen yang akan dicari dalam array
+int cari = 6;
+// Variabel untuk indeks iterasi
+int i;
+// Menghitung panjang array dengan membagi ukuran total array dengan ukuran satu elemen
+int panjangArray = sizeof(arr) / sizeof(arr[0]);
+// Flag untuk menandai apakah elemen ditemukan
+bool ketemu = false;
+
+int main() {
+    // Loop untuk iterasi melalui elemen-elemen array
+    for (i = 0; i < panjangArray; i++) {
+        // Jika elemen saat ini sama dengan elemen yang dicari
+        if (arr[i] == cari) {
+            // Set flag ketemu menjadi true (penugasan, bukan perbandingan)
+            ketemu = true; // Perbaiki kesalahan, harus menggunakan '=' untuk penugasan, bukan '==' untuk perbandingan
+            break; // Keluar dari loop jika elemen ditemukan
+        } 
+        // else { // Kondisi ini tidak diperlukan, karena tanpa ini juga i akan bertambah satu di akhir iterasi
+        //     i++;
+        // }
+    }
+    // Mencetak panjang array
+    cout << "panjangArray: " << panjangArray << endl;
+    // Mencetak hasil pencarian
+    // Jika elemen ditemukan, tampilkan indeksnya, jika tidak, tampilkan pesan tidak ditemukan
+    if (ketemu) {
+        cout << cari << " terdapat pada indeks ke " << i << endl;
+    } else {
+        cout << cari << " tidak ditemukan dalam array" << endl;
+    }
+}
