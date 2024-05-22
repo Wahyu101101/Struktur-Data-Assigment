@@ -15,17 +15,17 @@ Pencarian (Searching) yaitu proses menemukan suatu nilai tertentu pada kumpulan 
 Terdapat beberapa algoritma pencarian yang umum digunakan, antara lain:
 #### 1. Sequential Search
 - Sequential Search merupakan salah satu algoritma pencarian data yang biasa digunakan untuk data yang berpola acak atau belum terurut. Sequential search juga merupakan teknik pencarian data dari array yang paling mudah, dimana data dalam array dibaca satu demi satu dan diurutkan dari index terkecil ke index terbesar, maupunsebaliknya. Konsep Sequential Search yaitu:
-- ● Membandingkan setiap elemen pada array satu per satu secara berurut.
-- ● Proses pencarian dimulai dari indeks pertama hingga indeks terakhir.
-- ● Proses pencarian akan berhenti apabila data ditemukan. Jika hingga akhir array data masih juga tidak ditemukan, maka proses pencarian tetap akan dihentikan.
-- ● Proses perulangan pada pencarian akan terjadi sebanyak jumlah N elemen pada array.
+  1) Membandingkan setiap elemen pada array satu per satu secara berurut
+  2) Proses pencarian dimulai dari indeks pertama hingga indeks terakhir.
+  3) Proses pencarian akan berhenti apabila data ditemukan. Jika hingga akhir array data masih juga tidak ditemukan, maka proses pencarian tetap akan dihentikan.
+  4) Proses perulangan pada pencarian akan terjadi sebanyak jumlah N elemen pada array.
 
 #### Algoritma pencarian berurutan dapat dituliskan sebagai berikut :
-#### 1) i ← 0
-#### 2) ketemu ← false
-#### 3) Selama (tidak ketemu) dan (i <= N) kerjakan baris 4
-#### 4) Jika (Data[i] = x) maka ketemu ← true, jika tidak i ← i + 1
-#### 5) Jika (ketemu) maka i adalah indeks dari data yang dicari, jika tidak data tidak ditemukan.
+1) i ← 0
+2) ketemu ← false
+3) Selama (tidak ketemu) dan (i <= N) kerjakan baris 4
+4) Jika (Data[i] = x) maka ketemu ← true, jika tidak i ← i + 1
+5) Jika (ketemu) maka i adalah indeks dari data yang dicari, jika tidak data tidak ditemukan.
 
 #### Di bawah ini merupakan fungsi untuk mencari data menggunakan pencarian sekuensial.
 
@@ -59,7 +59,7 @@ A, maka proses yang akan terjadi yaitu:
 - Pada index ke-4 yaitu angka 7 dan ternyata angka 7 merupakan angka yang dicari, sehingga pencarian akan dihentikan dan proses selesai.
 
 #### 2. Binary Search (Pencarian Biner)
--Binary search adalah algoritma pencarian efisien yang digunakan pada kumpulan data yang telah diurutkan. Algoritma ini membagi array menjadi dua bagian pada setiap iterasi dan memilih salah satu bagian untuk diperiksa selanjutnya, tergantung pada nilai elemen yang dicari. Algoritma ini memiliki kompleksitas waktu O(log n), di mana n adalah jumlah elemen dalam kumpulan data[5].
+- Binary search adalah algoritma pencarian efisien yang digunakan pada kumpulan data yang telah diurutkan. Algoritma ini membagi array menjadi dua bagian pada setiap iterasi dan memilih salah satu bagian untuk diperiksa selanjutnya, tergantung pada nilai elemen yang dicari. Algoritma ini memiliki kompleksitas waktu O(log n), di mana n adalah jumlah elemen dalam kumpulan data[5].
 
 Contoh dari Binary Search, yaitu:
 
