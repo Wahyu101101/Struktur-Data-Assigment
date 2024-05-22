@@ -6,7 +6,7 @@
 
 ## **Algoritma Searching**
 
-#### Pengertian Queue
+#### Pengertian Algoritma Searching
 **Algoritma searching** atau pencarian adalah serangkaian langkah-langkah sistematis yang digunakan untuk menemukan elemen tertentu dalam sekumpulan data atau struktur data[1]. Tujuan utama dari algoritma pencarian adalah untuk menemukan lokasi atau indeks dari elemen yang dicari dalam waktu yang efisien[2]. Algoritma pencarian sangat penting dalam berbagai bidang, seperti pengolahan data, struktur data, dan pemrograman komputer[3].
 Implementasi queue dapat dilakukan dengan menggunakan array atau linked list. Struktur data queue terdiri dari dua pointer yaitu front dan rear. Front/head adalah pointer ke elemen pertama dalam queue dan rear/tail/back adalah pointer ke elemen terakhir dalam queue[1].
 
