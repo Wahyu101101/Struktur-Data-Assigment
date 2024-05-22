@@ -1,0 +1,81 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+// Fungsi untuk mengurutkan array karakter menggunakan selection sort
+void selection_sort(char arr[], int n) {
+    int min;
+    char temp;
+    for (int i = 0; i < n - 1; i++) {
+        min = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min]) {
+                min = j;
+            }
+        }
+        // Tukar elemen
+        temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+    }
+}
+
+// Fungsi untuk melakukan pencarian biner pada array karakter yang sudah diurutkan
+void binary_search(char arr[], int n, char target) {
+    int awal = 0, akhir = n - 1, tengah;
+    bool found = false;
+    
+    while (awal <= akhir) {
+        tengah = (awal + akhir) / 2;
+        if (arr[tengah] == target) {
+            found = true;
+            break;
+        } else if (arr[tengah] < target) {
+            awal = tengah + 1;
+        } else {
+            akhir = tengah - 1;
+        }
+    }
+
+    if (found) {
+        cout << "Huruf '" << target << "' ditemukan pada indeks ke-" << tengah << endl;
+    } else {
+        cout << "Huruf '" << target << "' tidak ditemukan dalam kalimat." << endl;
+    }
+}
+
+int main() {
+    string kalimat;
+    char cari;
+
+    // Meminta pengguna untuk memasukkan sebuah kalimat
+    cout << "Masukkan sebuah kalimat: ";
+    getline(cin, kalimat);
+
+    // Meminta pengguna untuk memasukkan huruf yang ingin dicari
+    cout << "Masukkan huruf yang ingin Anda cari: ";
+    cin >> cari;
+
+    // Mengonversi string menjadi array karakter
+    int panjang = kalimat.length();
+    char arr[panjang];
+    for (int i = 0; i < panjang; i++) {
+        arr[i] = kalimat[i];
+    }
+
+    // Mengurutkan array karakter
+    selection_sort(arr, panjang);
+
+    // Menampilkan kalimat setelah diurutkan
+    cout << "Kalimat setelah diurutkan: ";
+    for (int i = 0; i < panjang; i++) {
+        cout << arr[i];
+    }
+    cout << endl;
+
+    // Melakukan binary search
+    binary_search(arr, panjang, cari);
+
+    return 0;
+}
