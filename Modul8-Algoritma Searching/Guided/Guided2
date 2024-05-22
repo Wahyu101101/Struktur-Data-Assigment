@@ -1,0 +1,71 @@
+#include <iostream>  // Menyertakan pustaka input-output untuk penggunaan cout dan cin
+#include <iomanip>   // Menyertakan pustaka untuk manipulasi I/O seperti setw
+using namespace std;
+
+// Deklarasi array dan variabel untuk pencarian
+int arrayData[7] = {1, 8, 2, 5, 4, 9, 7}; // Array yang akan diurutkan dan dicari elemennya
+int cari; // Variabel untuk menyimpan elemen yang akan dicari
+
+// Fungsi untuk mengurutkan array dengan algoritma selection sort
+void selection_sort(int arr[], int n) {
+    int temp, min;
+    for (int i = 0; i < n - 1; i++) { // Loop untuk setiap elemen kecuali elemen terakhir
+        min = i; // Asumsikan elemen terkecil adalah elemen saat ini
+        for (int j = i + 1; j < n; j++) { // Loop untuk menemukan elemen terkecil di sisa array
+            if (arr[j] < arr[min]) {
+                min = j; // Update indeks elemen terkecil
+            }
+        }
+        // Tukar elemen terkecil dengan elemen saat ini
+        temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+    }
+}
+
+// Fungsi untuk melakukan pencarian biner dalam array yang sudah diurutkan
+void binary_search(int arr[], int n, int target) {
+    int awal = 0, akhir = n - 1, tengah, b_flag = 0;
+    while (b_flag == 0 && awal <= akhir) { // Loop sampai ditemukan atau tidak ada elemen yang tersisa
+        tengah = (awal + akhir) / 2; // Tentukan elemen tengah
+        if (arr[tengah] == target) { // Jika elemen tengah adalah target
+            b_flag = 1; // Set flag ditemukan
+            break; // Keluar dari loop
+        } else if (arr[tengah] < target) { // Jika target lebih besar dari elemen tengah
+            awal = tengah + 1; // Pindahkan batas awal ke kanan
+        } else { // Jika target lebih kecil dari elemen tengah
+            akhir = tengah - 1; // Pindahkan batas akhir ke kiri
+        }
+    }
+    if (b_flag == 1)
+        cout << "\nData ditemukan pada index ke-" << tengah << endl; // Tampilkan indeks jika ditemukan
+    else
+        cout << "\nData tidak ditemukan\n"; // Tampilkan pesan jika tidak ditemukan
+}
+
+int main() {
+    cout << "\tBINARY SEARCH" << endl;
+    cout << "\nData awal: ";
+    // Tampilkan data awal
+    for (int x = 0; x < 7; x++) {
+        cout << setw(3) << arrayData[x];
+    }
+    cout << endl;
+    cout << "\nMasukkan data yang ingin Anda cari: ";
+    cin >> cari; // Baca elemen yang ingin dicari dari input pengguna
+    
+    // Urutkan data dengan selection sort
+    selection_sort(arrayData, 7);
+    
+    cout << "\nData diurutkan: ";
+    // Tampilkan data setelah diurutkan
+    for (int x = 0; x < 7; x++) {
+        cout << setw(3) << arrayData[x];
+    }
+    cout << endl;
+    
+    // Lakukan binary search
+    binary_search(arrayData, 7, cari);
+    
+    return 0;
+}
