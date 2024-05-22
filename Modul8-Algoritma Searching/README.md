@@ -15,10 +15,10 @@ Pencarian (Searching) yaitu proses menemukan suatu nilai tertentu pada kumpulan 
 Terdapat beberapa algoritma pencarian yang umum digunakan, antara lain:
 #### 1. Sequential Search
 - Sequential Search merupakan salah satu algoritma pencarian data yang biasa digunakan untuk data yang berpola acak atau belum terurut. Sequential search juga merupakan teknik pencarian data dari array yang paling mudah, dimana data dalam array dibaca satu demi satu dan diurutkan dari index terkecil ke index terbesar, maupunsebaliknya. Konsep Sequential Search yaitu:
-● Membandingkan setiap elemen pada array satu per satu secara berurut.
-● Proses pencarian dimulai dari indeks pertama hingga indeks terakhir.
-● Proses pencarian akan berhenti apabila data ditemukan. Jika hingga akhir array data masih juga tidak ditemukan, maka proses pencarian tetap akan dihentikan.
-● Proses perulangan pada pencarian akan terjadi sebanyak jumlah N elemen pada array.
+- ● Membandingkan setiap elemen pada array satu per satu secara berurut.
+- ● Proses pencarian dimulai dari indeks pertama hingga indeks terakhir.
+- ● Proses pencarian akan berhenti apabila data ditemukan. Jika hingga akhir array data masih juga tidak ditemukan, maka proses pencarian tetap akan dihentikan.
+- ● Proses perulangan pada pencarian akan terjadi sebanyak jumlah N elemen pada array.
 
 #### Algoritma pencarian berurutan dapat dituliskan sebagai berikut :
 #### 1) i ← 0
