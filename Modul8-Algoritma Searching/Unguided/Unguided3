@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Fungsi untuk melakukan Sequential Search
+int sequentialSearch(const vector<int>& data, int target) {
+    int count = 0;
+    // Iterasi melalui setiap elemen dalam data
+    for (int num : data) {
+        // Jika elemen sama dengan target, tambahkan 1 ke count
+        if (num == target) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int main() {
+    vector<int> data = {9, 4, 1, 4, 7, 10, 5, 4, 12, 4};
+    int target = 4;
+    
+    // Menghitung jumlah angka 4 dalam data menggunakan Sequential Search
+    int jumlah_angka_4 = sequentialSearch(data, target);
+
+    // Menampilkan hasil
+    cout << "Jumlah angka 4 dalam data adalah: " << jumlah_angka_4 << endl;
+
+    return 0;
+}
