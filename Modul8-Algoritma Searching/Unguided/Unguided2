@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+#include <cctype> // Untuk menggunakan fungsi isalpha dan tolower
+#include <vector>
+
+using namespace std;
+
+// Fungsi untuk menghitung jumlah huruf vokal dalam sebuah kalimat
+int hitungVokal(const string& kalimat, vector<int>& indeks) {
+    int jumlahVokal = 0;
+    // Membuat string yang berisi huruf vokal
+    string vokal = "aeiouAEIOU";
+    
+    // Iterasi melalui setiap karakter dalam kalimat
+    for (int i = 0; i < kalimat.length(); ++i) {
+        char karakter = kalimat[i];
+        // Jika karakter adalah huruf dan huruf tersebut adalah huruf vokal
+        if (isalpha(karakter) && vokal.find(karakter) != string::npos) {
+            jumlahVokal++;
+            indeks.push_back(i);
+        }
+    }
+    return jumlahVokal;
+}
+
+int main() {
+    string kalimat;
+    vector<int> indeksHurufVokal;
+
+    // Meminta pengguna untuk memasukkan kalimat
+    cout << "Masukkan sebuah kalimat: ";
+    getline(cin, kalimat);
+
+    // Menghitung jumlah huruf vokal dalam kalimat
+    int jumlahVokal = hitungVokal(kalimat, indeksHurufVokal);
+
+    // Menampilkan jumlah huruf vokal
+    cout << "Jumlah huruf vokal dalam kalimat adalah: " << jumlahVokal << endl;
+
+    // Menampilkan indeks huruf vokal
+    cout << "Indeks huruf vokal dalam kalimat adalah: ";
+    for (int i = 0; i < indeksHurufVokal.size(); ++i) {
+        cout << indeksHurufVokal[i];
+        if (i < indeksHurufVokal.size() - 1) {
+            cout << ", ";
+        }
+    }
+    cout << endl;
+
+    return 0;
+}
