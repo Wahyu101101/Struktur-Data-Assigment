@@ -4,11 +4,44 @@
 
 ## Dasar Teori
 
-## **Algoritma Searching**
+## **Graph dan Tree**
 
-#### Pengertian Algoritma Searching
-**Algoritma searching** atau pencarian adalah serangkaian langkah-langkah sistematis yang digunakan untuk menemukan elemen tertentu dalam sekumpulan data atau struktur data[1]. Tujuan utama dari algoritma pencarian adalah untuk menemukan lokasi atau indeks dari elemen yang dicari dalam waktu yang efisien[2]. Algoritma pencarian sangat penting dalam berbagai bidang, seperti pengolahan data, struktur data, dan pemrograman komputer[3].
-Implementasi queue dapat dilakukan dengan menggunakan array atau linked list. Struktur data queue terdiri dari dua pointer yaitu front dan rear. Front/head adalah pointer ke elemen pertama dalam queue dan rear/tail/back adalah pointer ke elemen terakhir dalam queue[1].
+#### Pengertian Graph/graf
+**Graf**(graph) adalah struktur data yang terdiri dari kumpulan node (vertex) dan sisi (edge) yang menghubungkan node-node tersebut. Graf dapat digunakan untuk merepresentasikan hubungan antara objek-objek tertentu dalam berbagai bidang seperti jaringan sosial, jaringan komputer, kimia, dan banyak lagi [1][2][3].
+- **Graf atau graph** adalah struktur data yang digunakan untuk merepresentasikan hubungan antara objek dalam bentuk node atau vertex dan sambungan antara node tersebut dalam bentuk sisi atau edge[6]. Graf terdiri dari simpul dan busur yang secara matematis dinyatakan sebagai :
+- G = (V, E)
+Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge. Dapat digambarkan:
+![Screenshot 2024-05-26 061254](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/53a68266-1656-4534-ac51-233d1c6caed3)
+
+Elemen-elemen dalam Graf:
+
+![small_undirected_network_labeled](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a97b4a5e-0d8f-4bd6-86ff-07bad50410fc)
+
+- Node (Vertex): Node merupakan objek yang terhubung dalam graf. Setiap node dapat memiliki nilai atau data tertentu. Node dapat mewakili berbagai entitas seperti orang, lokasi, atau objek lainnya. Dalam beberapa kasus, node juga dapat memiliki atribut tambahan seperti label atau warna. [3][4]
+
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a6a388cb-1c0d-4436-9daa-d0553c76db91)
+
+  
+- Sisi (Edge): Sisi adalah garis yang menghubungkan sepasang node dalam graf. Sisi dapat memiliki bobot (weight) atau tidak memiliki bobot. Bobot sisi dapat merepresentasikan jarak, biaya, atau kekuatan hubungan antara node. Sisi juga dapat memiliki atribut tambahan seperti label atau warna. [3][4]
+
+![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a180f22c-537d-4fc0-94ca-36b9e972810f)
+
+  
+- Adjacency: Dua node dikatakan adjacent (bertetangga) jika terhubung langsung oleh sisi. Sebuah node dapat memiliki beberapa node tetangga yang terhubung dengannya. Dalam graf berarah, sebuah node dapat memiliki node tetangga masuk (in-neighbors) dan node tetangga keluar (out-neighbors). [3][4]
+
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/7571876b-3056-4112-9b23-8a2038261858)
+
+- Derajat (Degree): Derajat suatu node adalah jumlah sisi yang terhubung dengan node tersebut. Dalam graf berarah, terdapat derajat masuk (in-degree) dan derajat keluar (out-degree). Dalam graf tidak berarah, derajat sebuah node adalah jumlah sisi yang terhubung dengannya. [1][4]
+
+![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0bbd5f3b-394c-475c-924d-f3fbc39c8bdf)
+
+- Lintasan (Path): Lintasan adalah urutan node-node yang terhubung oleh sisi dalam graf. Panjang lintasan adalah jumlah sisi yang ada dalam lintasan tersebut. [1][4]
+
+![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/50f4f598-463d-4058-8447-b29137069d6c)
+
+- Siklus (Cycle): Siklus adalah lintasan di mana node awal dan node akhir adalah sama. Siklus tidak diperbolehkan dalam struktur data pohon (tree). [1][4]
+
+
 
 Pencarian (Searching) yaitu proses menemukan suatu nilai tertentu pada kumpulan data. Hasil pencarian adalah salah satu dari tiga keadaan ini: data ditemukan, data ditemukan lebih dari satu, atau data tidak ditemukan. Searching juga dapat dianggap sebagai proses pencarian suatu data di dalam sebuah array dengan cara mengecek satu persatu pada setiap index baris atau setiap index kolomnya dengan menggunakan teknik perulangan untuk melakukan pencarian data[6].
 
