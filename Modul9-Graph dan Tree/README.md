@@ -15,7 +15,7 @@ Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge.
 
 <img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/53a68266-1656-4534-ac51-233d1c6caed3" alt="Screenshot 2024-05-26 061254" width="250"/>
 
-#### Elemen-elemen dalam Graf:
+- #### Elemen-elemen dalam Graf:
 
    <img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/2dcc3d0a-1513-420b-9694-11e1add40f2e" alt="Screenshot 2024-05-26 062321" width="250"/>
 
