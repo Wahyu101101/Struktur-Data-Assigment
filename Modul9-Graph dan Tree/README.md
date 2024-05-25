@@ -43,6 +43,8 @@ Elemen-elemen dalam Graf:
 
 Jenis-jenis Graf:
 
+
+
   ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/b0cf1934-90f7-43b2-83b5-3d7ba131f863)
   
 - Graf Berarah (Directed Graph): Graf di mana setiap sisi memiliki arah dari satu node ke node lainnya. Sisi diwakili dengan panah yang menunjukkan arah. Dalam graf berarah, derajat masuk dan derajat keluar node dapat berbeda. [1][3][4]
@@ -55,23 +57,23 @@ Jenis-jenis Graf:
 
 - Graf Berbobot (Weighted Graph): Graf di mana setiap sisi memiliki bobot atau nilai tertentu yang mewakili jarak, biaya, atau kekuatan hubungan. Bobot sisi dapat bernilai positif atau negatif. [1][3][4]
 
-![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/bdb4fda3-2adc-4262-a9e4-a9926f22eac6)
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/bdb4fda3-2adc-4262-a9e4-a9926f22eac6)
 
 - Graf Tidak Berbobot (Unweighted Graph): Graf di mana sisi tidak memiliki bobot. Semua sisi dianggap memiliki bobot yang sama, biasanya bernilai 1. [1][3][4]
 
-![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/953bf460-c7d7-49a4-98b6-3c7409c32985)
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/953bf460-c7d7-49a4-98b6-3c7409c32985)
 
 - Graf Terhubung (Connected Graph): Graf di mana setiap pasangan node terhubung melalui setidaknya satu jalur sisi. Jika tidak, graf disebut tidak terhubung. Dalam graf tidak terhubung, terdapat beberapa komponen terhubung. [1][4]
 
-![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5ec3c072-77bb-4916-8bda-a9bb3f7497b1)
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5ec3c072-77bb-4916-8bda-a9bb3f7497b1)
 
 - Graf Lengkap (Complete Graph): Graf tidak berarah di mana setiap pasangan node terhubung langsung oleh sisi. Dalam graf lengkap dengan n node, terdapat (n(n-1))/2 sisi. [1][4]
 
-![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0eb326fc-6559-4826-8b77-6c12410534af)
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0eb326fc-6559-4826-8b77-6c12410534af)
 
 - Graf Planar: Graf yang dapat digambarkan pada bidang datar tanpa ada sisi yang bersilangan. Graf planar memiliki banyak aplikasi dalam bidang visualisasi data dan desain sirkuit. [4][5]
-![Simple_bipartite_graph;_two_layers svg](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3492cfc4-e8de-41c9-9975-3c450ca9be48)
 
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4fbf5867-58de-435a-a5b1-d8db90039dc8)
 
 - Graf Bipartit: Graf di mana himpunan node dapat dipartisi menjadi dua himpunan terpisah sedemikian rupa sehingga setiap sisi menghubungkan sepasang node dari dua himpunan yang berbeda. Graf bipartit banyak digunakan dalam masalah pencocokan dan pewarnaan graf. [4][5]
 
