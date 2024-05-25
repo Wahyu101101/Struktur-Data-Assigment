@@ -70,8 +70,8 @@ Jenis-jenis Graf:
 ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0eb326fc-6559-4826-8b77-6c12410534af)
 
 - Graf Planar: Graf yang dapat digambarkan pada bidang datar tanpa ada sisi yang bersilangan. Graf planar memiliki banyak aplikasi dalam bidang visualisasi data dan desain sirkuit. [4][5]
+![Simple_bipartite_graph;_two_layers svg](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3492cfc4-e8de-41c9-9975-3c450ca9be48)
 
-![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4310c451-e276-4ffc-be8e-55e8aaf803cd)
 
 - Graf Bipartit: Graf di mana himpunan node dapat dipartisi menjadi dua himpunan terpisah sedemikian rupa sehingga setiap sisi menghubungkan sepasang node dari dua himpunan yang berbeda. Graf bipartit banyak digunakan dalam masalah pencocokan dan pewarnaan graf. [4][5]
 
