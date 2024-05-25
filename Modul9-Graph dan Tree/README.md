@@ -11,13 +11,14 @@
 - **Graf atau graph** adalah struktur data yang digunakan untuk merepresentasikan hubungan antara objek dalam bentuk node atau vertex dan sambungan antara node tersebut dalam bentuk sisi atau edge[6]. Graf terdiri dari simpul dan busur yang secara matematis dinyatakan sebagai :
 - G = (V, E)
 Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge. Dapat digambarkan:
-<div style="text-align: center;">
+
 ![Screenshot 2024-05-26 061254](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/53a68266-1656-4534-ac51-233d1c6caed3)
-</div>
+
 Elemen-elemen dalam Graf:
 
+<div style="text-align: center;">
 <img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/2dcc3d0a-1513-420b-9694-11e1add40f2e" alt="Screenshot 2024-05-26 062321" width="300"/>
-
+</div>
 - Node (Vertex): Node merupakan objek yang terhubung dalam graf. Setiap node dapat memiliki nilai atau data tertentu. Node dapat mewakili berbagai entitas seperti orang, lokasi, atau objek lainnya. Dalam beberapa kasus, node juga dapat memiliki atribut tambahan seperti label atau warna. [3][4]
 
   ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a6a388cb-1c0d-4436-9daa-d0553c76db91)
