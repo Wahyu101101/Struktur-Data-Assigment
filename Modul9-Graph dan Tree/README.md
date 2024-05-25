@@ -15,29 +15,27 @@ Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge.
 
 Elemen-elemen dalam Graf:
 
-![small_undirected_network_labeled](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a97b4a5e-0d8f-4bd6-86ff-07bad50410fc)
+  ![Screenshot 2024-05-26 062321](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/2dcc3d0a-1513-420b-9694-11e1add40f2e)
 
 - Node (Vertex): Node merupakan objek yang terhubung dalam graf. Setiap node dapat memiliki nilai atau data tertentu. Node dapat mewakili berbagai entitas seperti orang, lokasi, atau objek lainnya. Dalam beberapa kasus, node juga dapat memiliki atribut tambahan seperti label atau warna. [3][4]
 
   ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a6a388cb-1c0d-4436-9daa-d0553c76db91)
-
   
 - Sisi (Edge): Sisi adalah garis yang menghubungkan sepasang node dalam graf. Sisi dapat memiliki bobot (weight) atau tidak memiliki bobot. Bobot sisi dapat merepresentasikan jarak, biaya, atau kekuatan hubungan antara node. Sisi juga dapat memiliki atribut tambahan seperti label atau warna. [3][4]
 
-![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a180f22c-537d-4fc0-94ca-36b9e972810f)
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a180f22c-537d-4fc0-94ca-36b9e972810f)
 
-  
 - Adjacency: Dua node dikatakan adjacent (bertetangga) jika terhubung langsung oleh sisi. Sebuah node dapat memiliki beberapa node tetangga yang terhubung dengannya. Dalam graf berarah, sebuah node dapat memiliki node tetangga masuk (in-neighbors) dan node tetangga keluar (out-neighbors). [3][4]
 
   ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/7571876b-3056-4112-9b23-8a2038261858)
 
 - Derajat (Degree): Derajat suatu node adalah jumlah sisi yang terhubung dengan node tersebut. Dalam graf berarah, terdapat derajat masuk (in-degree) dan derajat keluar (out-degree). Dalam graf tidak berarah, derajat sebuah node adalah jumlah sisi yang terhubung dengannya. [1][4]
 
-![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0bbd5f3b-394c-475c-924d-f3fbc39c8bdf)
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0bbd5f3b-394c-475c-924d-f3fbc39c8bdf)
 
 - Lintasan (Path): Lintasan adalah urutan node-node yang terhubung oleh sisi dalam graf. Panjang lintasan adalah jumlah sisi yang ada dalam lintasan tersebut. [1][4]
 
-![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/50f4f598-463d-4058-8447-b29137069d6c)
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/50f4f598-463d-4058-8447-b29137069d6c)
 
 - Siklus (Cycle): Siklus adalah lintasan di mana node awal dan node akhir adalah sama. Siklus tidak diperbolehkan dalam struktur data pohon (tree). [1][4]
 
