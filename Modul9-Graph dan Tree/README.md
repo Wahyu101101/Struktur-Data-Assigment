@@ -12,10 +12,8 @@
 - G = (V, E)
 Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge. Dapat digambarkan:
 
-<center>
-<img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/53a68266-1656-4534-ac51-233d1c6caed3" alt="Screenshot 2024-05-26 061254" width="250"/>
-</center>
 
+<img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/53a68266-1656-4534-ac51-233d1c6caed3" alt="Screenshot 2024-05-26 061254" width="250"/>
 
 Elemen-elemen dalam Graf:
 
@@ -43,26 +41,44 @@ Elemen-elemen dalam Graf:
 
 - Siklus (Cycle): Siklus adalah lintasan di mana node awal dan node akhir adalah sama. Siklus tidak diperbolehkan dalam struktur data pohon (tree). [1][4]
 
+Jenis-jenis Graf:
+
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/b0cf1934-90f7-43b2-83b5-3d7ba131f863)
+  
+- Graf Berarah (Directed Graph): Graf di mana setiap sisi memiliki arah dari satu node ke node lainnya. Sisi diwakili dengan panah yang menunjukkan arah. Dalam graf berarah, derajat masuk dan derajat keluar node dapat berbeda. [1][3][4]
+
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/765409a2-9bbd-4979-ba10-1df54a602fec)
+
+- Graf Tidak Berarah (Undirected Graph): Graf di mana sisi tidak memiliki arah, sehingga hubungan antara node adalah dua arah. Dalam graf tidak berarah, derajat masuk dan derajat keluar node selalu sama. [1][3][4]
+
+  ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/92a73f28-74ae-4cbb-b3c2-0b67cc83a5c2)
+
+- Graf Berbobot (Weighted Graph): Graf di mana setiap sisi memiliki bobot atau nilai tertentu yang mewakili jarak, biaya, atau kekuatan hubungan. Bobot sisi dapat bernilai positif atau negatif. [1][3][4]
+
+![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/bdb4fda3-2adc-4262-a9e4-a9926f22eac6)
+
+- Graf Tidak Berbobot (Unweighted Graph): Graf di mana sisi tidak memiliki bobot. Semua sisi dianggap memiliki bobot yang sama, biasanya bernilai 1. [1][3][4]
+
+![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/953bf460-c7d7-49a4-98b6-3c7409c32985)
+
+- Graf Terhubung (Connected Graph): Graf di mana setiap pasangan node terhubung melalui setidaknya satu jalur sisi. Jika tidak, graf disebut tidak terhubung. Dalam graf tidak terhubung, terdapat beberapa komponen terhubung. [1][4]
+
+![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5ec3c072-77bb-4916-8bda-a9bb3f7497b1)
+
+- Graf Lengkap (Complete Graph): Graf tidak berarah di mana setiap pasangan node terhubung langsung oleh sisi. Dalam graf lengkap dengan n node, terdapat (n(n-1))/2 sisi. [1][4]
+
+![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0eb326fc-6559-4826-8b77-6c12410534af)
+
+- Graf Planar: Graf yang dapat digambarkan pada bidang datar tanpa ada sisi yang bersilangan. Graf planar memiliki banyak aplikasi dalam bidang visualisasi data dan desain sirkuit. [4][5]
+
+![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/4310c451-e276-4ffc-be8e-55e8aaf803cd)
+
+- Graf Bipartit: Graf di mana himpunan node dapat dipartisi menjadi dua himpunan terpisah sedemikian rupa sehingga setiap sisi menghubungkan sepasang node dari dua himpunan yang berbeda. Graf bipartit banyak digunakan dalam masalah pencocokan dan pewarnaan graf. [4][5]
+
+Graf memiliki banyak aplikasi dalam berbagai bidang, seperti analisis jaringan sosial, pencarian rute terpendek, deteksi komunitas, analisis data, visualisasi data, dan banyak lagi. Pemahaman dasar tentang graf sangat penting dalam pengembangan algoritma dan pemecahan masalah kompleks. [2][3][4]
 
 
-Pencarian (Searching) yaitu proses menemukan suatu nilai tertentu pada kumpulan data. Hasil pencarian adalah salah satu dari tiga keadaan ini: data ditemukan, data ditemukan lebih dari satu, atau data tidak ditemukan. Searching juga dapat dianggap sebagai proses pencarian suatu data di dalam sebuah array dengan cara mengecek satu persatu pada setiap index baris atau setiap index kolomnya dengan menggunakan teknik perulangan untuk melakukan pencarian data[6].
 
-Terdapat beberapa algoritma pencarian yang umum digunakan, antara lain:
-#### 1. Sequential Search
-Sequential Search merupakan salah satu algoritma pencarian data yang biasa digunakan untuk data yang berpola acak atau belum terurut. Sequential search juga merupakan teknik pencarian data dari array yang paling mudah, dimana data dalam array dibaca satu demi satu dan diurutkan dari index terkecil ke index terbesar, maupunsebaliknya. Konsep Sequential Search yaitu:
-  1) Membandingkan setiap elemen pada array satu per satu secara berurut
-  2) Proses pencarian dimulai dari indeks pertama hingga indeks terakhir.
-  3) Proses pencarian akan berhenti apabila data ditemukan. Jika hingga akhir array data masih juga tidak ditemukan, maka proses pencarian tetap akan dihentikan.
-  4) Proses perulangan pada pencarian akan terjadi sebanyak jumlah N elemen pada array.
-
-#### Algoritma pencarian berurutan dapat dituliskan sebagai berikut :
-1) i ← 0
-2) ketemu ← false
-3) Selama (tidak ketemu) dan (i <= N) kerjakan baris 4
-4) Jika (Data[i] = x) maka ketemu ← true, jika tidak i ← i + 1
-5) Jika (ketemu) maka i adalah indeks dari data yang dicari, jika tidak data tidak ditemukan.
-
-#### Di bawah ini merupakan fungsi untuk mencari data menggunakan pencarian sekuensial.
 
 ```C++
 int SequentialSearch (int x)  
