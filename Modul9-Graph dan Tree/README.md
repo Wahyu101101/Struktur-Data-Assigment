@@ -41,8 +41,14 @@ Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge.
 
 - Siklus (Cycle): Siklus adalah lintasan di mana node awal dan node akhir adalah sama. Siklus tidak diperbolehkan dalam struktur data pohon (tree). [1][4]
 
-#### Jenis-jenis Graf:
+- #### Jenis-jenis Graf:
 
+
+
+  ![Screenshot 2024-05-26 065750](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/93e55e3c-be4f-4c93-95be-a43401990deb)
+- a. Graph berarah (directed graph): Urutan simpul mempunyai arti. Misal busur AB adalah e1 sedangkan busur BA adalah e8.
+- b. Graph tak berarah (undirected graph): Urutan simpul dalam sebuah busur tidak diperhatikan. Misal busur e1 dapat disebut busur AB atau BA.
+- c. Weight Graph : Graph yang mempunyai nilai pada tiap edgenya.
 
 
   ![images](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/b0cf1934-90f7-43b2-83b5-3d7ba131f863)
@@ -548,14 +554,14 @@ int main() {
 - H. Implementasi algoritma pencarian dan pengurutan dalam program C++ memungkinkan penyelesaian tugas-tugas komputasi yang melibatkan manipulasi data dengan efisien.
   
 ## Referensi
-[1] Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). Introduction to Algorithms (4th Edition). MIT Press.
+[1] Yadav, P., & Gupta, R. (2019). A Journey of Graph Algorithms: From Historical to Modern. International Journal of Computer Sciences and Engineering, 7(3), 1038-1047. 
 
-[2] Sedgewick, R., & Wayne, K. (2021). Algorithms (4th Edition). Addison-Wesley Professional.
+[2] Chakraborty, D., Narayanam, R., & Kalyanaraman, S. (2020). Graph Analytics for Temporal Networks. Proceedings of the VLDB Endowment, 13(12), 3640-3643. 
 
-[3] Grokking Algorithms: An Illustrated Guide for Programmers and Other Curious People by Aditya Bhargava (2019)
+[3] Hajebi, K., Abbasi-Yadkori, Y., Shahbazi, H., & Zhang, H. (2019). Fast Approximate Nearest-Neighbor Search with k-Nearest Neighbor Graph. Proceedings of the 28th International Joint Conference on Artificial Intelligence, 2184-2191. 
 
-[4] Skiena, S. S. (2020). The Algorithm Design Manual (3rd Edition). Springer.
+[4] Bondy, J. A., & Murty, U. S. R. (2008). Graph Theory with Applications. Macmillan.
 
-[5] Karumanchi, N. (2022). Data Structures and Algorithms Made Easy: Data Structure and Algorithmic Puzzles (6th Edition). CareerMonk Publications.
+[5] Skiena, S. (2008). The Algorithm Design Manual. Springer Science & Business Media.
 
-[6] Asisten Praktikum, “Modul 8 Algoritma Searching", Googgle Classroom, 2024.
+[6] Asisten Praktikum, “Modul 9 Graph dan Tree", Googgle Classroom, 2024.
