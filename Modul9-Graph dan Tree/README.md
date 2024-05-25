@@ -15,7 +15,7 @@ Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge.
 
 Elemen-elemen dalam Graf:
 
-  ![Screenshot 2024-05-26 062321](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/2dcc3d0a-1513-420b-9694-11e1add40f2e)
+<img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/2dcc3d0a-1513-420b-9694-11e1add40f2e" alt="Screenshot 2024-05-26 062321" width="300"/>
 
 - Node (Vertex): Node merupakan objek yang terhubung dalam graf. Setiap node dapat memiliki nilai atau data tertentu. Node dapat mewakili berbagai entitas seperti orang, lokasi, atau objek lainnya. Dalam beberapa kasus, node juga dapat memiliki atribut tambahan seperti label atau warna. [3][4]
 
