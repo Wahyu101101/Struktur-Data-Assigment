@@ -10,10 +10,10 @@
 **Graf**(graph) adalah struktur data yang terdiri dari kumpulan node (vertex) dan sisi (edge) yang menghubungkan node-node tersebut. Graf dapat digunakan untuk merepresentasikan hubungan antara objek-objek tertentu dalam berbagai bidang seperti jaringan sosial, jaringan komputer, kimia, dan banyak lagi [1][2][3].
 - **Graf atau graph** adalah struktur data yang digunakan untuk merepresentasikan hubungan antara objek dalam bentuk node atau vertex dan sambungan antara node tersebut dalam bentuk sisi atau edge[6]. Graf terdiri dari simpul dan busur yang secara matematis dinyatakan sebagai :
 - G = (V, E)
-Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge. Dapat digambarkan:
+- Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge. Dapat digambarkan:
 
 
-<img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/53a68266-1656-4534-ac51-233d1c6caed3" alt="Screenshot 2024-05-26 061254" width="250"/>
+  <img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/53a68266-1656-4534-ac51-233d1c6caed3" alt="Screenshot 2024-05-26 061254" width="250"/>
 
 - #### Elemen-elemen dalam Graf:
 
@@ -85,8 +85,13 @@ Dimana G adalah Graph, V adalah simpul atau vertex dan E sebagai sisi atau edge.
 
 Graf memiliki banyak aplikasi dalam berbagai bidang, seperti analisis jaringan sosial, pencarian rute terpendek, deteksi komunitas, analisis data, visualisasi data, dan banyak lagi. Pemahaman dasar tentang graf sangat penting dalam pengembangan algoritma dan pemecahan masalah kompleks. [2][3][4]
 
+- #### Representasi Graph Representasi dengan Matriks
+  
+<img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ed6a415d-39c3-4245-9c10-1c90ef28adbc" alt="Screenshot 2024-05-26 070047" width="300"/>
 
+- #### Representasi dengan Linked List
 
+  ![Screenshot 2024-05-26 070328](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3511e579-54b0-46c7-a6ed-211534b7ee6b)
 
 ```C++
 int SequentialSearch (int x)  
