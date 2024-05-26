@@ -92,6 +92,8 @@ Graf memiliki banyak aplikasi dalam berbagai bidang, seperti analisis jaringan s
 - #### Representasi dengan Linked List
 
 <img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3511e579-54b0-46c7-a6ed-211534b7ee6b" alt="Screenshot 2024-05-26 070328" width="300"/>
+
+
 Memahami perbedaan antara simpul vertex dan simpul edge sangat penting saat membuat representasi graf dalam bentuk linked list.
 
 - Simpul Vertex: Mewakili titik atau simpul dalam graf.
