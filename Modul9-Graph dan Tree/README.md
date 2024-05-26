@@ -87,11 +87,18 @@ Graf memiliki banyak aplikasi dalam berbagai bidang, seperti analisis jaringan s
 
 - #### Representasi Graph Representasi dengan Matriks
   
-<img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ed6a415d-39c3-4245-9c10-1c90ef28adbc" alt="Screenshot 2024-05-26 070047" width="300"/>
+  <img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ed6a415d-39c3-4245-9c10-1c90ef28adbc" alt="Screenshot 2024-05-26 070047" width="300"/>
 
 - #### Representasi dengan Linked List
 
-  ![Screenshot 2024-05-26 070328](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3511e579-54b0-46c7-a6ed-211534b7ee6b)
+<img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/3511e579-54b0-46c7-a6ed-211534b7ee6b" alt="Screenshot 2024-05-26 070328" width="300"/>
+Memahami perbedaan antara simpul vertex dan simpul edge sangat penting saat membuat representasi graf dalam bentuk linked list.
+
+- Simpul Vertex: Mewakili titik atau simpul dalam graf.
+- Simpul Edge: Mewakili hubungan antara simpul-simpul tersebut.
+Struktur simpul vertex dan simpul edge bisa sama atau berbeda tergantung pada kebutuhan, namun biasanya seragam. Perbedaan utama terletak pada bagaimana kita memperlakukan dan menggunakan keduanya dalam representasi graf.
+
+<img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/55832310-0878-434e-bcf6-620fa4c977b5" alt="Screenshot 2024-05-26 070759" width="300"/>
 
 ```C++
 int SequentialSearch (int x)  
