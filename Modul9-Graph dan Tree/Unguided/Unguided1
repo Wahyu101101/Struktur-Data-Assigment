@@ -1,0 +1,86 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+// Struktur untuk merepresentasikan edge antar simpul
+struct Edge {
+    int wahyu_2311102178, destination, weight;
+};
+
+class Graph {
+    int V; // Jumlah simpul
+    Edge edges[100]; // Array untuk menyimpan edge, diasumsikan maksimal 100 edges
+    int edgeCount; // Jumlah edge yang ada
+
+public:
+    // Konstruktor
+    Graph(int vertices) {
+        V = vertices; // Inisialisasi jumlah simpul
+        edgeCount = 0; // Inisialisasi jumlah edge
+    }
+
+    // Menambahkan edge ke graf
+    void addEdge(int wahyu_2311102178, int destination, int weight) {
+        edges[edgeCount++] = {wahyu_2311102178, destination, weight}; // Menambahkan edge ke dalam array edges
+    }
+
+    string nodeNames[10]; // Array untuk menyimpan nama simpul, diasumsikan maksimal 10 simpul
+
+    // Mencetak matriks adjacency
+    void printAdjacencyMatrix() {
+        int matrix[10][10] = {}; // Membuat matriks 10x10 dan mengisinya dengan 0
+
+        // Mengisi matriks dengan bobot edge
+        for (int i = 0; i < edgeCount; ++i) {
+            matrix[edges[i].wahyu_2311102178][edges[i].destination] = edges[i].weight;
+        }
+
+        // Mencetak nama simpul di bagian atas kolom
+        cout << setw(11) << " "; // Spasi untuk penjajaran
+        for (int i = 0; i < V; ++i) {
+            cout << setw(11) << nodeNames[i] << " "; // Mencetak nama simpul
+        }
+        cout << endl;
+
+        // Mencetak matriks adjacency
+        for (int i = 0; i < V; ++i) {
+            cout << setw(10) << nodeNames[i] << " "; // Mencetak nama simpul di awal setiap baris
+            for (int j = 0; j < V; ++j) {
+                cout << setw(10) << matrix[i][j] << "  "; // Mencetak bobot antar simpul
+            }
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    int jumlahSimpul; // Variabel untuk menyimpan jumlah simpul
+    cout << "Silakan masukan jumlah simpul : ";
+    cin >> jumlahSimpul; // Input jumlah simpul dari pengguna
+
+    Graph graph(jumlahSimpul); // Membuat graf dengan jumlah simpul yang diberikan
+
+    // Input nama simpul
+    cout << "Silakan masukan nama simpul" << endl;
+    for (int i = 0; i < jumlahSimpul; ++i) {
+        cout << "Simpul " << i + 1 << " : ";
+        cin >> graph.nodeNames[i]; // Input nama simpul dari pengguna
+    }
+
+    // Input bobot antar simpul
+    cout << "Silakan masukkan bobot antar simpul" << endl;
+    for (int i = 0; i < jumlahSimpul; ++i) {
+        for (int j = 0; j < jumlahSimpul; ++j) {
+            int weight;
+            cout << graph.nodeNames[i] << "-->" << graph.nodeNames[j] << " = ";
+            cin >> weight; // Input bobot dari pengguna
+            graph.addEdge(i, j, weight); // Menambahkan edge ke graf
+        }
+    }
+
+    // Mencetak matriks adjacency
+    graph.printAdjacencyMatrix(); // Memanggil fungsi untuk mencetak matriks adjacency
+
+    return 0;
+}
