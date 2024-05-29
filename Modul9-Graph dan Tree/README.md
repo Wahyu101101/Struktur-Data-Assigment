@@ -191,226 +191,412 @@ Dapat kita turunkan rumus penelusuran menjadi:
 #### 6. Aplikasi Tree
 - Tree digunakan dalam berbagai bidang komputasi, seperti pengindeksan file sistem, kompresi data, pengambilan keputusan, dan banyak lagi. Penggunaan tree yang umum meliputi struktur direktori dalam sistem operasi, sintaks parsing, dan pemrosesan ekspresi matematika [9].
 
-```C++
-int SequentialSearch (int x)  
-{  
-    int i = 0;  
-    bool ketemu = false;  
-    while ((!ketemu) && (i<Max))K  
-        if (Data[i] == x)  
-            ketemu = true;  
-        else  
-            i++;  
-    }  
-        if (ketemu)  
-            return i;  
-        else  
-            return -1;
-
-```
-Fungsi diatas akan mengembalikan indeks dari data yang dicari. Apabila data tidak ditemukan maka fungsi diatas akan mengembalikan nilai –1. Contoh dari Sequential Search, yaitu:
-- Int A[8] = {9,1,5,2,7,6,11,3}
-![Screenshot 2024-05-22 141058](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/a7230ace-8151-4df2-bbe7-1ed6af991138)
-
-
-Misalkan, dari data di atas angka yang akan dicari adalah angka 7 dalam array
-A, maka proses yang akan terjadi yaitu:
-- Pencarian dimulai pada index ke-0 yaitu angka 9, kemudian dicocokkan dengan angka yang akan dicari, jika tidak sama maka pencarian akan dilanjutkan ke index selanjutnya.
-- Pada index ke-1, yaitu angka 1, juga bukan angka yang dicari, maka pencarian akan dilanjutkan pada index selanjutnya.
-- Pada index ke-2 dan index ke-3 yaitu angka 5 dan 2, juga bukan angka yang dicari, sehingga pencarian dilanjutkan pada index selanjutnya.
-- Pada index ke-4 yaitu angka 7 dan ternyata angka 7 merupakan angka yang dicari, sehingga pencarian akan dihentikan dan proses selesai.
-
-#### 2. Binary Search (Pencarian Biner)
-- Binary search adalah algoritma pencarian efisien yang digunakan pada kumpulan data yang telah diurutkan. Algoritma ini membagi array menjadi dua bagian pada setiap iterasi dan memilih salah satu bagian untuk diperiksa selanjutnya, tergantung pada nilai elemen yang dicari. Algoritma ini memiliki kompleksitas waktu O(log n), di mana n adalah jumlah elemen dalam kumpulan data[5].
-
-Contoh dari Binary Search, yaitu:
-
-![Screenshot 2024-05-22 141019](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/6eae5cf2-b7f2-4757-80f2-e60d8875890e)
-
-- Terdapat sebuah array yang menampung 7 elemen seperti ilustrasi di atas. Nilai
-yang akan dicari pada array tersebut adalah 13[6].
-- Jadi karena konsep dari binary search ini adalah membagi array menjadi dua
-bagian, maka pertama tama kita cari nilai tengahnya dulu, total elemen dibagi 2
-yaitu 7/2 = 4.5 dan kita bulatkan jadi 4.
-- Maka elemen ke empat pada array adalah nilai tengahnya, yaitu angka 9 pada
-indeks ke 3.
-- Kemudian kita cek apakah 13 > 9 atau 13 < 9?
-- 13 lebih besar dari 9, maka kemungkinan besar angka 13 berada setelah 9 atau
-di sebelah kanan. Selanjutnya kita cari ke kanan dan kita dapat mengabaikan
-elemen yang ada di kiri.
-- Setelah itu kita cari lagi nilai tengahnya, didapatlah angka 14 sebagai nilai
-tengah. Lalu, kita bandingkan apakah 13 > 14 atau 13 < 14?
-- Ternyata 13 lebih kecil dari 14, maka selanjutnya kita cari ke kiri.
-- Karna tersisa 1 elemen saja, maka elemen tersebut adalah nilai tengahnya.
-Setelah dicek ternyata elemen pada indeks ke-4 adalah elemen yang dicari, maka
-telah selesai proses pencariannya.
-
-#### 3. Linear Search (Pencarian Linear) 
-- Linear search adalah algoritma pencarian yang paling sederhana. Dalam pencarian linear, elemen-elemen dalam kumpulan data diperiksa satu per satu secara berurutan hingga elemen yang dicari ditemukan atau seluruh elemen telah diperiksa. Algoritma ini memiliki kompleksitas waktu O(n), di mana n adalah jumlah elemen dalam kumpulan data[4].
-
-#### 4. Hash Table (Tabel Hash)
-- Hash table adalah struktur data yang menggunakan fungsi hash untuk memetakan kunci (key) ke nilai (value) yang sesuai. Pencarian dalam hash table dilakukan dengan menghitung nilai hash dari kunci yang dicari, dan kemudian menggunakan nilai hash tersebut untuk mengakses nilai yang sesuai dalam tabel hash. Pencarian dalam hash table memiliki kompleksitas waktu rata-rata O(1), yang berarti waktu pencarian tidak bergantung pada jumlah elemen dalam tabel hash[1].
-  
-#### 5. Depth-First Search (DFS) dan Breadth-First Search (BFS)
-- DFS dan BFS adalah algoritma pencarian yang digunakan dalam struktur data seperti pohon dan graf. DFS menjelajahi setiap cabang pohon atau graf secara mendalam sebelum pindah ke cabang berikutnya, sedangkan BFS menjelajahi semua node pada tingkat yang sama sebelum pindah ke tingkat berikutnya[2].
-
 
 ## Guided 
 ### Guided 1
-#### 1, Buatlah sebuah project dengan menggunakan sequential search sederhana untuk melakukan pencarian data.
+#### Program Graph
+```C++
+#include <iostream> // Mengimpor pustaka input-output standar
+#include <iomanip>  // Mengimpor pustaka manipulasi IO
+using namespace std; // Menggunakan namespace std
+
+// Array simpul yang menyimpan nama-nama kota
+string simpul[7] = {
+    "Ciamis",
+    "Bandung",
+    "Bekasi",
+    "Tasikmalaya",
+    "Cianjur",
+    "Purwokerto",
+    "Yogyakarta"
+};
+
+// Matriks busur yang menyimpan bobot/biaya antara dua simpul (kota)
+int busur[7][7] = {
+    {0, 7, 8, 0, 0, 0, 0},    // Ciamis ke Bandung (7), Bekasi (8)
+    {0, 0, 5, 0, 0, 15, 0},   // Bandung ke Bekasi (5), Purwokerto (15)
+    {0, 6, 0, 0, 5, 0, 0},    // Bekasi ke Bandung (6), Cianjur (5)
+    {0, 5, 0, 0, 2, 4, 0},    // Tasikmalaya ke Bandung (5), Cianjur (2), Purwokerto (4)
+    {23, 0, 0, 10, 0, 0, 8},  // Cianjur ke Ciamis (23), Tasikmalaya (10), Yogyakarta (8)
+    {0, 0, 0, 0, 7, 0, 3},    // Purwokerto ke Cianjur (7), Yogyakarta (3)
+    {0, 0, 0, 0, 9, 4, 0}     // Yogyakarta ke Cianjur (9), Purwokerto (4)
+};
+
+// Fungsi untuk menampilkan graf
+void tampilGraph(){
+    for (int baris = 0; baris < 7; baris++) { // Loop untuk setiap baris (simpul)
+        // Menampilkan nama simpul dengan lebar tetap 15 karakter
+        cout << " " << setiosflags(ios::left) << setw(15) << simpul[baris] << " : ";
+        
+        for (int kolom = 0; kolom < 7; kolom++) { // Loop untuk setiap kolom (simpul tujuan)
+            if (busur[baris][kolom] != 0) { // Jika ada busur (bobot tidak nol)
+                // Menampilkan nama simpul tujuan dan bobot busur
+                cout << " " << simpul[kolom] << "(" << busur[baris][kolom] << ")";
+            }
+        }
+        cout << endl; // Baris baru setelah setiap baris simpul selesai diproses
+    }
+}
+
+int main(){
+    tampilGraph(); // Memanggil fungsi untuk menampilkan graf
+    return 0; // Mengembalikan nilai 0 menandakan program selesai dengan sukses
+}
+
+
+
+
+
+```
+#### Output:
+![Screenshot 2024-05-29 091138](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ac774058-a40b-4b93-a9cd-2d9f8855e876)
+
+
+Kode diatas bertujuan untuk menampilkan graf yang merepresentasikan koneksi antar simpul (kota) beserta bobotnya (misalnya jarak atau biaya). Dalam program ini, terdapat array simpul yang menyimpan nama-nama kota dan matriks busur yang menyimpan bobot koneksi antar kota. Fungsi tampilGraph digunakan untuk menampilkan graf. Fungsi ini bekerja dengan melakukan iterasi melalui setiap simpul (baris dalam matriks busur). Untuk setiap simpul, ia menampilkan nama simpul tersebut dengan lebar tetap 15 karakter. Kemudian, ia memeriksa setiap koneksi dari simpul tersebut ke simpul lain (kolom dalam matriks busur). Jika terdapat koneksi (bobot tidak nol), ia akan menampilkan nama simpul tujuan dan bobot koneksinya dalam format yang jelas. Akhirnya, main memanggil fungsi tampilGraph untuk menampilkan seluruh graf. Output dari program ini adalah daftar simpul beserta koneksi mereka dan bobot masing-masing, dalam format yang mudah dibaca.
+
+#### Full code Screenshot:
+![Screenshot 2024-05-29 091051](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/684504c6-589a-43b9-b6f2-feb213e94b88)
+
+
+### Guided 2
+#### Program Tree
 
 ```C++
 #include <iostream>
 using namespace std;
 
-// Inisialisasi array dengan 10 elemen
-int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-// Elemen yang akan dicari dalam array
-int cari = 6;
-// Variabel untuk indeks iterasi
-int i;
-// Menghitung panjang array dengan membagi ukuran total array dengan ukuran satu elemen
-int panjangArray = sizeof(arr) / sizeof(arr[0]);
-// Flag untuk menandai apakah elemen ditemukan
-bool ketemu = false;
+// PROGRAM BINARY TREE
+// Deklarasi Pohon
+struct Pohon {
+    char data;
+    Pohon *left, *right, *parent; // pointer untuk left child, right child, dan parent
+};
 
-int main() {
-    // Loop untuk iterasi melalui elemen-elemen array
-    for (i = 0; i < panjangArray; i++) {
-        // Jika elemen saat ini sama dengan elemen yang dicari
-        if (arr[i] == cari) {
-            // Set flag ketemu menjadi true (penugasan, bukan perbandingan)
-            ketemu = true; // Perbaiki kesalahan, harus menggunakan '=' untuk penugasan, bukan '==' untuk perbandingan
-            break; // Keluar dari loop jika elemen ditemukan
-        } 
-        // else { // Kondisi ini tidak diperlukan, karena tanpa ini juga i akan bertambah satu di akhir iterasi
-        //     i++;
-        // }
-    }
-    // Mencetak panjang array
-    cout << "panjangArray: " << panjangArray << endl;
-    // Mencetak hasil pencarian
-    // Jika elemen ditemukan, tampilkan indeksnya, jika tidak, tampilkan pesan tidak ditemukan
-    if (ketemu) {
-        cout << cari << " terdapat pada indeks ke " << i << endl;
+// pointer global
+Pohon *root;
+
+// Inisialisasi
+void init() {
+    root = NULL; // inisialisasi root menjadi NULL
+}
+
+// Fungsi untuk mengecek apakah tree kosong
+bool isEmpty() {
+    return root == NULL; // mengembalikan true jika root NULL
+}
+
+// Fungsi untuk membuat node baru
+Pohon *newPohon(char data) {
+    Pohon *node = new Pohon(); // alokasi memori untuk node baru
+    node->data = data; // mengisi data pada node
+    node->left = NULL; // inisialisasi left child ke NULL
+    node->right = NULL; // inisialisasi right child ke NULL
+    node->parent = NULL; // inisialisasi parent ke NULL
+    return node;
+}
+
+// Fungsi untuk membuat root node
+void buatNode(char data) {
+    if (isEmpty()) {
+        root = newPohon(data); // membuat root node jika tree kosong
+        cout << "\nNode " << data << " berhasil dibuat menjadi root." << endl;
     } else {
-        cout << cari << " tidak ditemukan dalam array" << endl;
+        cout << "\nPohon sudah dibuat" << endl; // jika root sudah ada
     }
 }
 
+// Fungsi untuk menambahkan node ke left child
+Pohon *insertLeft(char data, Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+        return NULL;
+    } else {
+        if (node->left != NULL) {
+            cout << "\nNode " << node->data << " sudah ada child kiri!" << endl; // pesan jika left child sudah ada
+            return NULL;
+        } else {
+            Pohon *baru = newPohon(data); // membuat node baru
+            baru->parent = node; // mengatur parent node baru
+            node->left = baru; // mengatur left child pada node
+            cout << "\nNode " << data << " berhasil ditambahkan ke child kiri " << node->data << endl;
+            return baru;
+        }
+    }
+}
 
+// Fungsi untuk menambahkan node ke right child
+Pohon *insertRight(char data, Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+        return NULL;
+    } else {
+        if (node->right != NULL) {
+            cout << "\nNode " << node->data << " sudah ada child kanan!" << endl; // pesan jika right child sudah ada
+            return NULL;
+        } else {
+            Pohon *baru = newPohon(data); // membuat node baru
+            baru->parent = node; // mengatur parent node baru
+            node->right = baru; // mengatur right child pada node
+            cout << "\nNode " << data << " berhasil ditambahkan ke child kanan " << node->data << endl;
+            return baru;
+        }
+    }
+}
 
+// Fungsi untuk mengupdate data pada node
+void update(char data, Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+    } else {
+        if (!node)
+            cout << "\nNode yang ingin diganti tidak ada!!" << endl; // pesan jika node tidak ditemukan
+        else {
+            char temp = node->data; // menyimpan data lama
+            node->data = data; // mengganti data dengan yang baru
+            cout << "\nNode " << temp << " berhasil diubah menjadi " << data << endl;
+        }
+    }
+}
 
+// Fungsi untuk mengambil data dari node
+void retrieve(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+    } else {
+        if (!node)
+            cout << "\nNode yang ditunjuk tidak ada!" << endl; // pesan jika node tidak ditemukan
+        else {
+            cout << "\nData node : " << node->data << endl; // menampilkan data node
+        }
+    }
+}
 
-```
-#### Output:
-![Screenshot 2024-05-22 143143](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/8342427a-17d7-47c5-9e5d-16590f5e53e2)
+// Fungsi untuk menemukan data pada node dan menampilkan informasi terkait
+void find(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+    } else {
+        if (!node)
+            cout << "\nNode yang ditunjuk tidak ada!" << endl; // pesan jika node tidak ditemukan
+        else {
+            cout << "\nData Node : " << node->data << endl;
+            cout << "Root : " << root->data << endl; // menampilkan data root
+            if (!node->parent)
+                cout << "Parent : (tidak punya parent)" << endl; // pesan jika tidak punya parent
+            else
+                cout << "Parent : " << node->parent->data << endl; // menampilkan data parent
+            if (node->parent != NULL && node->parent->left != node && node->parent->right == node)
+                cout << "Sibling : " << node->parent->left->data << endl; // menampilkan data sibling kiri
+            else if (node->parent != NULL && node->parent->right != node && node->parent->left == node)
+                cout << "Sibling : " << node->parent->right->data << endl; // menampilkan data sibling kanan
+            else
+                cout << "Sibling : (tidak punya sibling)" << endl; // pesan jika tidak punya sibling
+            if (!node->left)
+                cout << "Child Kiri : (tidak punya Child kiri)" << endl; // pesan jika tidak punya child kiri
+            else
+                cout << "Child Kiri : " << node->left->data << endl; // menampilkan data child kiri
+            if (!node->right)
+                cout << "Child Kanan : (tidak punya Child kanan)" << endl; // pesan jika tidak punya child kanan
+            else
+                cout << "Child Kanan : " << node->right->data << endl; // menampilkan data child kanan
+        }
+    }
+}
 
+// Fungsi penelusuran (Traversal)
+// preOrder
+void preOrder(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+    else {
+        if (node != NULL) {
+            cout << " " << node->data << ", "; // menampilkan data node
+            preOrder(node->left); // rekursif ke left child
+            preOrder(node->right); // rekursif ke right child
+        }
+    }
+}
 
-- Kode ini adalah program C++ sederhana yang bertujuan untuk mencari elemen tertentu dalam sebuah array. Dimulai dengan menyertakan pustaka input-output `<iostream>` dan menggunakan namespace standar `std` untuk memudahkan penulisan kode. Program ini mendefinisikan sebuah array `arr` yang berisi 10 elemen integer, dan mendeklarasikan variabel `cari` yang menyimpan elemen yang akan dicari, dalam hal ini angka 6. Untuk mengatur iterasi, variabel `i` dideklarasikan sebagai indeks, dan panjang array dihitung dengan membagi ukuran total array dalam byte (`sizeof(arr)`) dengan ukuran satu elemen dalam array (`sizeof(arr[0])`). Hasilnya adalah jumlah elemen dalam array, yang disimpan dalam variabel `panjangArray`.
+// inOrder
+void inOrder(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+    else {
+        if (node != NULL) {
+            inOrder(node->left); // rekursif ke left child
+            cout << " " << node->data << ", "; // menampilkan data node
+            inOrder(node->right); // rekursif ke right child
+        }
+    }
+}
 
-- Dalam fungsi `main`, program menggunakan loop `for` untuk iterasi melalui setiap elemen dalam array. Di setiap iterasi, program memeriksa apakah elemen saat ini (`arr[i]`) sama dengan elemen yang dicari (`cari`). Jika ditemukan kecocokan, flag `ketemu` diatur menjadi `true`, dan loop dihentikan menggunakan perintah `break` untuk menghindari iterasi yang tidak perlu. Setelah loop selesai, program mencetak panjang array dan hasil pencarian. Jika elemen ditemukan (`ketemu` bernilai `true`), program mencetak indeks elemen tersebut. Jika elemen tidak ditemukan (`ketemu` bernilai `false`), program mencetak pesan bahwa elemen tidak ditemukan dalam array. Perbaikan dilakukan pada penugasan `ketemu` menggunakan `=` daripada `==`, yang digunakan untuk perbandingan. Hal ini memastikan bahwa flag diatur dengan benar ketika elemen yang dicari ditemukan.
+// postOrder
+void postOrder(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+    else {
+        if (node != NULL) {
+            postOrder(node->left); // rekursif ke left child
+            postOrder(node->right); // rekursif ke right child
+            cout << " " << node->data << ", "; // menampilkan data node
+        }
+    }
+}
 
-#### Full code Screenshot:
-![Screenshot 2024-05-22 143345](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/aa1b7058-822e-4c49-88c0-ed2970e1aad0)
-
-
-### Guided 2
-#### 2. Buatlah sebuah project untuk melakukan pencarian data dengan menggunakan Binary Search.
-
-```C++
-#include <iostream>  // Menyertakan pustaka input-output untuk penggunaan cout dan cin
-#include <iomanip>   // Menyertakan pustaka untuk manipulasi I/O seperti setw
-using namespace std;
-
-// Deklarasi array dan variabel untuk pencarian
-int arrayData[7] = {1, 8, 2, 5, 4, 9, 7}; // Array yang akan diurutkan dan dicari elemennya
-int cari; // Variabel untuk menyimpan elemen yang akan dicari
-
-// Fungsi untuk mengurutkan array dengan algoritma selection sort
-void selection_sort(int arr[], int n) {
-    int temp, min;
-    for (int i = 0; i < n - 1; i++) { // Loop untuk setiap elemen kecuali elemen terakhir
-        min = i; // Asumsikan elemen terkecil adalah elemen saat ini
-        for (int j = i + 1; j < n; j++) { // Loop untuk menemukan elemen terkecil di sisa array
-            if (arr[j] < arr[min]) {
-                min = j; // Update indeks elemen terkecil
+// Fungsi untuk menghapus node tree
+void deleteTree(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+    else {
+        if (node != NULL) {
+            if (node != root) {
+                if (node->parent->left == node)
+                    node->parent->left = NULL; // menghapus link ke left child
+                else if (node->parent->right == node)
+                    node->parent->right = NULL; // menghapus link ke right child
+            }
+            deleteTree(node->left); // rekursif ke left child
+            deleteTree(node->right); // rekursif ke right child
+            if (node == root) {
+                delete root; // menghapus root
+                root = NULL;
+            } else {
+                delete node; // menghapus node
             }
         }
-        // Tukar elemen terkecil dengan elemen saat ini
-        temp = arr[i];
-        arr[i] = arr[min];
-        arr[min] = temp;
     }
 }
 
-// Fungsi untuk melakukan pencarian biner dalam array yang sudah diurutkan
-void binary_search(int arr[], int n, int target) {
-    int awal = 0, akhir = n - 1, tengah, b_flag = 0;
-    while (b_flag == 0 && awal <= akhir) { // Loop sampai ditemukan atau tidak ada elemen yang tersisa
-        tengah = (awal + akhir) / 2; // Tentukan elemen tengah
-        if (arr[tengah] == target) { // Jika elemen tengah adalah target
-            b_flag = 1; // Set flag ditemukan
-            break; // Keluar dari loop
-        } else if (arr[tengah] < target) { // Jika target lebih besar dari elemen tengah
-            awal = tengah + 1; // Pindahkan batas awal ke kanan
-        } else { // Jika target lebih kecil dari elemen tengah
-            akhir = tengah - 1; // Pindahkan batas akhir ke kiri
+// Fungsi untuk menghapus subtree
+void deleteSub(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+    else {
+        deleteTree(node->left); // menghapus subtree left child
+        deleteTree(node->right); // menghapus subtree right child
+        cout << "\nNode subtree " << node->data << " berhasil dihapus." << endl;
+    }
+}
+
+// Fungsi untuk menghapus seluruh tree
+void clear() {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!!" << endl; // pesan jika tree belum dibuat
+    else {
+        deleteTree(root); // menghapus seluruh tree
+        cout << "\nPohon berhasil dihapus." << endl;
+    }
+}
+
+// Fungsi untuk cek ukuran tree
+int size(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!!" << endl; // pesan jika tree belum dibuat
+        return 0;
+    } else {
+        if (!node) {
+            return 0; // jika node NULL, return 0
+        } else {
+            return 1 + size(node->left) + size(node->right); // menghitung ukuran tree
         }
     }
-    if (b_flag == 1)
-        cout << "\nData ditemukan pada index ke-" << tengah << endl; // Tampilkan indeks jika ditemukan
+}
+
+// Fungsi untuk cek tinggi (height) tree
+int height(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl; // pesan jika tree belum dibuat
+        return 0;
+    } else {
+        if (!node) {
+            return 0; // jika node NULL, return 0
+        } else {
+            int heightKiri = height(node->left); // menghitung tinggi left child
+            int heightKanan = height(node->right); // menghitung tinggi right child
+            if (heightKiri >= heightKanan) {
+                return heightKiri + 1; // mengembalikan tinggi maksimum
+            } else {
+                return heightKanan + 1; // mengembalikan tinggi maksimum
+            }
+        }
+    }
+}
+
+// Fungsi untuk menampilkan karakteristik tree
+void characteristic() {
+    int s = size(root); // menghitung ukuran tree
+    int h = height(root); // menghitung tinggi tree
+    cout << "\nSize Tree : " << s << endl;
+    cout << "Height Tree : " << h << endl;
+    if (h != 0)
+        cout << "Average Node of Tree : " << s / h << endl; // menghitung rata-rata node per level
     else
-        cout << "\nData tidak ditemukan\n"; // Tampilkan pesan jika tidak ditemukan
+        cout << "Average Node of Tree : 0" << endl;
 }
 
 int main() {
-    cout << "\tBINARY SEARCH" << endl;
-    cout << "\nData awal: ";
-    // Tampilkan data awal
-    for (int x = 0; x < 7; x++) {
-        cout << setw(3) << arrayData[x];
-    }
-    cout << endl;
-    cout << "\nMasukkan data yang ingin Anda cari: ";
-    cin >> cari; // Baca elemen yang ingin dicari dari input pengguna
+    init(); // inisialisasi tree
+    buatNode('A'); // membuat root node 'A'
     
-    // Urutkan data dengan selection sort
-    selection_sort(arrayData, 7);
+    // Menambahkan node ke tree
+    Pohon *nodeB, *nodeC, *nodeD, *nodeE, *nodeF, *nodeG, *nodeH, *nodeI, *nodeJ;
+    nodeB = insertLeft('B', root);
+    nodeC = insertRight('C', root);
+    nodeD = insertLeft('D', nodeB);
+    nodeE = insertRight('E', nodeB);
+    nodeF = insertLeft('F', nodeC);
+    nodeG = insertLeft('G', nodeE);
+    nodeH = insertRight('H', nodeE);
+    nodeI = insertLeft('I', nodeG);
+    nodeJ = insertRight('J', nodeG);
     
-    cout << "\nData diurutkan: ";
-    // Tampilkan data setelah diurutkan
-    for (int x = 0; x < 7; x++) {
-        cout << setw(3) << arrayData[x];
-    }
-    cout << endl;
+    update('Z', nodeC); // mengubah data node 'C' menjadi 'Z'
+    update('C', nodeC); // mengubah data node 'Z' kembali menjadi 'C'
     
-    // Lakukan binary search
-    binary_search(arrayData, 7, cari);
+    retrieve(nodeC); // mengambil data dari node 'C'
+    find(nodeC); // menemukan data pada node 'C' dan menampilkan informasi terkait
+    
+    // Menampilkan traversal tree
+    cout << "\nPreOrder :" << endl;
+    preOrder(root);
+    cout << "\n" << endl;
+    
+    cout << "InOrder :" << endl;
+    inOrder(root);
+    cout << "\n" << endl;
+    
+    cout << "PostOrder :" << endl;
+    postOrder(root);
+    cout << "\n" << endl;
+    
+    characteristic(); // menampilkan karakteristik tree
+    
+    deleteSub(nodeE); // menghapus subtree dari node 'E'
+    
+    cout << "\nPreOrder :" << endl;
+    preOrder(root);
+    cout << "\n" << endl;
+    
+    characteristic(); // menampilkan karakteristik tree setelah penghapusan subtree
     
     return 0;
 }
 
 
-
-
-
 ```
 #### Output:
-![Screenshot 2024-05-22 143859](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/512843f0-fda5-4939-be5e-bac64365c14e)
+![Screenshot 2024-05-29 092033](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/5a2894b8-60ed-4271-9bf6-5efdb3419910)
 
 
 
-- Kode diatas adalah implementasi dari algoritma selection sort dan binary search dalam bahasa C++ untuk mengurutkan dan mencari elemen dalam sebuah array. Dimulai dengan menyertakan pustaka input-output <iostream> dan pustaka manipulasi I/O <iomanip>, program ini menggunakan namespace standar std untuk memudahkan penulisan kode. Program mendeklarasikan sebuah array arrayData yang berisi tujuh elemen integer dan sebuah variabel cari yang akan menyimpan elemen yang ingin dicari oleh pengguna.
+Kode ini merupakan implementasi dari struktur data pohon biner yang menyediakan berbagai operasi untuk manipulasi pohon biner. Pada awalnya, pohon diinisialisasi dengan pointer global `root` yang menunjuk ke `NULL`. Program ini mencakup fungsi-fungsi untuk mengecek apakah pohon kosong (`isEmpty`), membuat node baru (`newPohon`), menambahkan node ke pohon sebagai root (`buatNode`), dan menambahkan node sebagai anak kiri (`insertLeft`) atau anak kanan (`insertRight`). Selain itu, terdapat fungsi untuk mengubah data pada node (`update`), mengambil data dari node (`retrieve`), dan menemukan serta menampilkan informasi tentang node tertentu (`find`).
 
-- Fungsi selection_sort mengurutkan array menggunakan algoritma selection sort, di mana array diurutkan dengan menemukan elemen terkecil dalam bagian yang tidak diurutkan dari array dan menukarnya dengan elemen pertama dari bagian tersebut. Fungsi ini melakukan iterasi melalui array dengan dua loop bersarang: loop luar untuk setiap elemen kecuali elemen terakhir, dan loop dalam untuk menemukan elemen terkecil di sisa array.
+Penelusuran pohon dapat dilakukan dengan tiga cara: pre-order (`preOrder`), in-order (`inOrder`), dan post-order (`postOrder`). Program ini juga menyediakan fungsi untuk menghapus node dari pohon (`deleteTree`), menghapus subtree dari node tertentu (`deleteSub`), serta menghapus seluruh pohon (`clear`). Selain itu, terdapat fungsi untuk menghitung ukuran (`size`) dan tinggi (`height`) pohon, serta menampilkan karakteristik pohon seperti ukuran, tinggi, dan rata-rata node per level (`characteristic`).
 
-- Fungsi binary_search melakukan pencarian biner pada array yang sudah diurutkan. Fungsi ini menggunakan dua indeks, awal dan akhir, untuk menentukan bagian array yang akan dicari, dan menghitung indeks tengah. Jika elemen di tengah sama dengan elemen yang dicari (target), maka pencarian selesai dan elemen ditemukan. Jika elemen tengah lebih kecil dari target, pencarian dilanjutkan di bagian kanan array; sebaliknya, jika elemen tengah lebih besar, pencarian dilanjutkan di bagian kiri array. Fungsi ini mencetak hasil pencarian, menunjukkan apakah elemen ditemukan dan pada indeks berapa.
-
-- Fungsi main mengatur alur utama program. Pertama, program menampilkan data awal array sebelum pengurutan, kemudian meminta pengguna untuk memasukkan elemen yang ingin dicari. Setelah itu, array diurutkan menggunakan selection_sort, dan program menampilkan array setelah diurutkan. Selanjutnya, binary_search digunakan untuk mencari elemen yang dimasukkan oleh pengguna dalam array yang sudah diurutkan, dan hasil pencarian ditampilkan kepada pengguna, apakah elemen ditemukan atau tidak. Program ini memberikan pemahaman tentang penggunaan algoritma pengurutan dan pencarian dalam pengolahan data array.
+Dalam fungsi `main`, pohon diinisialisasi dan beberapa node ditambahkan untuk membentuk struktur pohon biner. Beberapa operasi dilakukan termasuk pengubahan data pada node, penelusuran pohon, serta penghapusan subtree, yang diikuti dengan menampilkan kembali penelusuran pohon dan karakteristik pohon setelah perubahan. Program ini menampilkan hasil dari setiap operasi pada pohon biner untuk membantu pengguna memahami perubahan yang terjadi pada struktur pohon.
 
 #### Full code Screenshot:
-![Screenshot 2024-05-22 143908](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/994f7a57-442a-4b79-9076-182140bc4936)
+![Screenshot 2024-05-29 091955](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/267a3dce-73c7-42cf-a845-0f5242a47234)
 
 
 
