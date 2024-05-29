@@ -1,4 +1,4 @@
-<p align="center">Wahyu Hidayat</p>
+![Screenshot 2024-05-29 090113](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/0b42dc21-232a-4ef1-8e1a-d617e3e2b87a)![Screenshot 2024-05-29 085946](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/03794d12-8d70-406f-9f8e-dfd61f9120f7)![image](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/d0f3d6e1-ac7c-41f2-a3a1-1dd55bde30aa)<p align="center">Wahyu Hidayat</p>
 <p align="center">2311102178 / 11-E-IF</p>
 
 
@@ -101,6 +101,95 @@ Memahami perbedaan antara simpul vertex dan simpul edge sangat penting saat memb
 Struktur simpul vertex dan simpul edge bisa sama atau berbeda tergantung pada kebutuhan, namun biasanya seragam. Perbedaan utama terletak pada bagaimana kita memperlakukan dan menggunakan keduanya dalam representasi graf.
 
 <img src="https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/55832310-0878-434e-bcf6-620fa4c977b5" alt="Screenshot 2024-05-26 070759" width="300"/>
+
+
+
+
+#### 1. Definisi Tree (Pohon)
+- Sebuah tree (pohon) adalah struktur data non-linear yang terdiri dari simpul-simpul (nodes) yang terhubung secara hierarkis. Setiap simpul memiliki satu induk (parent) kecuali simpul akar (root), dan dapat memiliki beberapa anak (children) [7].
+
+- Dalam ilmu komputer, pohon/tree adalah struktur data yang sangat umum dan kuat yang menyerupai nyata pohon. Ini terdiri dari satu set node tertaut yang terurut dalam grafik yang terhubung, dimana setiap node memiliki paling banyak satu simpul induk, dan nol atau lebih simpul anak dengan urutan tertentu. Struktur data tree digunakan untuk menyimpan data-data hirarki seperti pohon keluarga, skema pertandingan, struktur organisasi[6]. Istilah dalam struktur data tree dapat dirangkum sebagai berikut : 
+
+![Screenshot 2024-05-29 084449](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/9380f769-c252-4713-956e-e931a740da5c)
+
+
+- Binary tree atau pohon biner merupakan struktur data pohon akan tetapi setiap simpul dalam pohon diprasyaratkan memiliki simpul satu level di bawahnya (child)tidak lebih dari 2 simpul, artinya jumlah child yang diperbolehkan yakni 0, 1, dan 2. Gambar 1, menunjukkan contoh dari struktur data binary tree.
+
+![Screenshot 2024-05-29 084725](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/e6512917-3ef9-4b7f-ab9d-e4bb78baf251)
+
+- Membuat struktur data binary tree dalam suatu program (berbahasa C++) dapat menggunakan struct yang memiliki 2 buah pointer, seperti halnya double linked list.
+
+![Screenshot 2024-05-29 085001](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/ca78b395-9340-4e3b-a2f4-ea06762684d0)
+
+#### 2. Operasi pada Tree
+- a. Create: digunakan untuk membentuk binary tree baru yang masih kosong.
+- b. Clear: digunakan untuk mengosongkan binary tree yang sudah ada atau menghapus semua node pada binary tree.
+- c. isEmpty: digunakan untuk memeriksa apakah binary tree masih kosong atau tidak.
+- d. Insert: digunakan untuk memasukkan sebuah node kedalam tree.
+- e. Find: digunakan untuk mencari root, parent, left child, atau right child dari suatu node dengan syarat tree tidak boleh kosong.
+- f. Update: digunakan untuk mengubah isi dari node yang ditunjuk oleh pointer current dengan syarat tree tidak boleh kosong.
+- g. Retrive: digunakan untuk mengetahui isi dari node yang ditunjuk pointer current dengan syarat tree tidak boleh kosong.
+- h. Delete Sub: digunakan untuk menghapus sebuah subtree (node beserta seluruh descendant-nya) yang ditunjuk pointer current dengan syarat tree tidak boleh kosong.
+- i. Characteristic: digunakan untuk mengetahui karakteristik dari suatu tree. Yakni size, height, serta average lenght-nya.
+- j. Traverse: digunakan untuk mengunjungi seluruh node-node pada tree dengan cara traversal. Terdapat 3 metode traversal yang dibahas dalam modul ini yakni Pre-Order, In-Order, dan Post-Order.
+- 1. Pre-Order Penelusuran secara pre-order memiliki alur:
+  - a. Cetak data pada simpul root
+  - b. Secara rekursif mencetak seluruh data pada subpohon kiri
+  - c. Secara rekursif mencetak seluruh data pada subpohon kanan Dapat kita turunkan rumus penelusuran menjadi:
+
+![Screenshot 2024-05-29 085316](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/1ca71941-7fe2-4c3d-856e-2ef213d6ec14)
+
+![Screenshot 2024-05-29 085340](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/42d12956-5b75-48d3-b2b1-98fbab377399)
+
+- 2. In-Order Penelusuran secara in-order memiliki alur:
+  - a. Secara rekursif mencetak seluruh data pada subpohon kiri
+  - b. Cetak data pada root
+  - c. Secara rekursif mencetak seluruh data pada subpohon kanan Dapat kita turunkan rumus penelusuran menjadi:
+
+![Screenshot 2024-05-29 085946](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/f46b335e-c307-4246-81b8-3462b430d996)
+
+- 3. Post Order Penelusuran secara in-order memiliki alur:
+  - a. Secara rekursif mencetak seluruh data pada subpohon kiri
+  - b. Secara rekursif mencetak seluruh data pada subpohon kanan
+  - c. Cetak data pada root
+Dapat kita turunkan rumus penelusuran menjadi:
+
+![Screenshot 2024-05-29 090113](https://github.com/Wahyu101101/Struktur-Data-Assigment/assets/161663486/fbe46d96-eba0-4640-b3d8-23de074121b7)
+
+#### 3. Terminologi dalam Tree
+
+
+- Root (Akar): Simpul tertinggi dalam pohon yang tidak memiliki induk.
+- Parent (Induk): Simpul yang memiliki satu atau lebih anak.
+- Child (Anak): Simpul yang memiliki induk.
+- Sibling (Saudara): Simpul-simpul yang memiliki induk yang sama.
+- Leaf (Daun): Simpul yang tidak memiliki anak.
+- Internal Node (Simpul Internal): Simpul yang memiliki setidaknya satu anak.
+- Depth (Kedalaman): Panjang jalur dari akar ke simpul tertentu.
+- Height (Tinggi): Panjang jalur terpanjang dari akar ke daun.
+
+
+#### 4. Jenis-jenis Tree
+
+
+- Binary Tree: Setiap simpul memiliki maksimum dua anak.
+- Binary Search Tree (BST): Jenis khusus dari binary tree, di mana setiap simpul pada sisi kiri memiliki nilai yang lebih kecil dari induknya, dan setiap simpul pada sisi kanan memiliki nilai yang lebih besar dari induknya.
+- Balanced Binary Tree: Binary tree di mana kedalaman untuk setiap cabang kiri dan kanan tidak berbeda lebih dari satu.
+- N-ary Tree: Setiap simpul dapat memiliki lebih dari dua anak.
+- Trie (Prefiks Tree): Tree yang digunakan untuk menyimpan dan mencari string [8].
+
+
+#### 5. Operasi pada Tree
+
+
+- Traversal (Pelacakan): Kunjungan ke setiap simpul dalam tree, seperti preorder, inorder, dan postorder traversal.
+- Insertion (Penyisipan): Menambahkan simpul baru ke dalam tree.
+- Deletion (Penghapusan): Menghapus simpul dari tree.
+- Searching (Pencarian): Menemukan simpul tertentu dalam tree.
+
+
+#### 6. Aplikasi Tree
+- Tree digunakan dalam berbagai bidang komputasi, seperti pengindeksan file sistem, kompresi data, pengambilan keputusan, dan banyak lagi. Penggunaan tree yang umum meliputi struktur direktori dalam sistem operasi, sintaks parsing, dan pemrosesan ekspresi matematika [9].
 
 ```C++
 int SequentialSearch (int x)  
@@ -579,3 +668,9 @@ int main() {
 [5] Skiena, S. (2008). The Algorithm Design Manual. Springer Science & Business Media.
 
 [6] Asisten Praktikum, “Modul 9 Graph dan Tree", Googgle Classroom, 2024.
+
+[7] Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). Introduction to algorithms. MIT press.
+
+[8] Leis, V., Kemper, A., & Neumann, T. (2019). Trie-Scan: A hybrid trie-cuckoo algorithm for processing ad-hoc trie queries on modern CPUs. Information Systems, 82, 181-200.
+
+[9] Sadecki, J., & Kozłowski, J. (2021). Parallel path finding on trees with GPU. Parallel Computing, 104, 102700.
